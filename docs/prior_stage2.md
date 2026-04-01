@@ -1,44 +1,47 @@
 # Stage 2: Pre-training the Domain Knowledge Diffusion Model
 
-This repository section documents the trajectory-only diffusion prior used in Stage 2 of the project. The goal of this stage is to learn a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup.
+Stage 2 is the trajectory-only diffusion pre-training stage of the thesis. Its purpose is to learn a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup.
 
-## Experimental Protocol
+The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official records, and output locations.
 
-We conduct a filtering-threshold ablation on the ETH+UCY motion prior. The four variants differ only in the low-speed filtering threshold:
+## Official Stage 2 Semantics
 
-- `none`: no threshold filtering
-- `q10`: 10th percentile threshold over positive step norms
-- `q20`: 20th percentile threshold over positive step norms
-- `q30`: 30th percentile threshold over positive step norms
+The registry exposes two semantic entry points:
 
-All four variants share the same:
+- `optimization_best -> none`
+- `motion_balanced -> q20`
+
+Official roles under the unified protocol:
+
+- `none`: optimization-best baseline under the unified protocol
+- `q10`: filtering too weak; gains are limited
+- `q20`: most balanced motion-focused prior among filtered variants
+- `q30`: filtering too strong; not the default motion prior candidate
+
+The four variants share the same:
 
 - dataset family: ETH+UCY
-- model: DDPM prior with `hidden_dim=128`
+- model: h128 DDPM prior
 - batch size: `128`
 - diffusion timesteps: `100`
-- train/val split: fixed and identical across runs
-- random seed: fixed and identical across runs
+- random seed: `42`
 - maximum epochs: `50`
 - checkpoint selection: best validation checkpoint
 - sample count: `512`
 - evaluation metrics: `step_norm_all`, `avg_speed`, `total_length`, `endpoint_displacement`, `moving_ratio_global`, `propulsion_ratio`, `acc_rms`
 
-The only controlled factor is the filtering threshold.
+## Privacy and Repository Safety
 
-## What We Keep Private
+This repository is intentionally limited to public-facing code and selected publication-oriented figures.
 
-This repository intentionally does not include raw pedestrian trajectory files or the full processed training corpus. Only derived figures, summaries, and code required to reproduce the Stage 2 pipeline are tracked here.
+- No raw pedestrian trajectory files are committed.
+- No processed training corpora are committed.
+- No checkpoints or large outputs are committed.
+- Only selected figures required to document Stage 2 are kept in `docs/`.
 
-That means:
+## Qualitative Reverse Sampling
 
-- no raw trajectory data is committed
-- no large training outputs are exposed as source data
-- only selected, publication-oriented figures are included
-
-## Qualitative Figures
-
-The following figures summarize the sampling behavior for each filtering variant.
+The following figures are qualitative only. They help compare the reverse-sampling behavior of the four official variants, but they do not by themselves establish a global ranking.
 
 ### `none`
 
@@ -80,34 +83,68 @@ Single-step denoising check:
 
 ![q30 denoise](assets/prior/sample_q30/denoise_check.png)
 
-## Distribution-Level Diagnosis
+## Key Diagnostic Figures
 
-The Stage 2 evaluation uses a fixed seven-metric suite to compare generated and real trajectories. For the representative `q20` setting, we additionally keep the following diagnostic plots:
+These figures provide distribution-level support for the Stage 2 discussion. They should be read as diagnostics rather than absolute claims of superiority.
+
+### `none`
+
+Endpoint displacement distribution:
+
+![none endpoint displacement](assets/prior/eval_none_hist_endpoint_displacement.png)
+
+### `q20`
+
+Endpoint displacement distribution:
 
 ![q20 endpoint displacement](assets/prior/eval_q20/hist_endpoint_displacement.png)
 
+Propulsion ratio distribution:
+
 ![q20 propulsion ratio](assets/prior/eval_q20/hist_propulsion_ratio.png)
+
+Acceleration RMS distribution:
 
 ![q20 acceleration rms](assets/prior/eval_q20/hist_acc_rms.png)
 
-These plots are intended to support the manuscript discussion of trajectory shrinkage, effective progression, and local smoothness.
-
 ## Interpretation
 
-The four-variant ablation is designed to test one hypothesis only: whether a stronger low-speed filter improves the learned motion prior without changing the rest of the training recipe. In manuscript language, the variants can be described as a controlled threshold sweep over the same trajectory-only diffusion backbone.
+The filtering-threshold ablation is a controlled sweep over a single factor: the low-speed filtering threshold. All other settings are fixed by the unified Stage 2 protocol.
 
-The current evidence suggests:
+The official reading should be:
 
-- `none` preserves the broadest raw distribution but may retain more low-motion content
-- `q10` and `q30` shift the data distribution toward stronger motion intensity
-- `q20` is the most balanced operating point in the current pipeline
+- `none` is the optimization-best baseline under the unified protocol.
+- `q10` is a weak filtering setting and gives only limited motion-shaping benefit.
+- `q20` is the most balanced motion-focused prior among the filtered variants.
+- `q30` is a stronger filter that can suppress too much motion and is not the default prior candidate.
+
+The role of the diagnostic figures is to support this reading with distribution-level evidence, especially for endpoint progression, propulsion, and local motion smoothness.
 
 ## Reproducibility
 
-The corresponding scripts are:
+The Stage 2 pipeline is reproduced via the following scripts:
 
 - `tools/prior/train/train_ddpm_eth_ucy_h128.py`
 - `tools/prior/sample/reverse_sample_ddpm_eth_ucy_h128.py`
 - `tools/prior/eval/analyze_generated_vs_real_eth_ucy_h128.py`
 
-Each script accepts a `--variant` argument, so the entire ablation can be reproduced by changing only the threshold variant.
+These scripts may accept either raw variant names or semantic registry names. For example:
+
+- `optimization_best` resolves to `none`
+- `motion_balanced` resolves to `q20`
+
+All paths, checkpoints, sample directories, evaluation directories, and official records are resolved through [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py).
+
+## Figure Guidance
+
+Keep the root README lightweight and use this page for detailed figure grids and interpretation.
+
+Recommended for README:
+
+- a single link to this Stage 2 page
+
+Recommended to keep only here:
+
+- all four reverse-sampling figure pairs
+- diagnostic figures for `none` and `q20`
+- any optional loss-curve comparisons
