@@ -2,23 +2,23 @@
 
 Stage 2 is the trajectory-only diffusion pre-training stage of the thesis. Its purpose is to learn a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup.
 
-Stage 2 is implemented as a registry-driven trajectory prior pipeline. The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official train/eval records, narrative labels, and output locations.
+Stage 2 should be treated as a registry-driven trajectory prior pipeline. The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official train/eval records, narrative labels, and output locations.
 
-## Official Stage 2 Semantics
+## Official Stage 2 Interpretation
 
 The registry exposes two semantic entry points:
 
 - `optimization_best -> none`
 - `motion_balanced -> q20`
 
-Official roles under the unified protocol:
+The official reading of the filtering-threshold ablation is intentionally not a single global winner:
 
-- `none`: optimization-best baseline under the unified protocol
-- `q10`: filtering too weak; gains are limited
-- `q20`: most balanced motion-focused prior among filtered variants
-- `q30`: filtering too strong; not the default motion prior candidate
+- `none` = optimization-best baseline under the unified protocol
+- `q20` = most balanced motion-focused prior among filtered variants
+- `q10` = filtering too weak; gains are limited
+- `q30` = filtering too strong; not the default motion prior candidate
 
-The four variants share the same:
+The four variants share the same unified Stage 2 protocol:
 
 - dataset family: ETH+UCY
 - model: h128 DDPM prior
@@ -29,17 +29,6 @@ The four variants share the same:
 - checkpoint selection: best validation checkpoint
 - sample count: `512`
 - evaluation metrics: `step_norm_all`, `avg_speed`, `total_length`, `endpoint_displacement`, `moving_ratio_global`, `propulsion_ratio`, `acc_rms`
-
-## Official Stage 2 Interpretation
-
-The registry-backed interpretation of Stage 2 should be read as follows:
-
-- `optimization_best -> none`
-- `motion_balanced -> q20`
-- `none` is the optimization-best baseline under the unified protocol.
-- `q10` is a weak filtering setting and gives only limited motion-shaping benefit.
-- `q20` is the most balanced motion-focused prior among the filtered variants.
-- `q30` is a stronger filter that can suppress too much motion and is not the default prior candidate.
 
 Scripts may accept either raw variants (`none/q10/q20/q30`) or semantic names (`optimization_best/motion_balanced`), depending on the entry point implementation.
 
@@ -108,6 +97,10 @@ Endpoint displacement distribution:
 
 ![none endpoint displacement](assets/prior/eval_none_hist_endpoint_displacement.png)
 
+Propulsion ratio distribution:
+
+![none propulsion ratio](assets/prior/eval_none_hist_propulsion_ratio.png)
+
 ### `q20`
 
 Endpoint displacement distribution:
@@ -124,13 +117,19 @@ Acceleration RMS distribution:
 
 ### Loss Curve
 
-The following curve is a compact training diagnostic for the official `q20` reference run:
+The following curve is a compact training diagnostic for the official `q20` reference run. It is included as an auxiliary training diagnostic, not as a standalone proof of overall superiority.
 
 ![q20 loss curve](../outputs/prior/eval/ddpm_minimal_q20/loss_curve.png)
 
 ## Interpretation
 
 The filtering-threshold ablation is a controlled sweep over a single factor: the low-speed filtering threshold. All other settings are fixed by the unified Stage 2 protocol.
+
+The official Stage 2 conclusion should be read as:
+
+- `none` provides the optimization-best baseline under the unified protocol.
+- `q20` provides the most balanced motion-focused prior among filtered variants.
+- `q10` and `q30` are reference points that help explain how filtering strength changes the learned motion statistics.
 
 The role of the diagnostic figures is to support the official interpretation with distribution-level evidence, especially for endpoint progression, propulsion, and local motion smoothness.
 
