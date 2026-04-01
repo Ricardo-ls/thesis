@@ -143,7 +143,13 @@ Acceleration RMS distribution:
 
 ### Loss Curve
 
-The following curve is a compact training diagnostic for the official `q20` 50-epoch reference run, whose best validation checkpoint is reached at epoch 41 in the current registry record. It is included as an auxiliary training diagnostic, not as a standalone proof of overall superiority.
+The following curves are compact training diagnostics for the official `none` and `q20` 50-epoch reference runs. They are included as auxiliary training diagnostics, not as standalone proofs of overall superiority.
+
+`none` loss curve:
+
+![none loss curve](assets/prior/none_loss_curve.svg)
+
+`q20` loss curve:
 
 ![q20 loss curve](assets/prior/q20_loss_curve.png)
 
