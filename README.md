@@ -12,7 +12,7 @@ The thesis is organized in stages:
 
 ## Stage 2 Summary
 
-Stage 2 uses a registry-driven evaluation and documentation pipeline defined in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py). The official semantic entry points are:
+Stage 2 uses a registry-driven evaluation and documentation pipeline defined in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 paths, checkpoints, sample directories, evaluation directories, train/eval records, and narrative labels. The official semantic entry points are:
 
 - `optimization_best -> none`
 - `motion_balanced -> q20`
@@ -24,7 +24,7 @@ Official Stage 2 roles:
 - `q20`: most balanced motion-focused prior among filtered variants
 - `q30`: filtering too strong; not the default motion prior candidate
 
-Scripts may accept either raw variants or semantic names through the registry. Paths, checkpoints, sample directories, evaluation directories, and official records are all resolved through the same source of truth in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py).
+Scripts may accept either raw variants or semantic names through the registry, depending on the entry point implementation.
 
 ## Public Documentation
 
@@ -32,9 +32,9 @@ Scripts may accept either raw variants or semantic names through the registry. P
 
 ## Repository Safety
 
-This repository is intentionally limited to public-facing code, documentation, and selected publication-oriented figures.
+This public repository includes code, selected figures, and lightweight docs only.
 
 - No raw pedestrian trajectory files are committed.
 - No processed training corpora are committed.
-- No checkpoints or large outputs are committed.
-- Only selected figures needed to explain Stage 2 are kept in `docs/`.
+- No checkpoints or large training outputs are committed.
+- Only selected publication-oriented figures are kept in `docs/`.

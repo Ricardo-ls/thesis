@@ -2,7 +2,7 @@
 
 Stage 2 is the trajectory-only diffusion pre-training stage of the thesis. Its purpose is to learn a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup.
 
-The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official records, and output locations.
+Stage 2 is implemented as a registry-driven trajectory prior pipeline. The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official train/eval records, narrative labels, and output locations.
 
 ## Official Stage 2 Semantics
 
@@ -30,14 +30,29 @@ The four variants share the same:
 - sample count: `512`
 - evaluation metrics: `step_norm_all`, `avg_speed`, `total_length`, `endpoint_displacement`, `moving_ratio_global`, `propulsion_ratio`, `acc_rms`
 
+## Official Stage 2 Interpretation
+
+The registry-backed interpretation of Stage 2 should be read as follows:
+
+- `optimization_best -> none`
+- `motion_balanced -> q20`
+- `none` is the optimization-best baseline under the unified protocol.
+- `q10` is a weak filtering setting and gives only limited motion-shaping benefit.
+- `q20` is the most balanced motion-focused prior among the filtered variants.
+- `q30` is a stronger filter that can suppress too much motion and is not the default prior candidate.
+
+Scripts may accept either raw variants (`none/q10/q20/q30`) or semantic names (`optimization_best/motion_balanced`), depending on the entry point implementation.
+
+All paths, checkpoints, `sample_dir`, `eval_dir`, official train/eval records, and narrative labels are resolved through [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py).
+
 ## Privacy and Repository Safety
 
-This repository is intentionally limited to public-facing code and selected publication-oriented figures.
+This public repository includes code, selected figures, and lightweight docs only.
 
 - No raw pedestrian trajectory files are committed.
 - No processed training corpora are committed.
-- No checkpoints or large outputs are committed.
-- Only selected figures required to document Stage 2 are kept in `docs/`.
+- No checkpoints or large training outputs are committed.
+- Only selected publication-oriented figures are kept in `docs/`.
 
 ## Qualitative Reverse Sampling
 
@@ -107,18 +122,17 @@ Acceleration RMS distribution:
 
 ![q20 acceleration rms](assets/prior/eval_q20/hist_acc_rms.png)
 
+### Loss Curve
+
+The following curve is a compact training diagnostic for the official `q20` reference run:
+
+![q20 loss curve](../outputs/prior/eval/ddpm_minimal_q20/loss_curve.png)
+
 ## Interpretation
 
 The filtering-threshold ablation is a controlled sweep over a single factor: the low-speed filtering threshold. All other settings are fixed by the unified Stage 2 protocol.
 
-The official reading should be:
-
-- `none` is the optimization-best baseline under the unified protocol.
-- `q10` is a weak filtering setting and gives only limited motion-shaping benefit.
-- `q20` is the most balanced motion-focused prior among the filtered variants.
-- `q30` is a stronger filter that can suppress too much motion and is not the default prior candidate.
-
-The role of the diagnostic figures is to support this reading with distribution-level evidence, especially for endpoint progression, propulsion, and local motion smoothness.
+The role of the diagnostic figures is to support the official interpretation with distribution-level evidence, especially for endpoint progression, propulsion, and local motion smoothness.
 
 ## Reproducibility
 
@@ -128,12 +142,10 @@ The Stage 2 pipeline is reproduced via the following scripts:
 - `tools/prior/sample/reverse_sample_ddpm_eth_ucy_h128.py`
 - `tools/prior/eval/analyze_generated_vs_real_eth_ucy_h128.py`
 
-These scripts may accept either raw variant names or semantic registry names. For example:
+These scripts may accept either raw variant names or semantic registry names, depending on the entry point implementation. For example:
 
 - `optimization_best` resolves to `none`
 - `motion_balanced` resolves to `q20`
-
-All paths, checkpoints, sample directories, evaluation directories, and official records are resolved through [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py).
 
 ## Figure Guidance
 
