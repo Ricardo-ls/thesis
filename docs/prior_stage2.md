@@ -119,7 +119,7 @@ Acceleration RMS distribution:
 
 The following curve is a compact training diagnostic for the official `q20` reference run. It is included as an auxiliary training diagnostic, not as a standalone proof of overall superiority.
 
-![q20 loss curve](../outputs/prior/eval/ddpm_minimal_q20/loss_curve.png)
+![q20 loss curve](assets/prior/q20_loss_curve.png)
 
 ## Interpretation
 
