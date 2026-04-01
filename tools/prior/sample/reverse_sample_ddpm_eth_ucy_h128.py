@@ -12,7 +12,13 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from models.temporal_denoiser import TemporalDenoiser1D
-from utils.prior.ablation_paths import get_eth_ucy_variant_paths
+from utils.prior.ablation_paths import (
+    get_eval_ratios_by_name,
+    get_paths_by_name,
+    get_train_record_by_name,
+    resolve_variant_or_objective,
+    to_abs_path,
+)
 
 
 def set_seed(seed: int = 42):
@@ -56,13 +62,13 @@ def sample_ddpm(model, timesteps, num_generate, channels, seq_len, device):
 
 
 @torch.no_grad()
-def one_step_denoise_check(model, real_rel, timesteps, device):
+def one_step_denoise_check(model, real_rel, timesteps, device, t_vis):
     _, _, alpha_bars = make_ddpm_schedule(timesteps, device=device)
 
     idx = np.random.randint(0, real_rel.shape[0])
     x0 = torch.from_numpy(real_rel[idx]).float().unsqueeze(0).permute(0, 2, 1).to(device)
 
-    t = torch.tensor([timesteps - 1], device=device, dtype=torch.long)
+    t = torch.tensor([t_vis], device=device, dtype=torch.long)
     noise = torch.randn_like(x0)
     alpha_bar_t = alpha_bars[t].view(-1, 1, 1)
     xt = torch.sqrt(alpha_bar_t) * x0 + torch.sqrt(1.0 - alpha_bar_t) * noise
@@ -148,56 +154,61 @@ def plot_denoise_check(x0, xt, x0_pred, save_path):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--variant", type=str, default="q20", choices=["none", "q10", "q20", "q30"])
+    parser.add_argument("--variant", type=str, default="motion_balanced")
     parser.add_argument("--timesteps", type=int, default=100)
     parser.add_argument("--hidden_dim", type=int, default=128)
+    parser.add_argument("--seq_len", type=int, default=19)
+    parser.add_argument("--channels", type=int, default=2)
     parser.add_argument("--num_generate", type=int, default=512)
     parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--t_vis", type=int, default=80)
     args = parser.parse_args()
 
     set_seed(args.seed)
-    paths = get_eth_ucy_variant_paths(args.variant)
+    resolved_variant = resolve_variant_or_objective(args.variant)
+    cfg = get_paths_by_name(args.variant)
+    train_record = get_train_record_by_name(args.variant)
+    eval_ratios = get_eval_ratios_by_name(args.variant)
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    abs_data_path = PROJECT_ROOT / paths["abs_path"]
-    rel_data_path = PROJECT_ROOT / paths["rel_path"]
-    ckpt_path = PROJECT_ROOT / "outputs" / "prior" / "train" / paths["train_tag"] / "best_model.pt"
-    out_dir = PROJECT_ROOT / "outputs" / "prior" / "sample" / paths["sample_tag"] / f"reverse_sampling_check_{args.num_generate}"
+    data_path = to_abs_path(cfg["rel_path"])
+    ckpt_path = to_abs_path(cfg["ckpt_path"])
+    out_dir = to_abs_path(cfg["sample_dir"]) / f"reverse_sampling_check_{args.num_generate}"
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    seq_len = 19
-    channels = 2
-
     print("=" * 60)
-    print(f"variant      = {args.variant}")
-    print(f"device       = {device}")
-    print(f"abs_path     = {abs_data_path}")
-    print(f"rel_path     = {rel_data_path}")
-    print(f"ckpt_path    = {ckpt_path}")
-    print(f"out_dir      = {out_dir}")
-    print(f"timesteps    = {args.timesteps}")
-    print(f"hidden_dim   = {args.hidden_dim}")
-    print(f"seq_len      = {seq_len}")
-    print(f"channels     = {channels}")
-    print(f"num_generate = {args.num_generate}")
+    print(f"input_name       = {args.variant}")
+    print(f"resolved_variant = {resolved_variant}")
+    print(f"device           = {device}")
+    print(f"data_path        = {data_path}")
+    print(f"ckpt_path        = {ckpt_path}")
+    print(f"output_dir       = {out_dir}")
+    print(f"timesteps        = {args.timesteps}")
+    print(f"hidden_dim       = {args.hidden_dim}")
+    print(f"seq_len          = {args.seq_len}")
+    print(f"channels         = {args.channels}")
+    print(f"num_generate     = {args.num_generate}")
+    print(f"train_record     = {train_record}")
+    print(f"eval_ratios      = {eval_ratios}")
     print("=" * 60)
 
-    if not rel_data_path.exists():
-        raise FileNotFoundError(f"找不到数据文件: {rel_data_path}")
+    if not data_path.exists():
+        raise FileNotFoundError(f"找不到数据文件: {data_path}")
     if not ckpt_path.exists():
         raise FileNotFoundError(f"找不到 checkpoint: {ckpt_path}")
 
-    real_rel = np.load(rel_data_path).astype(np.float32)
+    real_rel = np.load(data_path).astype(np.float32)
     print(f"real_rel shape = {real_rel.shape}")
 
     model = TemporalDenoiser1D(
         max_timesteps=args.timesteps,
-        in_channels=channels,
+        in_channels=args.channels,
         hidden_dim=args.hidden_dim,
     ).to(device)
 
     ckpt = torch.load(ckpt_path, map_location=device)
-    missing, unexpected = model.load_state_dict(ckpt["model_state_dict"], strict=False)
+    state_dict = ckpt["model_state_dict"] if isinstance(ckpt, dict) and "model_state_dict" in ckpt else ckpt
+    missing, unexpected = model.load_state_dict(state_dict, strict=False)
     print(f"missing keys    = {missing}")
     print(f"unexpected keys = {unexpected}")
     model.eval()
@@ -206,8 +217,8 @@ def main():
         model=model,
         timesteps=args.timesteps,
         num_generate=args.num_generate,
-        channels=channels,
-        seq_len=seq_len,
+        channels=args.channels,
+        seq_len=args.seq_len,
         device=device,
     )
     generated_rel_np = generated_rel.cpu().numpy().astype(np.float32)
@@ -219,7 +230,7 @@ def main():
 
     plot_real_vs_generated(real_abs, generated_abs, out_dir / "real_vs_generated.png")
 
-    x0, xt, x0_pred = one_step_denoise_check(model, real_rel, args.timesteps, device)
+    x0, xt, x0_pred = one_step_denoise_check(model, real_rel, args.timesteps, device, args.t_vis)
     plot_denoise_check(x0, xt, x0_pred, out_dir / "denoise_check.png")
 
     print("saved:")

@@ -7,7 +7,13 @@ import pandas as pd
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
-from utils.prior.ablation_paths import get_eth_ucy_variant_paths
+from utils.prior.ablation_paths import (
+    get_eval_ratios_by_name,
+    get_paths_by_name,
+    get_train_record_by_name,
+    resolve_variant_or_objective,
+    to_abs_path,
+)
 
 MOVING_THRESHOLD_QUANTILE = 0.10
 MOVING_POSITIVE_EPS = 1e-8
@@ -177,23 +183,30 @@ def plot_speed_vs_length(real_avg_speed, real_total_length, gen_avg_speed, gen_t
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--variant", type=str, default="q20", choices=["none", "q10", "q20", "q30"])
+    parser.add_argument("--variant", type=str, default="motion_balanced")
     parser.add_argument("--num_generate", type=int, default=512)
     args = parser.parse_args()
 
-    paths = get_eth_ucy_variant_paths(args.variant)
-    real_path = PROJECT_ROOT / paths["rel_path"]
-    gen_path = PROJECT_ROOT / "outputs" / "prior" / "sample" / paths["sample_tag"] / f"reverse_sampling_check_{args.num_generate}" / "generated_rel_samples.npy"
-    out_dir = PROJECT_ROOT / "outputs" / "prior" / "eval" / paths["eval_tag"] / f"distribution_analysis_{args.num_generate}_v3metrics"
+    resolved_variant = resolve_variant_or_objective(args.variant)
+    cfg = get_paths_by_name(args.variant)
+    train_record = get_train_record_by_name(args.variant)
+    eval_ratios = get_eval_ratios_by_name(args.variant)
+
+    real_path = to_abs_path(cfg["rel_path"])
+    gen_path = to_abs_path(cfg["sample_dir"]) / f"reverse_sampling_check_{args.num_generate}" / "generated_rel_samples.npy"
+    out_dir = to_abs_path(cfg["eval_dir"]) / f"distribution_analysis_{args.num_generate}_v3metrics"
 
     real, gen = load_data(real_path, gen_path, out_dir)
 
-    print(f"variant = {args.variant}")
+    print(f"input_name       = {args.variant}")
+    print(f"resolved_variant = {resolved_variant}")
     print(f"real shape = {real.shape}")
     print(f"gen  shape = {gen.shape}")
     print(f"real_path = {real_path}")
     print(f"gen_path  = {gen_path}")
     print(f"out_dir   = {out_dir}")
+    print(f"train_record = {train_record}")
+    print(f"eval_ratios  = {eval_ratios}")
 
     moving_threshold = compute_global_moving_threshold(real, q=MOVING_THRESHOLD_QUANTILE, positive_eps=MOVING_POSITIVE_EPS)
     print(f"\nGlobal moving threshold (positive-only real step_norm q{int(MOVING_THRESHOLD_QUANTILE * 100)}): {moving_threshold:.6f}")
@@ -207,7 +220,8 @@ def main():
 
     summary_df.to_csv(out_dir / "summary_metrics.csv", index=False, float_format="%.6f")
     with open(out_dir / "analysis_config.txt", "w", encoding="utf-8") as f:
-        f.write(f"VARIANT={args.variant}\n")
+        f.write(f"INPUT_NAME={args.variant}\n")
+        f.write(f"RESOLVED_VARIANT={resolved_variant}\n")
         f.write(f"REAL_PATH={real_path}\n")
         f.write(f"GEN_PATH={gen_path}\n")
         f.write("MOVING_THRESHOLD_MODE=positive_only_quantile\n")

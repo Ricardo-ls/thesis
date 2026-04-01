@@ -223,3 +223,8 @@ def get_eval_ratios_by_name(name: str):
 def get_narrative_by_name(name: str):
     variant = resolve_variant_or_objective(name)
     return get_stage2_narrative(variant)
+
+
+def to_abs_path(path_like):
+    path = Path(path_like)
+    return path if path.is_absolute() else Path(__file__).resolve().parents[2] / path
