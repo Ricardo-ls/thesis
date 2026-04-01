@@ -151,7 +151,7 @@ The following curves are compact training diagnostics for the official `none` an
 
 `q20` loss curve:
 
-![q20 loss curve](assets/prior/q20_loss_curve.png)
+![q20 loss curve](assets/prior/q20_loss_curve.svg)
 
 ## Interpretation
 
