@@ -2,6 +2,14 @@
 
 This repository contains the codebase for a trajectory diffusion thesis project focused on Stage 2: pre-training an unconditional pedestrian motion prior from public ETH+UCY trajectory data.
 
+## Start Here
+
+If you are new to the project, read in this order:
+
+1. This README for the project-level scope and the official Stage 2 roles.
+2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the full Stage 2 interpretation, figures, and reproducibility notes.
+3. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the registry that defines the official semantics and paths.
+
 ## Project Scope
 
 The thesis is organized in stages:
@@ -23,6 +31,8 @@ Official Stage 2 roles:
 - `q10`: filtering too weak; gains are limited
 - `q20`: most balanced motion-focused prior among filtered variants
 - `q30`: filtering too strong; not the default motion prior candidate
+
+This summary is intentionally compact. Detailed figures and interpretation live in [`docs/prior_stage2.md`](docs/prior_stage2.md).
 
 Scripts may accept either raw variants or semantic names through the registry, depending on the entry point implementation.
 

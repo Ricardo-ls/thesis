@@ -4,7 +4,29 @@ Stage 2 is the trajectory-only diffusion pre-training stage of the thesis. Its p
 
 Stage 2 should be treated as a registry-driven trajectory prior pipeline. The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official train/eval records, narrative labels, and output locations.
 
+## Reading Order
+
+If you are reading this page for the first time, follow this order:
+
+1. `Official Stage 2 Interpretation`
+2. `Privacy and Repository Safety`
+3. `Qualitative Reverse Sampling`
+4. `Key Diagnostic Figures`
+5. `Interpretation`
+6. `Reproducibility`
+
+This order mirrors the logic of the Stage 2 experiments:
+
+- first define the goal
+- then fix the protocol
+- then state the registry semantics
+- then compare the four filtering variants
+- then inspect the figures
+- finally reproduce the pipeline from the scripts
+
 ## Official Stage 2 Interpretation
+
+Use this section as the authoritative summary of the Stage 2 result.
 
 The registry exposes two semantic entry points:
 
@@ -46,6 +68,8 @@ This public repository includes code, selected figures, and lightweight docs onl
 ## Qualitative Reverse Sampling
 
 The following figures are qualitative only. They help compare the reverse-sampling behavior of the four official variants, but they do not by themselves establish a global ranking.
+
+These figures are best read as a visual sanity check for the trajectory generator. They show how the learned prior behaves under different filtering strengths, but they do not replace the distribution-level diagnostics.
 
 ### `none`
 
@@ -90,6 +114,8 @@ Single-step denoising check:
 ## Key Diagnostic Figures
 
 These figures provide distribution-level support for the Stage 2 discussion. They should be read as diagnostics rather than absolute claims of superiority.
+
+They are especially useful for understanding why `none` is the optimization-best baseline and why `q20` is the most balanced motion-focused prior among filtered variants.
 
 ### `none`
 
@@ -145,6 +171,8 @@ These scripts may accept either raw variant names or semantic registry names, de
 
 - `optimization_best` resolves to `none`
 - `motion_balanced` resolves to `q20`
+
+When in doubt, treat [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py) as the authoritative reference for the active protocol, naming, and output layout.
 
 ## Figure Guidance
 
