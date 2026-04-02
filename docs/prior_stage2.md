@@ -76,6 +76,8 @@ The public Stage 2 figures are produced as seeded reference runs so that the pub
 
 The figures in this page are linked from the seeded public assets under `docs/assets/stage2/<variant>/reference_seed42/`.
 
+If you need to reproduce the public figures from scratch, use the registry-driven public scripts in the repository root README. The public workflow is designed so that code and lightweight manifests are enough for reproduction; raw trajectory corpora, checkpoints, and large outputs are intentionally not part of the public repository.
+
 ## Qualitative Reverse Sampling
 
 The following figures are qualitative only. They help compare the reverse-sampling behavior of the four official variants, but they do not by themselves establish a global ranking.

@@ -40,6 +40,40 @@ Scripts may accept either raw variants or semantic names through the registry, d
 
 - [Stage 2 documentation and figures](docs/prior_stage2.md)
 
+## Official Reference Figures
+
+The public Stage 2 figures are reproducible from the code in this repository without committing raw trajectory data, checkpoints, or large outputs.
+
+Official seeded reference runs:
+
+```bash
+PYTHONPYCACHEPREFIX=/tmp ../.venv/bin/python -m tools.prior.sample.reverse_sample_ddpm_eth_ucy_h128 \
+  --variant motion_balanced \
+  --sample_seed 42 \
+  --vis_seed 42 \
+  --num_generate 512 \
+  --num_show 16 \
+  --denoise_selection endpoint_quantile \
+  --denoise_quantile 0.5 \
+  --reference_tag reference_seed42 \
+  --save_manifest \
+  --device cpu
+
+PYTHONPYCACHEPREFIX=/tmp ../.venv/bin/python -m tools.prior.eval.analyze_generated_vs_real_eth_ucy_h128 \
+  --variant motion_balanced \
+  --num_generate 512 \
+  --generated_rel_path outputs/prior/sample/ddpm_eth_ucy_q20_h128/reference_seed42/generated_rel_samples.npy \
+  --reference_tag reference_seed42 \
+  --save_manifest
+
+../.venv/bin/python -m tools.prior.export_reference_figures \
+  --variant motion_balanced \
+  --reference_tag reference_seed42 \
+  --include both
+```
+
+For the optimization-best baseline, replace `motion_balanced` with `optimization_best`.
+
 ## Repository Safety
 
 This public repository includes code, selected figures, and lightweight docs only.
