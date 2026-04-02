@@ -78,6 +78,15 @@ The figures in this page are linked from the seeded public assets under `docs/as
 
 If you need to reproduce the public figures from scratch, use the registry-driven public scripts in the repository root README. The public workflow is designed so that code and lightweight manifests are enough for reproduction; raw trajectory corpora, checkpoints, and large outputs are intentionally not part of the public repository.
 
+The manifest files that accompany the public figures are:
+
+- `docs/assets/stage2/none/reference_seed42/sample/manifest.json`
+- `docs/assets/stage2/none/reference_seed42/eval/manifest.json`
+- `docs/assets/stage2/q20/reference_seed42/sample/manifest.json`
+- `docs/assets/stage2/q20/reference_seed42/eval/manifest.json`
+
+These manifests show the resolved registry entry, fixed seeds, selected indices, and the exact public asset layout for the seeded reference runs.
+
 ## Qualitative Reverse Sampling
 
 The following figures are qualitative only. They help compare the reverse-sampling behavior of the four official variants, but they do not by themselves establish a global ranking.
