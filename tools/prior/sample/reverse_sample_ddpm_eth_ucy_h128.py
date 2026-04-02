@@ -1,5 +1,6 @@
 from pathlib import Path
 import argparse
+import json
 import random
 import sys
 
@@ -27,6 +28,19 @@ def set_seed(seed: int = 42):
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
+
+
+def resolve_device(device_name: str) -> str:
+    device_name = device_name.lower()
+    if device_name == "auto":
+        return "cuda" if torch.cuda.is_available() else "cpu"
+    if device_name == "cuda":
+        if not torch.cuda.is_available():
+            raise RuntimeError("Requested cuda device, but CUDA is not available.")
+        return "cuda"
+    if device_name == "cpu":
+        return "cpu"
+    raise ValueError("Unsupported device. Use auto, cpu, or cuda.")
 
 
 def make_ddpm_schedule(timesteps: int, device: str):
@@ -62,10 +76,9 @@ def sample_ddpm(model, timesteps, num_generate, channels, seq_len, device):
 
 
 @torch.no_grad()
-def one_step_denoise_check(model, real_rel, timesteps, device, t_vis):
+def one_step_denoise_check(model, real_rel, timesteps, device, idx, t_vis):
     _, _, alpha_bars = make_ddpm_schedule(timesteps, device=device)
 
-    idx = np.random.randint(0, real_rel.shape[0])
     x0 = torch.from_numpy(real_rel[idx]).float().unsqueeze(0).permute(0, 2, 1).to(device)
 
     t = torch.tensor([t_vis], device=device, dtype=torch.long)
@@ -152,28 +165,59 @@ def plot_denoise_check(x0, xt, x0_pred, save_path):
     plt.close()
 
 
+def deterministic_indices(size: int, num_show: int, seed: int):
+    if size <= 0:
+        return []
+    num_show = min(num_show, size)
+    rng = np.random.default_rng(seed)
+    return rng.choice(size, size=num_show, replace=False).tolist()
+
+
+def resolve_endpoint_quantile_index(real_rel: np.ndarray, quantile: float):
+    if real_rel.ndim != 3:
+        raise ValueError(f"real_rel ndim should be 3, got {real_rel.shape}")
+    endpoint_vec = real_rel.sum(axis=1)
+    endpoint_disp = np.linalg.norm(endpoint_vec, axis=1)
+    if endpoint_disp.size == 0:
+        raise ValueError("Cannot resolve denoise index from an empty dataset.")
+    q = float(np.clip(quantile, 0.0, 1.0))
+    sorted_idx = np.argsort(endpoint_disp, kind="mergesort")
+    pos = int(round(q * (len(sorted_idx) - 1)))
+    pos = max(0, min(pos, len(sorted_idx) - 1))
+    resolved = int(sorted_idx[pos])
+    return resolved, endpoint_disp.astype(np.float32)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--variant", type=str, default="motion_balanced")
+    parser.add_argument("--sample_seed", type=int, default=42)
+    parser.add_argument("--vis_seed", type=int, default=42)
     parser.add_argument("--timesteps", type=int, default=100)
     parser.add_argument("--hidden_dim", type=int, default=128)
     parser.add_argument("--seq_len", type=int, default=19)
     parser.add_argument("--channels", type=int, default=2)
     parser.add_argument("--num_generate", type=int, default=512)
-    parser.add_argument("--seed", type=int, default=42)
+    parser.add_argument("--num_show", type=int, default=16)
+    parser.add_argument("--denoise_selection", type=str, default="endpoint_quantile")
+    parser.add_argument("--denoise_quantile", type=float, default=0.5)
+    parser.add_argument("--reference_tag", type=str, default="reference_seed42")
+    parser.add_argument("--save_manifest", action="store_true")
+    parser.add_argument("--device", type=str, default="auto")
     parser.add_argument("--t_vis", type=int, default=80)
     args = parser.parse_args()
 
-    set_seed(args.seed)
+    if args.sample_seed is not None:
+        set_seed(args.sample_seed)
     resolved_variant = resolve_variant_or_objective(args.variant)
     cfg = get_paths_by_name(args.variant)
     train_record = get_train_record_by_name(args.variant)
     eval_ratios = get_eval_ratios_by_name(args.variant)
 
-    device = "cuda" if torch.cuda.is_available() else "cpu"
+    device = resolve_device(args.device)
     data_path = to_abs_path(cfg["rel_path"])
     ckpt_path = to_abs_path(cfg["ckpt_path"])
-    out_dir = to_abs_path(cfg["sample_dir"]) / f"reverse_sampling_check_{args.num_generate}"
+    out_dir = to_abs_path(cfg["sample_dir"]) / args.reference_tag
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
@@ -188,6 +232,12 @@ def main():
     print(f"seq_len          = {args.seq_len}")
     print(f"channels         = {args.channels}")
     print(f"num_generate     = {args.num_generate}")
+    print(f"num_show         = {args.num_show}")
+    print(f"sample_seed      = {args.sample_seed}")
+    print(f"vis_seed         = {args.vis_seed}")
+    print(f"denoise_selection= {args.denoise_selection}")
+    print(f"denoise_quantile = {args.denoise_quantile}")
+    print(f"reference_tag    = {args.reference_tag}")
     print(f"train_record     = {train_record}")
     print(f"eval_ratios      = {eval_ratios}")
     print("=" * 60)
@@ -199,6 +249,18 @@ def main():
 
     real_rel = np.load(data_path).astype(np.float32)
     print(f"real_rel shape = {real_rel.shape}")
+    denoise_index_resolved = None
+    denoise_endpoint_displacements = None
+    if args.denoise_selection == "endpoint_quantile":
+        denoise_index_resolved, denoise_endpoint_displacements = resolve_endpoint_quantile_index(
+            real_rel, args.denoise_quantile
+        )
+        print(f"resolved denoise index = {denoise_index_resolved}")
+    else:
+        raise ValueError(
+            f"Unsupported denoise_selection: {args.denoise_selection}. "
+            "Supported: endpoint_quantile"
+        )
 
     model = TemporalDenoiser1D(
         max_timesteps=args.timesteps,
@@ -228,16 +290,60 @@ def main():
     real_abs = rel_to_abs(real_rel)
     np.save(out_dir / "generated_abs_samples.npy", generated_abs.astype(np.float32))
 
-    plot_real_vs_generated(real_abs, generated_abs, out_dir / "real_vs_generated.png")
+    real_plot_indices = deterministic_indices(len(real_abs), args.num_show, args.vis_seed)
+    generated_plot_indices = deterministic_indices(len(generated_abs), args.num_show, args.vis_seed)
+    plot_real_vs_generated(
+        real_abs[real_plot_indices],
+        generated_abs[generated_plot_indices],
+        out_dir / "real_vs_generated.png",
+        num_show=args.num_show,
+    )
 
-    x0, xt, x0_pred = one_step_denoise_check(model, real_rel, args.timesteps, device, args.t_vis)
+    x0, xt, x0_pred = one_step_denoise_check(
+        model,
+        real_rel,
+        args.timesteps,
+        device,
+        denoise_index_resolved if denoise_index_resolved is not None else 0,
+        args.t_vis,
+    )
     plot_denoise_check(x0, xt, x0_pred, out_dir / "denoise_check.png")
+
+    manifest = {
+        "input_name": args.variant,
+        "resolved_variant": resolved_variant,
+        "rel_path": str(data_path),
+        "ckpt_path": str(ckpt_path),
+        "device": device,
+        "sample_seed": args.sample_seed,
+        "vis_seed": args.vis_seed,
+        "num_generate": args.num_generate,
+        "num_show": args.num_show,
+        "denoise_selection": args.denoise_selection,
+        "denoise_quantile": args.denoise_quantile,
+        "denoise_index_resolved": denoise_index_resolved,
+        "timesteps": args.timesteps,
+        "hidden_dim": args.hidden_dim,
+        "real_plot_indices": real_plot_indices,
+        "generated_plot_indices": generated_plot_indices,
+        "generated_rel_path": str(out_dir / "generated_rel_samples.npy"),
+        "generated_abs_path": str(out_dir / "generated_abs_samples.npy"),
+        "train_record": train_record,
+        "eval_ratios": eval_ratios,
+        "reference_tag": args.reference_tag,
+    }
+
+    if args.save_manifest:
+        with open(out_dir / "manifest.json", "w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2, ensure_ascii=False)
 
     print("saved:")
     print(f"  - {out_dir / 'generated_rel_samples.npy'}")
     print(f"  - {out_dir / 'generated_abs_samples.npy'}")
     print(f"  - {out_dir / 'real_vs_generated.png'}")
     print(f"  - {out_dir / 'denoise_check.png'}")
+    if args.save_manifest:
+        print(f"  - {out_dir / 'manifest.json'}")
 
 
 if __name__ == "__main__":

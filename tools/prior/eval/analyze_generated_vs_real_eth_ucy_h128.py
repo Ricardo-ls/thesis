@@ -185,6 +185,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--variant", type=str, default="motion_balanced")
     parser.add_argument("--num_generate", type=int, default=512)
+    parser.add_argument("--generated_rel_path", type=str, default=None)
+    parser.add_argument("--reference_tag", type=str, default="reference_seed42")
+    parser.add_argument("--save_manifest", action="store_true")
     args = parser.parse_args()
 
     resolved_variant = resolve_variant_or_objective(args.variant)
@@ -193,8 +196,11 @@ def main():
     eval_ratios = get_eval_ratios_by_name(args.variant)
 
     real_path = to_abs_path(cfg["rel_path"])
-    gen_path = to_abs_path(cfg["sample_dir"]) / f"reverse_sampling_check_{args.num_generate}" / "generated_rel_samples.npy"
-    out_dir = to_abs_path(cfg["eval_dir"]) / f"distribution_analysis_{args.num_generate}_v3metrics"
+    if args.generated_rel_path is not None:
+        gen_path = to_abs_path(args.generated_rel_path)
+    else:
+        gen_path = to_abs_path(cfg["sample_dir"]) / args.reference_tag / "generated_rel_samples.npy"
+    out_dir = to_abs_path(cfg["eval_dir"]) / args.reference_tag
 
     real, gen = load_data(real_path, gen_path, out_dir)
 
@@ -205,6 +211,7 @@ def main():
     print(f"real_path = {real_path}")
     print(f"gen_path  = {gen_path}")
     print(f"out_dir   = {out_dir}")
+    print(f"reference_tag = {args.reference_tag}")
     print(f"train_record = {train_record}")
     print(f"eval_ratios  = {eval_ratios}")
 
@@ -219,6 +226,22 @@ def main():
     print(summary_df.to_string(index=False))
 
     summary_df.to_csv(out_dir / "summary_metrics.csv", index=False, float_format="%.6f")
+    if args.save_manifest:
+        with open(out_dir / "manifest.json", "w", encoding="utf-8") as f:
+            import json
+
+            json.dump(
+                {
+                    "input_name": args.variant,
+                    "resolved_variant": resolved_variant,
+                    "generated_rel_path": str(gen_path),
+                    "rel_path": str(real_path),
+                    "reference_tag": args.reference_tag,
+                },
+                f,
+                indent=2,
+                ensure_ascii=False,
+            )
     with open(out_dir / "analysis_config.txt", "w", encoding="utf-8") as f:
         f.write(f"INPUT_NAME={args.variant}\n")
         f.write(f"RESOLVED_VARIANT={resolved_variant}\n")

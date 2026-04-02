@@ -37,8 +37,8 @@ The official reading of the filtering-threshold ablation is intentionally not a 
 
 - `none` = optimization-best baseline under the unified protocol
 - `q20` = most balanced motion-focused prior among filtered variants
-- `q10` = filtering too weak; gains are limited
-- `q30` = filtering too strong; not the default motion prior candidate
+- `q10` = weak-filter reference point
+- `q30` = strong-filter reference point
 
 The four variants share the same unified Stage 2 protocol:
 
@@ -65,6 +65,17 @@ This public repository includes code, selected figures, and lightweight docs onl
 - No checkpoints or large training outputs are committed.
 - Only selected publication-oriented figures are kept in `docs/`.
 
+## Official Seeded Reference Runs
+
+The public Stage 2 figures are produced as seeded reference runs so that the published visuals can be reproduced exactly.
+
+- Reverse sampling is stochastic, so exact public figures require fixed seeds and fixed selection rules.
+- The official reference protocol uses `sample_seed=42`, `vis_seed=42`, `num_generate=512`, `num_show=16`, `denoise_selection=endpoint_quantile`, and `denoise_quantile=0.5`.
+- Public reference runs write a lightweight `manifest.json` next to the PNG figures so the exact inputs and resolved indices are traceable.
+- This reproducibility workflow does not change the official Stage 2 protocol, the registry semantics, the model, the sampling math, or the evaluation metrics.
+
+The figures in this page are linked from the seeded public assets under `docs/assets/stage2/<variant>/reference_seed42/`.
+
 ## Qualitative Reverse Sampling
 
 The following figures are qualitative only. They help compare the reverse-sampling behavior of the four official variants, but they do not by themselves establish a global ranking.
@@ -75,41 +86,41 @@ These figures are best read as a visual sanity check for the trajectory generato
 
 Real versus generated trajectories:
 
-![none real vs generated](assets/prior/sample_none/real_vs_generated.png)
+![none real vs generated](assets/stage2/none/reference_seed42/sample/real_vs_generated.png)
 
 Single-step denoising check:
 
-![none denoise](assets/prior/sample_none/denoise_check.png)
+![none denoise](assets/stage2/none/reference_seed42/sample/denoise_check.png)
 
 ### `q10`
 
 Real versus generated trajectories:
 
-![q10 real vs generated](assets/prior/sample_q10/real_vs_generated.png)
+![q10 real vs generated](assets/stage2/q10/reference_seed42/sample/real_vs_generated.png)
 
 Single-step denoising check:
 
-![q10 denoise](assets/prior/sample_q10/denoise_check.png)
+![q10 denoise](assets/stage2/q10/reference_seed42/sample/denoise_check.png)
 
 ### `q20`
 
 Real versus generated trajectories:
 
-![q20 real vs generated](assets/prior/sample_q20/real_vs_generated.png)
+![q20 real vs generated](assets/stage2/q20/reference_seed42/sample/real_vs_generated.png)
 
 Single-step denoising check:
 
-![q20 denoise](assets/prior/sample_q20/denoise_check.png)
+![q20 denoise](assets/stage2/q20/reference_seed42/sample/denoise_check.png)
 
 ### `q30`
 
 Real versus generated trajectories:
 
-![q30 real vs generated](assets/prior/sample_q30/real_vs_generated.png)
+![q30 real vs generated](assets/stage2/q30/reference_seed42/sample/real_vs_generated.png)
 
 Single-step denoising check:
 
-![q30 denoise](assets/prior/sample_q30/denoise_check.png)
+![q30 denoise](assets/stage2/q30/reference_seed42/sample/denoise_check.png)
 
 ## Key Diagnostic Figures
 
@@ -121,25 +132,25 @@ They are especially useful for understanding why `none` is the optimization-best
 
 Endpoint displacement distribution:
 
-![none endpoint displacement](assets/prior/eval_none_hist_endpoint_displacement.png)
+![none endpoint displacement](assets/stage2/none/reference_seed42/eval/hist_endpoint_displacement.png)
 
 Propulsion ratio distribution:
 
-![none propulsion ratio](assets/prior/eval_none_hist_propulsion_ratio.png)
+![none propulsion ratio](assets/stage2/none/reference_seed42/eval/hist_propulsion_ratio.png)
 
 ### `q20`
 
 Endpoint displacement distribution:
 
-![q20 endpoint displacement](assets/prior/eval_q20/hist_endpoint_displacement.png)
+![q20 endpoint displacement](assets/stage2/q20/reference_seed42/eval/hist_endpoint_displacement.png)
 
 Propulsion ratio distribution:
 
-![q20 propulsion ratio](assets/prior/eval_q20/hist_propulsion_ratio.png)
+![q20 propulsion ratio](assets/stage2/q20/reference_seed42/eval/hist_propulsion_ratio.png)
 
 Acceleration RMS distribution:
 
-![q20 acceleration rms](assets/prior/eval_q20/hist_acc_rms.png)
+![q20 acceleration rms](assets/stage2/q20/reference_seed42/eval/hist_acc_rms.png)
 
 ### Loss Curve
 
@@ -161,7 +172,8 @@ The official Stage 2 conclusion should be read as:
 
 - `none` provides the optimization-best baseline under the unified protocol.
 - `q20` provides the most balanced motion-focused prior among filtered variants.
-- `q10` and `q30` are reference points that help explain how filtering strength changes the learned motion statistics.
+- `q10` is the weak-filter reference point.
+- `q30` is the strong-filter reference point.
 
 The role of the diagnostic figures is to support the official interpretation with distribution-level evidence, especially for endpoint progression, propulsion, and local motion smoothness.
 
@@ -172,6 +184,7 @@ The Stage 2 pipeline is reproduced via the following scripts:
 - `tools/prior/train/train_ddpm_eth_ucy_h128.py`
 - `tools/prior/sample/reverse_sample_ddpm_eth_ucy_h128.py`
 - `tools/prior/eval/analyze_generated_vs_real_eth_ucy_h128.py`
+- `tools/prior/export_reference_figures.py`
 
 These scripts may accept either raw variant names or semantic registry names, depending on the entry point implementation. For example:
 
@@ -179,6 +192,14 @@ These scripts may accept either raw variant names or semantic registry names, de
 - `motion_balanced` resolves to `q20`
 
 When in doubt, treat [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py) as the authoritative reference for the active protocol, naming, and output layout.
+
+For the seeded public figure workflow, use fixed seeds and keep the exported assets lightweight:
+
+- PNG figures
+- `manifest.json`
+- no `.npy` files
+- no checkpoints
+- no large training outputs
 
 ## Figure Guidance
 
