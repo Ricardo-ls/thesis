@@ -39,6 +39,7 @@ Scripts may accept either raw variants or semantic names through the registry, d
 ## Public Documentation
 
 - [Stage 2 documentation and figures](docs/prior_stage2.md)
+- [Backup snapshot and restore notes](BACKUP.md)
 
 ## Official Reference Figures
 
@@ -82,3 +83,9 @@ This public repository includes code, selected figures, and lightweight docs onl
 - No processed training corpora are committed.
 - No checkpoints or large training outputs are committed.
 - Only selected publication-oriented figures are kept in `docs/`.
+
+## Backup Branch
+
+For rollback and recovery, a full snapshot is also stored on GitHub in the branch `backup/full-snapshot-2026-04-07`.
+
+Use [`BACKUP.md`](BACKUP.md) for the shortest file-restore command and backup branch notes.
