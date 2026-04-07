@@ -1,0 +1,176 @@
+Stage 2 Status: Pre-training the Domain Knowledge Diffusion Model
+===============================================================
+
+Project scope
+-------------
+This stage focuses on trajectory-only diffusion prior learning, fully decoupled from the target sensor setup.
+The objective is to learn a reusable human-motion prior from public pedestrian trajectory data before any sensor-conditioned input adaptation is introduced.
+
+Current code organization
+-------------------------
+tools/prior/data
+tools/prior/train
+tools/prior/sample
+tools/prior/eval
+utils/prior
+outputs/prior
+
+Main completed experiment lines
+-------------------------------
+1) ETH-only baseline (h64)
+2) ETH-only wider denoiser ablation (h128)
+3) ETH+UCY expanded public-data pre-training (h128)
+
+Processed datasets currently available
+--------------------------------------
+ETH-only q20:
+- datasets/processed/data_eth_20_q20.npy
+- datasets/processed/data_eth_20_rel_q20.npy
+
+ETH+UCY:
+- datasets/processed/data_eth_ucy_20.npy
+- datasets/processed/data_eth_ucy_20_rel.npy
+- datasets/processed/data_eth_ucy_20_q20.npy
+- datasets/processed/data_eth_ucy_20_rel_q20.npy
+
+Important note:
+- In the current repository state, ETH-only pre-filter files
+  data_eth_20.npy and data_eth_20_rel.npy are not present.
+- ETH-only q20 files are present and usable.
+- ETH+UCY pre-filter and q20 files are present and usable.
+
+ETH-only baseline (h64)
+-----------------------
+Training script:
+- tools/prior/train/train_ddpm_minimal.py
+
+Sample script:
+- tools/prior/sample/reverse_sample_ddpm.py
+
+Eval script:
+- tools/prior/eval/analyze_generated_vs_real.py
+
+Training output:
+- outputs/prior/train/ddpm_minimal_q20/best_model.pt
+
+Sampling output:
+- outputs/prior/sample/ddpm_minimal_q20/reverse_sampling_check_512/
+
+Eval output:
+- outputs/prior/eval/ddpm_minimal_q20/distribution_analysis_512_v3metrics/
+
+Key result:
+- best val loss = 0.163062
+- best epoch = 20
+
+ETH-only h128
+-------------
+Training script:
+- tools/prior/train/train_ddpm_minimal_h128.py
+
+Sample script:
+- tools/prior/sample/reverse_sample_ddpm_h128.py
+
+Eval script:
+- tools/prior/eval/analyze_generated_vs_real_h128.py
+
+Training output:
+- outputs/prior/train/ddpm_minimal_q20_h128/best_model.pt
+
+Sampling output:
+- outputs/prior/sample/ddpm_minimal_q20_h128/reverse_sampling_check_512/
+
+Eval output:
+- outputs/prior/eval/ddpm_minimal_q20_h128/distribution_analysis_512_v3metrics/
+
+Key result:
+- best val loss = 0.165456
+- best epoch = 49
+
+Interpretation:
+- h128 does not improve validation loss over h64.
+- h128 improves endpoint displacement, propulsion ratio, and acc_rms behavior.
+- Capacity increase alone does not remove distribution shrinkage.
+
+ETH+UCY h128 (current best prior)
+---------------------------------
+Data build script:
+- tools/prior/data/build_eth_ucy_dataset.py
+
+Filtering script:
+- tools/prior/data/filter_eth_ucy_q20.py
+
+Training script:
+- tools/prior/train/train_ddpm_eth_ucy_h128.py
+
+Sample script:
+- tools/prior/sample/reverse_sample_ddpm_eth_ucy_h128.py
+
+Eval script:
+- tools/prior/eval/analyze_generated_vs_real_eth_ucy_h128.py
+
+Training output:
+- outputs/prior/train/ddpm_eth_ucy_q20_h128/best_model.pt
+
+Sampling output:
+- outputs/prior/sample/ddpm_eth_ucy_q20_h128/reverse_sampling_check_512/
+
+Eval output:
+- outputs/prior/eval/ddpm_eth_ucy_q20_h128/distribution_analysis_512_v3metrics/
+
+Key dataset result:
+- data_eth_ucy_20.npy shape = (36073, 20, 2)
+- data_eth_ucy_20_rel.npy shape = (36073, 19, 2)
+- q20 threshold = 0.05330492
+- filtered sample count = 28858
+- kept_ratio = 0.799989
+
+Key training result:
+- best val loss = 0.108766
+- best epoch = 20
+
+Key evaluation result:
+- step_norm ratio = 0.875361
+- total_length ratio = 0.875361
+- endpoint_displacement ratio = 0.763790
+- propulsion_ratio ratio = 0.843110
+- acc_rms ratio = 1.195712
+
+Current best prior
+------------------
+The strongest current prior is:
+- ddpm_eth_ucy_q20_h128
+
+Reason:
+- Expanded public-data pre-training improves prior quality more effectively than merely increasing denoiser width on ETH-only data.
+- It substantially improves endpoint displacement matching and progression-related behavior.
+- It is the best available initialization for future sensor-conditioned stages.
+
+Unified metric set used in Stage 2
+----------------------------------
+- step_norm_all
+- avg_speed
+- total_length
+- endpoint_displacement
+- moving_ratio_global
+- propulsion_ratio
+- acc_rms
+
+Current conclusion of Stage 2
+-----------------------------
+A trajectory-only DDPM prior has been successfully established from public pedestrian trajectory data.
+The prior is learnable, but ETH-only training shows clear shrinkage and progression limitations.
+Increasing denoiser width alone provides partial gains.
+Expanded ETH+UCY public-data pre-training produces the strongest current motion prior.
+
+Sanity-check utilities already verified
+---------------------------------------
+- tools/prior/eval/check_ddpm_forward.py
+- tools/prior/eval/plot_loss_curve.py
+
+Notes for next stage
+--------------------
+Do not restart from raw explanation.
+Stage 2 main pipeline is already organized and validated.
+If Stage 3 cannot start due to missing sensor data, continue refining or extending Stage 2 only.
+If Stage 3 begins later, use ddpm_eth_ucy_q20_h128 as the default motion prior.

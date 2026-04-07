@@ -1,0 +1,8 @@
+=== Low-Speed Filtering Report ===
+metric = avg_speed
+quantile = 20.0
+threshold = 0.10723409
+moving_eps = 0.04242620
+before_count = 364
+after_count = 291
+kept_ratio = 0.799451
