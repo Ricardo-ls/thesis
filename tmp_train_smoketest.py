@@ -1,66 +1,44 @@
 from pathlib import Path
 
 import torch
+import torch.nn.functional as F
+from torch.utils.data import DataLoader
 
+from datasets.traj_dataset import TrajectoryDataset
+from diffusion.ddpm_utils import DDPMForwardProcess
 from models.temporal_denoiser import TemporalDenoiser1D
-from tools.prior.sample.reverse_sample_ddpm import DDPMSampler, rel_to_abs
 
 project_root = Path.cwd()
+data_path = project_root / "datasets" / "processed" / "data_eth_20_rel_q20.npy"
+
+print("data_path =", data_path)
+print("exists    =", data_path.exists())
+
+dataset = TrajectoryDataset(str(data_path))
+loader = DataLoader(dataset, batch_size=8, shuffle=False)
+
+batch = next(iter(loader))          # [B, 19, 2]
+x0 = batch.permute(0, 2, 1)         # [B, 2, 19]
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
+x0 = x0.to(device)
 
-ckpt_path = project_root / "outputs" / "prior" / "train" / "ddpm_minimal_q20" / "best_model.pt"
-print("ckpt_path =", ckpt_path)
-print("exists    =", ckpt_path.exists())
-
-timesteps = 100
-hidden_dim = 64
-channels = 2
-seq_len = 19
-num_generate = 4
-
+diffusion = DDPMForwardProcess(timesteps=100, device=device)
 model = TemporalDenoiser1D(
-    max_timesteps=timesteps,
-    in_channels=channels,
-    hidden_dim=hidden_dim
+    max_timesteps=100,
+    in_channels=2,
+    hidden_dim=64
 ).to(device)
 
-ckpt = torch.load(ckpt_path, map_location=device)
+t = diffusion.sample_timesteps(batch_size=x0.shape[0])
+xt, noise = diffusion.q_sample(x0, t)
+pred_noise = model(xt, t)
+loss = F.mse_loss(pred_noise, noise)
 
-if isinstance(ckpt, dict) and "model_state_dict" in ckpt:
-    state_dict = ckpt["model_state_dict"]
-elif isinstance(ckpt, dict) and "state_dict" in ckpt:
-    state_dict = ckpt["state_dict"]
-elif isinstance(ckpt, dict):
-    state_dict = ckpt
-else:
-    raise ValueError("无法识别 checkpoint 格式。")
-
-missing, unexpected = model.load_state_dict(state_dict, strict=False)
-print("missing keys   =", missing)
-print("unexpected keys=", unexpected)
-
-model.eval()
-
-sampler = DDPMSampler(
-    timesteps=timesteps,
-    beta_start=1e-4,
-    beta_end=0.02,
-    device=device
-)
-
-with torch.no_grad():
-    gen_rel = sampler.sample(
-        model=model,
-        num_samples=num_generate,
-        channels=channels,
-        seq_len=seq_len,
-        return_history=False
-    )
-
-gen_rel_np = gen_rel.detach().cpu().numpy()
-gen_abs_np = rel_to_abs(gen_rel_np)
-
-print("gen_rel shape =", gen_rel_np.shape)
-print("gen_abs shape =", gen_abs_np.shape)
-print("sample mean   =", float(gen_rel_np.mean()))
-print("sample std    =", float(gen_rel_np.std()))
+print("batch shape      =", batch.shape)
+print("x0 shape         =", x0.shape)
+print("t shape          =", t.shape)
+print("xt shape         =", xt.shape)
+print("noise shape      =", noise.shape)
+print("pred_noise shape =", pred_noise.shape)
+print("loss             =", float(loss.item())) 

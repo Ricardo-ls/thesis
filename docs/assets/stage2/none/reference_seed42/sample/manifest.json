@@ -1,8 +1,8 @@
 {
-  "input_name": "optimization_best",
+  "input_name": "none",
   "resolved_variant": "none",
   "rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel.npy",
-  "ckpt_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/best_model.pt",
+  "ckpt_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42/best_model_ep150_seed42.pt",
   "device": "cpu",
   "sample_seed": 42,
   "vis_seed": 42,
@@ -49,8 +49,8 @@
     385,
     101
   ],
-  "generated_rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_none_h128/reference_seed42/generated_rel_samples.npy",
-  "generated_abs_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_none_h128/reference_seed42/generated_abs_samples.npy",
+  "generated_rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_none_h128/seed42/reference_seed42/generated_rel_samples.npy",
+  "generated_abs_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_none_h128/seed42/reference_seed42/generated_abs_samples.npy",
   "train_record": {
     "samples": 36073,
     "best_val_loss": 0.090071,

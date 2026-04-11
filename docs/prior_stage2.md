@@ -165,15 +165,23 @@ Acceleration RMS distribution:
 
 ### Loss Curve
 
-The following curves are compact training diagnostics for the official `none` and `q20` 50-epoch reference runs. They are included as auxiliary training diagnostics, not as standalone proofs of overall superiority.
+The following curves are compact training diagnostics for the official Stage 2 reference runs. They are included as auxiliary training diagnostics, not as standalone proofs of overall superiority.
 
 `none` loss curve:
 
-![none loss curve](assets/prior/none_loss_curve.svg)
+![none loss curve](assets/prior/loss_curves/none_loss_curve_epoch10plus.png)
+
+`q10` loss curve:
+
+![q10 loss curve](assets/prior/loss_curves/q10_loss_curve_epoch10plus.png)
 
 `q20` loss curve:
 
-![q20 loss curve](assets/prior/q20_loss_curve.svg)
+![q20 loss curve](assets/prior/loss_curves/q20_loss_curve_epoch10plus.png)
+
+`q30` loss curve:
+
+![q30 loss curve](assets/prior/loss_curves/q30_loss_curve_epoch10plus.png)
 
 ## Interpretation
 
@@ -224,4 +232,4 @@ Recommended to keep only here:
 
 - all four reverse-sampling figure pairs
 - diagnostic figures for `none` and `q20`
-- any optional loss-curve comparisons
+- all four variant loss curves

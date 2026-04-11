@@ -101,8 +101,9 @@ OFFICIAL_STAGE2_NARRATIVE = {
 }
 
 
-def get_eth_ucy_variant_paths(variant: str):
+def get_eth_ucy_variant_paths(variant: str, seed: int = 42):
     variant = variant.lower()
+    seed_tag = f"seed{seed}"
 
     if variant == "none":
         train_tag = "ddpm_eth_ucy_none_h128"
@@ -113,10 +114,10 @@ def get_eth_ucy_variant_paths(variant: str):
             "train_tag": train_tag,
             "sample_tag": train_tag,
             "eval_tag": train_tag,
-            "train_dir": str(TRAIN_OUT_DIR / train_tag),
-            "sample_dir": str(SAMPLE_OUT_DIR / train_tag),
-            "eval_dir": str(EVAL_OUT_DIR / train_tag),
-            "ckpt_path": str(TRAIN_OUT_DIR / train_tag / "best_model.pt"),
+            "train_dir": str(TRAIN_OUT_DIR / train_tag / seed_tag),
+            "sample_dir": str(SAMPLE_OUT_DIR / train_tag / seed_tag),
+            "eval_dir": str(EVAL_OUT_DIR / train_tag / seed_tag),
+            "ckpt_path": str(TRAIN_OUT_DIR / train_tag / seed_tag / "best_model_ep150_seed42.pt"),
         }
 
     if variant in {"q10", "q20", "q30"}:
@@ -128,10 +129,10 @@ def get_eth_ucy_variant_paths(variant: str):
             "train_tag": train_tag,
             "sample_tag": train_tag,
             "eval_tag": train_tag,
-            "train_dir": str(TRAIN_OUT_DIR / train_tag),
-            "sample_dir": str(SAMPLE_OUT_DIR / train_tag),
-            "eval_dir": str(EVAL_OUT_DIR / train_tag),
-            "ckpt_path": str(TRAIN_OUT_DIR / train_tag / "best_model.pt"),
+            "train_dir": str(TRAIN_OUT_DIR / train_tag / seed_tag),
+            "sample_dir": str(SAMPLE_OUT_DIR / train_tag / seed_tag),
+            "eval_dir": str(EVAL_OUT_DIR / train_tag / seed_tag),
+            "ckpt_path": str(TRAIN_OUT_DIR / train_tag / seed_tag / "best_model.pt"),
         }
 
     raise ValueError(f"Unsupported variant: {variant}")
