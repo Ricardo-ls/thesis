@@ -84,7 +84,7 @@ def main():
     train_ratio = args.train_ratio
     random_seed = args.random_seed
 
-    output_dir = PROJECT_ROOT / "outputs" / "prior" / "train" / paths["train_tag"]
+    output_dir = PROJECT_ROOT / "outputs" / "prior" / "train" / paths["train_tag"] / f"seed{random_seed}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"variant      = {args.variant}")
