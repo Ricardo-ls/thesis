@@ -8,6 +8,9 @@ if str(PROJECT_ROOT) not in sys.path:
 import csv
 import argparse
 
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, random_split
@@ -16,6 +19,93 @@ from utils.prior.ablation_paths import get_eth_ucy_variant_paths
 from datasets.traj_dataset import TrajectoryDataset
 from diffusion.ddpm_utils import DDPMForwardProcess
 from models.temporal_denoiser import TemporalDenoiser1D
+
+
+def build_run_dir(train_tag: str, random_seed: int, epochs: int) -> Path:
+    return (
+        PROJECT_ROOT
+        / "outputs"
+        / "prior"
+        / "train"
+        / train_tag
+        / f"seed{random_seed}-{epochs}epoch"
+    )
+
+
+def save_loss_curve(history, output_dir: Path):
+    epochs = [row["epoch"] for row in history]
+    train_losses = [row["train_loss"] for row in history]
+    val_losses = [row["val_loss"] for row in history]
+
+    start_idx = 9 if len(epochs) >= 10 else 0
+    plot_epochs = epochs[start_idx:]
+    plot_train = train_losses[start_idx:]
+    plot_val = val_losses[start_idx:]
+
+    best_idx = min(range(len(val_losses)), key=lambda idx: val_losses[idx])
+    best_epoch = epochs[best_idx]
+    best_val = val_losses[best_idx]
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(plot_epochs, plot_train, color="#1f4e79", linewidth=2.0, label="train_loss")
+    plt.plot(plot_epochs, plot_val, color="#ff8c00", linewidth=2.0, label="val_loss")
+    if best_epoch >= plot_epochs[0]:
+        plt.scatter(
+            [best_epoch],
+            [best_val],
+            color="#1f4e79",
+            s=60,
+            label=f"best val @ epoch {best_epoch}",
+            zorder=3,
+        )
+    plt.title("DDPM Training / Validation Loss Curve")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.grid(True, alpha=0.4)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(output_dir / "loss_curve_epoch10plus.png", dpi=200)
+    plt.savefig(output_dir / "loss_curve_epoch10plus.svg")
+    plt.close()
+
+
+def save_run_note(output_dir: Path, variant: str, args, best_epoch: int, best_val_loss: float):
+    note_path = output_dir / f"RUN_NOTE_{variant}_ep{args.epochs}_seed{args.random_seed}.md"
+    note_lines = [
+        f"# {variant} variant - {args.epochs}-epoch training snapshot",
+        "",
+        "## Purpose",
+        "",
+        f"This file records the {args.epochs}-epoch training snapshot for the `{variant}` variant under the unified Stage 2 protocol.",
+        "",
+        "## Training configuration",
+        "",
+        f"- variant: `{variant}`",
+        f"- epochs: `{args.epochs}`",
+        f"- batch_size: `{args.batch_size}`",
+        f"- timesteps: `{args.timesteps}`",
+        f"- hidden_dim: `{args.hidden_dim}`",
+        f"- random_seed: `{args.random_seed}`",
+        f"- train_ratio: `{args.train_ratio}`",
+        f"- lr: `{args.lr}`",
+        "",
+        "## Final result",
+        "",
+        f"- best_epoch: `{best_epoch}`",
+        f"- best_val_loss: `{best_val_loss:.6f}`",
+        "- best_model: `best_model.pt`",
+        "- last_model: `last_model.pt`",
+        "- loss_history: `loss_history.csv`",
+        "- loss_curve_png: `loss_curve_epoch10plus.png`",
+        "- loss_curve_svg: `loss_curve_epoch10plus.svg`",
+        "",
+        "## Notes",
+        "",
+        "- The training run is stored in a seed-and-epoch-labeled directory.",
+        "- The loss curve starts from epoch 10 to match the repository plotting convention.",
+        "",
+    ]
+    note_path.write_text("\n".join(note_lines), encoding="utf-8")
 
 
 def run_one_epoch(model, diffusion, loader, optimizer, device, train: bool = True):
@@ -84,7 +174,7 @@ def main():
     train_ratio = args.train_ratio
     random_seed = args.random_seed
 
-    output_dir = PROJECT_ROOT / "outputs" / "prior" / "train" / paths["train_tag"] / f"seed{random_seed}"
+    output_dir = build_run_dir(paths["train_tag"], random_seed, epochs)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print(f"variant      = {args.variant}")
@@ -218,6 +308,9 @@ def main():
         writer = csv.DictWriter(f, fieldnames=["epoch", "train_loss", "val_loss"])
         writer.writeheader()
         writer.writerows(history)
+
+    save_loss_curve(history, output_dir)
+    save_run_note(output_dir, args.variant, args, best_epoch, best_val_loss)
 
     print("=" * 60)
     print("训练完成")
