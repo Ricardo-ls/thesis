@@ -28,10 +28,10 @@ VARIANT_COLORS = {
     "q20": "#c4661f",
     "q30": "#7d3c98",
 }
-SEED_LINESTYLES = {
-    42: "-",
-    43: "--",
-    44: ":",
+SEED_COLORS = {
+    42: "#d97706",
+    43: "#1d4ed8",
+    44: "#8b5e3c",
 }
 SEED_MARKERS = {
     42: "o",
@@ -195,17 +195,17 @@ def plot_fig1_val_loss_seed_overlay(records: list[RunRecord]):
     axes = axes.flatten()
 
     for ax, variant in zip(axes, VARIANTS):
-        color = VARIANT_COLORS[variant]
         subset = [r for r in records if r.variant == variant]
         min_vals = []
         for record in sorted(subset, key=lambda r: r.seed):
+            color = SEED_COLORS[record.seed]
             df = record.loss_history.copy()
             df = df.loc[df["epoch"] >= 10]
             ax.plot(
                 df["epoch"],
                 df["val_loss"],
                 color=color,
-                linestyle=SEED_LINESTYLES[record.seed],
+                linestyle="-",
                 linewidth=2.0,
                 alpha=0.95,
                 label=f"seed{record.seed}",
