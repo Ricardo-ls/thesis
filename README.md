@@ -41,6 +41,32 @@ Scripts may accept either raw variants or semantic names through the registry, d
 - [Stage 2 documentation and figures](docs/prior_stage2.md)
 - [Backup snapshot and restore notes](BACKUP.md)
 
+## Local Environment Setup
+
+To make the repository portable across computers, a local bootstrap script is included in the repository root:
+
+- `bootstrap_vscode_env.sh`
+
+From a fresh clone, run:
+
+```bash
+chmod +x bootstrap_vscode_env.sh
+./bootstrap_vscode_env.sh
+```
+
+This script will:
+
+- create a repo-local `.venv`
+- install the Python dependencies from `requirements.txt`
+- write `.vscode/settings.json`, `.vscode/tasks.json`, and `.vscode/extensions.json`
+- open a shell with the environment activated
+
+After that, training commands can be launched directly from the repository root with:
+
+```bash
+PYTHONPYCACHEPREFIX=/tmp MPLBACKEND=Agg MPLCONFIGDIR=/tmp/mpl ./.venv/bin/python -u -m tools.prior.train.train_ddpm_eth_ucy_h128 --variant none --epochs 100 --batch_size 128 --timesteps 100 --hidden_dim 128 --random_seed 42
+```
+
 ## Official Reference Figures
 
 The public Stage 2 figures are reproducible from the code in this repository without committing raw trajectory data, checkpoints, or large outputs.
