@@ -191,6 +191,8 @@ def resolve_endpoint_quantile_index(real_rel: np.ndarray, quantile: float):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--variant", type=str, default="motion_balanced")
+    parser.add_argument("--train_seed", type=int, default=42)
+    parser.add_argument("--train_epochs", type=int, default=100)
     parser.add_argument("--sample_seed", type=int, default=42)
     parser.add_argument("--vis_seed", type=int, default=42)
     parser.add_argument("--timesteps", type=int, default=100)
@@ -213,11 +215,28 @@ def main():
     cfg = get_paths_by_name(args.variant)
     train_record = get_train_record_by_name(args.variant)
     eval_ratios = get_eval_ratios_by_name(args.variant)
+    run_tag = f"seed{args.train_seed}-{args.train_epochs}epoch"
 
     device = resolve_device(args.device)
     data_path = to_abs_path(cfg["rel_path"])
-    ckpt_path = to_abs_path(cfg["ckpt_path"])
-    out_dir = to_abs_path(cfg["sample_dir"]) / args.reference_tag
+    ckpt_path = (
+        PROJECT_ROOT
+        / "outputs"
+        / "prior"
+        / "train"
+        / cfg["train_tag"]
+        / run_tag
+        / "best_model.pt"
+    )
+    out_dir = (
+        PROJECT_ROOT
+        / "outputs"
+        / "prior"
+        / "sample"
+        / cfg["sample_tag"]
+        / run_tag
+        / args.reference_tag
+    )
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
@@ -229,6 +248,9 @@ def main():
     print(f"output_dir       = {out_dir}")
     print(f"timesteps        = {args.timesteps}")
     print(f"hidden_dim       = {args.hidden_dim}")
+    print(f"train_seed       = {args.train_seed}")
+    print(f"train_epochs     = {args.train_epochs}")
+    print(f"run_tag          = {run_tag}")
     print(f"seq_len          = {args.seq_len}")
     print(f"channels         = {args.channels}")
     print(f"num_generate     = {args.num_generate}")
@@ -324,6 +346,9 @@ def main():
         "denoise_index_resolved": denoise_index_resolved,
         "timesteps": args.timesteps,
         "hidden_dim": args.hidden_dim,
+        "train_seed": args.train_seed,
+        "train_epochs": args.train_epochs,
+        "run_tag": run_tag,
         "real_plot_indices": real_plot_indices,
         "generated_plot_indices": generated_plot_indices,
         "generated_rel_path": str(out_dir / "generated_rel_samples.npy"),

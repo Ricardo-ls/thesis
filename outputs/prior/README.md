@@ -43,3 +43,23 @@ The loss curve starts from epoch 10 and follows the project plotting convention:
 ## Interpretation
 
 These outputs are archival experiment artifacts rather than lightweight public figures alone. They are intended to preserve the exact training state that produced the current Stage 2 conclusions and follow-up comparisons.
+
+## Seeded Follow-up Batch
+
+The seeded `100`-epoch follow-up sample/eval batch for `seed43` and `seed44` has been completed for all four official variants:
+
+- `none`
+- `q10`
+- `q20`
+- `q30`
+
+The formal run summary is documented in:
+
+- `docs/stage2_seed43_seed44_reference_runs.md`
+
+That page records:
+
+- the eight completed run combinations
+- the sample and eval output paths
+- the main mean-ratio diagnostics from `summary_metrics.csv`
+- the interpretation boundary for these seeded follow-up runs

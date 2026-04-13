@@ -184,6 +184,8 @@ def plot_speed_vs_length(real_avg_speed, real_total_length, gen_avg_speed, gen_t
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--variant", type=str, default="motion_balanced")
+    parser.add_argument("--train_seed", type=int, default=42)
+    parser.add_argument("--train_epochs", type=int, default=100)
     parser.add_argument("--num_generate", type=int, default=512)
     parser.add_argument("--generated_rel_path", type=str, default=None)
     parser.add_argument("--reference_tag", type=str, default="reference_seed42")
@@ -194,13 +196,31 @@ def main():
     cfg = get_paths_by_name(args.variant)
     train_record = get_train_record_by_name(args.variant)
     eval_ratios = get_eval_ratios_by_name(args.variant)
+    run_tag = f"seed{args.train_seed}-{args.train_epochs}epoch"
 
     real_path = to_abs_path(cfg["rel_path"])
     if args.generated_rel_path is not None:
         gen_path = to_abs_path(args.generated_rel_path)
     else:
-        gen_path = to_abs_path(cfg["sample_dir"]) / args.reference_tag / "generated_rel_samples.npy"
-    out_dir = to_abs_path(cfg["eval_dir"]) / args.reference_tag
+        gen_path = (
+            PROJECT_ROOT
+            / "outputs"
+            / "prior"
+            / "sample"
+            / cfg["sample_tag"]
+            / run_tag
+            / args.reference_tag
+            / "generated_rel_samples.npy"
+        )
+    out_dir = (
+        PROJECT_ROOT
+        / "outputs"
+        / "prior"
+        / "eval"
+        / cfg["eval_tag"]
+        / run_tag
+        / args.reference_tag
+    )
 
     real, gen = load_data(real_path, gen_path, out_dir)
 
@@ -211,6 +231,9 @@ def main():
     print(f"real_path = {real_path}")
     print(f"gen_path  = {gen_path}")
     print(f"out_dir   = {out_dir}")
+    print(f"train_seed = {args.train_seed}")
+    print(f"train_epochs = {args.train_epochs}")
+    print(f"run_tag = {run_tag}")
     print(f"reference_tag = {args.reference_tag}")
     print(f"train_record = {train_record}")
     print(f"eval_ratios  = {eval_ratios}")
@@ -236,6 +259,9 @@ def main():
                     "resolved_variant": resolved_variant,
                     "generated_rel_path": str(gen_path),
                     "rel_path": str(real_path),
+                    "train_seed": args.train_seed,
+                    "train_epochs": args.train_epochs,
+                    "run_tag": run_tag,
                     "reference_tag": args.reference_tag,
                 },
                 f,
