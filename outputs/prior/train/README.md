@@ -13,8 +13,22 @@ Each variant folder has its own `README.md` so the run folders and run notes sta
 
 ## Multi-seed convention
 
-For the multi-seed study, keep each run in a seed-and-epoch-labeled subdirectory:
+For the active multi-seed study, keep each run in a seed-and-epoch-labeled subdirectory.
 
+The current seed expansion set is:
+
+- `seed2-100epoch/`
+- `seed3-100epoch/`
+- `seed4-100epoch/`
+- `seed12-100epoch/`
+- `seed13-100epoch/`
+- `seed14-100epoch/`
+- `seed22-100epoch/`
+- `seed23-100epoch/`
+- `seed24-100epoch/`
+- `seed32-100epoch/`
+- `seed33-100epoch/`
+- `seed34-100epoch/`
 - `seed42-100epoch/`
 - `seed43-100epoch/`
 - `seed44-100epoch/`
@@ -22,16 +36,14 @@ For the multi-seed study, keep each run in a seed-and-epoch-labeled subdirectory
 
 Recommended focus:
 
-- `none`: multi-seed, with both 100-epoch and 150-epoch reference material preserved
-- `q20`: multi-seed
-- `q10`: multi-seed or reference follow-up, depending on what you are comparing
-- `q30`: multi-seed or reference follow-up, depending on what you are comparing
+- all four variants now follow the same `100`-epoch seed expansion
+- `none` additionally preserves the `seed42-150epoch/` reference run
 
 Use consistent names such as:
 
+- `seed2-100epoch`
+- `seed12-100epoch`
 - `seed42-100epoch`
-- `seed43-100epoch`
-- `seed44-100epoch`
 - `seed42-150epoch`
 
 Keep one run per folder so the results stay easy to compare and recover. Every completed run should save:
