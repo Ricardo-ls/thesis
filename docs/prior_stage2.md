@@ -1,28 +1,29 @@
-# Stage 2: Pre-training the Domain Knowledge Diffusion Model
+# Stage 2: Trajectory Prior Learning
 
-Stage 2 is the trajectory-only diffusion pre-training stage of the thesis. Its purpose is to learn a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup.
+Stage 2 is the thesis stage that learns a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup. The scientific question is narrow but important: can a diffusion prior trained only on motion recover realistic geometry, smoothness, and progression without collapsing the data manifold?
 
-Stage 2 should be treated as a registry-driven trajectory prior pipeline. The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 variant semantics, official train/eval records, narrative labels, and output locations.
+The official registry, narrative, and path resolution live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file remains the single source of truth for variant semantics, canonical names, train/eval records, and output locations.
 
 ## Reading Order
 
 If you are reading this page for the first time, follow this order:
 
 1. `Official Stage 2 Interpretation`
-2. `Privacy and Repository Safety`
-3. `Qualitative Reverse Sampling`
-4. `Key Diagnostic Figures`
-5. `Interpretation`
-6. `Reproducibility`
+2. `Repository Layout`
+3. `Privacy and Repository Safety`
+4. `Qualitative Reverse Sampling`
+5. `Key Diagnostic Figures`
+6. `Interpretation`
+7. `Reproducibility`
 
 This order mirrors the logic of the Stage 2 experiments:
 
-- first define the goal
-- then fix the protocol
-- then state the registry semantics
-- then compare the four filtering variants
-- then inspect the figures
-- finally reproduce the pipeline from the scripts
+- define the objective
+- fix the protocol
+- state the registry semantics
+- compare the four variants
+- inspect the evidence
+- reproduce the pipeline from the scripts
 
 ## Official Stage 2 Interpretation
 
@@ -55,6 +56,16 @@ The four variants share the same unified Stage 2 protocol:
 Scripts may accept either raw variants (`none/q10/q20/q30`) or semantic names (`optimization_best/motion_balanced`), depending on the entry point implementation.
 
 All paths, checkpoints, `sample_dir`, `eval_dir`, official train/eval records, and narrative labels are resolved through [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py).
+
+## Repository Layout
+
+The preferred browsing order for the Stage 2 archive is:
+
+- [`outputs/prior/variants/`](../outputs/prior/variants) for the four official variant entry points
+- [`outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval/`](../outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval) for the folded early sweep
+- [`outputs/prior/train/`](../outputs/prior/train) for the canonical training-side snapshot archive
+- [`outputs/prior/sample/`](../outputs/prior/sample) for reverse-sampling outputs
+- [`outputs/prior/eval/`](../outputs/prior/eval) for distribution-level diagnostics
 
 ## Privacy and Repository Safety
 

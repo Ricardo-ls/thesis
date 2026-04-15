@@ -14,7 +14,7 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 TRAIN_ROOT = PROJECT_ROOT / "outputs" / "prior" / "train"
 EVAL_ROOT = PROJECT_ROOT / "outputs" / "prior" / "eval"
-AGG_ROOT = EVAL_ROOT / "stage2_phaseA_multiseed_100epoch"
+AGG_ROOT = PROJECT_ROOT / "outputs" / "prior" / "archive" / "stage2_phaseA_multiseed_100epoch" / "eval"
 FIG_ROOT = PROJECT_ROOT / "docs" / "assets" / "stage2_phaseA_multiseed_100epoch"
 REPORT_PATH = PROJECT_ROOT / "docs" / "stage2_phaseA_multiseed_100epoch_report.md"
 

@@ -1,29 +1,41 @@
 # Stage 2 Prior Outputs
 
-This directory stores the experiment artifacts for the Stage 2 trajectory prior pipeline.
+This directory is the artifact archive for Stage 2 of the thesis project. It preserves the exact training, sampling, and evaluation outputs that support the written conclusions.
 
-## Scope
+## Design Principle
 
-Stage 2 corresponds to trajectory-only diffusion prior pre-training on ETH+UCY under the unified DDPM protocol used in this repository. The contents here are organized to support:
+The archive is organized around the four official variants:
 
-- training snapshot recovery
-- seeded qualitative figure generation
-- distribution-level evaluation
-- archival backup of intermediate and formal runs
+- `none`
+- `q10`
+- `q20`
+- `q30`
 
-## Layout
+The main human-facing entry point is [`variants/`](variants). Within each variant, outputs are separated by role:
 
-- `train/` stores checkpoint-level training artifacts
-- `sample/` stores reverse-sampling outputs and seeded figure manifests
-- `eval/` stores distribution-level diagnostics and summary metrics
+- `train/` for optimization snapshots and loss traces
+- `sample/` for reverse-sampling outputs and seed manifests
+- `eval/` for distributional diagnostics, ratios, and summary metrics
 
-## Training artifact convention
+## Archived Phase-A Material
 
-Each training run is stored in a directory named by seed and epoch budget:
+The earlier multi-seed Stage 2 sweep is intentionally treated as folded archive material rather than a live operating mode.
 
+- `outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval/`
+- `docs/stage2_phaseA_multiseed_100epoch_report.md`
+
+Those assets are retained for traceability, but the main entry point for the repository is the four-variant ETH+UCY prior archive.
+
+## Training Snapshot Convention
+
+Completed training runs are stored as `seed<k>-<epochs>epoch/` folders.
+
+Typical examples:
+
+- `seed2-100epoch/`
+- `seed12-100epoch/`
+- `seed14-100epoch/`
 - `seed42-100epoch/`
-- `seed43-100epoch/`
-- `seed44-100epoch/`
 - `seed42-150epoch/`
 
 Inside each completed run directory, the expected artifacts are:
@@ -35,31 +47,25 @@ Inside each completed run directory, the expected artifacts are:
 - `loss_curve_epoch10plus.svg`
 - `RUN_NOTE_<variant>_ep<epochs>_seed<seed>.md`
 
-The loss curve starts from epoch 10 and follows the project plotting convention:
+The loss curve begins at epoch 10 to match the project plotting convention and avoid the visually noisy warm-up region.
 
-- `train_loss` in deep blue
-- `val_loss` in orange
+## Formal Reading Order
 
-## Interpretation
+1. [`README.md`](../../README.md) for the thesis-level framing.
+2. [`docs/prior_stage2.md`](../../docs/prior_stage2.md) for the scientific interpretation.
+3. [`utils/prior/ablation_paths.py`](../../utils/prior/ablation_paths.py) for the canonical path registry.
 
-These outputs are archival experiment artifacts rather than lightweight public figures alone. They are intended to preserve the exact training state that produced the current Stage 2 conclusions and follow-up comparisons.
+## Follow-Up Batch
 
-## Seeded Follow-up Batch
+The seeded `100`-epoch follow-up sample/eval batch for `seed43` and `seed44` is available for all four official variants.
 
-The seeded `100`-epoch follow-up sample/eval batch for `seed43` and `seed44` has been completed for all four official variants:
+The formal summary lives in:
 
-- `none`
-- `q10`
-- `q20`
-- `q30`
-
-The formal run summary is documented in:
-
-- `docs/stage2_seed43_seed44_reference_runs.md`
+- [`docs/stage2_seed43_seed44_reference_runs.md`](../../docs/stage2_seed43_seed44_reference_runs.md)
 
 That page records:
 
 - the eight completed run combinations
 - the sample and eval output paths
-- the main mean-ratio diagnostics from `summary_metrics.csv`
-- the interpretation boundary for these seeded follow-up runs
+- the main ratio diagnostics from `summary_metrics.csv`
+- the interpretation boundary for the follow-up batch

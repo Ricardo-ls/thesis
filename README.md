@@ -1,49 +1,74 @@
 # Thesis: Stage 2 Trajectory Prior
 
-This repository contains the codebase for a trajectory diffusion thesis project focused on Stage 2: pre-training an unconditional pedestrian motion prior from public ETH+UCY trajectory data.
+This repository is the research and archival workspace for Stage 2 of the thesis: learning a high-fidelity, trajectory-only diffusion prior on ETH+UCY. The emphasis is not on a generic demo pipeline, but on a reproducible scientific record: data filtering, prior pre-training, seeded evaluation, and the written narrative that explains why each variant behaves the way it does.
 
-## Start Here
+## Reading Order
 
 If you are new to the project, read in this order:
 
-1. This README for the project-level scope and the official Stage 2 roles.
+1. This README for the project thesis, structure, and repository map.
 2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the full Stage 2 interpretation, figures, and reproducibility notes.
-3. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the registry that defines the official semantics and paths.
+3. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry that binds names to paths and semantics.
 
-## Project Scope
+## Research Scope
 
-The thesis is organized in stages:
+The codebase is organized around a narrow scientific question:
 
-- Stage 2 is the current core focus: trajectory-only diffusion prior pre-training.
-- Stage 3 and any downstream sensor-conditioned localization or filtering are separate follow-up stages.
-- The current codebase is intentionally centered on motion prior learning, not sensor-to-position supervision.
+- Can a diffusion prior trained only on pedestrian motion capture the geometry, smoothness, and dynamic plausibility of ETH+UCY trajectories?
+- Which filtering policy yields the strongest balance between sample coverage and motion realism?
+- How do the official variants compare when the protocol, seed, horizon, and evaluation budget are held fixed?
 
-## Stage 2 Summary
+Stage 2 is the current center of gravity.
 
-Stage 2 uses a registry-driven evaluation and documentation pipeline defined in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py). That file is the single source of truth for Stage 2 paths, checkpoints, sample directories, evaluation directories, train/eval records, and narrative labels. The official semantic entry points are:
+- Stage 2: trajectory-only diffusion prior pre-training and evaluation.
+- Stage 3: downstream sensor-conditioned localization or filtering, treated as a separate future line of work.
+
+## Canonical Variants
+
+The registry in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) is the source of truth for semantics, directories, and narrative labels. The official Stage 2 names are:
+
+- `none`: optimization-best baseline under the unified protocol
+- `q10`: weakest filtering regime, useful as a low-pressure reference
+- `q20`: balanced motion-focused prior and the recommended filtered variant
+- `q30`: strongest filtering regime, more selective but less favorable on the full trade-off
+
+Semantic aliases:
 
 - `optimization_best -> none`
 - `motion_balanced -> q20`
 
-Official Stage 2 roles:
+## Repository Layout
 
-- `none`: optimization-best baseline under the unified protocol
-- `q10`: filtering too weak; gains are limited
-- `q20`: most balanced motion-focused prior among filtered variants
-- `q30`: filtering too strong; not the default motion prior candidate
+The repository is intentionally split by function:
 
-This summary is intentionally compact. Detailed figures and interpretation live in [`docs/prior_stage2.md`](docs/prior_stage2.md).
+- [`docs/`](docs) contains the paper-facing narrative, figures, and archived notes.
+- [`outputs/prior/variants/`](outputs/prior/variants) is the top-level Stage 2 entry point, with one directory per official variant.
+- [`outputs/prior/train|sample|eval/`](outputs/prior) remain the canonical artifact stores that the code still reads from.
+- [`outputs/prior/archive/`](outputs/prior/archive) holds folded early-phase material.
+- [`tools/prior/`](tools/prior) contains training, sampling, and evaluation entry points.
+- [`utils/prior/`](utils/prior) contains the registry and shared semantic helpers.
 
-Scripts may accept either raw variants or semantic names through the registry, depending on the entry point implementation.
+## Stage 2 Artifacts
 
-## Public Documentation
+The Stage 2 archive is now organized so the four official variants are the primary conceptual units. The new outer directory is `outputs/prior/variants/`, and each variant exposes three task views:
 
-- [Stage 2 documentation and figures](docs/prior_stage2.md)
-- [Backup snapshot and restore notes](BACKUP.md)
+- `train/` for checkpoints and training curves
+- `sample/` for reverse-sampling artifacts
+- `eval/` for distributional diagnostics and summary metrics
 
-## Local Environment Setup
+The early phase-A multi-seed material is folded under `outputs/prior/archive/` rather than treated as a first-class operating mode.
 
-To make the repository portable across computers, a local bootstrap script is included in the repository root:
+See:
+
+- [`outputs/prior/README.md`](outputs/prior/README.md)
+- [`outputs/prior/train/README.md`](outputs/prior/train/README.md)
+- [`outputs/prior/variants/`](outputs/prior/variants)
+- [`outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval`](outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval)
+- [`docs/multi_seed_stage2_plan.md`](docs/multi_seed_stage2_plan.md)
+
+## Local Setup
+
+To make the repository portable across machines, a local bootstrap script is included at the repository root:
 
 - `bootstrap_vscode_env.sh`
 
@@ -61,20 +86,20 @@ This script will:
 - write `.vscode/settings.json`, `.vscode/tasks.json`, and `.vscode/extensions.json`
 - open a shell with the environment activated
 
-After that, training commands can be launched directly from the repository root with:
+After that, training commands can be launched from the repository root, for example:
 
 ```bash
 PYTHONPYCACHEPREFIX=/tmp MPLBACKEND=Agg MPLCONFIGDIR=/tmp/mpl ./.venv/bin/python -u -m tools.prior.train.train_ddpm_eth_ucy_h128 --variant none --epochs 100 --batch_size 128 --timesteps 100 --hidden_dim 128 --random_seed 42
 ```
 
-## Official Reference Figures
+## Reference Figures
 
 The public Stage 2 figures are reproducible from the code in this repository without committing raw trajectory data, checkpoints, or large outputs.
 
-Official seeded reference runs:
+Reference sampling and evaluation for the balanced prior:
 
 ```bash
-PYTHONPYCACHEPREFIX=/tmp ../.venv/bin/python -m tools.prior.sample.reverse_sample_ddpm_eth_ucy_h128 \
+PYTHONPYCACHEPREFIX=/tmp ./.venv/bin/python -m tools.prior.sample.reverse_sample_ddpm_eth_ucy_h128 \
   --variant motion_balanced \
   --sample_seed 42 \
   --vis_seed 42 \
@@ -86,14 +111,14 @@ PYTHONPYCACHEPREFIX=/tmp ../.venv/bin/python -m tools.prior.sample.reverse_sampl
   --save_manifest \
   --device cpu
 
-PYTHONPYCACHEPREFIX=/tmp ../.venv/bin/python -m tools.prior.eval.analyze_generated_vs_real_eth_ucy_h128 \
+PYTHONPYCACHEPREFIX=/tmp ./.venv/bin/python -m tools.prior.eval.analyze_generated_vs_real_eth_ucy_h128 \
   --variant motion_balanced \
   --num_generate 512 \
   --generated_rel_path outputs/prior/sample/ddpm_eth_ucy_q20_h128/reference_seed42/generated_rel_samples.npy \
   --reference_tag reference_seed42 \
   --save_manifest
 
-../.venv/bin/python -m tools.prior.export_reference_figures \
+./.venv/bin/python -m tools.prior.export_reference_figures \
   --variant motion_balanced \
   --reference_tag reference_seed42 \
   --include both
@@ -101,17 +126,17 @@ PYTHONPYCACHEPREFIX=/tmp ../.venv/bin/python -m tools.prior.eval.analyze_generat
 
 For the optimization-best baseline, replace `motion_balanced` with `optimization_best`.
 
-## Repository Safety
+## Safety Model
 
-This public repository includes code, selected figures, and lightweight docs only.
+This repository is a public scientific archive, not a raw data dump.
 
 - No raw pedestrian trajectory files are committed.
 - No processed training corpora are committed.
-- No checkpoints or large training outputs are committed.
-- Only selected publication-oriented figures are kept in `docs/`.
+- No checkpoints or large training outputs are committed beyond the curated snapshot archive.
+- Publication-oriented figures and narrative docs live in `docs/`.
 
 ## Backup Branch
 
-For rollback and recovery, a full snapshot is also stored on GitHub in the branch `backup/full-snapshot-2026-04-07`.
+For rollback and recovery, a full snapshot is also stored on GitHub in the branch `backup/full-snapshot-2026-04-12`.
 
 Use [`BACKUP.md`](BACKUP.md) for the shortest file-restore command and backup branch notes.

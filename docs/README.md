@@ -12,10 +12,10 @@ Start here if you are new to the repository.
 
 ## What Each File Is For
 
-- `prior_stage2.md` explains the official Stage 2 registry-driven prior, the conclusions, and the public reference figures.
+- `prior_stage2.md` explains the official Stage 2 registry-driven prior, the conclusions, the variant-first archive layout, and the public reference figures.
 - `stage2_seed43_seed44_reference_runs.md` records the seeded `100`-epoch follow-up sample and evaluation outputs for `seed43` and `seed44`.
 - `stage2_gpt_briefing.md` is a fact-only handoff note for GPT.
-- `multi_seed_stage2_plan.md` records the seed and folder convention for the 100/150/200-epoch study.
+- `multi_seed_stage2_plan.md` records the seed and folder convention for the 100/150/200-epoch study and the archived phase-A sweep.
 
 ## Public Assets
 

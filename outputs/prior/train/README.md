@@ -1,21 +1,23 @@
 # Prior Training Outputs
 
-This directory stores Stage 2 training artifacts for the ETH+UCY prior pipeline.
+This directory preserves the training-side archive for the Stage 2 ETH+UCY prior.
 
-## Layout
+## Conceptual Layout
 
-- `ddpm_eth_ucy_none_h128/` - none variant training snapshots
-- `ddpm_eth_ucy_q10_h128/` - q10 variant training snapshots
-- `ddpm_eth_ucy_q20_h128/` - q20 variant training snapshots
-- `ddpm_eth_ucy_q30_h128/` - q30 variant training snapshots
+The four official variants are the organizing principle:
 
-Each variant folder has its own `README.md` so the run folders and run notes stay easy to read.
+- `ddpm_eth_ucy_none_h128/`
+- `ddpm_eth_ucy_q10_h128/`
+- `ddpm_eth_ucy_q20_h128/`
+- `ddpm_eth_ucy_q30_h128/`
 
-## Multi-seed convention
+Each variant folder contains only completed runs and their run notes. The higher-level `outputs/prior/variants/` directory is the preferred browsing entry point.
 
-For the active multi-seed study, keep each run in a seed-and-epoch-labeled subdirectory.
+## Run Naming
 
-The current seed expansion set is:
+Completed runs are stored as `seed<k>-<epochs>epoch/` directories.
+
+Common examples:
 
 - `seed2-100epoch/`
 - `seed3-100epoch/`
@@ -34,19 +36,11 @@ The current seed expansion set is:
 - `seed44-100epoch/`
 - `seed42-150epoch/`
 
-Recommended focus:
+The `none` variant additionally preserves the `seed42-150epoch/` reference snapshot used in the narrative and comparisons.
 
-- all four variants now follow the same `100`-epoch seed expansion
-- `none` additionally preserves the `seed42-150epoch/` reference run
+## Required Files
 
-Use consistent names such as:
-
-- `seed2-100epoch`
-- `seed12-100epoch`
-- `seed42-100epoch`
-- `seed42-150epoch`
-
-Keep one run per folder so the results stay easy to compare and recover. Every completed run should save:
+Every completed run should contain:
 
 - `best_model.pt`
 - `last_model.pt`
@@ -54,3 +48,7 @@ Keep one run per folder so the results stay easy to compare and recover. Every c
 - `loss_curve_epoch10plus.png`
 - `loss_curve_epoch10plus.svg`
 - `RUN_NOTE_<variant>_ep<epochs>_seed<seed>.md`
+
+## Archival Rule
+
+Empty placeholders are intentionally omitted. The archive should contain only completed results, so the directory tree reads like a curated evidence table rather than a scratch workspace.

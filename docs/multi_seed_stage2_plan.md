@@ -35,7 +35,7 @@ All four Stage 2 variants follow the same seed schedule:
 
 ## Directory Convention
 
-Store each run in a seed-and-epoch-labeled directory under the variant folder:
+Store each run in a seed-and-epoch-labeled directory under the variant archive:
 
 - `outputs/prior/train/ddpm_eth_ucy_none_h128/seed2-100epoch/`
 - `outputs/prior/train/ddpm_eth_ucy_none_h128/seed12-100epoch/`
@@ -46,6 +46,10 @@ Store each run in a seed-and-epoch-labeled directory under the variant folder:
 - `outputs/prior/train/ddpm_eth_ucy_q30_h128/seed44-100epoch/`
 
 The same naming rule applies to all variants and all seeds in the active set.
+
+The phase-A sweep is archived under:
+
+- `outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval/`
 
 ## Naming Rule
 
