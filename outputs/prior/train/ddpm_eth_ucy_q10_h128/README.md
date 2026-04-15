@@ -13,7 +13,14 @@ This directory keeps the labeled `q10` Stage 2 runs in seed-and-epoch-labeled su
   - `best_model.pt`
   - `last_model.pt`
   - `loss_history.csv`
-- `seed44-100epoch/` is reserved for the next run and only contains `.gitkeep` for now.
+- `seed2-100epoch/`, `seed12-100epoch/`, `seed13-100epoch/`, `seed14-100epoch/`, `seed22-100epoch/`, `seed23-100epoch/`, `seed24-100epoch/`, `seed3-100epoch/`, `seed32-100epoch/`, `seed33-100epoch/`, `seed34-100epoch/`, `seed4-100epoch/`, `seed44-100epoch/` are all seed-aligned training snapshots.
+- Each completed seed directory contains the standard training artifacts:
+  - `RUN_NOTE_q10_ep100_seed<seed>.md`
+  - `best_model.pt`
+  - `last_model.pt`
+  - `loss_curve_epoch10plus.png`
+  - `loss_curve_epoch10plus.svg`
+  - `loss_history.csv`
 
 ## Reading order
 
