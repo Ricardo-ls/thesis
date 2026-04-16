@@ -22,7 +22,7 @@ It consolidates the four official variants under a fixed `100`-epoch budget acro
 - `43`
 - `44`
 
-The goal of this report is not to declare the final application-best prior, but to identify which variants should survive into the next longer-training stage.
+The goal of this report is not to declare the final application winner, but to identify which variants should survive into the next longer-training stage.
 
 Validation loss is treated as a training diagnostic rather than a complete decision rule. The report therefore compares both:
 
@@ -80,14 +80,14 @@ They are not identical. The optimization view orders variants by mean best valid
 
 ### Which two variants should move to the next stage?
 
-The two variants that should move forward are `none` and `q10`: one to preserve the strongest optimization-side baseline and one to preserve the strongest motion-realism candidate.
+The two variants that should move forward are `none` and `q10`: one to preserve the strongest optimization-side baseline and one to preserve the closest secondary candidate under the current screening evidence.
 
 ## Recommended Finalists
 
 - optimization-best candidate: `none`
-- application-best candidate: `none`
+- secondary screening candidate: `q10`
 
-These labels are deliberately conservative. The optimization-best candidate is selected from the lowest mean best validation loss, while the application-best candidate is selected from the lowest mean MRS4. The two views are related but not identical, and they should not be collapsed into a single global winner without the downstream stage.
+These labels are deliberately conservative. The optimization-best candidate is selected from the lowest mean best validation loss, while the secondary screening candidate is selected from the current multi-seed screening evidence. The two views are related but not identical, and they should not be collapsed into a single global winner without the downstream stage.
 
 ## Appendix Figure
 

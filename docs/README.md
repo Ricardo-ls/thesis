@@ -25,9 +25,11 @@ Start here if you are new to the repository.
 
 Public Stage 2 figures live under:
 
-- `docs/assets/stage2/<variant>/reference_seed42/`
+- `docs/assets/stage2/{variant}/reference_seed42/`
 - `docs/assets/prior/loss_curves/`
 - `docs/assets/prior/`
 - `docs/assets/stage2_phaseA_multiseed_100epoch/`
+
+For the variant-specific Stage 2 subtree, see `docs/assets/stage2/`.
 
 The repository keeps code, selected figures, and lightweight docs only. Large training corpora, raw trajectories, and checkpoints are not part of the public narrative.
