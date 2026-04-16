@@ -134,9 +134,11 @@ This repository is a public scientific archive, not a raw data dump.
 
 For rollback and recovery, full snapshots are kept in GitHub backup branches.
 
-- `backup/full-snapshot-2026-04-12`
-- `backup/full-snapshot-2026-04-15`
+- `backup/full-snapshot-2026-04-16` recommended current backup target
+- `backup/full-snapshot-2026-04-12` historical backup
+- `backup/full-snapshot-2026-04-11` historical backup
+- `backup/full-snapshot-2026-04-07` historical backup
 
-If you do not see the backup in GitHub, switch branches in the repository view. The backup is not the default branch, so it will not appear unless you select it explicitly.
+If you do not see the backup in GitHub, switch branches in the repository view. The backup is not the default branch, so it will not appear unless you select it explicitly. New uploads should go to `backup/full-snapshot-2026-04-16`.
 
 Use [`BACKUP.md`](BACKUP.md) for the shortest restore command and backup notes.

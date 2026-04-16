@@ -2,7 +2,7 @@
 
 This repository has a full backup branch for rollback and recovery:
 
-- `backup/full-snapshot-2026-04-07`
+- `backup/full-snapshot-2026-04-16`
 
 What it contains:
 
@@ -24,14 +24,14 @@ When to use it:
 Restore a single file from the backup branch:
 
 ```bash
-git checkout backup/full-snapshot-2026-04-07 -- path/to/file
+git checkout backup/full-snapshot-2026-04-16 -- path/to/file
 ```
 
 Examples:
 
 ```bash
-git checkout backup/full-snapshot-2026-04-07 -- docs/prior_stage2.md
-git checkout backup/full-snapshot-2026-04-07 -- outputs/prior/eval/ddpm_eth_ucy_q20_h128/reference_seed42/summary_metrics.csv
+git checkout backup/full-snapshot-2026-04-16 -- docs/prior_stage2.md
+git checkout backup/full-snapshot-2026-04-16 -- outputs/prior/eval/ddpm_eth_ucy_q20_h128/reference_seed42/summary_metrics.csv
 ```
 
 ## Notes
