@@ -4,8 +4,20 @@
 
 This report is the current mainline result page for Stage 2.
 
-It consolidates the four official variants under a fixed `100`-epoch budget across train seeds:
+It consolidates the four official variants under a fixed `100`-epoch budget across the completed `15`-seed Phase A sweep:
 
+- `2`
+- `3`
+- `4`
+- `12`
+- `13`
+- `14`
+- `22`
+- `23`
+- `24`
+- `32`
+- `33`
+- `34`
 - `42`
 - `43`
 - `44`
@@ -22,7 +34,7 @@ Validation loss is treated as a training diagnostic rather than a complete decis
 - dataset: ETH+UCY processed relative trajectories
 - representation: `19 x 2` relative-step trajectory windows
 - variants: `none`, `q10`, `q20`, `q30`
-- train seeds: `42`, `43`, `44`
+- train seeds: `2`, `3`, `4`, `12`, `13`, `14`, `22`, `23`, `24`, `32`, `33`, `34`, `42`, `43`, `44`
 - epochs: `100`
 - checkpoint used for eval: `best_model.pt`
 - sample seed fixed to: `42`

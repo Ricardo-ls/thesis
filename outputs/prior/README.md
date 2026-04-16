@@ -26,6 +26,17 @@ The earlier multi-seed Stage 2 sweep is intentionally treated as folded archive 
 
 Those assets are retained for traceability, but the main entry point for the repository is the four-variant ETH+UCY prior archive.
 
+## Documentation Classification
+
+For clarity, files in this area are grouped into the following classes:
+
+- `README.md` files provide directory-level interpretation and should be treated as current navigation aids.
+- `RUN_NOTE_*.md` files are phase-specific run records produced during training.
+- `analysis_config.txt` and `manifest.json` files are execution metadata and should be treated as provenance records.
+- PNG and SVG files are figure artifacts, not narrative documents.
+
+When reading the archive, prefer the current mainline documentation in [`docs/`](../../docs) and use the files here as evidence-bearing outputs.
+
 ## Training Snapshot Convention
 
 Completed training runs are stored as `seed<k>-<epochs>epoch/` folders.
@@ -57,15 +68,6 @@ The loss curve begins at epoch 10 to match the project plotting convention and a
 
 ## Follow-Up Batch
 
-The seeded `100`-epoch follow-up sample/eval batch for `seed43` and `seed44` is available for all four official variants.
+The seeded `100`-epoch follow-up sample/eval batch for `seed43` and `seed44` has been folded into the archive structure rather than kept as a standalone narrative page.
 
-The formal summary lives in:
-
-- [`docs/stage2_seed43_seed44_reference_runs.md`](../../docs/stage2_seed43_seed44_reference_runs.md)
-
-That page records:
-
-- the eight completed run combinations
-- the sample and eval output paths
-- the main ratio diagnostics from `summary_metrics.csv`
-- the interpretation boundary for the follow-up batch
+Use the archived evidence tree under `outputs/prior/archive/` for the corresponding run outputs and manifests.

@@ -2,14 +2,14 @@
 
 Stage 2 learns a reusable pedestrian motion prior from public ETH+UCY trajectory data, fully decoupled from any downstream sensor setup. The scientific question remains the same: can a diffusion prior trained only on motion recover realistic geometry, smoothness, and progression without collapsing the data manifold?
 
-The registry, narrative history, and path resolution still live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file remains the canonical source of variant names and historical protocol records. However, the **current interpretation layer** of the repository is no longer the original single-seed `50`-epoch result.
+The registry, narrative history, and path resolution still live in [`utils/prior/ablation_paths.py`](../utils/prior/ablation_paths.py). That file remains the canonical source of variant names and historical protocol records. However, the **current interpretation layer** of the repository is now the completed multi-seed `15`-seed, `100`-epoch result.
 
 ## Reading Order
 
 If you are reading Stage 2 now, follow this order:
 
 1. `Current Mainline Interpretation`
-2. `Legacy 50-Epoch Reference Layer`
+2. `Legacy Reference Layers`
 3. `Repository Layout`
 4. `Qualitative Reverse Sampling`
 5. `Key Diagnostic Figures`
@@ -27,7 +27,7 @@ This order mirrors the logic of the Stage 2 experiments:
 
 ## Current Mainline Interpretation
 
-The current mainline Stage 2 reading is the **multi-seed `100`-epoch screening result** documented in [`docs/stage2_phaseA_multiseed_100epoch_report.md`](stage2_phaseA_multiseed_100epoch_report.md).
+The current mainline Stage 2 reading is the **completed 15-seed, multi-seed `100`-epoch screening result** documented in [`docs/stage2_phaseA_multiseed_100epoch_report.md`](stage2_phaseA_multiseed_100epoch_report.md).
 
 At the current stage, the strongest repository-supported conclusions are:
 
@@ -37,7 +37,7 @@ At the current stage, the strongest repository-supported conclusions are:
 
 This means the repository should currently be read as supporting a **two-candidate shortlist** rather than a single global winner.
 
-## Legacy 50-Epoch Reference Layer
+## Legacy Reference Layers
 
 The original Stage 2 single-seed `50`-epoch interpretation is retained only as a historical reference layer.
 
@@ -59,6 +59,14 @@ and corresponded to the following fixed protocol:
 - evaluation metrics: `step_norm_all`, `avg_speed`, `total_length`, `endpoint_displacement`, `moving_ratio_global`, `propulsion_ratio`, `acc_rms`
 
 This legacy reading should still be kept for traceability and historical comparison, but it is **not** the main result layer anymore once the multi-seed `100`-epoch evidence is available.
+
+The archived Phase A sweep is also part of the current mainline record:
+
+- seed set: `2`, `3`, `4`, `12`, `13`, `14`, `22`, `23`, `24`, `32`, `33`, `34`, `42`, `43`, `44`
+- epochs: `100`
+- variants: `none`, `q10`, `q20`, `q30`
+
+This sweep is the current mainline evidence, not a side note, and should be treated as the default reading for Stage 2.
 
 ## Repository Layout
 
@@ -175,7 +183,7 @@ The following curves are compact training diagnostics.
 The current repository-supported reading should be stated conservatively:
 
 - the original `50`-epoch single-seed conclusion is still available as a legacy reference;
-- the current mainline evidence comes from the multi-seed `100`-epoch screening result;
+- the current mainline evidence comes from the completed 15-seed multi-seed `100`-epoch screening result;
 - the present outcome is a **shortlist** (`none` plus a secondary candidate, currently `q10`), not a final application-level winner;
 - the next stage should therefore focus on longer training and stronger comparison only for the shortlisted candidates.
 

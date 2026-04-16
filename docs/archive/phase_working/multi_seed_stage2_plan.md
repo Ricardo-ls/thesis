@@ -87,3 +87,5 @@ For the current expansion, every new `100`-epoch run should land in:
 ## Current Status
 
 The archived expansion set is preserved for traceability. The current canonical layout is the variant-first seed archive under `outputs/prior/train`, `outputs/prior/sample`, and `outputs/prior/eval`.
+
+The current planning baseline is the completed 15-seed, multi-seed, 100-epoch Stage 2 result; older single-seed or partial-seed layouts are reference material only.

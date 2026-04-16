@@ -22,6 +22,28 @@ Official Stage 2 roles:
 - `q20`: most balanced motion-focused prior among filtered variants
 - `q30`: strong-filter reference point
 
+## Current Mainline Evidence
+
+The current Stage 2 mainline evidence is the completed multi-seed `100`-epoch screening result.
+
+Archived Phase A seed set:
+
+- `2`
+- `3`
+- `4`
+- `12`
+- `13`
+- `14`
+- `22`
+- `23`
+- `24`
+- `32`
+- `33`
+- `34`
+- `42`
+- `43`
+- `44`
+
 ## Official Seeded Reference Runs
 
 Fixed public figure protocol:
@@ -65,91 +87,13 @@ Each public asset directory contains:
 - `eval/manifest.json`
 - `eval/*.png`
 
-## Verified Training Records
+## Verified Records
 
-These are the verified official Stage 2 training records currently used in the docs and registry.
+These legacy records remain available for traceability only.
 
-### none
-
-- `rel_path = datasets/processed/data_eth_ucy_20_rel.npy`
-- `ckpt_path = outputs/prior/train/ddpm_eth_ucy_none_h128/best_model.pt`
-- `samples = 36073`
-- `best_val_loss = 0.090071`
-- `best_epoch = 38`
-- `denoise_index_resolved = 1190`
-
-### q10
-
-- `rel_path = datasets/processed/data_eth_ucy_20_rel_q10.npy`
-- `ckpt_path = outputs/prior/train/ddpm_eth_ucy_q10_h128/best_model.pt`
-- `samples = 32465`
-- `best_val_loss = 0.09671`
-- `best_epoch = 36`
-- `denoise_index_resolved = 12921`
-
-### q20
-
-- `rel_path = datasets/processed/data_eth_ucy_20_rel_q20.npy`
-- `ckpt_path = outputs/prior/train/ddpm_eth_ucy_q20_h128/best_model.pt`
-- `samples = 28858`
-- `best_val_loss = 0.10341`
-- `best_epoch = 41`
-- `denoise_index_resolved = 12116`
-
-### q30
-
-- `rel_path = datasets/processed/data_eth_ucy_20_rel_q30.npy`
-- `ckpt_path = outputs/prior/train/ddpm_eth_ucy_q30_h128/best_model.pt`
-- `samples = 25251`
-- `best_val_loss = 0.104672`
-- `best_epoch = 39`
-- `denoise_index_resolved = 7087`
-
-## Verified Evaluation Ratios
-
-### none
-
-- `step_norm_all = 0.917176`
-- `endpoint_displacement = 0.815246`
-- `moving_ratio_global = 1.107620`
-- `propulsion_ratio = 0.857671`
-- `acc_rms = 1.380279`
-
-### q10
-
-- `step_norm_all = 0.928575`
-- `endpoint_displacement = 0.802554`
-- `moving_ratio_global = 1.098594`
-- `propulsion_ratio = 0.840675`
-- `acc_rms = 1.516248`
-
-### q20
-
-- `step_norm_all = 0.945826`
-- `endpoint_displacement = 0.826408`
-- `moving_ratio_global = 1.045439`
-- `propulsion_ratio = 0.845482`
-- `acc_rms = 1.353333`
-
-### q30
-
-- `step_norm_all = 0.946900`
-- `endpoint_displacement = 0.817517`
-- `moving_ratio_global = 0.969652`
-- `propulsion_ratio = 0.831879`
-- `acc_rms = 1.337866`
-
-## Loss Curves
-
-Public loss curve assets:
-
-- `docs/assets/prior/none_loss_curve.svg`
-- `docs/assets/prior/q20_loss_curve.svg`
-
-Verified references:
-
-- none: `best_val_loss = 0.090071`, `best_epoch = 38`
-- q20: `best_val_loss = 0.10341`, `best_epoch = 41`
+- historical single-seed `50`-epoch references remain in the archive
+- public seeded reference runs remain fixed at `sample_seed=42` and `vis_seed=42`
+- the current mainline evidence should be read from [`docs/stage2_phaseA_multiseed_100epoch_report.md`](stage2_phaseA_multiseed_100epoch_report.md)
 
 ## Selected Public Figure Paths
 
@@ -182,4 +126,3 @@ Verified references:
 - The public workflow does not change model architecture, training protocol, sampling math, or metric definitions.
 - Public repository contains code, selected figures, manifests, and lightweight docs only.
 - No raw pedestrian trajectory files, processed corpora, checkpoints, or large outputs are committed.
-

@@ -1,6 +1,0 @@
-REAL_PATH=datasets/processed/data_eth_20_rel_q20.npy
-GEN_PATH=outputs/ddpm_minimal_q20_h128/reverse_sampling_check_512/generated_rel_samples.npy
-MOVING_THRESHOLD_MODE=positive_only_quantile
-MOVING_THRESHOLD_QUANTILE=0.1
-MOVING_POSITIVE_EPS=1e-08
-GLOBAL_MOVING_THRESHOLD=0.104403

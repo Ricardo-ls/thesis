@@ -35,8 +35,9 @@ The repository now distinguishes between the current mainline evidence and the l
 Current mainline:
 
 - `docs/stage2_phaseA_multiseed_100epoch_report.md` is the primary interpretation page.
-- The multi-seed `100`-epoch screening result is the current repository-supported reading.
-- The mainline shortlist is `none` plus the secondary candidate `q10`.
+- The completed 15-seed, multi-seed `100`-epoch screening result is the current repository-supported reading.
+- The archived Phase A sweep spans `15` train seeds: `2`, `3`, `4`, `12`, `13`, `14`, `22`, `23`, `24`, `32`, `33`, `34`, `42`, `43`, and `44`.
+- The current mainline shortlist is `none` with `q10` as the secondary candidate carried forward for the next stage.
 
 Legacy reference layer:
 
@@ -48,7 +49,7 @@ Semantic aliases still work:
 - `optimization_best -> none`
 - `motion_balanced -> q20`
 
-The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py), but the current result reading should follow the multi-seed report rather than the old single-seed summary.
+The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py), but the current result reading should follow the completed 15-seed multi-seed report rather than the old single-seed summary.
 
 ## Repository Layout
 
@@ -60,6 +61,16 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 - [`outputs/prior/archive/`](outputs/prior/archive): folded historical material such as the phase-A multi-seed sweep
 - [`tools/prior/`](tools/prior): training, sampling, and evaluation entry points
 - [`utils/prior/`](utils/prior): registry and shared semantic helpers
+
+## Documentation Hygiene
+
+The repository contains both current mainline documents and phase-specific working files.
+
+- Current mainline documents define the active Stage 2 reading and should be preferred first.
+- Phase-specific working files were created during project progression and are retained for provenance, not for new planning.
+- Historical reference files remain in the tree so the thesis record is auditable, but they should not be mixed into the active interpretation layer.
+
+For a formal classification of the documentation and archive layers, see [`docs/DOCUMENT_CATALOG.md`](docs/DOCUMENT_CATALOG.md).
 
 ## Artifact Layout
 

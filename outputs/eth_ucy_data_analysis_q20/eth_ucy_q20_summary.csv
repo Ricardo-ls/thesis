@@ -1,8 +1,0 @@
-metric,before,after_q20
-sample_count,36073.000000,28858.000000
-avg_speed_mean,0.241194,0.297809
-avg_speed_median,0.230006,0.288647
-moving_ratio_mean,0.983240,0.982015
-moving_ratio_median,1.000000,1.000000
-acc_rms_mean,0.042321,0.050731
-acc_rms_median,0.040234,0.045872
