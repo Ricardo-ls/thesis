@@ -1,70 +1,73 @@
 # Thesis: Stage 2 Trajectory Prior
 
-This repository is the research and archival workspace for Stage 2 of the thesis: learning a high-fidelity, trajectory-only diffusion prior on ETH+UCY. The emphasis is not on a generic demo pipeline, but on a reproducible scientific record: data filtering, prior pre-training, seeded evaluation, and the written narrative that explains why each variant behaves the way it does.
+This repository is the research and archival workspace for Stage 2 of the thesis: learning a high-fidelity, trajectory-only diffusion prior on ETH+UCY. The emphasis is on a reproducible scientific record, not a generic demo pipeline.
 
-## Reading Order
+## What This Repo Contains
 
-If you are new to the project, read in this order:
+- Stage 2 training, sampling, and evaluation code
+- Canonical registry logic for variant and path resolution
+- Seeded training snapshots and evaluation artifacts
+- Paper-facing figures and narrative documentation
 
-1. This README for the project thesis, structure, and repository map.
-2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the full Stage 2 interpretation, figures, and reproducibility notes.
-3. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry that binds names to paths and semantics.
+## Read In This Order
 
-## Research Scope
+1. This README for the project-level scope and repository map.
+2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the Stage 2 interpretation and figures.
+3. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of variants and paths.
 
-The codebase is organized around a narrow scientific question:
-
-- Can a diffusion prior trained only on pedestrian motion capture the geometry, smoothness, and dynamic plausibility of ETH+UCY trajectories?
-- Which filtering policy yields the strongest balance between sample coverage and motion realism?
-- How do the official variants compare when the protocol, seed, horizon, and evaluation budget are held fixed?
+## Stage 2 Scope
 
 Stage 2 is the current center of gravity.
 
-- Stage 2: trajectory-only diffusion prior pre-training and evaluation.
-- Stage 3: downstream sensor-conditioned localization or filtering, treated as a separate future line of work.
+- Stage 2: trajectory-only diffusion prior pre-training and evaluation
+- Stage 3: downstream sensor-conditioned localization or filtering, treated as future work
 
-## Canonical Variants
+The scientific question is narrow:
 
-The registry in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) is the source of truth for semantics, directories, and narrative labels. The official Stage 2 names are:
+- Can a diffusion prior trained only on pedestrian motion capture the geometry, smoothness, and dynamic plausibility of ETH+UCY trajectories?
+- Which filtering policy gives the best balance between motion realism and sample coverage?
+- How do the four official variants compare when protocol and model are held fixed?
+
+## Official Variants
+
+The canonical Stage 2 variants are:
 
 - `none`: optimization-best baseline under the unified protocol
-- `q10`: weakest filtering regime, useful as a low-pressure reference
-- `q20`: balanced motion-focused prior and the recommended filtered variant
-- `q30`: strongest filtering regime, more selective but less favorable on the full trade-off
+- `q10`: weak-filtering reference
+- `q20`: recommended balanced filtered prior
+- `q30`: strong-filtering reference
 
 Semantic aliases:
 
 - `optimization_best -> none`
 - `motion_balanced -> q20`
 
+The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py).
+
 ## Repository Layout
 
-The repository is intentionally split by function:
+- [`docs/`](docs): paper-facing narrative, figures, and archived notes
+- [`outputs/prior/train/`](outputs/prior/train): training snapshots organized by variant and seed
+- [`outputs/prior/sample/`](outputs/prior/sample): reverse-sampling artifacts organized to mirror train
+- [`outputs/prior/eval/`](outputs/prior/eval): evaluation artifacts organized to mirror train
+- [`outputs/prior/variants/`](outputs/prior/variants): browsing entry point for the four official variants
+- [`outputs/prior/archive/`](outputs/prior/archive): folded historical material such as the phase-A multi-seed sweep
+- [`tools/prior/`](tools/prior): training, sampling, and evaluation entry points
+- [`utils/prior/`](utils/prior): registry and shared semantic helpers
 
-- [`docs/`](docs) contains the paper-facing narrative, figures, and archived notes.
-- [`outputs/prior/variants/`](outputs/prior/variants) is the top-level Stage 2 entry point, with one directory per official variant.
-- [`outputs/prior/train|sample|eval/`](outputs/prior) remain the canonical artifact stores that the code still reads from.
-- [`outputs/prior/archive/`](outputs/prior/archive) holds folded early-phase material.
-- [`tools/prior/`](tools/prior) contains training, sampling, and evaluation entry points.
-- [`utils/prior/`](utils/prior) contains the registry and shared semantic helpers.
+## Artifact Layout
 
-## Stage 2 Artifacts
+The current archive is seed-labeled and aligned across train, sample, and eval:
 
-The Stage 2 archive is now organized so the four official variants are the primary conceptual units. The new outer directory is `outputs/prior/variants/`, and each variant exposes three task views:
+- `outputs/prior/train/ddpm_eth_ucy_{variant}_h128/seed{seed}-{epoch_tag}/`
+- `outputs/prior/sample/ddpm_eth_ucy_{variant}_h128/seed{seed}-{epoch_tag}/reference_seed{sample_seed}/`
+- `outputs/prior/eval/ddpm_eth_ucy_{variant}_h128/seed{seed}-{epoch_tag}/reference_seed{sample_seed}/`
 
-- `train/` for checkpoints and training curves
-- `sample/` for reverse-sampling artifacts
-- `eval/` for distributional diagnostics and summary metrics
+Here:
 
-The early phase-A multi-seed material is folded under `outputs/prior/archive/` rather than treated as a first-class operating mode.
-
-See:
-
-- [`outputs/prior/README.md`](outputs/prior/README.md)
-- [`outputs/prior/train/README.md`](outputs/prior/train/README.md)
-- [`outputs/prior/variants/`](outputs/prior/variants)
-- [`outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval`](outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval)
-- [`docs/multi_seed_stage2_plan.md`](docs/multi_seed_stage2_plan.md)
+- `train_seed` identifies the checkpoint source
+- `sample_seed` controls the sampling and visualization protocol
+- `reference_seed42` is a fixed protocol tag, not a training seed
 
 ## Local Setup
 
@@ -86,17 +89,9 @@ This script will:
 - write `.vscode/settings.json`, `.vscode/tasks.json`, and `.vscode/extensions.json`
 - open a shell with the environment activated
 
-After that, training commands can be launched from the repository root, for example:
+## Reference Workflow
 
-```bash
-PYTHONPYCACHEPREFIX=/tmp MPLBACKEND=Agg MPLCONFIGDIR=/tmp/mpl ./.venv/bin/python -u -m tools.prior.train.train_ddpm_eth_ucy_h128 --variant none --epochs 100 --batch_size 128 --timesteps 100 --hidden_dim 128 --random_seed 42
-```
-
-## Reference Figures
-
-The public Stage 2 figures are reproducible from the code in this repository without committing raw trajectory data, checkpoints, or large outputs.
-
-Reference sampling and evaluation for the balanced prior:
+Reference sampling and evaluation use the balanced prior:
 
 ```bash
 PYTHONPYCACHEPREFIX=/tmp ./.venv/bin/python -m tools.prior.sample.reverse_sample_ddpm_eth_ucy_h128 \
@@ -135,8 +130,13 @@ This repository is a public scientific archive, not a raw data dump.
 - No checkpoints or large training outputs are committed beyond the curated snapshot archive.
 - Publication-oriented figures and narrative docs live in `docs/`.
 
-## Backup Branch
+## Backup Branches
 
-For rollback and recovery, a full snapshot is also stored on GitHub in the branch `backup/full-snapshot-2026-04-12`.
+For rollback and recovery, full snapshots are kept in GitHub backup branches.
 
-Use [`BACKUP.md`](BACKUP.md) for the shortest file-restore command and backup branch notes.
+- `backup/full-snapshot-2026-04-12`
+- `backup/full-snapshot-2026-04-15`
+
+If you do not see the backup in GitHub, switch branches in the repository view. The backup is not the default branch, so it will not appear unless you select it explicitly.
+
+Use [`BACKUP.md`](BACKUP.md) for the shortest restore command and backup notes.

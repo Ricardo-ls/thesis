@@ -51,17 +51,5 @@
   ],
   "generated_rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q20_h128/reference_seed42/generated_rel_samples.npy",
   "generated_abs_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q20_h128/reference_seed42/generated_abs_samples.npy",
-  "train_record": {
-    "samples": 28858,
-    "best_val_loss": 0.10341,
-    "best_epoch": 41
-  },
-  "eval_ratios": {
-    "step_norm_all": 0.945826,
-    "endpoint_displacement": 0.826408,
-    "moving_ratio_global": 1.045439,
-    "propulsion_ratio": 0.845482,
-    "acc_rms": 1.353333
-  },
   "reference_tag": "reference_seed42"
 }

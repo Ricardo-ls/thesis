@@ -1,10 +1,10 @@
 # Stage 2 Multi-Seed Plan
 
-This plan keeps the Stage 2 prior experiments organized and easy to recover.
+This page now documents the archived Phase A sweep and the seed-labeled Stage 2 snapshot layout. The live, canonical archive is organized by variant and seed under `outputs/prior/train`, `outputs/prior/sample`, and `outputs/prior/eval`.
 
-## Active Expansion Set
+## Archived Seed Set
 
-The active Phase A expansion now follows the explicit seed list:
+The archived Phase A expansion follows the explicit seed list:
 
 - `2`
 - `3`
@@ -64,7 +64,7 @@ Inside each completed run directory, keep one snapshot per run:
 
 ## Execution Rule
 
-The training script now writes directly into the seed-and-epoch-labeled path and generates the loss curve automatically from epoch `10` onward.
+The training script writes directly into the seed-and-epoch-labeled path and generates the loss curve automatically from epoch `10` onward.
 
 For the current expansion, every new `100`-epoch run should land in:
 
@@ -86,4 +86,4 @@ For the current expansion, every new `100`-epoch run should land in:
 
 ## Current Status
 
-The directory skeleton for the active expansion set has been created for all four variants. Existing completed runs are preserved in place, and empty future run directories are tracked with `.gitkeep` so they remain visible in the repository layout.
+The archived expansion set is preserved for traceability. The current canonical layout is the variant-first seed archive under `outputs/prior/train`, `outputs/prior/sample`, and `outputs/prior/eval`.

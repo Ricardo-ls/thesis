@@ -8,12 +8,11 @@ import pandas as pd
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 from utils.prior.ablation_paths import (
-    get_eval_ratios_by_name,
     get_paths_by_name,
-    get_train_record_by_name,
     resolve_variant_or_objective,
     to_abs_path,
 )
+from utils.prior.run_metadata import resolve_current_run_metadata
 
 MOVING_THRESHOLD_QUANTILE = 0.10
 MOVING_POSITIVE_EPS = 1e-8
@@ -186,6 +185,7 @@ def main():
     parser.add_argument("--variant", type=str, default="motion_balanced")
     parser.add_argument("--train_seed", type=int, default=42)
     parser.add_argument("--train_epochs", type=int, default=100)
+    parser.add_argument("--sample_seed", type=int, default=42)
     parser.add_argument("--num_generate", type=int, default=512)
     parser.add_argument("--generated_rel_path", type=str, default=None)
     parser.add_argument("--reference_tag", type=str, default="reference_seed42")
@@ -194,9 +194,13 @@ def main():
 
     resolved_variant = resolve_variant_or_objective(args.variant)
     cfg = get_paths_by_name(args.variant)
-    train_record = get_train_record_by_name(args.variant)
-    eval_ratios = get_eval_ratios_by_name(args.variant)
-    run_tag = f"seed{args.train_seed}-{args.train_epochs}epoch"
+    current_run = resolve_current_run_metadata(
+        variant=resolved_variant,
+        train_seed=args.train_seed,
+        train_epochs=args.train_epochs,
+        train_root=PROJECT_ROOT / "outputs" / "prior" / "train",
+    )
+    run_tag = current_run["run_tag"]
 
     real_path = to_abs_path(cfg["rel_path"])
     if args.generated_rel_path is not None:
@@ -212,15 +216,7 @@ def main():
             / args.reference_tag
             / "generated_rel_samples.npy"
         )
-    out_dir = (
-        PROJECT_ROOT
-        / "outputs"
-        / "prior"
-        / "eval"
-        / cfg["eval_tag"]
-        / run_tag
-        / args.reference_tag
-    )
+    out_dir = PROJECT_ROOT / "outputs" / "prior" / "eval" / cfg["eval_tag"] / run_tag / args.reference_tag
 
     real, gen = load_data(real_path, gen_path, out_dir)
 
@@ -233,10 +229,11 @@ def main():
     print(f"out_dir   = {out_dir}")
     print(f"train_seed = {args.train_seed}")
     print(f"train_epochs = {args.train_epochs}")
+    print(f"sample_seed = {args.sample_seed}")
     print(f"run_tag = {run_tag}")
     print(f"reference_tag = {args.reference_tag}")
-    print(f"train_record = {train_record}")
-    print(f"eval_ratios  = {eval_ratios}")
+    print(f"current_run_best_epoch     = {current_run['current_run_best_epoch']}")
+    print(f"current_run_best_val_loss  = {current_run['current_run_best_val_loss']}")
 
     moving_threshold = compute_global_moving_threshold(real, q=MOVING_THRESHOLD_QUANTILE, positive_eps=MOVING_POSITIVE_EPS)
     print(f"\nGlobal moving threshold (positive-only real step_norm q{int(MOVING_THRESHOLD_QUANTILE * 100)}): {moving_threshold:.6f}")
@@ -257,11 +254,21 @@ def main():
                 {
                     "input_name": args.variant,
                     "resolved_variant": resolved_variant,
+                    "variant": resolved_variant,
+                    "sample_dir": str(gen_path.parent),
+                    "real_data_path": str(real_path),
+                    "generated_data_path": str(gen_path),
                     "generated_rel_path": str(gen_path),
                     "rel_path": str(real_path),
+                    "output_dir": str(out_dir),
                     "train_seed": args.train_seed,
                     "train_epochs": args.train_epochs,
+                    "sample_seed": args.sample_seed,
                     "run_tag": run_tag,
+                    "current_run_best_epoch": current_run["current_run_best_epoch"],
+                    "current_run_best_val_loss": current_run["current_run_best_val_loss"],
+                    "current_run_run_note_path": current_run["run_note_path"],
+                    "current_run_loss_history_path": current_run["loss_history_path"],
                     "reference_tag": args.reference_tag,
                 },
                 f,
@@ -273,6 +280,8 @@ def main():
         f.write(f"RESOLVED_VARIANT={resolved_variant}\n")
         f.write(f"REAL_PATH={real_path}\n")
         f.write(f"GEN_PATH={gen_path}\n")
+        f.write(f"OUTPUT_DIR={out_dir}\n")
+        f.write(f"SAMPLE_SEED={args.sample_seed}\n")
         f.write("MOVING_THRESHOLD_MODE=positive_only_quantile\n")
         f.write(f"MOVING_THRESHOLD_QUANTILE={MOVING_THRESHOLD_QUANTILE}\n")
         f.write(f"MOVING_POSITIVE_EPS={MOVING_POSITIVE_EPS}\n")

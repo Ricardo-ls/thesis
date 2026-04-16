@@ -14,12 +14,11 @@ if str(PROJECT_ROOT) not in sys.path:
 
 from models.temporal_denoiser import TemporalDenoiser1D
 from utils.prior.ablation_paths import (
-    get_eval_ratios_by_name,
     get_paths_by_name,
-    get_train_record_by_name,
     resolve_variant_or_objective,
     to_abs_path,
 )
+from utils.prior.run_metadata import resolve_current_run_metadata
 
 
 def set_seed(seed: int = 42):
@@ -213,30 +212,18 @@ def main():
         set_seed(args.sample_seed)
     resolved_variant = resolve_variant_or_objective(args.variant)
     cfg = get_paths_by_name(args.variant)
-    train_record = get_train_record_by_name(args.variant)
-    eval_ratios = get_eval_ratios_by_name(args.variant)
-    run_tag = f"seed{args.train_seed}-{args.train_epochs}epoch"
+    current_run = resolve_current_run_metadata(
+        variant=resolved_variant,
+        train_seed=args.train_seed,
+        train_epochs=args.train_epochs,
+        train_root=PROJECT_ROOT / "outputs" / "prior" / "train",
+    )
+    run_tag = current_run["run_tag"]
 
     device = resolve_device(args.device)
     data_path = to_abs_path(cfg["rel_path"])
-    ckpt_path = (
-        PROJECT_ROOT
-        / "outputs"
-        / "prior"
-        / "train"
-        / cfg["train_tag"]
-        / run_tag
-        / "best_model.pt"
-    )
-    out_dir = (
-        PROJECT_ROOT
-        / "outputs"
-        / "prior"
-        / "sample"
-        / cfg["sample_tag"]
-        / run_tag
-        / args.reference_tag
-    )
+    ckpt_path = Path(current_run["ckpt_path"])
+    out_dir = PROJECT_ROOT / "outputs" / "prior" / "sample" / cfg["sample_tag"] / run_tag / args.reference_tag
     out_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
@@ -260,8 +247,8 @@ def main():
     print(f"denoise_selection= {args.denoise_selection}")
     print(f"denoise_quantile = {args.denoise_quantile}")
     print(f"reference_tag    = {args.reference_tag}")
-    print(f"train_record     = {train_record}")
-    print(f"eval_ratios      = {eval_ratios}")
+    print(f"current_run_best_epoch     = {current_run['current_run_best_epoch']}")
+    print(f"current_run_best_val_loss  = {current_run['current_run_best_val_loss']}")
     print("=" * 60)
 
     if not data_path.exists():
@@ -334,8 +321,12 @@ def main():
     manifest = {
         "input_name": args.variant,
         "resolved_variant": resolved_variant,
+        "variant": resolved_variant,
+        "data_path": str(data_path),
         "rel_path": str(data_path),
         "ckpt_path": str(ckpt_path),
+        "output_dir": str(out_dir),
+        "sample_dir": str(out_dir),
         "device": device,
         "sample_seed": args.sample_seed,
         "vis_seed": args.vis_seed,
@@ -349,12 +340,14 @@ def main():
         "train_seed": args.train_seed,
         "train_epochs": args.train_epochs,
         "run_tag": run_tag,
+        "current_run_best_epoch": current_run["current_run_best_epoch"],
+        "current_run_best_val_loss": current_run["current_run_best_val_loss"],
+        "current_run_run_note_path": current_run["run_note_path"],
+        "current_run_loss_history_path": current_run["loss_history_path"],
         "real_plot_indices": real_plot_indices,
         "generated_plot_indices": generated_plot_indices,
         "generated_rel_path": str(out_dir / "generated_rel_samples.npy"),
         "generated_abs_path": str(out_dir / "generated_abs_samples.npy"),
-        "train_record": train_record,
-        "eval_ratios": eval_ratios,
         "reference_tag": args.reference_tag,
     }
 

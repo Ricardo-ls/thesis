@@ -13,7 +13,7 @@ OFFICIAL_STAGE2_PROTOCOL = {
     "batch_size": 128,
     "timesteps": 100,
     "random_seed": 42,
-    "max_epoch": 50,
+    "max_epoch": 100,
     "checkpoint_selection": "best_validation_checkpoint",
     "reverse_samples": 512,
     "eval_metrics": [
@@ -31,55 +31,55 @@ OFFICIAL_STAGE2_PROTOCOL = {
 OFFICIAL_STAGE2_TRAIN_RESULTS = {
     "none": {
         "samples": 36073,
-        "best_val_loss": 0.090071,
-        "best_epoch": 38,
+        "best_val_loss": 0.087299,
+        "best_epoch": 68,
     },
     "q10": {
         "samples": 32465,
-        "best_val_loss": 0.096710,
-        "best_epoch": 36,
+        "best_val_loss": 0.093522,
+        "best_epoch": 99,
     },
     "q20": {
         "samples": 28858,
-        "best_val_loss": 0.103410,
-        "best_epoch": 41,
+        "best_val_loss": 0.099376,
+        "best_epoch": 70,
     },
     "q30": {
         "samples": 25251,
-        "best_val_loss": 0.104672,
-        "best_epoch": 39,
+        "best_val_loss": 0.102625,
+        "best_epoch": 72,
     },
 }
 
 
 OFFICIAL_STAGE2_EVAL_RATIOS = {
     "none": {
-        "step_norm_all": 0.917176,
-        "endpoint_displacement": 0.815246,
-        "moving_ratio_global": 1.107620,
-        "propulsion_ratio": 0.857671,
-        "acc_rms": 1.380279,
+        "step_norm_all": 0.920140,
+        "endpoint_displacement": 0.811718,
+        "moving_ratio_global": 1.103156,
+        "propulsion_ratio": 0.855215,
+        "acc_rms": 1.452409,
     },
     "q10": {
-        "step_norm_all": 0.928575,
-        "endpoint_displacement": 0.802554,
-        "moving_ratio_global": 1.098594,
-        "propulsion_ratio": 0.840675,
-        "acc_rms": 1.516248,
+        "step_norm_all": 0.912383,
+        "endpoint_displacement": 0.797510,
+        "moving_ratio_global": 1.079710,
+        "propulsion_ratio": 0.855401,
+        "acc_rms": 1.376507,
     },
     "q20": {
-        "step_norm_all": 0.945826,
-        "endpoint_displacement": 0.826408,
-        "moving_ratio_global": 1.045439,
-        "propulsion_ratio": 0.845482,
-        "acc_rms": 1.353333,
+        "step_norm_all": 0.864282,
+        "endpoint_displacement": 0.738620,
+        "moving_ratio_global": 1.031362,
+        "propulsion_ratio": 0.826810,
+        "acc_rms": 1.372372,
     },
     "q30": {
-        "step_norm_all": 0.946900,
-        "endpoint_displacement": 0.817517,
-        "moving_ratio_global": 0.969652,
-        "propulsion_ratio": 0.831879,
-        "acc_rms": 1.337866,
+        "step_norm_all": 0.948828,
+        "endpoint_displacement": 0.805835,
+        "moving_ratio_global": 0.964964,
+        "propulsion_ratio": 0.817302,
+        "acc_rms": 1.555117,
     },
 }
 
@@ -94,7 +94,7 @@ OFFICIAL_STAGE2_RECOMMENDATION = {
 
 
 OFFICIAL_STAGE2_NARRATIVE = {
-    "none": "optimization-best baseline under the unified 50-epoch protocol",
+    "none": "optimization-best baseline under the unified 100-epoch protocol",
     "q10": "filtering too weak; gains are limited",
     "q20": "most balanced motion-focused prior among filtered variants",
     "q30": "filtering too strong; some dynamic ratios improve but propulsion worsens and train loss is the highest",
@@ -117,7 +117,7 @@ def get_eth_ucy_variant_paths(variant: str, seed: int = 42):
             "train_dir": str(TRAIN_OUT_DIR / train_tag / seed_tag),
             "sample_dir": str(SAMPLE_OUT_DIR / train_tag / seed_tag),
             "eval_dir": str(EVAL_OUT_DIR / train_tag / seed_tag),
-            "ckpt_path": str(TRAIN_OUT_DIR / train_tag / seed_tag / "best_model_ep150_seed42.pt"),
+            "ckpt_path": str(TRAIN_OUT_DIR / train_tag / seed_tag / "best_model.pt"),
         }
 
     if variant in {"q10", "q20", "q30"}:
