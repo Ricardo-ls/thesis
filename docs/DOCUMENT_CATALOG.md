@@ -31,14 +31,14 @@ These files were created during project progression and are useful as planning n
 - [`archive/phase_working/stage2_gpt_briefing.md`](archive/phase_working/stage2_gpt_briefing.md): factual handoff note for documentation generation and traceability.
 - [`archive/phase_working/multi_seed_stage2_plan.md`](archive/phase_working/multi_seed_stage2_plan.md): archived seed schedule and folder convention for the Phase A sweep.
 
-## Output Archives
+## Output Layers
 
-The archived outputs are separated by role:
+The archived and evidence outputs are separated by role:
 
 - `outputs/prior/train/`: training snapshots and run notes
 - `outputs/prior/sample/`: reverse-sampling artifacts and manifests
 - `outputs/prior/eval/`: evaluation diagnostics and summary metrics
-- `outputs/prior/archive/`: folded historical Stage 2 material, including the Phase A multi-seed archive
+- `outputs/prior/archive/`: folded historical Stage 2 material
 
 ## Practical Reading Order
 
