@@ -61,7 +61,7 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 - [`outputs/prior/sample/`](outputs/prior/sample): reverse-sampling artifacts organized to mirror train
 - [`outputs/prior/eval/`](outputs/prior/eval): evaluation artifacts organized to mirror train
 - [`outputs/prior/variants/`](outputs/prior/variants): browsing entry point for the four official variants
-- [`outputs/prior/archive/`](outputs/prior/archive): folded historical material such as the phase-A multi-seed sweep
+- [`outputs/prior/archive/`](outputs/prior/archive): legacy reference outputs and folded historical material
 - [`tools/prior/`](tools/prior): training, sampling, and evaluation entry points
 - [`tools/legacy/`](tools/legacy): older exploratory scripts retained for traceability
 - [`utils/prior/`](utils/prior): registry and shared semantic helpers
@@ -78,7 +78,7 @@ For a formal classification of the documentation and archive layers, see [`docs/
 
 ## Artifact Layout
 
-The current archive is seed-labeled and aligned across train, sample, and eval:
+The current evidence layer is seed-labeled and aligned across train, sample, and eval:
 
 - `outputs/prior/train/ddpm_eth_ucy_{variant}_h128/seed{seed}-{epoch_tag}/`
 - `outputs/prior/sample/ddpm_eth_ucy_{variant}_h128/seed{seed}-{epoch_tag}/reference_seed{sample_seed}/`
@@ -89,6 +89,14 @@ Here:
 - `train_seed` identifies the checkpoint source
 - `sample_seed` controls the sampling and visualization protocol
 - `reference_seed42` is a fixed protocol tag, not a training seed
+
+The current evidence layer is read from:
+
+- `outputs/prior/train/`
+- `outputs/prior/sample/`
+- `outputs/prior/eval/`
+
+The `outputs/prior/archive/` tree is legacy reference material and should not be treated as the active evidence layer.
 
 ## Local Setup
 
@@ -112,35 +120,14 @@ This script will:
 
 ## Reference Workflow
 
-Reference sampling and evaluation use the balanced prior:
+Compatibility aliases are preserved for traceability only:
 
 ```bash
-PYTHONPYCACHEPREFIX=/tmp ./.venv/bin/python -m tools.prior.sample.reverse_sample_ddpm_eth_ucy_h128 \
-  --variant motion_balanced \
-  --sample_seed 42 \
-  --vis_seed 42 \
-  --num_generate 512 \
-  --num_show 16 \
-  --denoise_selection endpoint_quantile \
-  --denoise_quantile 0.5 \
-  --reference_tag reference_seed42 \
-  --save_manifest \
-  --device cpu
-
-PYTHONPYCACHEPREFIX=/tmp ./.venv/bin/python -m tools.prior.eval.analyze_generated_vs_real_eth_ucy_h128 \
-  --variant motion_balanced \
-  --num_generate 512 \
-  --generated_rel_path outputs/prior/sample/ddpm_eth_ucy_q20_h128/reference_seed42/generated_rel_samples.npy \
-  --reference_tag reference_seed42 \
-  --save_manifest
-
-./.venv/bin/python -m tools.prior.export_reference_figures \
-  --variant motion_balanced \
-  --reference_tag reference_seed42 \
-  --include both
+optimization_best -> none
+motion_balanced -> q20
 ```
 
-For the optimization-best baseline, replace `motion_balanced` with `optimization_best`.
+If you need a historical workflow example, consult the archived documentation rather than using these aliases as the default execution path.
 
 ## Safety Model
 
