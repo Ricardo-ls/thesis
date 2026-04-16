@@ -35,13 +35,13 @@ The repository now distinguishes between the current mainline evidence and the l
 Current mainline:
 
 - `docs/stage2_phaseA_multiseed_100epoch_report.md` is the primary interpretation page.
-- The completed 15-seed, multi-seed `100`-epoch screening result is the current repository-supported reading.
-- The archived Phase A sweep spans `15` train seeds: `2`, `3`, `4`, `12`, `13`, `14`, `22`, `23`, `24`, `32`, `33`, `34`, `42`, `43`, and `44`.
-- The current mainline shortlist is `none` with `q10` as the secondary candidate carried forward for the next stage.
+- The completed Phase A sweep is the current repository-supported reading.
+- It spans 15 train seeds: `2`, `3`, `4`, `12`, `13`, `14`, `22`, `23`, `24`, `32`, `33`, `34`, `42`, `43`, and `44`.
+- The current mainline shortlist is `none`, with `q10` as the secondary candidate carried forward for the next stage.
 
 Legacy reference layer:
 
-- the original single-seed `50`-epoch interpretation is retained only for historical comparison
+- The original single-seed `50`-epoch interpretation is retained only for historical comparison.
 - `none`, `q10`, `q20`, and `q30` remain the canonical variant names in the registry
 
 Semantic aliases still work:
@@ -54,12 +54,14 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 ## Repository Layout
 
 - [`docs/`](docs): paper-facing narrative, figures, and archived notes
+- [`docs/archive/`](docs/archive): historical and phase-specific documentation
 - [`outputs/prior/train/`](outputs/prior/train): training snapshots organized by variant and seed
 - [`outputs/prior/sample/`](outputs/prior/sample): reverse-sampling artifacts organized to mirror train
 - [`outputs/prior/eval/`](outputs/prior/eval): evaluation artifacts organized to mirror train
 - [`outputs/prior/variants/`](outputs/prior/variants): browsing entry point for the four official variants
 - [`outputs/prior/archive/`](outputs/prior/archive): folded historical material such as the phase-A multi-seed sweep
 - [`tools/prior/`](tools/prior): training, sampling, and evaluation entry points
+- [`tools/legacy/`](tools/legacy): older exploratory scripts retained for traceability
 - [`utils/prior/`](utils/prior): registry and shared semantic helpers
 
 ## Documentation Hygiene
@@ -158,4 +160,4 @@ For rollback and recovery, full snapshots are kept in GitHub backup branches.
 
 If you do not see the backup in GitHub, switch branches in the repository view. The backup is not the default branch, so it will not appear unless you select it explicitly. New uploads should go to `backup/full-snapshot-2026-04-16`.
 
-Use [`BACKUP.md`](BACKUP.md) for the shortest restore command and backup notes.
+Use [`docs/archive/reference/BACKUP.md`](docs/archive/reference/BACKUP.md) for the shortest restore command and backup notes.
