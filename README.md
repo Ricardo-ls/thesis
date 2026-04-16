@@ -28,21 +28,27 @@ The scientific question is narrow:
 - Which filtering policy gives the best balance between motion realism and sample coverage?
 - How do the four official variants compare when protocol and model are held fixed?
 
-## Official Variants
+## Stage 2 Interpretation
 
-The canonical Stage 2 variants are:
+The repository now distinguishes between the current mainline evidence and the legacy reference layer.
 
-- `none`: optimization-best baseline under the unified protocol
-- `q10`: weak-filtering reference
-- `q20`: recommended balanced filtered prior
-- `q30`: strong-filtering reference
+Current mainline:
 
-Semantic aliases:
+- `docs/stage2_phaseA_multiseed_100epoch_report.md` is the primary interpretation page.
+- The multi-seed `100`-epoch screening result is the current repository-supported reading.
+- The mainline shortlist is `none` plus the secondary candidate `q10`.
+
+Legacy reference layer:
+
+- the original single-seed `50`-epoch interpretation is retained only for historical comparison
+- `none`, `q10`, `q20`, and `q30` remain the canonical variant names in the registry
+
+Semantic aliases still work:
 
 - `optimization_best -> none`
 - `motion_balanced -> q20`
 
-The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py).
+The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py), but the current result reading should follow the multi-seed report rather than the old single-seed summary.
 
 ## Repository Layout
 

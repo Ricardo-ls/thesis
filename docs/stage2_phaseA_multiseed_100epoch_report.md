@@ -1,19 +1,16 @@
-# Stage 2 Phase A Multi-seed 100-epoch Protocol Check
+# Stage 2 Multi-seed 100-epoch Screening Result
 
 ## Objective
 
-This report consolidates Stage 2 Phase A under a fixed `100`-epoch budget across:
+This report is the current mainline result page for Stage 2.
 
-- `none`
-- `q10`
-- `q20`
-- `q30`
-
-with train seeds:
+It consolidates the four official variants under a fixed `100`-epoch budget across train seeds:
 
 - `42`
 - `43`
 - `44`
+
+The goal of this report is not to declare the final application-best prior, but to identify which variants should survive into the next longer-training stage.
 
 Validation loss is treated as a training diagnostic rather than a complete decision rule. The report therefore compares both:
 
@@ -83,4 +80,3 @@ These labels are deliberately conservative. The optimization-best candidate is s
 ## Appendix Figure
 
 ![Appendix none seed42 100 vs 150 val curve](assets/stage2_phaseA_multiseed_100epoch/figA1_none_seed42_100_vs_150_val_curve.png)
-
