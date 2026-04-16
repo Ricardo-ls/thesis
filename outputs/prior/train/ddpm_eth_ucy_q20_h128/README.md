@@ -1,16 +1,15 @@
 # `q20` Variant Training Snapshots
 
-This directory preserves the `q20` Stage 2 prior archive.
+This directory is part of the current evidence layer for the `q20` Stage 2 prior.
 
-## What It Represents
+## Current Evidence
 
-`q20` is the recommended filtered variant. It is the best balance point between motion realism, sample support, and downstream usefulness in the current thesis framing.
+`q20` is the filtered variant used in the Stage 2 evidence layer.
 
 ## Run Inventory
 
-- `seed42-100epoch/` contains the first 100-epoch reference run.
-- `seed43-100epoch/` contains the follow-up 100-epoch run.
-- `seed44-100epoch/` contains the later 100-epoch run.
+- `seed42-100epoch/` contains the first 100-epoch run.
+- `seed43-100epoch/` and `seed44-100epoch/` are part of the archived 15-seed sweep.
 - `seed2-100epoch/`, `seed3-100epoch/`, `seed4-100epoch/`, `seed12-100epoch/`, `seed13-100epoch/`, `seed14-100epoch/`, `seed22-100epoch/`, `seed23-100epoch/`, `seed24-100epoch/`, `seed32-100epoch/`, `seed33-100epoch/`, and `seed34-100epoch/` preserve the remaining archived runs.
 
 ## Required Files

@@ -77,7 +77,7 @@ The preferred browsing order for the current Stage 2 archive is:
 - [`outputs/prior/eval/`](../outputs/prior/eval) for distribution-level diagnostics
 - [`docs/stage2_phaseA_multiseed_100epoch_report.md`](stage2_phaseA_multiseed_100epoch_report.md) for the current mainline screening result
 
-The earlier follow-up note for `seed43` and `seed44` is no longer needed as a separate interpretation layer. Those runs are already subsumed into the multi-seed archive and should not carry standalone narrative weight.
+The earlier note for `seed43` and `seed44` is no longer needed as a separate interpretation layer. Those runs are already subsumed into the multi-seed archive and should not carry standalone narrative weight.
 
 ## Privacy and Repository Safety
 
