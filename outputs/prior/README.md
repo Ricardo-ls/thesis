@@ -1,6 +1,6 @@
 # Stage 2 Prior Outputs
 
-This directory is the current evidence layer for Stage 2 prior outputs. It preserves the exact training, sampling, and evaluation outputs that support the current mainline interpretation.
+This directory is the current evidence root for Stage 2 prior outputs. It preserves the training, sampling, and evaluation artifacts that support the current mainline interpretation.
 
 ## Current Evidence
 
@@ -17,25 +17,16 @@ The main human-facing entry point is [`variants/`](variants). Within each varian
 - `sample/` for reverse-sampling outputs and seed manifests
 - `eval/` for distributional diagnostics, ratios, and summary metrics
 
-## Legacy Reference
-
-The earlier multi-seed Stage 2 sweep is retained as legacy reference material rather than a live operating mode.
-
-- `outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval/`
-- `docs/stage2_phaseA_multiseed_100epoch_report.md`
-
-Those assets are retained for traceability, but they do not define the current evidence layer.
-
 ## Documentation Classification
 
 For clarity, files in this area are grouped into the following classes:
 
 - `README.md` files provide directory-level interpretation and should be treated as current navigation aids.
-- `RUN_NOTE_*.md` files are phase-specific run records produced during training.
+- `RUN_NOTE_*.md` files are run records produced during training.
 - `analysis_config.txt` and `manifest.json` files are execution metadata and should be treated as provenance records.
 - PNG and SVG files are figure artifacts, not narrative documents.
 
-When reading the archive, prefer the current mainline documentation in [`docs/`](../../docs) and use the files here as evidence-bearing outputs.
+When reading this directory, prefer the current mainline documentation in [`docs/`](../../docs) and use the files here as evidence-bearing outputs.
 
 ## Training Snapshot Convention
 
@@ -63,11 +54,6 @@ The loss curve begins at epoch 10 to match the project plotting convention and a
 ## Formal Reading Order
 
 1. [`README.md`](../../README.md) for the thesis-level framing.
-2. [`docs/prior_stage2.md`](../../docs/prior_stage2.md) for the scientific interpretation.
-3. [`utils/prior/ablation_paths.py`](../../utils/prior/ablation_paths.py) for the canonical path registry.
-
-## Follow-Up Batch
-
-The seeded `100`-epoch follow-up sample/eval batch for `seed43` and `seed44` has been folded into the archive structure rather than kept as a standalone narrative page.
-
-Use the archived evidence tree under `outputs/prior/archive/` for the corresponding run outputs and manifests.
+2. [`docs/prior_stage2.md`](../../docs/prior_stage2.md) for the current Stage 2 interpretation.
+3. [`docs/stage2_phaseA_multiseed_100epoch_report.md`](../../docs/stage2_phaseA_multiseed_100epoch_report.md) for the completed 15-seed, multi-seed, 100-epoch mainline result.
+4. [`utils/prior/ablation_paths.py`](../../utils/prior/ablation_paths.py) for the canonical path registry.
