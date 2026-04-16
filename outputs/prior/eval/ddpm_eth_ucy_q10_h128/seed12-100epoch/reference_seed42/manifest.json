@@ -1,0 +1,20 @@
+{
+  "input_name": "q10",
+  "resolved_variant": "q10",
+  "variant": "q10",
+  "sample_dir": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q10_h128/seed12-100epoch/reference_seed42",
+  "real_data_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel_q10.npy",
+  "generated_data_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q10_h128/seed12-100epoch/reference_seed42/generated_rel_samples.npy",
+  "generated_rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q10_h128/seed12-100epoch/reference_seed42/generated_rel_samples.npy",
+  "rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel_q10.npy",
+  "output_dir": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/eval/ddpm_eth_ucy_q10_h128/seed12-100epoch/reference_seed42",
+  "train_seed": 12,
+  "train_epochs": 100,
+  "sample_seed": 42,
+  "run_tag": "seed12-100epoch",
+  "current_run_best_epoch": 98,
+  "current_run_best_val_loss": 0.09536107491954861,
+  "current_run_run_note_path": null,
+  "current_run_loss_history_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_q10_h128/seed12-100epoch/loss_history.csv",
+  "reference_tag": "reference_seed42"
+}
