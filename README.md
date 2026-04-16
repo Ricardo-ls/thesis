@@ -30,24 +30,26 @@ The scientific question is narrow:
 
 ## Stage 2 Interpretation
 
-The repository now distinguishes between the current mainline evidence and the legacy reference layer.
+The repository now distinguishes between the current mainline evidence, legacy reference material, and phase-working provenance.
 
 Current mainline:
 
 - `docs/stage2_phaseA_multiseed_100epoch_report.md` is the primary interpretation page.
-- The completed Phase A sweep is the current repository-supported reading.
+- The completed 15-seed, multi-seed, 100-epoch Phase A sweep is the current evidence layer.
 - It spans 15 train seeds: `2`, `3`, `4`, `12`, `13`, `14`, `22`, `23`, `24`, `32`, `33`, `34`, `42`, `43`, and `44`.
 - The current mainline shortlist is `none`, with `q10` as the secondary candidate carried forward for the next stage.
 
 Legacy reference layer:
 
 - The original single-seed `50`-epoch interpretation is retained only for historical comparison.
-- `none`, `q10`, `q20`, and `q30` remain the canonical variant names in the registry
+- `none`, `q10`, `q20`, and `q30` remain the canonical variant names in the registry.
 
 Semantic aliases still work:
 
 - `optimization_best -> none`
 - `motion_balanced -> q20`
+
+Compatibility aliases are retained for traceability only and do not define the current planning layer.
 
 The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py), but the current result reading should follow the completed 15-seed multi-seed report rather than the old single-seed summary.
 
@@ -66,11 +68,11 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 
 ## Documentation Hygiene
 
-The repository contains both current mainline documents and phase-specific working files.
+The repository contains current mainline documents, legacy reference material, and phase-working provenance.
 
-- Current mainline documents define the active Stage 2 reading and should be preferred first.
-- Phase-specific working files were created during project progression and are retained for provenance, not for new planning.
-- Historical reference files remain in the tree so the thesis record is auditable, but they should not be mixed into the active interpretation layer.
+- Current mainline documents define the active Stage 2 reading.
+- Phase-working provenance documents record project progression and are retained for traceability.
+- Legacy reference material remains in the tree so the thesis record is auditable, but it does not participate in the current planning layer.
 
 For a formal classification of the documentation and archive layers, see [`docs/DOCUMENT_CATALOG.md`](docs/DOCUMENT_CATALOG.md).
 

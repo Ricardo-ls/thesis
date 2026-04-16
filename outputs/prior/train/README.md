@@ -1,8 +1,8 @@
 # Prior Training Outputs
 
-This directory preserves the training-side archive for the Stage 2 ETH+UCY prior.
+This directory is part of the current evidence layer for Stage 2 training outputs.
 
-## Conceptual Layout
+## Current Evidence
 
 The four official variants are the organizing principle:
 
@@ -49,6 +49,10 @@ Every completed run should contain:
 - `loss_curve_epoch10plus.svg`
 - `RUN_NOTE_<variant>_ep<epochs>_seed<seed>.md`
 
+## Legacy Reference
+
+Empty placeholders are intentionally omitted. Historical runs are retained only when they support the current evidence layer or traceability requirements.
+
 ## Archival Rule
 
-Empty placeholders are intentionally omitted. The archive should contain only completed results, so the directory tree reads like a curated evidence table rather than a scratch workspace.
+The archive should contain only completed results, so the directory tree reads like a curated evidence table rather than a scratch workspace.

@@ -1,4 +1,4 @@
-# Phase-Specific Working Files
+# Phase-Working Provenance
 
 This directory contains documentation artifacts produced during project progression.
 
@@ -9,4 +9,4 @@ This directory contains documentation artifacts produced during project progress
 
 ## Interpretation Rule
 
-These files are preserved for provenance and should not be treated as the current Stage 2 mainline.
+These files are preserved for provenance only. They do not participate in the current planning layer or the current evidence layer.

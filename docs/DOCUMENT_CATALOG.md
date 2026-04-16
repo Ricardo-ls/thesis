@@ -12,13 +12,13 @@ This repository preserves both the current Stage 2 mainline evidence and the ear
 These are the documents that define the present Stage 2 interpretation.
 
 - [`stage2_phaseA_multiseed_100epoch_report.md`](stage2_phaseA_multiseed_100epoch_report.md): current mainline result page for the completed 15-seed, multi-seed, 100-epoch screening result.
-- [`prior_stage2.md`](prior_stage2.md): repository-level Stage 2 interpretation, registry context, and reading order.
-- [`README.md`](README.md): documentation map for the repository.
-- [`archive/README.md`](archive/README.md): archive layout and reading rules for folded documentation.
+- [`prior_stage2.md`](prior_stage2.md): current Stage 2 interpretation, registry context, and reading order.
+- [`README.md`](README.md): repository documentation map.
+- [`archive/EVIDENCE_ARCHIVE_SPEC.md`](archive/EVIDENCE_ARCHIVE_SPEC.md): formal specification for evidence archive layers and permitted reading.
 
 ## Historical Reference Documents
 
-These files remain in the repository for traceability and comparison, but they do not define the current interpretation layer.
+These files remain in the repository for traceability and comparison, but they do not define the current evidence layer.
 
 - `single-seed` or `50`-epoch Stage 2 narrative fragments retained in `prior_stage2.md`
 - legacy prior figures under `docs/assets/prior/`

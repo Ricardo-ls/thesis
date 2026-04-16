@@ -1,10 +1,10 @@
 # Stage 2 Prior Outputs
 
-This directory is the artifact archive for Stage 2 of the thesis project. It preserves the exact training, sampling, and evaluation outputs that support the written conclusions.
+This directory is the current evidence layer for Stage 2 prior outputs. It preserves the exact training, sampling, and evaluation outputs that support the current mainline interpretation.
 
-## Design Principle
+## Current Evidence
 
-The archive is organized around the four official variants:
+The current evidence is organized around the four official variants:
 
 - `none`
 - `q10`
@@ -17,14 +17,14 @@ The main human-facing entry point is [`variants/`](variants). Within each varian
 - `sample/` for reverse-sampling outputs and seed manifests
 - `eval/` for distributional diagnostics, ratios, and summary metrics
 
-## Archived Phase-A Material
+## Legacy Reference
 
-The earlier multi-seed Stage 2 sweep is intentionally treated as folded archive material rather than a live operating mode.
+The earlier multi-seed Stage 2 sweep is retained as legacy reference material rather than a live operating mode.
 
 - `outputs/prior/archive/stage2_phaseA_multiseed_100epoch/eval/`
 - `docs/stage2_phaseA_multiseed_100epoch_report.md`
 
-Those assets are retained for traceability, but the main entry point for the repository is the four-variant ETH+UCY prior archive.
+Those assets are retained for traceability, but they do not define the current evidence layer.
 
 ## Documentation Classification
 
