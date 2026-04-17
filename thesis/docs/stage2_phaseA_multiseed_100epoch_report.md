@@ -21,9 +21,9 @@ The report is intended to document the experimental evidence, not to provide pre
 
 ## Optimization View
 
-![Figure 1](../thesis/report/fig1_val_loss_2x2_multiseed.png)
+![Figure 1](../report/fig1_val_loss_2x2_multiseed.png)
 
-![Figure 2](../thesis/report/fig2_best_val_loss_summary.png)
+![Figure 2](../report/fig2_best_val_loss_summary.png)
 
 | variant | mean_best_val_loss | std_best_val_loss | min_best_val_loss | max_best_val_loss | mean_best_epoch | std_best_epoch |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -34,9 +34,9 @@ The report is intended to document the experimental evidence, not to provide pre
 
 ## Motion Realism View
 
-![Figure 3](../thesis/report/fig3_motion_realism_heatmap.png)
+![Figure 3](../report/fig3_motion_realism_heatmap.png)
 
-![Figure 4](../thesis/report/fig4_pairwise_metric_distributions_none_q20.png)
+![Figure 4](../report/fig4_pairwise_metric_distributions_none_q20.png)
 
 | variant | step_norm_all_ratio | endpoint_displacement_ratio | moving_ratio_global_ratio | acc_rms_ratio |
 | --- | --- | --- | --- | --- |
