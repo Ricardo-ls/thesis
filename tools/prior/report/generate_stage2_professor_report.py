@@ -10,6 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_pdf import PdfPages
 from matplotlib.colors import LinearSegmentedColormap, TwoSlopeNorm
+from matplotlib.ticker import FormatStrFormatter, MultipleLocator
 import numpy as np
 import pandas as pd
 
@@ -36,7 +37,7 @@ VARIANT_COLORS = {
 }
 SEED_BACKGROUND_COLOR = "#BFBFBF"
 REAL_COLOR = "#4A4A4A"
-STD_ALPHA = 0.18
+STD_ALPHA = 0.30
 
 TITLE_SIZE = 16
 SUBPLOT_TITLE_SIZE = 13
@@ -264,27 +265,34 @@ def plot_figure1(records: list[RunRecord], per_variant_df: pd.DataFrame) -> plt.
     fig, axes = plt.subplots(2, 2, figsize=(13, 10), sharex=True, sharey=True)
     axes = axes.flatten()
 
-    all_val_losses = np.concatenate([record.loss_history["val_loss"].to_numpy(dtype=float) for record in records])
+    cropped_histories = []
+    for record in records:
+        cropped = record.loss_history.loc[record.loss_history["epoch"] >= 10].copy()
+        cropped_histories.append(cropped)
+
+    all_val_losses = np.concatenate([cropped["val_loss"].to_numpy(dtype=float) for cropped in cropped_histories])
     y_min = float(np.min(all_val_losses))
     y_max = float(np.max(all_val_losses))
-    y_pad = max((y_max - y_min) * 0.06, 0.0015)
+    y_pad = max((y_max - y_min) * 0.08, 0.0010)
 
     for ax, variant in zip(axes, VARIANTS):
         subset = [record for record in records if record.variant == variant]
-        epochs = subset[0].loss_history["epoch"].to_numpy(dtype=float)
-        val_matrix = np.stack([record.loss_history["val_loss"].to_numpy(dtype=float) for record in subset], axis=0)
+        cropped_subset = [record.loss_history.loc[record.loss_history["epoch"] >= 10].copy() for record in subset]
+        epochs = cropped_subset[0]["epoch"].to_numpy(dtype=float)
+        val_matrix = np.stack([cropped["val_loss"].to_numpy(dtype=float) for cropped in cropped_subset], axis=0)
         mean_curve = val_matrix.mean(axis=0)
         std_curve = val_matrix.std(axis=0, ddof=0)
         mean_best_epoch = float(per_variant_df.loc[per_variant_df["variant"] == variant, "mean_best_epoch"].iloc[0])
         color = VARIANT_COLORS[variant]
 
-        for record in subset:
+        for cropped in cropped_subset:
             ax.plot(
-                record.loss_history["epoch"],
-                record.loss_history["val_loss"],
+                cropped["epoch"],
+                cropped["val_loss"],
                 color=SEED_BACKGROUND_COLOR,
                 linewidth=FAINT_SEED_LINEWIDTH,
-                alpha=0.18,
+                alpha=0.32,
+                linestyle=(0, (2.2, 2.2)),
                 zorder=1,
             )
 
@@ -296,19 +304,24 @@ def plot_figure1(records: list[RunRecord], per_variant_df: pd.DataFrame) -> plt.
             alpha=STD_ALPHA,
             zorder=2,
         )
+        ax.plot(epochs, mean_curve - std_curve, color=color, linewidth=1.0, alpha=0.45, zorder=2)
+        ax.plot(epochs, mean_curve + std_curve, color=color, linewidth=1.0, alpha=0.45, zorder=2)
         ax.plot(epochs, mean_curve, color=color, linewidth=MAIN_MEAN_LINEWIDTH, zorder=3)
         ax.axvline(
             mean_best_epoch,
             color=color,
-            linewidth=1.6,
+            linewidth=2.0,
             linestyle=(0, (4, 3)),
-            zorder=2,
+            alpha=0.95,
+            zorder=4,
         )
         ax.set_title(variant)
-        ax.set_xlim(1, EPOCHS)
+        ax.set_xlim(10, EPOCHS)
         ax.set_ylim(y_min - y_pad, y_max + y_pad)
         ax.set_xlabel("Epoch")
         ax.set_ylabel("Validation loss")
+        ax.yaxis.set_major_locator(MultipleLocator(0.0025))
+        ax.yaxis.set_major_formatter(FormatStrFormatter("%.4f"))
         ax.text(
             0.98,
             0.96,
@@ -320,6 +333,7 @@ def plot_figure1(records: list[RunRecord], per_variant_df: pd.DataFrame) -> plt.
             color="#555555",
         )
         style_axes(ax)
+        ax.yaxis.grid(True, linestyle=GRID_LINESTYLE, linewidth=0.9, color=GRID_COLOR, alpha=0.28)
 
     fig.suptitle("Validation loss curves by variant", y=0.98)
     fig.tight_layout(rect=[0.03, 0.03, 0.99, 0.96])
