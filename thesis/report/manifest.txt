@@ -1,0 +1,32 @@
+Stage 2 formal results report manifest
+
+Files:
+fig1_val_loss_2x2_multiseed.png
+fig1_val_loss_2x2_multiseed.pdf
+fig2_best_val_loss_summary.png
+fig2_best_val_loss_summary.pdf
+table1_optimization_summary.png
+table1_optimization_summary.pdf
+fig3_motion_realism_heatmap.png
+fig3_motion_realism_heatmap.pdf
+fig4_pairwise_metric_distributions_none_q20.png
+fig4_pairwise_metric_distributions_none_q20.pdf
+table2_motion_metric_summary.png
+table2_motion_metric_summary.pdf
+stage2_formal_results_report_combined.pdf
+manifest.txt
+short_notes.md
+
+Data source paths:
+train_root: /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train
+eval_root: /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/eval
+sample_root: /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample
+real_data_path: /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel.npy
+
+Protocol:
+variants: none, q10, q20, q30
+seeds: 2, 3, 4, 12, 13, 14, 22, 23, 24, 32, 33, 34, 42, 43, 44
+epochs: 100
+checkpoint: best_model.pt
+sample_seed: 42
+vis_seed: 42
