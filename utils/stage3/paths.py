@@ -2,6 +2,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
+CLEAN_ABS_INPUT_PATH = ROOT / "datasets" / "processed" / "data_eth_ucy_20.npy"
 
 OUTPUT_DIR = ROOT / "outputs" / "stage3"
 DATA_OUT_DIR = OUTPUT_DIR / "data"

@@ -4,13 +4,13 @@
 
 Stage 2 remains a completed prior-learning study and is not expanded in this phase.
 
-Stage 3 Phase 1 is defined as a minimal indoor trajectory imputation benchmark:
+Stage 3 Phase 1 uses `datasets/processed/data_eth_ucy_20.npy` as the clean window input and establishes a minimal indoor trajectory imputation benchmark with one contiguous missing span.
 
 - input: degraded coarse absolute trajectory with one contiguous missing span
 - output: completed absolute trajectory
-- target: clean trajectory reconstruction
+- target: clean trajectory
 
-## Current Benchmark
+## Baselines
 
 The first comparison layer is intentionally simple:
 
@@ -18,9 +18,7 @@ The first comparison layer is intentionally simple:
 - Savitzky-Golay smoothing
 - constant-velocity Kalman filter
 
-The purpose of this phase is to establish a stable benchmark before any learning-based or prior-based extension is introduced.
-
-## Current Evaluation
+## Metrics
 
 Reconstruction metrics:
 
@@ -33,23 +31,15 @@ Geometry feasibility metrics:
 - wall-crossing count
 - off-map ratio
 
-## Current Data Interface
+The minimal execution order is recorded in `docs/stage3/stage3_run_checklist.md`.
 
-The minimal data path is:
-
-1. clean indoor trajectory windows
-2. one contiguous missing span per window
-3. baseline reconstruction
-4. metric evaluation
-
-The geometry interface is limited to an occupancy map / free-space mask.
-
-## Explicit Non-Goals
+## Not Included
 
 This phase does not include:
 
+- raw-data reconstruction
 - prior integration
 - q20 comparison
 - multi-dataset comparison
+- learning backbone design
 - complex geometry conditioning
-- complex backbone design

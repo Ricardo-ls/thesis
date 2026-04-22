@@ -72,7 +72,7 @@ def main():
         default=str(DATA_OUT_DIR / "missing_span_windows.npz"),
     )
     parser.add_argument("--span_ratio", type=float, default=0.2)
-    parser.add_argument("--span_mode", type=str, default="random", choices=["random", "fixed"])
+    parser.add_argument("--span_mode", type=str, default="fixed", choices=["random", "fixed"])
     parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
 
@@ -125,11 +125,12 @@ def main():
     print("Stage 3 missing-span dataset built")
     print(f"input_path           = {args.input_path}")
     print(f"output_path          = {output_path}")
-    print(f"num_samples          = {num_samples}")
-    print(f"sequence_length      = {seq_len}")
+    print(f"N                    = {num_samples}")
+    print(f"T                    = {seq_len}")
+    print(f"span_ratio           = {args.span_ratio}")
     print(f"span_mode            = {args.span_mode}")
     print(f"seed                 = {args.seed}")
-    print(f"mean_missing_length  = {missing_lengths.mean():.4f}")
+    print(f"average_missing_len  = {missing_lengths.mean():.4f}")
     print(f"missing_ratio        = {total_missing / total_points:.4f}")
     print("=" * 60)
 
