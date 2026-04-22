@@ -19,8 +19,10 @@ The emphasis remains a reproducible scientific record rather than a generic demo
 
 1. This README for the project-level scope and repository map.
 2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the Stage 2 interpretation and figures.
-3. [`docs/stage3/stage3_phase1_plan.md`](docs/stage3/stage3_phase1_plan.md) for the current Stage 3 phase-1 benchmark boundary.
-4. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
+3. [`docs/stage3/stage3_phase1_formal_spec.md`](docs/stage3/stage3_phase1_formal_spec.md) for the formal Stage 3 phase-1 problem definition and scope boundary.
+4. [`docs/stage3/stage3_phase1_plan.md`](docs/stage3/stage3_phase1_plan.md) for the current Stage 3 phase-1 benchmark boundary.
+5. [`变更记录.md`](变更记录.md) for the required Chinese modification record.
+6. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
 
 ## Repository Scope
 
@@ -70,6 +72,7 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 - [`docs/`](docs): paper-facing narrative, figures, and archived notes
 - [`docs/archive/`](docs/archive): historical and phase-specific documentation
 - [`docs/stage3/`](docs/stage3): Stage 3 benchmark plans and engineering notes
+- [`变更记录.md`](变更记录.md): repository-level Chinese modification record
 - [`outputs/prior/train/`](outputs/prior/train): training snapshots organized by variant and seed
 - [`outputs/prior/sample/`](outputs/prior/sample): reverse-sampling artifacts organized to mirror train
 - [`outputs/prior/eval/`](outputs/prior/eval): evaluation artifacts organized to mirror train
@@ -99,6 +102,21 @@ This phase does not yet include:
 - complex geometry conditioning
 - room graph or door semantics
 - multi-dataset comparison
+
+For a more formal Stage 3 statement, use [`docs/stage3/stage3_phase1_formal_spec.md`](docs/stage3/stage3_phase1_formal_spec.md).
+
+## Change Record Rule
+
+This repository now maintains a required Chinese modification record at [`变更记录.md`](变更记录.md).
+
+For every future modification:
+
+- record the time of the change
+- record what was changed
+- record what the previous state was
+- if the change is code, it is sufficient to record the modified code file path
+
+This file should be updated together with each future repository change, rather than filled retrospectively.
 
 ## Documentation Hygiene
 
