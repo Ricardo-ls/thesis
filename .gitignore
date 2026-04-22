@@ -181,4 +181,5 @@ datasets/zara2/
 *.ckpt
 *.npz
 *.csv
+outputs/stage3/
 utils/__init__.py.bak

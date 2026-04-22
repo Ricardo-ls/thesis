@@ -1,10 +1,16 @@
-# Thesis: Stage 2 Trajectory Prior
+# Thesis: Stage 2 Prior and Stage 3 Benchmark Scaffold
 
-This repository is the research and archival workspace for Stage 2 of the thesis: learning a high-fidelity, trajectory-only diffusion prior on ETH+UCY. The emphasis is on a reproducible scientific record, not a generic demo pipeline.
+This repository is the research and archival workspace for the thesis trajectory track.
+
+- Stage 2 is the completed trajectory-only diffusion prior study on ETH+UCY.
+- Stage 3 now includes a minimal Phase 1 indoor trajectory imputation benchmark scaffold.
+
+The emphasis remains a reproducible scientific record rather than a generic demo pipeline.
 
 ## What This Repo Contains
 
 - Stage 2 training, sampling, and evaluation code
+- Stage 3 phase-1 benchmark scripts for indoor missing-trajectory completion
 - Canonical registry logic for variant and path resolution
 - Seeded training snapshots and evaluation artifacts
 - Paper-facing figures and narrative documentation
@@ -13,20 +19,26 @@ This repository is the research and archival workspace for Stage 2 of the thesis
 
 1. This README for the project-level scope and repository map.
 2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the Stage 2 interpretation and figures.
-3. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of variants and paths.
+3. [`docs/stage3/stage3_phase1_plan.md`](docs/stage3/stage3_phase1_plan.md) for the current Stage 3 phase-1 benchmark boundary.
+4. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
 
-## Stage 2 Scope
+## Repository Scope
 
-Stage 2 is the current center of gravity.
+The repository currently contains two distinct layers:
 
 - Stage 2: trajectory-only diffusion prior pre-training and evaluation
-- Stage 3: downstream sensor-conditioned localization or filtering, treated as future work
+- Stage 3 Phase 1: indoor trajectory imputation benchmark with one contiguous missing span
 
-The scientific question is narrow:
+The Stage 2 scientific question is narrow:
 
 - Can a diffusion prior trained only on pedestrian motion capture the geometry, smoothness, and dynamic plausibility of ETH+UCY trajectories?
 - Which filtering policy gives the best balance between motion realism and sample coverage?
 - How do the four official variants compare when protocol and model are held fixed?
+
+The current Stage 3 Phase 1 engineering question is intentionally minimal:
+
+- Given a degraded coarse absolute indoor trajectory with one contiguous missing span, how well do simple completion baselines reconstruct the clean trajectory?
+- How often do reconstructed trajectories violate a minimal occupancy-map geometry check?
 
 ## Stage 2 Interpretation
 
@@ -57,14 +69,36 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 
 - [`docs/`](docs): paper-facing narrative, figures, and archived notes
 - [`docs/archive/`](docs/archive): historical and phase-specific documentation
+- [`docs/stage3/`](docs/stage3): Stage 3 benchmark plans and engineering notes
 - [`outputs/prior/train/`](outputs/prior/train): training snapshots organized by variant and seed
 - [`outputs/prior/sample/`](outputs/prior/sample): reverse-sampling artifacts organized to mirror train
 - [`outputs/prior/eval/`](outputs/prior/eval): evaluation artifacts organized to mirror train
+- `outputs/stage3/`: generated Stage 3 benchmark artifacts kept as local runtime outputs
 - [`outputs/prior/variants/`](outputs/prior/variants): browsing entry point for the four official variants
 - [`outputs/prior/archive/`](outputs/prior/archive): legacy reference outputs and folded historical material
 - [`tools/prior/`](tools/prior): training, sampling, and evaluation entry points
+- [`tools/stage3/`](tools/stage3): minimal data, baseline, and evaluation scripts for Stage 3 Phase 1
 - [`tools/legacy/`](tools/legacy): older exploratory scripts retained for traceability
 - [`utils/prior/`](utils/prior): registry and shared semantic helpers
+- [`utils/stage3/`](utils/stage3): minimal Stage 3 path and IO helpers
+
+## Stage 3 Phase 1 Boundary
+
+Stage 3 Phase 1 is intentionally small and benchmark-first.
+
+- input: degraded coarse absolute trajectory with one contiguous missing span
+- output: completed absolute trajectory
+- baselines: linear interpolation, Savitzky-Golay, constant-velocity Kalman filter
+- metrics: ADE, FDE, RMSE, wall-crossing count, off-map ratio
+
+This phase does not yet include:
+
+- prior integration
+- q20 or multi-prior comparison
+- learning-based backbones
+- complex geometry conditioning
+- room graph or door semantics
+- multi-dataset comparison
 
 ## Documentation Hygiene
 
@@ -142,11 +176,12 @@ This repository is a public scientific archive, not a raw data dump.
 
 For rollback and recovery, full snapshots are kept in GitHub backup branches.
 
-- `backup/full-snapshot-2026-04-16` recommended current backup target
+- `backup/full-snapshot-2026-04-22` recommended current backup target
+- `backup/full-snapshot-2026-04-16` historical backup
 - `backup/full-snapshot-2026-04-12` historical backup
 - `backup/full-snapshot-2026-04-11` historical backup
 - `backup/full-snapshot-2026-04-07` historical backup
 
-If you do not see the backup in GitHub, switch branches in the repository view. The backup is not the default branch, so it will not appear unless you select it explicitly. New uploads should go to `backup/full-snapshot-2026-04-16`.
+If you do not see the backup in GitHub, switch branches in the repository view. The backup is not the default branch, so it will not appear unless you select it explicitly. New uploads should go to `backup/full-snapshot-2026-04-22`.
 
 Use [`docs/archive/reference/BACKUP.md`](docs/archive/reference/BACKUP.md) for the shortest restore command and backup notes.
