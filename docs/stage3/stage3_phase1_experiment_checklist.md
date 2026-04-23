@@ -58,15 +58,33 @@ Experiment ids:
 
 Input files:
 
-- `outputs/stage3/phase1/canonical_room3/data/experiments/<experiment_id>/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span10_fixed_seed42/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_fixed_seed42/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span30_fixed_seed42/missing_span_windows.npz`
 
 Baseline output directories:
 
-- `outputs/stage3/phase1/canonical_room3/baselines/<experiment_id>/<method_tag>/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span10_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span10_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span10_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span30_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span30_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span30_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
 
 Evaluation output directories:
 
-- `outputs/stage3/phase1/canonical_room3/eval/<experiment_id>/<method_tag>/`
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
 
 ## Experiment 2: Missing-Position Control
 
@@ -79,12 +97,37 @@ Experiment ids:
 
 Input files:
 
-- `outputs/stage3/phase1/canonical_room3/data/experiments/<experiment_id>/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_fixed_seed42/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed42/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed43/missing_span_windows.npz`
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed44/missing_span_windows.npz`
 
 Baseline output directories:
 
-- `outputs/stage3/phase1/canonical_room3/baselines/<experiment_id>/<method_tag>/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed43/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed43/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed43/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed44/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed44/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed44/kalman_cv_dt1.0_q1e-3_r1e-2/`
 
 Evaluation output directories:
 
-- `outputs/stage3/phase1/canonical_room3/eval/<experiment_id>/<method_tag>/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/kalman_cv_dt1.0_q1e-3_r1e-2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/linear_interp/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/savgol_w5_p2/`
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/kalman_cv_dt1.0_q1e-3_r1e-2/`
