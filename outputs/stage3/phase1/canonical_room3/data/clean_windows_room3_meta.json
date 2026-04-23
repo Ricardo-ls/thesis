@@ -1,0 +1,12 @@
+{
+  "normalization_mode": "separate",
+  "num_samples": 36073,
+  "sequence_length": 20,
+  "source_input_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20.npy",
+  "source_x_max": 15.613144,
+  "source_x_min": -7.69,
+  "source_y_max": 13.89191,
+  "source_y_min": -1.81,
+  "target_room_height": 3.0,
+  "target_room_width": 3.0
+}

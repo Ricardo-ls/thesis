@@ -1,0 +1,10 @@
+{
+  "experiment_id": "span20_fixed_seed42",
+  "method_name": "savgol_w5_p2",
+  "num_samples": 36073,
+  "off_map_ratio": 2.772156460510631e-06,
+  "sequence_length": 20,
+  "total_points": 721460,
+  "total_segments": 685387,
+  "wall_crossing_count": 0
+}

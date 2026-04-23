@@ -89,10 +89,29 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 
 Stage 3 Phase 1 is intentionally small and benchmark-first.
 
-- input: degraded coarse absolute trajectory with one contiguous missing span
-- output: completed absolute trajectory
+- input: degraded canonical room3 trajectory with one contiguous missing span
+- output: completed canonical room3 trajectory
 - baselines: linear interpolation, Savitzky-Golay, constant-velocity Kalman filter
-- metrics: ADE, FDE, RMSE, wall-crossing count, off-map ratio
+- metrics: ADE, FDE, RMSE, masked_ADE, masked_RMSE, wall-crossing count, off-map ratio
+
+The current canonical room3 data layer lives at:
+
+- `outputs/stage3/phase1/canonical_room3/`
+
+The room3 clean data is generated from `datasets/processed/data_eth_ucy_20.npy`
+by separate linear scaling into `[0, 3] x [0, 3]`. The full Stage 3 Phase 1
+room3 run currently contains 6 experiments and 18 method-result rows. The
+machine-readable summary is:
+
+- `outputs/stage3/phase1/canonical_room3/eval/summary_metrics.csv`
+
+Data notes:
+
+- the fixed-span sweep covers 10%, 20%, and 30% missing ratios
+- the random-position control uses span20 with seeds `42`, `43`, and `44`
+- masked metrics are computed only on the missing span
+- the empty room3 geometry check records wall crossings and off-map ratios
+- the pushed artifact set is a benchmark data snapshot, not a raw data release
 
 This phase does not yet include:
 

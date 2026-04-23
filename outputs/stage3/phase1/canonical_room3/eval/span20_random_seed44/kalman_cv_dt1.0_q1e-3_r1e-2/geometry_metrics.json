@@ -1,0 +1,10 @@
+{
+  "experiment_id": "span20_random_seed44",
+  "method_name": "kalman_cv_dt1.0_q1e-3_r1e-2",
+  "num_samples": 36073,
+  "off_map_ratio": 4.989881628919136e-05,
+  "sequence_length": 20,
+  "total_points": 721460,
+  "total_segments": 685387,
+  "wall_crossing_count": 0
+}

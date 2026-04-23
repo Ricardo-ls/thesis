@@ -11,7 +11,13 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.stage3.io import load_npz, save_npz
-from utils.stage3.paths import BASELINE_OUT_DIR, DATA_OUT_DIR, ensure_stage3_dirs
+from utils.stage3.paths import (
+    DEFAULT_EXPERIMENT_ID,
+    SAVGOL_METHOD_TAG,
+    baseline_results_path,
+    ensure_stage3_dirs,
+    missing_span_path,
+)
 
 
 def validate_and_interp(traj_obs: np.ndarray, mask: np.ndarray, index: int):
@@ -42,21 +48,28 @@ def main():
     parser = argparse.ArgumentParser(
         description="Run the Stage 3 Savitzky-Golay baseline."
     )
+    parser.add_argument("--experiment_id", type=str, default=DEFAULT_EXPERIMENT_ID)
     parser.add_argument(
         "--input_path",
         type=str,
-        default=str(DATA_OUT_DIR / "missing_span_windows.npz"),
+        default=None,
     )
     parser.add_argument(
         "--output_path",
         type=str,
-        default=str(BASELINE_OUT_DIR / "savgol_results.npz"),
+        default=None,
     )
     parser.add_argument("--window_length", type=int, default=5)
     parser.add_argument("--polyorder", type=int, default=2)
     args = parser.parse_args()
 
     ensure_stage3_dirs()
+    input_path = Path(args.input_path) if args.input_path else missing_span_path(args.experiment_id)
+    output_path = (
+        Path(args.output_path)
+        if args.output_path
+        else baseline_results_path(args.experiment_id, SAVGOL_METHOD_TAG)
+    )
 
     if args.window_length <= 0 or args.window_length % 2 == 0:
         raise ValueError("window_length must be a positive odd integer.")
@@ -72,9 +85,9 @@ def main():
             "scipy is required for run_savgol.py. Install scipy to use this baseline."
         ) from exc
 
-    data = load_npz(args.input_path)
+    data = load_npz(input_path)
     if "traj_obs" not in data or "obs_mask" not in data:
-        raise KeyError(f"'traj_obs' and 'obs_mask' are required in {args.input_path}")
+        raise KeyError(f"'traj_obs' and 'obs_mask' are required in {input_path}")
 
     traj_obs = np.asarray(data["traj_obs"], dtype=np.float32)
     obs_mask = np.asarray(data["obs_mask"], dtype=np.uint8)
@@ -100,12 +113,13 @@ def main():
                 mode="interp",
             ).astype(np.float32)
 
-    output_path = Path(args.output_path)
     save_npz(output_path, traj_hat=traj_hat)
 
     print("=" * 60)
     print("Savitzky-Golay baseline finished")
-    print(f"input_path      = {args.input_path}")
+    print(f"experiment_id   = {args.experiment_id}")
+    print(f"method_tag      = {SAVGOL_METHOD_TAG}")
+    print(f"input_path      = {input_path}")
     print(f"output_path     = {output_path}")
     print(f"window_length   = {args.window_length}")
     print(f"polyorder       = {args.polyorder}")

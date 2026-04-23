@@ -2,44 +2,45 @@
 
 ## Scope
 
-Stage 2 remains a completed prior-learning study and is not expanded in this phase.
+Stage 2 is treated as complete and is not expanded in this phase.
 
-Stage 3 Phase 1 uses `datasets/processed/data_eth_ucy_20.npy` as the clean window input and establishes a minimal indoor trajectory imputation benchmark with one contiguous missing span.
+Stage 3 Phase 1 is benchmark-first. The current benchmark uses the canonical
+room3 coordinate system and fixes the working room to:
 
-- input: degraded coarse absolute trajectory with one contiguous missing span
-- output: completed absolute trajectory
-- target: clean trajectory
+- `x in [0, 3]`
+- `y in [0, 3]`
 
-## Baselines
+The source input remains:
 
-The first comparison layer is intentionally simple:
+- `datasets/processed/data_eth_ucy_20.npy`
 
+## Included
+
+This phase includes only:
+
+- one contiguous missing span per trajectory window
 - linear interpolation
 - Savitzky-Golay smoothing
-- constant-velocity Kalman filter
-
-## Metrics
-
-Reconstruction metrics:
-
+- constant-velocity Kalman filtering
 - ADE
 - FDE
 - RMSE
-
-Geometry feasibility metrics:
-
-- wall-crossing count
+- masked_ADE
+- masked_RMSE
 - off-map ratio
-
-The minimal execution order is recorded in `docs/stage3/stage3_run_checklist.md`.
+- wall-crossing count
 
 ## Not Included
 
 This phase does not include:
 
-- raw-data reconstruction
 - prior integration
 - q20 comparison
+- adapter design
 - multi-dataset comparison
-- learning backbone design
+- learning backbones
 - complex geometry conditioning
+- complex obstacle maps
+
+The canonical room3 protocol is documented in
+`docs/stage3/stage3_phase1_room3_protocol.md`.

@@ -11,7 +11,13 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.stage3.io import load_npz, save_npz
-from utils.stage3.paths import BASELINE_OUT_DIR, DATA_OUT_DIR, ensure_stage3_dirs
+from utils.stage3.paths import (
+    DEFAULT_EXPERIMENT_ID,
+    KALMAN_METHOD_TAG,
+    baseline_results_path,
+    ensure_stage3_dirs,
+    missing_span_path,
+)
 
 
 def build_kalman_mats(dt: float, process_var: float, measure_var: float):
@@ -100,31 +106,38 @@ def main():
     parser = argparse.ArgumentParser(
         description="Run the minimal Stage 3 constant-velocity Kalman baseline."
     )
+    parser.add_argument("--experiment_id", type=str, default=DEFAULT_EXPERIMENT_ID)
     parser.add_argument(
         "--input_path",
         type=str,
-        default=str(DATA_OUT_DIR / "missing_span_windows.npz"),
+        default=None,
     )
     parser.add_argument(
         "--output_path",
         type=str,
-        default=str(BASELINE_OUT_DIR / "kalman_results.npz"),
+        default=None,
     )
     parser.add_argument("--dt", type=float, default=1.0)
-    parser.add_argument("--process_var", type=float, default=1e-2)
+    parser.add_argument("--process_var", type=float, default=1e-3)
     parser.add_argument("--measure_var", type=float, default=1e-2)
     args = parser.parse_args()
 
     ensure_stage3_dirs()
+    input_path = Path(args.input_path) if args.input_path else missing_span_path(args.experiment_id)
+    output_path = (
+        Path(args.output_path)
+        if args.output_path
+        else baseline_results_path(args.experiment_id, KALMAN_METHOD_TAG)
+    )
 
     if args.dt <= 0:
         raise ValueError("dt must be positive.")
     if args.process_var <= 0 or args.measure_var <= 0:
         raise ValueError("process_var and measure_var must be positive.")
 
-    data = load_npz(args.input_path)
+    data = load_npz(input_path)
     if "traj_obs" not in data or "obs_mask" not in data:
-        raise KeyError(f"'traj_obs' and 'obs_mask' are required in {args.input_path}")
+        raise KeyError(f"'traj_obs' and 'obs_mask' are required in {input_path}")
 
     traj_obs = np.asarray(data["traj_obs"], dtype=np.float32)
     obs_mask = np.asarray(data["obs_mask"], dtype=np.uint8)
@@ -146,12 +159,13 @@ def main():
             measure_var=args.measure_var,
         )
 
-    output_path = Path(args.output_path)
     save_npz(output_path, traj_hat=traj_hat)
 
     print("=" * 60)
     print("Kalman baseline finished")
-    print(f"input_path     = {args.input_path}")
+    print(f"experiment_id  = {args.experiment_id}")
+    print(f"method_tag     = {KALMAN_METHOD_TAG}")
+    print(f"input_path     = {input_path}")
     print(f"output_path    = {output_path}")
     print(f"dt             = {args.dt}")
     print(f"process_var    = {args.process_var}")

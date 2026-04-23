@@ -11,22 +11,22 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.stage3.io import save_npz
-from utils.stage3.paths import DATA_OUT_DIR, ensure_stage3_dirs
+from utils.stage3.paths import OCCUPANCY_ROOM3_EMPTY_PATH, ensure_stage3_dirs
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Build the minimal Stage 3 empty-room occupancy map."
+        description="Build the Stage 3 Phase 1 canonical room3 empty-room occupancy map."
     )
     parser.add_argument("--height", type=int, default=128)
     parser.add_argument("--width", type=int, default=128)
     parser.add_argument("--x_min", type=float, default=0.0)
-    parser.add_argument("--x_max", type=float, default=10.0)
+    parser.add_argument("--x_max", type=float, default=3.0)
     parser.add_argument("--y_min", type=float, default=0.0)
-    parser.add_argument("--y_max", type=float, default=10.0)
+    parser.add_argument("--y_max", type=float, default=3.0)
     parser.add_argument(
         "--output_path",
         type=str,
-        default=str(DATA_OUT_DIR / "occupancy_map.npz"),
+        default=str(OCCUPANCY_ROOM3_EMPTY_PATH),
     )
     args = parser.parse_args()
 

@@ -11,7 +11,12 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.stage3.io import load_npz, save_npz
-from utils.stage3.paths import DATA_OUT_DIR, ensure_stage3_dirs
+from utils.stage3.paths import (
+    CLEAN_ROOM3_PATH,
+    DEFAULT_EXPERIMENT_ID,
+    ensure_stage3_dirs,
+    missing_span_path,
+)
 
 
 def resolve_span_length(seq_len: int, span_ratio: float):
@@ -57,19 +62,30 @@ def sample_spans(num_samples: int, seq_len: int, span_len: int, span_mode: str, 
     return span_start, span_end
 
 
+def default_experiment_id(span_ratio: float, span_mode: str, seed: int):
+    span_percent = int(round(span_ratio * 100))
+    return f"span{span_percent}_{span_mode}_seed{seed}"
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Generate the minimal Stage 3 degraded dataset with one contiguous missing span."
     )
     parser.add_argument(
+        "--experiment_id",
+        type=str,
+        default=None,
+        help=f"Experiment id such as {DEFAULT_EXPERIMENT_ID}. Defaults to span<ratio>_<mode>_seed<seed>.",
+    )
+    parser.add_argument(
         "--input_path",
         type=str,
-        default=str(DATA_OUT_DIR / "clean_windows.npz"),
+        default=str(CLEAN_ROOM3_PATH),
     )
     parser.add_argument(
         "--output_path",
         type=str,
-        default=str(DATA_OUT_DIR / "missing_span_windows.npz"),
+        default=None,
     )
     parser.add_argument("--span_ratio", type=float, default=0.2)
     parser.add_argument("--span_mode", type=str, default="fixed", choices=["random", "fixed"])
@@ -77,6 +93,11 @@ def main():
     args = parser.parse_args()
 
     ensure_stage3_dirs()
+    experiment_id = args.experiment_id or default_experiment_id(
+        span_ratio=args.span_ratio,
+        span_mode=args.span_mode,
+        seed=args.seed,
+    )
 
     data = load_npz(args.input_path)
     if "traj_abs" not in data:
@@ -107,7 +128,7 @@ def main():
         obs_mask[i, start : end + 1] = 0
         traj_obs[i, start : end + 1, :] = np.nan
 
-    output_path = Path(args.output_path)
+    output_path = Path(args.output_path) if args.output_path else missing_span_path(experiment_id)
     save_npz(
         output_path,
         traj_abs=traj_abs,
@@ -123,6 +144,7 @@ def main():
 
     print("=" * 60)
     print("Stage 3 missing-span dataset built")
+    print(f"experiment_id        = {experiment_id}")
     print(f"input_path           = {args.input_path}")
     print(f"output_path          = {output_path}")
     print(f"N                    = {num_samples}")

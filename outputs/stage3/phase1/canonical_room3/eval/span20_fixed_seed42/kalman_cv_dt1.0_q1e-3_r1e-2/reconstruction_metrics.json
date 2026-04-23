@@ -1,0 +1,11 @@
+{
+  "ADE": 0.009910425171256065,
+  "FDE": 0.00644536642357707,
+  "RMSE": 0.015800541266798973,
+  "experiment_id": "span20_fixed_seed42",
+  "masked_ADE": 0.031485822051763535,
+  "masked_RMSE": 0.0337829627096653,
+  "method_name": "kalman_cv_dt1.0_q1e-3_r1e-2",
+  "num_samples": 36073,
+  "sequence_length": 20
+}

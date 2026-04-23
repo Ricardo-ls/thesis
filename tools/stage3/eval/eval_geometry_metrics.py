@@ -11,10 +11,19 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.stage3.io import load_npz, save_json
-from utils.stage3.paths import DATA_OUT_DIR, EVAL_OUT_DIR, ensure_stage3_dirs
+from utils.stage3.paths import (
+    DEFAULT_EXPERIMENT_ID,
+    LINEAR_METHOD_TAG,
+    OCCUPANCY_ROOM3_EMPTY_PATH,
+    baseline_results_path,
+    ensure_stage3_dirs,
+    geometry_metrics_path,
+)
 
 
 def infer_method_name(pred_path: Path):
+    if pred_path.name == "results.npz":
+        return pred_path.parent.name
     stem = pred_path.stem
     if stem.endswith("_results"):
         return stem[: -len("_results")]
@@ -90,27 +99,35 @@ def main():
     parser = argparse.ArgumentParser(
         description="Evaluate minimal Stage 3 geometry feasibility metrics."
     )
-    parser.add_argument("--pred_path", type=str, required=True)
+    parser.add_argument("--experiment_id", type=str, default=DEFAULT_EXPERIMENT_ID)
+    parser.add_argument("--method_tag", type=str, default=None)
+    parser.add_argument("--pred_path", type=str, default=None)
     parser.add_argument("--pred_key", type=str, default="traj_hat")
     parser.add_argument(
         "--map_path",
         type=str,
-        default=str(DATA_OUT_DIR / "occupancy_map.npz"),
+        default=None,
     )
     parser.add_argument("--method_name", type=str, default=None)
     args = parser.parse_args()
 
     ensure_stage3_dirs()
+    method_tag = args.method_tag
+    if method_tag is None:
+        method_tag = infer_method_name(Path(args.pred_path)) if args.pred_path else LINEAR_METHOD_TAG
+    pred_path = Path(args.pred_path) if args.pred_path else baseline_results_path(args.experiment_id, method_tag)
+    map_path = Path(args.map_path) if args.map_path else OCCUPANCY_ROOM3_EMPTY_PATH
+    method_name = args.method_name or method_tag
 
-    pred_data = load_npz(args.pred_path)
+    pred_data = load_npz(pred_path)
     if args.pred_key not in pred_data:
-        raise KeyError(f"'{args.pred_key}' not found in {args.pred_path}")
+        raise KeyError(f"'{args.pred_key}' not found in {pred_path}")
 
     traj_hat = np.asarray(pred_data[args.pred_key], dtype=np.float32)
     if traj_hat.ndim != 3 or traj_hat.shape[-1] != 2:
         raise ValueError(f"Expected traj_hat shape [N, T, 2], got {traj_hat.shape}")
 
-    map_meta = load_map(Path(args.map_path))
+    map_meta = load_map(map_path)
 
     off_map_count = 0
     wall_crossing_count = 0
@@ -126,7 +143,8 @@ def main():
                 wall_crossing_count += 1
 
     metrics = {
-        "method_name": args.method_name or infer_method_name(Path(args.pred_path)),
+        "method_name": method_name,
+        "experiment_id": args.experiment_id,
         "num_samples": int(traj_hat.shape[0]),
         "sequence_length": int(traj_hat.shape[1]),
         "off_map_ratio": float(off_map_count / total_points) if total_points > 0 else 0.0,
@@ -135,14 +153,15 @@ def main():
         "total_segments": int(total_segments),
     }
 
-    output_path = EVAL_OUT_DIR / f"{metrics['method_name']}_geometry_metrics.json"
+    output_path = geometry_metrics_path(args.experiment_id, method_tag)
     save_json(output_path, metrics)
 
     print("=" * 60)
     print("Geometry metrics")
+    print(f"experiment_id          = {args.experiment_id}")
     print(f"method_name           = {metrics['method_name']}")
-    print(f"pred_path             = {args.pred_path}")
-    print(f"map_path              = {args.map_path}")
+    print(f"pred_path             = {pred_path}")
+    print(f"map_path              = {map_path}")
     print(f"off_map_ratio         = {metrics['off_map_ratio']:.6f}")
     print(f"wall_crossing_count   = {metrics['wall_crossing_count']}")
     print(f"output_path           = {output_path}")

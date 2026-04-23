@@ -12,10 +12,10 @@ Stage 2 remains background work and is not expanded here.
 
 The Phase 1 task is:
 
-- input: degraded coarse absolute trajectory in `(x, y)`
+- input: degraded canonical room3 trajectory in `(x, y)`
 - degradation type: one contiguous missing segment
-- output: completed absolute trajectory in `(x, y)`
-- target: clean indoor trajectory
+- output: completed canonical room3 trajectory in `(x, y)`
+- target: clean canonical room3 trajectory
 
 This phase is intentionally defined as a reconstruction benchmark rather than a generic denoising problem and not as a diffusion-model design exercise.
 
@@ -35,10 +35,12 @@ This boundary is deliberate. The purpose is to create a reliable reference layer
 
 The data interface for Phase 1 is simple and fixed:
 
-- clean trajectory: absolute coordinates with shape `[N, T, 2]`
-- degraded trajectory: absolute coordinates with missing entries
+- source input: `datasets/processed/data_eth_ucy_20.npy`
+- canonical room: `[0, 3] x [0, 3]`
+- clean trajectory: room3 coordinates with shape `[N, T, 2]`
+- degraded trajectory: room3 coordinates with missing entries
 - observation mask: binary visibility indicator over time
-- occupancy map: minimal free-space / occupied-space grid
+- occupancy map: empty room3 free-space / occupied-space grid
 
 The missing pattern is limited to a single contiguous missing span.
 
@@ -73,6 +75,8 @@ Reconstruction metrics:
 - ADE
 - FDE
 - RMSE
+- masked_ADE
+- masked_RMSE
 
 Geometry feasibility metrics:
 
@@ -92,6 +96,7 @@ The following items are outside the Phase 1 boundary:
 - occupancy encoders or geometry-aware training
 - room graph or door semantics
 - multi-dataset comparison
+- adapter design
 - complex smoothing or tracking systems beyond the minimal Kalman baseline
 
 These exclusions are not rejected permanently. They are postponed until the benchmark reference layer is stable.
@@ -117,7 +122,10 @@ The current Phase 1 scaffold is organized as follows:
 - `tools/stage3/eval/`: reconstruction and geometry metrics
 - `utils/stage3/`: shared path and I/O helpers
 - `docs/stage3/`: Stage 3 planning and specification notes
-- `outputs/stage3/`: generated local outputs
+- `outputs/stage3/phase1/canonical_room3/`: generated local Phase 1 outputs
+
+The active protocol document is
+`docs/stage3/stage3_phase1_room3_protocol.md`.
 
 ## Interpretation Rule
 

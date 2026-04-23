@@ -1,0 +1,11 @@
+{
+  "ADE": 0.0017138004768639803,
+  "FDE": 0.0,
+  "RMSE": 0.004071399103850126,
+  "experiment_id": "span20_random_seed44",
+  "masked_ADE": 0.008569006808102131,
+  "masked_RMSE": 0.009103926829993725,
+  "method_name": "linear_interp",
+  "num_samples": 36073,
+  "sequence_length": 20
+}

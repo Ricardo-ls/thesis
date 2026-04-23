@@ -11,7 +11,13 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from utils.stage3.io import load_npz, save_npz
-from utils.stage3.paths import BASELINE_OUT_DIR, DATA_OUT_DIR, ensure_stage3_dirs
+from utils.stage3.paths import (
+    DEFAULT_EXPERIMENT_ID,
+    LINEAR_METHOD_TAG,
+    baseline_results_path,
+    ensure_stage3_dirs,
+    missing_span_path,
+)
 
 
 def validate_sample(mask: np.ndarray, index: int):
@@ -50,25 +56,32 @@ def main():
     parser = argparse.ArgumentParser(
         description="Run the Stage 3 linear interpolation baseline."
     )
+    parser.add_argument("--experiment_id", type=str, default=DEFAULT_EXPERIMENT_ID)
     parser.add_argument(
         "--input_path",
         type=str,
-        default=str(DATA_OUT_DIR / "missing_span_windows.npz"),
+        default=None,
     )
     parser.add_argument(
         "--output_path",
         type=str,
-        default=str(BASELINE_OUT_DIR / "linear_interp_results.npz"),
+        default=None,
     )
     args = parser.parse_args()
 
     ensure_stage3_dirs()
+    input_path = Path(args.input_path) if args.input_path else missing_span_path(args.experiment_id)
+    output_path = (
+        Path(args.output_path)
+        if args.output_path
+        else baseline_results_path(args.experiment_id, LINEAR_METHOD_TAG)
+    )
 
-    data = load_npz(args.input_path)
+    data = load_npz(input_path)
     required = ["traj_obs", "obs_mask"]
     for key in required:
         if key not in data:
-            raise KeyError(f"'{key}' not found in {args.input_path}")
+            raise KeyError(f"'{key}' not found in {input_path}")
 
     traj_obs = np.asarray(data["traj_obs"], dtype=np.float32)
     obs_mask = np.asarray(data["obs_mask"], dtype=np.uint8)
@@ -83,12 +96,13 @@ def main():
     for i in range(traj_obs.shape[0]):
         traj_hat[i] = interpolate_sample(traj_obs[i], obs_mask[i], index=i)
 
-    output_path = Path(args.output_path)
     save_npz(output_path, traj_hat=traj_hat)
 
     print("=" * 60)
     print("Linear interpolation baseline finished")
-    print(f"input_path    = {args.input_path}")
+    print(f"experiment_id = {args.experiment_id}")
+    print(f"method_tag    = {LINEAR_METHOD_TAG}")
+    print(f"input_path    = {input_path}")
     print(f"output_path   = {output_path}")
     print(f"traj_hat      = {traj_hat.shape}")
     print("=" * 60)
