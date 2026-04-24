@@ -1,0 +1,42 @@
+{
+  "drift_amp": 0.05,
+  "experiment_tag": "span20_fixed_seed42",
+  "noise_std": 0.03,
+  "num_samples": 36073,
+  "output_shapes": {
+    "clean": [
+      36073,
+      20,
+      2
+    ],
+    "mask": [
+      36073,
+      20
+    ],
+    "missing_drift": [
+      36073,
+      20,
+      2
+    ],
+    "missing_noise": [
+      36073,
+      20,
+      2
+    ],
+    "missing_noise_drift": [
+      36073,
+      20,
+      2
+    ],
+    "missing_only": [
+      36073,
+      20,
+      2
+    ]
+  },
+  "seed": 42,
+  "sequence_length": 20,
+  "source_dataset": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20.npy",
+  "span_mode": "fixed",
+  "span_ratio": 0.2
+}

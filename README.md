@@ -124,6 +124,55 @@ This phase does not yet include:
 
 For a more formal Stage 3 statement, use [`docs/stage3/stage3_phase1_formal_spec.md`](docs/stage3/stage3_phase1_formal_spec.md).
 
+## Stage 3 Controlled Benchmark
+
+In addition to the canonical room3 Phase 1 benchmark snapshot, the repository
+now contains a controlled coarse-to-refined reconstruction pipeline under the
+same room3 coordinate system.
+
+The controlled benchmark starts from:
+
+- `datasets/processed/data_eth_ucy_20.npy`
+
+It normalizes the clean absolute trajectories into canonical room3 coordinates
+and then applies four synthetic degradation settings:
+
+- `missing_only`
+- `missing_noise`
+- `missing_drift`
+- `missing_noise_drift`
+
+The current default configuration is:
+
+- `seed = 42`
+- `span_ratio = 0.2`
+- `span_mode = fixed`
+- `noise_std = 0.03`
+- `drift_amp = 0.05`
+
+The generated outputs are organized as:
+
+- `outputs/stage3/degradation/`
+- `outputs/stage3/reconstruction/`
+- `outputs/stage3/eval/`
+- `outputs/stage3/figures/`
+
+The machine-readable summary for the controlled benchmark is:
+
+- `outputs/stage3/eval/metrics_summary.csv`
+- `outputs/stage3/eval/metrics_summary.json`
+
+The figure set currently includes:
+
+- four representative trajectory comparison figures, one for each degradation
+- bar charts for `ADE`, `RMSE`, and `masked_ADE` across degradation settings
+
+The current controlled benchmark is still intentionally simple:
+
+- it reuses the same three baseline families: Linear, Savitzky-Golay, and Kalman
+- it keeps the same primary, supplementary, and geometry metrics
+- it is meant as a reproducible engineering benchmark layer, not a new model family
+
 ## Change Record Rule
 
 This repository now maintains a required Chinese modification record at [`变更记录.md`](变更记录.md).
