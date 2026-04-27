@@ -85,6 +85,16 @@ Geometry feasibility metrics:
 
 The geometry evaluation is intentionally lightweight. It is meant to expose obvious feasibility failures without introducing heavy geometric machinery.
 
+This benchmark reports two complementary metric views:
+
+- full-trajectory metrics: `ADE`, `FDE`, `RMSE`
+- missing-segment metrics: `masked_ADE`, `masked_RMSE`
+
+Since the task is missing-segment reconstruction, masked metrics are emphasized
+when discussing reconstruction quality on the removed segment itself. If the
+full-trajectory and masked views rank methods differently, both rankings should
+be reported explicitly rather than collapsed into one overall winner.
+
 ## Explicit Exclusions
 
 The following items are outside the Phase 1 boundary:

@@ -49,3 +49,24 @@ result directories, and geometry evaluation comparable and reproducible.
 
 It is a canonical benchmark room for this proxy experiment. It does not directly
 support conclusions about a future real experimental room.
+
+## Metric Interpretation
+
+This benchmark reports two complementary metric views.
+
+- Full-trajectory metrics, including `ADE`, `FDE`, and `RMSE`, measure overall
+  trajectory consistency over the full window.
+- Masked metrics, including `masked_ADE` and `masked_RMSE`, measure
+  reconstruction quality on the removed segment itself.
+- Since the task is missing-segment reconstruction, masked metrics are
+  emphasized when discussing reconstruction quality on the missing span.
+- When the two views rank methods differently, both rankings should be reported
+  explicitly rather than collapsed into a single overall winner.
+- Geometry metrics remain boundary and geometry consistency checks:
+  `off_map_ratio` and `wall_crossing_count`.
+
+Under the clean missing-span setting, Linear interpolation can be strongest
+under full-trajectory metrics, while Savitzky-Golay can be slightly stronger
+under masked metrics. This difference is expected because full-trajectory
+metrics include observed time steps and may dilute the error on the removed
+segment.

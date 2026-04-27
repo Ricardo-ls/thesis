@@ -129,6 +129,15 @@ Expected output pattern:
 
 - `outputs/stage3/phase1/canonical_room3/eval/<experiment_id>/<method_tag>/reconstruction_metrics.json`
 
+Interpretation note:
+
+- `ADE`, `FDE`, and `RMSE` summarize full-window consistency.
+- `masked_ADE` and `masked_RMSE` summarize reconstruction quality on the
+  removed segment itself.
+- Since this task removes one contiguous span, the masked metrics should be
+  emphasized when discussing missing-segment reconstruction quality.
+- If the full-window and masked views disagree on ranking, report both.
+
 ## 6. Evaluate Geometry
 
 For each `<experiment_id>` and `<method_tag>`, run:
@@ -161,3 +170,27 @@ Experiment 2, missing-position control:
 - `span20_random_seed42`
 - `span20_random_seed43`
 - `span20_random_seed44`
+
+## Random-Span Statistical Reliability
+
+For a broader random-span sweep over seeds `0..19`, run:
+
+```bash
+python -m tools.stage3.eval.run_phase1_random_span_statistics \
+  --span_ratio 0.2 \
+  --seed_start 0 \
+  --seed_end 19
+```
+
+Then generate the summary figures:
+
+```bash
+python -m tools.stage3.eval.plot_phase1_random_span_statistics
+```
+
+Outputs:
+
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_by_seed.csv`
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv`
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/random_span_statistics_report.md`
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/`

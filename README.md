@@ -104,14 +104,42 @@ room3 run currently contains 6 experiments and 18 method-result rows. The
 machine-readable summary is:
 
 - `outputs/stage3/phase1/canonical_room3/eval/summary_metrics.csv`
+- `outputs/stage3/phase1/canonical_room3/eval/summary_report.md`
+
+Metric interpretation:
+
+- This benchmark reports two complementary metric views.
+- Full-trajectory metrics, including `ADE`, `FDE`, and `RMSE`, measure overall trajectory consistency over the full window.
+- Masked metrics, including `masked_ADE` and `masked_RMSE`, measure reconstruction quality on the removed segment itself.
+- Since the task is missing-segment reconstruction, masked metrics are emphasized when discussing reconstruction quality on the missing span.
+- When the two views rank methods differently, both rankings are reported explicitly rather than collapsed into a single overall winner.
+- Geometry metrics remain boundary and geometry consistency checks: `off_map_ratio` and `wall_crossing_count`.
 
 Data notes:
 
 - the fixed-span sweep covers 10%, 20%, and 30% missing ratios
 - the random-position control uses span20 with seeds `42`, `43`, and `44`
 - masked metrics are computed only on the missing span
+- under the clean missing-span setting, Linear interpolation can be strongest under full-trajectory metrics, while Savitzky-Golay can be slightly stronger under masked metrics
+- this difference is expected because full-trajectory metrics include observed time steps and may dilute the error on the removed segment
 - the empty room3 geometry check records wall crossings and off-map ratios
 - the pushed artifact set is a benchmark data snapshot, not a raw data release
+
+Random-span statistical reliability:
+
+- the standard random-span sweep uses `span_ratio = 0.2`, `span_mode = random`, and seeds `0..19`
+- per-seed metrics live in `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_by_seed.csv`
+- mean and std summaries live in `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv`
+- the report lives in `outputs/stage3/phase1/canonical_room3/random_span_statistics/random_span_statistics_report.md`
+- the standard figures are:
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/ADE_mean_std_bar.png`
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/RMSE_mean_std_bar.png`
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/masked_ADE_mean_std_bar.png`
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/full_vs_masked_comparison.png`
+
+The full-vs-masked comparison figure is the current standard visual summary for
+showing whether Linear and Savitzky-Golay rank differently under overall
+trajectory consistency and missing-segment reconstruction quality.
 
 This phase does not yet include:
 
@@ -170,7 +198,7 @@ The figure set currently includes:
 The current controlled benchmark is still intentionally simple:
 
 - it reuses the same three baseline families: Linear, Savitzky-Golay, and Kalman
-- it keeps the same primary, supplementary, and geometry metrics
+- it keeps the same full-trajectory, masked-segment, and geometry metric views
 - it is meant as a reproducible engineering benchmark layer, not a new model family
 
 ## Change Record Rule

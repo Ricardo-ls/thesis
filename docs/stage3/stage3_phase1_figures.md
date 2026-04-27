@@ -25,6 +25,15 @@ Figure 2 shows the Experiment 1 missing-span sweep for:
 - `span30_fixed_seed42`
 - `masked_ADE`
 
+Interpretation note:
+
+- `ADE` in Figure 1 is the full-trajectory view.
+- `masked_ADE` is the missing-segment view.
+- Since the task is missing-segment reconstruction, `masked_ADE` should be
+  emphasized when discussing recovery quality on the removed span.
+- If `ADE` and `masked_ADE` rank methods differently, both views should be
+  reported.
+
 ## Command
 
 Run from the `SingularTrajectory/` repository root:

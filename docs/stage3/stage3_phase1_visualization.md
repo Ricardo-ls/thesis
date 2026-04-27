@@ -13,6 +13,14 @@ It is intended for report and presentation use. The figure shows:
 - the reconstructed result from SG
 - the reconstructed result from Kalman
 
+This qualitative figure should be read together with the two metric views:
+
+- full-trajectory metrics (`ADE`, `FDE`, `RMSE`)
+- missing-segment metrics (`masked_ADE`, `masked_RMSE`)
+
+Since the task is missing-segment reconstruction, the masked view should be
+emphasized when discussing the reconstructed gap itself.
+
 ## Input Files
 
 The default visualization uses:

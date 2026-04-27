@@ -30,6 +30,15 @@ Common metrics:
 - off-map ratio
 - wall-crossing count
 
+Interpretation rule:
+
+- `ADE`, `FDE`, and `RMSE` are the full-trajectory view.
+- `masked_ADE` and `masked_RMSE` are the missing-segment view.
+- Since the task is missing-segment reconstruction, the masked view should be
+  emphasized when discussing gap-filling quality.
+- If the full and masked views rank methods differently, both rankings should
+  be reported explicitly.
+
 ## Experiment 0: Main Table
 
 Experiment id:

@@ -4,6 +4,23 @@ Protocol: canonical room3, separate scaling to `[0, 3] x [0, 3]`.
 
 Summary CSV: `outputs/stage3/phase1/canonical_room3/eval/summary_metrics.csv`
 
+## Metric Interpretation
+
+This benchmark reports two complementary metric views. Full-trajectory metrics,
+including `ADE`, `FDE`, and `RMSE`, measure overall trajectory consistency over
+the full window. Masked metrics, including `masked_ADE` and `masked_RMSE`,
+measure reconstruction quality on the removed segment itself. Since the task is
+missing-segment reconstruction, masked metrics are emphasized when discussing
+reconstruction quality on the missing span. When the two views rank methods
+differently, both rankings are reported explicitly rather than collapsed into a
+single overall ranking.
+
+Under the clean missing-span setting, Linear interpolation can be strongest
+under full-trajectory metrics, while Savitzky-Golay can be slightly stronger
+under masked metrics. This difference is expected because full-trajectory
+metrics include observed time steps and may dilute the error on the removed
+segment.
+
 ## Experiment 0: Main Table
 
 | experiment_id | method_tag | ADE | RMSE | masked_ADE | masked_RMSE | off_map_ratio | wall_crossing_count |
@@ -67,5 +84,6 @@ Summary CSV: `outputs/stage3/phase1/canonical_room3/eval/summary_metrics.csv`
 - The CSV contains 18 rows: 6 experiments multiplied by 3 baseline methods.
 - The fixed-span sweep records higher masked reconstruction errors as the missing ratio moves from 10% to 30%.
 - The random-position controls for seeds 42, 43, and 44 have close metric values under the current proxy data.
+- The full-trajectory view and the masked-segment view should both be reported when comparing Linear and Savitzky-Golay.
 - The empty room3 geometry check reports zero wall crossings for all rows.
 - Off-map ratios are zero or very small, which is expected for normalized room3 trajectories with an empty `[0, 3] x [0, 3]` map.

@@ -11,6 +11,8 @@ BASELINE_OUT_DIR = PHASE1_OUTPUT_DIR / "baselines"
 EVAL_OUT_DIR = PHASE1_OUTPUT_DIR / "eval"
 LOG_OUT_DIR = PHASE1_OUTPUT_DIR / "logs"
 DOCS_DIR = ROOT / "docs" / "stage3"
+RANDOM_SPAN_STATS_DIR = PHASE1_OUTPUT_DIR / "random_span_statistics"
+RANDOM_SPAN_STATS_FIGURES_DIR = RANDOM_SPAN_STATS_DIR / "figures"
 
 EXPERIMENTS_DIR = DATA_OUT_DIR / "experiments"
 CLEAN_ROOM3_PATH = DATA_OUT_DIR / "clean_windows_room3.npz"
@@ -61,6 +63,8 @@ def ensure_stage3_dirs():
         "eval": EVAL_OUT_DIR,
         "logs": LOG_OUT_DIR,
         "docs": DOCS_DIR,
+        "random_span_statistics": RANDOM_SPAN_STATS_DIR,
+        "random_span_statistics_figures": RANDOM_SPAN_STATS_FIGURES_DIR,
     }
     for path in dirs.values():
         path.mkdir(parents=True, exist_ok=True)

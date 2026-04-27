@@ -44,3 +44,11 @@ This phase does not include:
 
 The canonical room3 protocol is documented in
 `docs/stage3/stage3_phase1_room3_protocol.md`.
+
+Metric interpretation uses two complementary views:
+
+- full-trajectory consistency: `ADE`, `FDE`, `RMSE`
+- missing-segment reconstruction quality: `masked_ADE`, `masked_RMSE`
+
+Since the task is missing-segment reconstruction, the masked view should be
+emphasized when discussing gap recovery quality.
