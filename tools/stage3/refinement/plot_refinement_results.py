@@ -1,0 +1,271 @@
+from __future__ import annotations
+
+import argparse
+import csv
+import os
+from pathlib import Path
+import sys
+
+os.environ.setdefault("MPLCONFIGDIR", "/tmp/stage3_mplconfig")
+
+import matplotlib
+
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
+from tools.stage3.controlled.evaluate_coarse_reconstruction import plot_segments
+from tools.stage3.refinement.refiners import REFINER_LABELS, REFINER_NAMES
+from tools.stage3.refinement.run_refinement_interface import (
+    REFINEMENT_FIGURE_DIR,
+    ensure_refinement_dirs,
+    refined_path,
+)
+from utils.stage3.controlled_benchmark import (
+    DEGRADATION_LABELS,
+    DEGRADATION_NAMES,
+    METHOD_LABELS,
+    METHODS,
+    DEFAULT_SAMPLE_INDEX,
+    DEFAULT_SEED,
+    DEFAULT_SPAN_MODE,
+    DEFAULT_SPAN_RATIO,
+    clean_path,
+    experiment_tag,
+    mask_path,
+    reconstruction_path,
+)
+
+
+def metrics_csv_path():
+    return PROJECT_ROOT / "outputs" / "stage3" / "refinement" / "eval" / "refinement_metrics.csv"
+
+
+def parse_rows(path: Path):
+    if not path.exists():
+        raise FileNotFoundError(f"Metrics file not found: {path}")
+    with path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        rows = []
+        for row in reader:
+            parsed = dict(row)
+            for key in [
+                "ADE",
+                "FDE",
+                "RMSE",
+                "masked_ADE",
+                "masked_RMSE",
+                "improvement_ADE",
+                "improvement_masked_ADE",
+                "off_map_ratio",
+            ]:
+                parsed[key] = float(parsed[key])
+            parsed["wall_crossing_count"] = int(row["wall_crossing_count"])
+            rows.append(parsed)
+    return rows
+
+
+def row_lookup(rows: list[dict], degradation: str, coarse_method: str, refiner: str):
+    for row in rows:
+        if (
+            row["degradation"] == degradation
+            and row["coarse_method"] == coarse_method
+            and row["refiner"] == refiner
+        ):
+            return row
+    raise KeyError(f"Missing row for {degradation}/{coarse_method}/{refiner}")
+
+
+def plot_metric_comparison(rows: list[dict], metric: str, ylabel: str, output_path: Path):
+    labels = [f"{DEGRADATION_LABELS[d]}\n{METHOD_LABELS[m]}" for d in DEGRADATION_NAMES for m in METHODS]
+    x = np.arange(len(labels))
+    width = 0.25
+    fig, ax = plt.subplots(figsize=(14.0, 4.8))
+    palette = {
+        "coarse": "#4C78A8",
+        "identity_refiner": "#9E9E9E",
+        "light_savgol_refiner": "#E45756",
+    }
+
+    coarse_values = [
+        row_lookup(rows, degradation, coarse_method, "identity_refiner")[metric]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+    identity_values = coarse_values
+    sg_values = [
+        row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")[metric]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+
+    ax.bar(x - width, coarse_values, width=width, color=palette["coarse"], label="Coarse")
+    ax.bar(x, identity_values, width=width, color=palette["identity_refiner"], label="Identity")
+    ax.bar(x + width, sg_values, width=width, color=palette["light_savgol_refiner"], label="Light SG")
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=35, ha="right")
+    ax.set_ylabel(ylabel)
+    ax.grid(axis="y", linewidth=0.6, alpha=0.35)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.18))
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_improvement(rows: list[dict], output_path: Path):
+    labels = [f"{DEGRADATION_LABELS[d]}\n{METHOD_LABELS[m]}" for d in DEGRADATION_NAMES for m in METHODS]
+    x = np.arange(len(labels))
+    width = 0.35
+    fig, ax = plt.subplots(figsize=(14.0, 4.8))
+    ade_imp = [
+        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_ADE"]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+    masked_imp = [
+        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_masked_ADE"]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+    ax.bar(x - width / 2, ade_imp, width=width, color="#4C78A8", label="ADE improvement (%)")
+    ax.bar(x + width / 2, masked_imp, width=width, color="#E45756", label="masked_ADE improvement (%)")
+    ax.axhline(0.0, color="#444444", linewidth=0.8)
+    ax.set_xticks(x)
+    ax.set_xticklabels(labels, rotation=35, ha="right")
+    ax.set_ylabel("Improvement (%)")
+    ax.grid(axis="y", linewidth=0.6, alpha=0.35)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.legend(frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, 1.18))
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_full_vs_masked_improvement(rows: list[dict], output_path: Path):
+    labels = [f"{DEGRADATION_LABELS[d]}\n{METHOD_LABELS[m]}" for d in DEGRADATION_NAMES for m in METHODS]
+    x = np.arange(len(labels))
+    width = 0.55
+    fig, axes = plt.subplots(1, 2, figsize=(14.6, 4.8), sharex=True)
+
+    ade_imp = [
+        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_ADE"]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+    masked_imp = [
+        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_masked_ADE"]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+
+    panel_specs = [
+        (axes[0], ade_imp, "Improvement_ADE (%)", "Full-trajectory view"),
+        (axes[1], masked_imp, "Improvement_masked_ADE (%)", "Missing-segment view"),
+    ]
+    bar_color = "#4C78A8"
+
+    for ax, values, ylabel, title in panel_specs:
+        ax.bar(x, values, width=width, color=bar_color)
+        ax.axhline(0.0, color="#444444", linewidth=0.8)
+        ax.set_title(title)
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, rotation=35, ha="right")
+        ax.set_ylabel(ylabel)
+        ax.grid(axis="y", linewidth=0.6, alpha=0.35)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+
+    fig.suptitle("Refinement improvement: full vs masked views")
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_trajectory_example(sample_idx: int, tag: str, output_path: Path):
+    clean = np.load(clean_path(), allow_pickle=False).astype(np.float32)
+    obs_mask = np.load(mask_path(tag), allow_pickle=False).astype(np.uint8)
+    degradation = "missing_only"
+    coarse_method = "linear_interp"
+    refiner = "light_savgol_refiner"
+    coarse = np.load(reconstruction_path(degradation, coarse_method, tag), allow_pickle=False).astype(np.float32)
+    refined = np.load(refined_path(degradation, coarse_method, refiner), allow_pickle=False).astype(np.float32)
+
+    mask = obs_mask[sample_idx].astype(bool)
+    gt = clean[sample_idx]
+    coarse_sample = coarse[sample_idx]
+    refined_sample = refined[sample_idx]
+    missing_idx = np.flatnonzero(~mask)
+    gap_slice = slice(max(missing_idx[0] - 1, 0), min(missing_idx[-1] + 2, gt.shape[0]))
+    gt_gap = gt[gap_slice]
+
+    fig, axes = plt.subplots(1, 3, figsize=(10.8, 3.8), sharex=True, sharey=True)
+    fig.suptitle("Trajectory example: coarse vs refined")
+    titles = ["Ground truth", "Coarse (Linear)", "Refined (Light SG)"]
+    for ax, title in zip(axes, titles):
+        ax.set_title(title)
+        ax.set_xlim(0.0, 3.0)
+        ax.set_ylim(0.0, 3.0)
+        ax.set_aspect("equal", adjustable="box")
+        ax.set_xticks([0, 1, 2, 3])
+        ax.set_yticks([0, 1, 2, 3])
+        ax.grid(linewidth=0.6, alpha=0.25)
+
+    axes[0].plot(gt[:, 0], gt[:, 1], color="#222222", linewidth=2.2)
+
+    for ax, sample, title_color in [(axes[1], coarse_sample, "#d62728"), (axes[2], refined_sample, "#2ca02c")]:
+        plot_segments(ax, gt, mask, color="#1f77b4", linewidth=2.2)
+        ax.plot(gt_gap[:, 0], gt_gap[:, 1], color="#b0b0b0", linestyle="--", linewidth=1.3)
+        pred_gap = sample[gap_slice]
+        ax.plot(pred_gap[:, 0], pred_gap[:, 1], color=title_color, linewidth=2.0)
+
+    for ax in axes:
+        ax.set_xlabel("x")
+    axes[0].set_ylabel("y")
+    fig.tight_layout(rect=[0, 0, 1, 0.92])
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Plot Stage 3 refinement results.")
+    parser.add_argument("--seed", type=int, default=DEFAULT_SEED)
+    parser.add_argument("--span_ratio", type=float, default=DEFAULT_SPAN_RATIO)
+    parser.add_argument("--span_mode", type=str, default=DEFAULT_SPAN_MODE, choices=["fixed", "random"])
+    parser.add_argument("--sample_idx", type=int, default=DEFAULT_SAMPLE_INDEX)
+    args = parser.parse_args()
+
+    ensure_refinement_dirs()
+    rows = parse_rows(metrics_csv_path())
+    tag = experiment_tag(args.span_ratio, args.span_mode, args.seed)
+
+    ade_path = REFINEMENT_FIGURE_DIR / "coarse_vs_refined_ADE.png"
+    masked_ade_path = REFINEMENT_FIGURE_DIR / "coarse_vs_refined_masked_ADE.png"
+    improvement_path = REFINEMENT_FIGURE_DIR / "improvement_bar_chart.png"
+    full_vs_masked_path = REFINEMENT_FIGURE_DIR / "full_vs_masked_refinement_improvement.png"
+    example_path = REFINEMENT_FIGURE_DIR / "trajectory_example_coarse_refined.png"
+
+    plot_metric_comparison(rows, "ADE", "ADE", ade_path)
+    plot_metric_comparison(rows, "masked_ADE", "masked_ADE", masked_ade_path)
+    plot_improvement(rows, improvement_path)
+    plot_full_vs_masked_improvement(rows, full_vs_masked_path)
+    plot_trajectory_example(args.sample_idx, tag, example_path)
+
+    print("=" * 60)
+    print("Refinement figures generated")
+    print(f"ade_path         = {ade_path}")
+    print(f"masked_ade_path  = {masked_ade_path}")
+    print(f"improvement_path = {improvement_path}")
+    print(f"full_vs_masked   = {full_vs_masked_path}")
+    print(f"example_path     = {example_path}")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    main()
