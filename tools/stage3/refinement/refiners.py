@@ -3,18 +3,23 @@ from __future__ import annotations
 import numpy as np
 from scipy.signal import savgol_filter
 
-from tools.stage3.refinement.ddpm_refiner import ddpm_prior_interface_v0
+from tools.stage3.refinement.ddpm_refiner import (
+    ddpm_prior_interface_v0,
+    ddpm_prior_masked_replace_v1,
+)
 
 REFINER_NAMES = [
     "identity_refiner",
     "light_savgol_refiner",
     "ddpm_prior_interface_v0",
+    "ddpm_prior_masked_replace_v1",
 ]
 
 REFINER_LABELS = {
     "identity_refiner": "Identity",
     "light_savgol_refiner": "Light SG",
     "ddpm_prior_interface_v0": "DDPM prior v0",
+    "ddpm_prior_masked_replace_v1": "DDPM masked replace v1",
 }
 
 
@@ -45,7 +50,7 @@ def light_savgol_refiner(traj: np.ndarray, window_length: int = 5, polyorder: in
     return refined
 
 
-def run_refiner(refiner_name: str, traj: np.ndarray):
+def run_refiner(refiner_name: str, traj: np.ndarray, obs_mask: np.ndarray | None = None):
     if refiner_name == "identity_refiner":
         return identity_refiner(traj), {"refiner_name": "identity_refiner"}
     if refiner_name == "light_savgol_refiner":
@@ -56,4 +61,8 @@ def run_refiner(refiner_name: str, traj: np.ndarray):
         }
     if refiner_name == "ddpm_prior_interface_v0":
         return ddpm_prior_interface_v0(traj)
+    if refiner_name == "ddpm_prior_masked_replace_v1":
+        if obs_mask is None:
+            raise ValueError("ddpm_prior_masked_replace_v1 requires obs_mask.")
+        return ddpm_prior_masked_replace_v1(traj, obs_mask=obs_mask)
     raise ValueError(f"Unsupported refiner: {refiner_name}")

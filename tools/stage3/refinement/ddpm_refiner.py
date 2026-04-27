@@ -171,3 +171,50 @@ def ddpm_prior_interface_v0(
         ),
     }
     return refined_abs, metadata
+
+
+def ddpm_prior_masked_replace_v1(
+    coarse_abs: np.ndarray,
+    obs_mask: np.ndarray,
+    ddpm_candidate: np.ndarray | None = None,
+    base_metadata: dict | None = None,
+    config: DDPMPriorInterfaceConfig | None = None,
+):
+    """Prior-based candidate generation with masked-only replacement.
+
+    Observed points are preserved from the coarse trajectory. Only the missing
+    segment is replaced by the DDPM prior candidate.
+    """
+
+    coarse_abs = np.asarray(coarse_abs, dtype=np.float32)
+    obs_mask = np.asarray(obs_mask, dtype=np.uint8)
+    if coarse_abs.ndim != 3 or coarse_abs.shape[-1] != 2:
+        raise ValueError(f"Expected coarse_abs [N, T, 2], got {coarse_abs.shape}")
+    if obs_mask.shape != coarse_abs.shape[:2]:
+        raise ValueError(f"obs_mask shape {obs_mask.shape} does not match coarse_abs shape {coarse_abs.shape[:2]}")
+
+    if ddpm_candidate is None or base_metadata is None:
+        ddpm_candidate, base_meta = ddpm_prior_interface_v0(coarse_abs, config=config)
+    else:
+        ddpm_candidate = np.asarray(ddpm_candidate, dtype=np.float32)
+        base_meta = dict(base_metadata)
+    if ddpm_candidate.shape != coarse_abs.shape:
+        raise ValueError(
+            f"ddpm_candidate shape {ddpm_candidate.shape} does not match coarse_abs shape {coarse_abs.shape}"
+        )
+    refined = coarse_abs.copy()
+    observed = obs_mask == 1
+    missing = obs_mask == 0
+    refined[missing] = ddpm_candidate[missing]
+    refined[observed] = coarse_abs[observed]
+
+    metadata = dict(base_meta)
+    metadata.update(
+        {
+            "refiner_name": "ddpm_prior_masked_replace_v1",
+            "refiner_type": "projection_style_prior_masked_replace",
+            "base_candidate_refiner": "ddpm_prior_interface_v0",
+            "replace_rule": "refined[mask == 1] = coarse[mask == 1]; refined[mask == 0] = ddpm_candidate[mask == 0]",
+        }
+    )
+    return refined.astype(np.float32), metadata

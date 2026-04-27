@@ -43,6 +43,20 @@
           "off_map_ratio": 0.0004019626867740415,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.04668530821800232,
+          "FDE": 0.03900986909866333,
+          "RMSE": 0.04305655509233475,
+          "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+          "degradation": "missing_drift",
+          "improvement_ADE": -0.33058566298341663,
+          "improvement_masked_ADE": -1.3093648362572952,
+          "masked_ADE": 0.1022876501083374,
+          "masked_RMSE": 0.08206962049007416,
+          "off_map_ratio": 0.00020098134338702076,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "linear_interp": [
@@ -87,6 +101,20 @@
           "off_map_ratio": 0.00038532974801097777,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.046504467725753784,
+          "FDE": 0.03825400024652481,
+          "RMSE": 0.04298446699976921,
+          "coarse_method": "linear_interp",
+          "degradation": "missing_drift",
+          "improvement_ADE": -0.47744529843548855,
+          "improvement_masked_ADE": -2.633749774269505,
+          "masked_ADE": 0.10367095470428467,
+          "masked_RMSE": 0.08252082765102386,
+          "off_map_ratio": 0.00017187370055165915,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "savgol_w5_p2": [
@@ -130,6 +158,20 @@
           "masked_RMSE": 0.08246471732854843,
           "off_map_ratio": 0.0003839436697807224,
           "refiner": "ddpm_prior_interface_v0",
+          "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.04652230814099312,
+          "FDE": 0.0382571741938591,
+          "RMSE": 0.04297855123877525,
+          "coarse_method": "savgol_w5_p2",
+          "degradation": "missing_drift",
+          "improvement_ADE": -0.477709352582002,
+          "improvement_masked_ADE": -2.6467431195908455,
+          "masked_ADE": 0.10360944271087646,
+          "masked_RMSE": 0.08246471732854843,
+          "off_map_ratio": 0.0001704876223214038,
+          "refiner": "ddpm_prior_masked_replace_v1",
           "wall_crossing_count": 0
         }
       ]
@@ -177,6 +219,20 @@
           "off_map_ratio": 0.0003132536800377013,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.04426386207342148,
+          "FDE": 0.02677721530199051,
+          "RMSE": 0.04266531765460968,
+          "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+          "degradation": "missing_noise",
+          "improvement_ADE": -0.23906587577170552,
+          "improvement_masked_ADE": -0.7241455250760513,
+          "masked_ADE": 0.10166944563388824,
+          "masked_RMSE": 0.08234339207410812,
+          "off_map_ratio": 0.0001593989964793613,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "linear_interp": [
@@ -221,6 +277,20 @@
           "off_map_ratio": 0.0003187979929587226,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.05010752007365227,
+          "FDE": 0.03753507137298584,
+          "RMSE": 0.04487180337309837,
+          "coarse_method": "linear_interp",
+          "degradation": "missing_noise",
+          "improvement_ADE": -0.3811490576592754,
+          "improvement_masked_ADE": -2.219300887329839,
+          "masked_ADE": 0.10029347985982895,
+          "masked_RMSE": 0.08047166466712952,
+          "off_map_ratio": 0.00021206996922906328,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "savgol_w5_p2": [
@@ -264,6 +334,20 @@
           "masked_RMSE": 0.08096468448638916,
           "off_map_ratio": 0.0003201840711889779,
           "refiner": "ddpm_prior_interface_v0",
+          "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.0420353002846241,
+          "FDE": 0.03541840985417366,
+          "RMSE": 0.041177067905664444,
+          "coarse_method": "savgol_w5_p2",
+          "degradation": "missing_noise",
+          "improvement_ADE": -0.4811000271313144,
+          "improvement_masked_ADE": -2.07504008815431,
+          "masked_ADE": 0.10117179155349731,
+          "masked_RMSE": 0.08096468448638916,
+          "off_map_ratio": 0.00016632938763063787,
+          "refiner": "ddpm_prior_masked_replace_v1",
           "wall_crossing_count": 0
         }
       ]
@@ -311,6 +395,20 @@
           "off_map_ratio": 0.0004185956255371053,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.055838692933321,
+          "FDE": 0.04601367935538292,
+          "RMSE": 0.04895307868719101,
+          "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+          "degradation": "missing_noise_drift",
+          "improvement_ADE": -0.1687902415106651,
+          "improvement_masked_ADE": -0.6214106433254323,
+          "masked_ADE": 0.10520374029874802,
+          "masked_RMSE": 0.08502820134162903,
+          "off_map_ratio": 0.0003104815235771907,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "linear_interp": [
@@ -355,6 +453,20 @@
           "off_map_ratio": 0.0004158234690765947,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.059906668961048126,
+          "FDE": 0.05279378592967987,
+          "RMSE": 0.05091031268239021,
+          "coarse_method": "linear_interp",
+          "degradation": "missing_noise_drift",
+          "improvement_ADE": -0.2666879920248097,
+          "improvement_masked_ADE": -1.5465259368250495,
+          "masked_ADE": 0.10384140908718109,
+          "masked_RMSE": 0.08327899128198624,
+          "off_map_ratio": 0.0003714689657084246,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "savgol_w5_p2": [
@@ -398,6 +510,20 @@
           "masked_RMSE": 0.08375430107116699,
           "off_map_ratio": 0.00040473484323455213,
           "refiner": "ddpm_prior_interface_v0",
+          "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.05432898923754692,
+          "FDE": 0.05134725943207741,
+          "RMSE": 0.04768497869372368,
+          "coarse_method": "savgol_w5_p2",
+          "degradation": "missing_noise_drift",
+          "improvement_ADE": -0.29878107807410853,
+          "improvement_masked_ADE": -1.4827134020764352,
+          "masked_ADE": 0.10463772714138031,
+          "masked_RMSE": 0.08375430107116699,
+          "off_map_ratio": 0.0003090954453469354,
+          "refiner": "ddpm_prior_masked_replace_v1",
           "wall_crossing_count": 0
         }
       ]
@@ -445,6 +571,20 @@
           "off_map_ratio": 0.0003077093671166801,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.023405078798532486,
+          "FDE": 0.00644536642357707,
+          "RMSE": 0.03575430437922478,
+          "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+          "degradation": "missing_only",
+          "improvement_ADE": -1.3616624306307217,
+          "improvement_masked_ADE": -2.142972754918976,
+          "masked_ADE": 0.09895908087491989,
+          "masked_RMSE": 0.07927706837654114,
+          "off_map_ratio": 0.00010534194549940398,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "linear_interp": [
@@ -489,6 +629,20 @@
           "off_map_ratio": 0.00028830427189310566,
           "refiner": "ddpm_prior_interface_v0",
           "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.020078685134649277,
+          "FDE": 0.0,
+          "RMSE": 0.03564969822764397,
+          "coarse_method": "linear_interp",
+          "degradation": "missing_only",
+          "improvement_ADE": -10.695864885739995,
+          "improvement_masked_ADE": -10.695864936492054,
+          "masked_ADE": 0.10039340704679489,
+          "masked_RMSE": 0.07971514016389847,
+          "off_map_ratio": 6.930391151276578e-05,
+          "refiner": "ddpm_prior_masked_replace_v1",
+          "wall_crossing_count": 0
         }
       ],
       "savgol_w5_p2": [
@@ -532,6 +686,20 @@
           "masked_RMSE": 0.07965704053640366,
           "off_map_ratio": 0.00028969035012336097,
           "refiner": "ddpm_prior_interface_v0",
+          "wall_crossing_count": 0
+        },
+        {
+          "ADE": 0.020923970267176628,
+          "FDE": 0.000710330146830529,
+          "RMSE": 0.035642318427562714,
+          "coarse_method": "savgol_w5_p2",
+          "degradation": "missing_only",
+          "improvement_ADE": -7.335674744968117,
+          "improvement_masked_ADE": -11.1438534911475,
+          "masked_ADE": 0.10033086687326431,
+          "masked_RMSE": 0.07965704053640366,
+          "off_map_ratio": 7.207606797327641e-05,
+          "refiner": "ddpm_prior_masked_replace_v1",
           "wall_crossing_count": 0
         }
       ]
@@ -587,6 +755,20 @@
       "wall_crossing_count": 0
     },
     {
+      "ADE": 0.020078685134649277,
+      "FDE": 0.0,
+      "RMSE": 0.03564969822764397,
+      "coarse_method": "linear_interp",
+      "degradation": "missing_only",
+      "improvement_ADE": -10.695864885739995,
+      "improvement_masked_ADE": -10.695864936492054,
+      "masked_ADE": 0.10039340704679489,
+      "masked_RMSE": 0.07971514016389847,
+      "off_map_ratio": 6.930391151276578e-05,
+      "refiner": "ddpm_prior_masked_replace_v1",
+      "wall_crossing_count": 0
+    },
+    {
       "ADE": 0.002510171150788665,
       "FDE": 0.000710330146830529,
       "RMSE": 0.004136533476412296,
@@ -626,6 +808,20 @@
       "masked_RMSE": 0.07965704053640366,
       "off_map_ratio": 0.00028969035012336097,
       "refiner": "ddpm_prior_interface_v0",
+      "wall_crossing_count": 0
+    },
+    {
+      "ADE": 0.020923970267176628,
+      "FDE": 0.000710330146830529,
+      "RMSE": 0.035642318427562714,
+      "coarse_method": "savgol_w5_p2",
+      "degradation": "missing_only",
+      "improvement_ADE": -7.335674744968117,
+      "improvement_masked_ADE": -11.1438534911475,
+      "masked_ADE": 0.10033086687326431,
+      "masked_RMSE": 0.07965704053640366,
+      "off_map_ratio": 7.207606797327641e-05,
+      "refiner": "ddpm_prior_masked_replace_v1",
       "wall_crossing_count": 0
     },
     {
@@ -671,6 +867,20 @@
       "wall_crossing_count": 0
     },
     {
+      "ADE": 0.023405078798532486,
+      "FDE": 0.00644536642357707,
+      "RMSE": 0.03575430437922478,
+      "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+      "degradation": "missing_only",
+      "improvement_ADE": -1.3616624306307217,
+      "improvement_masked_ADE": -2.142972754918976,
+      "masked_ADE": 0.09895908087491989,
+      "masked_RMSE": 0.07927706837654114,
+      "off_map_ratio": 0.00010534194549940398,
+      "refiner": "ddpm_prior_masked_replace_v1",
+      "wall_crossing_count": 0
+    },
+    {
       "ADE": 0.0362795889377594,
       "FDE": 0.03753507137298584,
       "RMSE": 0.029038436710834503,
@@ -710,6 +920,20 @@
       "masked_RMSE": 0.08047166466712952,
       "off_map_ratio": 0.0003187979929587226,
       "refiner": "ddpm_prior_interface_v0",
+      "wall_crossing_count": 0
+    },
+    {
+      "ADE": 0.05010752007365227,
+      "FDE": 0.03753507137298584,
+      "RMSE": 0.04487180337309837,
+      "coarse_method": "linear_interp",
+      "degradation": "missing_noise",
+      "improvement_ADE": -0.3811490576592754,
+      "improvement_masked_ADE": -2.219300887329839,
+      "masked_ADE": 0.10029347985982895,
+      "masked_RMSE": 0.08047166466712952,
+      "off_map_ratio": 0.00021206996922906328,
+      "refiner": "ddpm_prior_masked_replace_v1",
       "wall_crossing_count": 0
     },
     {
@@ -755,6 +979,20 @@
       "wall_crossing_count": 0
     },
     {
+      "ADE": 0.0420353002846241,
+      "FDE": 0.03541840985417366,
+      "RMSE": 0.041177067905664444,
+      "coarse_method": "savgol_w5_p2",
+      "degradation": "missing_noise",
+      "improvement_ADE": -0.4811000271313144,
+      "improvement_masked_ADE": -2.07504008815431,
+      "masked_ADE": 0.10117179155349731,
+      "masked_RMSE": 0.08096468448638916,
+      "off_map_ratio": 0.00016632938763063787,
+      "refiner": "ddpm_prior_masked_replace_v1",
+      "wall_crossing_count": 0
+    },
+    {
       "ADE": 0.035723574459552765,
       "FDE": 0.02677721530199051,
       "RMSE": 0.03120294399559498,
@@ -794,6 +1032,20 @@
       "masked_RMSE": 0.08234339207410812,
       "off_map_ratio": 0.0003132536800377013,
       "refiner": "ddpm_prior_interface_v0",
+      "wall_crossing_count": 0
+    },
+    {
+      "ADE": 0.04426386207342148,
+      "FDE": 0.02677721530199051,
+      "RMSE": 0.04266531765460968,
+      "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+      "degradation": "missing_noise",
+      "improvement_ADE": -0.23906587577170552,
+      "improvement_masked_ADE": -0.7241455250760513,
+      "masked_ADE": 0.10166944563388824,
+      "masked_RMSE": 0.08234339207410812,
+      "off_map_ratio": 0.0001593989964793613,
+      "refiner": "ddpm_prior_masked_replace_v1",
       "wall_crossing_count": 0
     },
     {
@@ -839,6 +1091,20 @@
       "wall_crossing_count": 0
     },
     {
+      "ADE": 0.046504467725753784,
+      "FDE": 0.03825400024652481,
+      "RMSE": 0.04298446699976921,
+      "coarse_method": "linear_interp",
+      "degradation": "missing_drift",
+      "improvement_ADE": -0.47744529843548855,
+      "improvement_masked_ADE": -2.633749774269505,
+      "masked_ADE": 0.10367095470428467,
+      "masked_RMSE": 0.08252082765102386,
+      "off_map_ratio": 0.00017187370055165915,
+      "refiner": "ddpm_prior_masked_replace_v1",
+      "wall_crossing_count": 0
+    },
+    {
       "ADE": 0.031482718884944916,
       "FDE": 0.0382571741938591,
       "RMSE": 0.024246132001280785,
@@ -878,6 +1144,20 @@
       "masked_RMSE": 0.08246471732854843,
       "off_map_ratio": 0.0003839436697807224,
       "refiner": "ddpm_prior_interface_v0",
+      "wall_crossing_count": 0
+    },
+    {
+      "ADE": 0.04652230814099312,
+      "FDE": 0.0382571741938591,
+      "RMSE": 0.04297855123877525,
+      "coarse_method": "savgol_w5_p2",
+      "degradation": "missing_drift",
+      "improvement_ADE": -0.477709352582002,
+      "improvement_masked_ADE": -2.6467431195908455,
+      "masked_ADE": 0.10360944271087646,
+      "masked_RMSE": 0.08246471732854843,
+      "off_map_ratio": 0.0001704876223214038,
+      "refiner": "ddpm_prior_masked_replace_v1",
       "wall_crossing_count": 0
     },
     {
@@ -923,6 +1203,20 @@
       "wall_crossing_count": 0
     },
     {
+      "ADE": 0.04668530821800232,
+      "FDE": 0.03900986909866333,
+      "RMSE": 0.04305655509233475,
+      "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+      "degradation": "missing_drift",
+      "improvement_ADE": -0.33058566298341663,
+      "improvement_masked_ADE": -1.3093648362572952,
+      "masked_ADE": 0.1022876501083374,
+      "masked_RMSE": 0.08206962049007416,
+      "off_map_ratio": 0.00020098134338702076,
+      "refiner": "ddpm_prior_masked_replace_v1",
+      "wall_crossing_count": 0
+    },
+    {
       "ADE": 0.04729394242167473,
       "FDE": 0.05279378592967987,
       "RMSE": 0.037624143064022064,
@@ -962,6 +1256,20 @@
       "masked_RMSE": 0.08327899128198624,
       "off_map_ratio": 0.0004158234690765947,
       "refiner": "ddpm_prior_interface_v0",
+      "wall_crossing_count": 0
+    },
+    {
+      "ADE": 0.059906668961048126,
+      "FDE": 0.05279378592967987,
+      "RMSE": 0.05091031268239021,
+      "coarse_method": "linear_interp",
+      "degradation": "missing_noise_drift",
+      "improvement_ADE": -0.2666879920248097,
+      "improvement_masked_ADE": -1.5465259368250495,
+      "masked_ADE": 0.10384140908718109,
+      "masked_RMSE": 0.08327899128198624,
+      "off_map_ratio": 0.0003714689657084246,
+      "refiner": "ddpm_prior_masked_replace_v1",
       "wall_crossing_count": 0
     },
     {
@@ -1007,6 +1315,20 @@
       "wall_crossing_count": 0
     },
     {
+      "ADE": 0.05432898923754692,
+      "FDE": 0.05134725943207741,
+      "RMSE": 0.04768497869372368,
+      "coarse_method": "savgol_w5_p2",
+      "degradation": "missing_noise_drift",
+      "improvement_ADE": -0.29878107807410853,
+      "improvement_masked_ADE": -1.4827134020764352,
+      "masked_ADE": 0.10463772714138031,
+      "masked_RMSE": 0.08375430107116699,
+      "off_map_ratio": 0.0003090954453469354,
+      "refiner": "ddpm_prior_masked_replace_v1",
+      "wall_crossing_count": 0
+    },
+    {
       "ADE": 0.0477747768163681,
       "FDE": 0.04601367935538292,
       "RMSE": 0.0392746701836586,
@@ -1046,6 +1368,20 @@
       "masked_RMSE": 0.08502820134162903,
       "off_map_ratio": 0.0004185956255371053,
       "refiner": "ddpm_prior_interface_v0",
+      "wall_crossing_count": 0
+    },
+    {
+      "ADE": 0.055838692933321,
+      "FDE": 0.04601367935538292,
+      "RMSE": 0.04895307868719101,
+      "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+      "degradation": "missing_noise_drift",
+      "improvement_ADE": -0.1687902415106651,
+      "improvement_masked_ADE": -0.6214106433254323,
+      "masked_ADE": 0.10520374029874802,
+      "masked_RMSE": 0.08502820134162903,
+      "off_map_ratio": 0.0003104815235771907,
+      "refiner": "ddpm_prior_masked_replace_v1",
       "wall_crossing_count": 0
     }
   ]

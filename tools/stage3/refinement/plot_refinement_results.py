@@ -90,6 +90,7 @@ def plot_metric_comparison(rows: list[dict], metric: str, ylabel: str, output_pa
         "identity_refiner": "#9E9E9E",
         "light_savgol_refiner": "#E45756",
         "ddpm_prior_interface_v0": "#54A24B",
+        "ddpm_prior_masked_replace_v1": "#B279A2",
     }
 
     coarse_values = [
@@ -112,18 +113,30 @@ def plot_metric_comparison(rows: list[dict], metric: str, ylabel: str, output_pa
         for degradation in DEGRADATION_NAMES
         for coarse_method in METHODS
     ]
+    ddpm_masked_values = [
+        row_lookup(rows, degradation, coarse_method, "ddpm_prior_masked_replace_v1")[metric]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
 
-    ax.bar(x - 1.5 * width, coarse_values, width=width, color=palette["coarse"], label="Coarse")
-    ax.bar(x - 0.5 * width, identity_values, width=width, color=palette["identity_refiner"], label="Identity")
-    ax.bar(x + 0.5 * width, sg_values, width=width, color=palette["light_savgol_refiner"], label="Light SG")
-    ax.bar(x + 1.5 * width, ddpm_values, width=width, color=palette["ddpm_prior_interface_v0"], label="DDPM prior v0")
+    ax.bar(x - 2.0 * width, coarse_values, width=width, color=palette["coarse"], label="Coarse")
+    ax.bar(x - 1.0 * width, identity_values, width=width, color=palette["identity_refiner"], label="Identity")
+    ax.bar(x, sg_values, width=width, color=palette["light_savgol_refiner"], label="Light SG")
+    ax.bar(x + 1.0 * width, ddpm_values, width=width, color=palette["ddpm_prior_interface_v0"], label="DDPM prior v0")
+    ax.bar(
+        x + 2.0 * width,
+        ddpm_masked_values,
+        width=width,
+        color=palette["ddpm_prior_masked_replace_v1"],
+        label="DDPM masked replace v1",
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=35, ha="right")
     ax.set_ylabel(ylabel)
     ax.grid(axis="y", linewidth=0.6, alpha=0.35)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(frameon=False, ncol=4, loc="upper center", bbox_to_anchor=(0.5, 1.22))
+    ax.legend(frameon=False, ncol=5, loc="upper center", bbox_to_anchor=(0.5, 1.24))
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
@@ -132,28 +145,34 @@ def plot_metric_comparison(rows: list[dict], metric: str, ylabel: str, output_pa
 def plot_improvement(rows: list[dict], output_path: Path):
     labels = [f"{DEGRADATION_LABELS[d]}\n{METHOD_LABELS[m]}" for d in DEGRADATION_NAMES for m in METHODS]
     x = np.arange(len(labels))
-    width = 0.35
+    width = 0.22
     fig, ax = plt.subplots(figsize=(14.0, 4.8))
-    ade_imp = [
+    light_imp = [
         100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_ADE"]
         for degradation in DEGRADATION_NAMES
         for coarse_method in METHODS
     ]
-    masked_imp = [
-        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_masked_ADE"]
+    ddpm_v0_imp = [
+        100.0 * row_lookup(rows, degradation, coarse_method, "ddpm_prior_interface_v0")["improvement_ADE"]
         for degradation in DEGRADATION_NAMES
         for coarse_method in METHODS
     ]
-    ax.bar(x - width / 2, ade_imp, width=width, color="#4C78A8", label="ADE improvement (%)")
-    ax.bar(x + width / 2, masked_imp, width=width, color="#E45756", label="masked_ADE improvement (%)")
+    ddpm_masked_imp = [
+        100.0 * row_lookup(rows, degradation, coarse_method, "ddpm_prior_masked_replace_v1")["improvement_ADE"]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
+    ax.bar(x - width, light_imp, width=width, color="#E45756", label="Light SG")
+    ax.bar(x, ddpm_v0_imp, width=width, color="#54A24B", label="DDPM prior v0")
+    ax.bar(x + width, ddpm_masked_imp, width=width, color="#B279A2", label="DDPM masked replace v1")
     ax.axhline(0.0, color="#444444", linewidth=0.8)
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=35, ha="right")
-    ax.set_ylabel("Improvement (%)")
+    ax.set_ylabel("Improvement_ADE (%)")
     ax.grid(axis="y", linewidth=0.6, alpha=0.35)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, 1.18))
+    ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.18))
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
@@ -182,11 +201,13 @@ def plot_ddpm_vs_naive(rows: list[dict], output_path: Path):
         "identity_refiner": "#9E9E9E",
         "light_savgol_refiner": "#E45756",
         "ddpm_prior_interface_v0": "#54A24B",
+        "ddpm_prior_masked_replace_v1": "#B279A2",
     }
     offsets = {
-        "identity_refiner": -width,
-        "light_savgol_refiner": 0.0,
-        "ddpm_prior_interface_v0": width,
+        "identity_refiner": -1.5 * width,
+        "light_savgol_refiner": -0.5 * width,
+        "ddpm_prior_interface_v0": 0.5 * width,
+        "ddpm_prior_masked_replace_v1": 1.5 * width,
     }
 
     panels = [
@@ -211,7 +232,7 @@ def plot_ddpm_vs_naive(rows: list[dict], output_path: Path):
         ax.spines["right"].set_visible(False)
     axes[0].set_title("Full-trajectory view")
     axes[1].set_title("Missing-segment view")
-    axes[1].legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(-0.1, 1.22))
+    axes[1].legend(frameon=False, ncol=4, loc="upper center", bbox_to_anchor=(-0.1, 1.22))
     fig.suptitle("DDPM prior v0 vs naive refinement")
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     fig.savefig(output_path, dpi=300, bbox_inches="tight")
@@ -224,25 +245,41 @@ def plot_full_vs_masked_improvement(rows: list[dict], output_path: Path):
     width = 0.55
     fig, axes = plt.subplots(1, 2, figsize=(14.6, 4.8), sharex=True)
 
-    ade_imp = [
-        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_ADE"]
-        for degradation in DEGRADATION_NAMES
-        for coarse_method in METHODS
+    refiners_to_show = [
+        "light_savgol_refiner",
+        "ddpm_prior_interface_v0",
+        "ddpm_prior_masked_replace_v1",
     ]
-    masked_imp = [
-        100.0 * row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")["improvement_masked_ADE"]
-        for degradation in DEGRADATION_NAMES
-        for coarse_method in METHODS
-    ]
+    palette = {
+        "light_savgol_refiner": "#E45756",
+        "ddpm_prior_interface_v0": "#54A24B",
+        "ddpm_prior_masked_replace_v1": "#B279A2",
+    }
+    offsets = {
+        "light_savgol_refiner": -0.25,
+        "ddpm_prior_interface_v0": 0.0,
+        "ddpm_prior_masked_replace_v1": 0.25,
+    }
 
     panel_specs = [
-        (axes[0], ade_imp, "Improvement_ADE (%)", "Full-trajectory view"),
-        (axes[1], masked_imp, "Improvement_masked_ADE (%)", "Missing-segment view"),
+        (axes[0], "improvement_ADE", "Improvement_ADE (%)", "Full-trajectory view"),
+        (axes[1], "improvement_masked_ADE", "Improvement_masked_ADE (%)", "Missing-segment view"),
     ]
-    bar_color = "#4C78A8"
 
-    for ax, values, ylabel, title in panel_specs:
-        ax.bar(x, values, width=width, color=bar_color)
+    for ax, metric_name, ylabel, title in panel_specs:
+        for refiner in refiners_to_show:
+            values = [
+                100.0 * row_lookup(rows, degradation, coarse_method, refiner)[metric_name]
+                for degradation in DEGRADATION_NAMES
+                for coarse_method in METHODS
+            ]
+            ax.bar(
+                x + offsets[refiner],
+                values,
+                width=0.24,
+                color=palette[refiner],
+                label=REFINER_LABELS[refiner],
+            )
         ax.axhline(0.0, color="#444444", linewidth=0.8)
         ax.set_title(title)
         ax.set_xticks(x)
@@ -251,6 +288,7 @@ def plot_full_vs_masked_improvement(rows: list[dict], output_path: Path):
         ax.grid(axis="y", linewidth=0.6, alpha=0.35)
         ax.spines["top"].set_visible(False)
         ax.spines["right"].set_visible(False)
+    axes[1].legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(-0.05, 1.22))
 
     fig.suptitle("Refinement improvement: full vs masked views")
     fig.tight_layout(rect=[0, 0, 1, 0.95])

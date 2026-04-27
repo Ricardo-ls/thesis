@@ -12,6 +12,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from tools.stage3.refinement.refiners import REFINER_NAMES, run_refiner
+from tools.stage3.refinement.ddpm_refiner import ddpm_prior_masked_replace_v1
 from utils.stage3.controlled_benchmark import (
     DEGRADATION_NAMES,
     METHODS,
@@ -21,6 +22,7 @@ from utils.stage3.controlled_benchmark import (
     clean_path,
     ensure_controlled_dirs,
     experiment_tag,
+    mask_path,
     reconstruction_path,
 )
 
@@ -69,8 +71,11 @@ def main():
     tag = experiment_tag(args.span_ratio, args.span_mode, args.seed)
 
     clean = load_array(clean_path()).astype(np.float32)
+    obs_mask = load_array(mask_path(tag)).astype(np.uint8)
     if clean.ndim != 3 or clean.shape[-1] != 2:
         raise ValueError(f"Expected clean trajectory shape [N, T, 2], got {clean.shape}")
+    if obs_mask.shape != clean.shape[:2]:
+        raise ValueError(f"Expected obs_mask shape {clean.shape[:2]}, got {obs_mask.shape}")
 
     print("=" * 60)
     print("Running Stage 3 refinement interface")
@@ -86,8 +91,21 @@ def main():
                 raise ValueError(
                     f"Coarse shape mismatch for {degradation}/{coarse_method}: {coarse.shape} vs {clean.shape}"
                 )
+            ddpm_candidate_cache = None
+            ddpm_metadata_cache = None
             for refiner_name in REFINER_NAMES:
-                refined, metadata = run_refiner(refiner_name, coarse)
+                if refiner_name == "ddpm_prior_masked_replace_v1" and ddpm_candidate_cache is not None:
+                    refined, metadata = ddpm_prior_masked_replace_v1(
+                        coarse,
+                        obs_mask=obs_mask,
+                        ddpm_candidate=ddpm_candidate_cache,
+                        base_metadata=ddpm_metadata_cache,
+                    )
+                else:
+                    refined, metadata = run_refiner(refiner_name, coarse, obs_mask=obs_mask)
+                    if refiner_name == "ddpm_prior_interface_v0":
+                        ddpm_candidate_cache = refined.copy()
+                        ddpm_metadata_cache = dict(metadata)
                 out_path = refined_path(degradation, coarse_method, refiner_name)
                 np.save(out_path, refined)
                 metadata_path = refinement_metadata_path(degradation, coarse_method, refiner_name)
