@@ -8,7 +8,7 @@ The active Stage 3 mainline now has five layers:
 2. Random-span statistical evaluation
 3. Controlled coarse reconstruction benchmark
 4. DDPM refinement interface and alpha sweep
-5. Geometry extension `wall_door_v1`
+5. Geometry feasibility extension: `wall_door_v1`, `obstacle_v1`, and `two_room_v1`
 
 Stage 2 prior and DDPM work is complete background context and is not changed by Stage 3 repository reorganization.
 
@@ -106,30 +106,51 @@ Current interpretation:
 - `v2` adds soft blending on the missing span
 - the current alpha sweep shows that large alpha usually hurts, so the unconditional DDPM prior is not yet a reliable direct missing-segment refiner
 
-## Geometry Extension `wall_door_v1`
+## Geometry Feasibility Extension
 
 Current geometry extension root:
 
-- `outputs/stage3/geometry_extension/wall_door_v1/`
+- `outputs/stage3/geometry_extension/`
+
+Current profiles:
+
+- `wall_door_v1`
+- `obstacle_v1`
+- `two_room_v1`
 
 Current geometry extension scope:
 
-- keep `canonical_room3` as the fixed reference protocol
-- add a separate synthetic indoor feasibility stress test:
-  - room boundary: `[0, 3] x [0, 3]`
-  - internal wall: `x = 1.5`
-  - door opening: `y in [1.2, 1.8]`
-- apply the new checks to existing Phase 1, controlled benchmark, refinement, and alpha-sweep outputs
+- all profiles are separate geometry feasibility extensions
+- they do not replace `canonical_room3`
+- they are synthetic stress tests
+- clean target trajectories are filtered first
+- normalized violation rates are emphasized over raw counts
+- existing Phase 1, controlled benchmark, refinement, and alpha-sweep outputs are re-evaluated on the feasible clean-target subset only
+
+Profile summary:
+
+| Profile | Main constraint | Retention rate |
+| --- | --- | ---: |
+| `wall_door_v1` | internal wall with door opening | 0.832035 |
+| `obstacle_v1` | central blocked obstacle | 0.704959 |
+| `two_room_v1` | internal wall with narrow transition opening | 0.763563 |
 
 Current geometry metrics:
 
 - `off_map_ratio`
-- `boundary_violation_count`
-- `internal_wall_crossing_count`
-- `door_valid_crossing_count`
 - `infeasible_transition_count`
+- `window_violation_rate`
+- `infeasible_transition_rate`
+- `mean_infeasible_transitions_per_window`
+
+Current interpretation:
+
+- `obstacle_v1` is currently the strongest geometry stress test by `window_violation_rate`
+- `two_room_v1` is stricter than `wall_door_v1` because it narrows the valid transition opening
+- existing refinement outputs do not show a clear geometry-feasibility advantage over each other
+- this layer is evaluation-only, not a new reconstruction method
 
 Important limitation:
 
-- `wall_door_v1` is a synthetic feasibility stress test applied after scaling ETH+UCY trajectories into `canonical_room3`
-- its violation counts should be interpreted as feasibility diagnostics under this artificial layout, not as direct evidence of real-room navigation failure
+- these geometry profiles are synthetic feasibility stress tests applied after scaling ETH+UCY trajectories into `canonical_room3`
+- their violation counts should be interpreted as feasibility diagnostics under artificial layouts, not as direct evidence of real-room navigation failure

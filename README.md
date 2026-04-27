@@ -1,9 +1,9 @@
-# Thesis: Stage 2 Prior and Stage 3 Benchmark Scaffold
+# Thesis: Stage 2 Prior and Stage 3 Benchmark Workspace
 
 This repository is the research and archival workspace for the thesis trajectory track.
 
 - Stage 2 is the completed trajectory-only diffusion prior study on ETH+UCY.
-- Stage 3 now includes a minimal Phase 1 indoor trajectory imputation benchmark scaffold.
+- Stage 3 now covers indoor trajectory reconstruction, coarse-to-refined refinement, and geometry-feasibility evaluation layers.
 
 The emphasis remains a reproducible scientific record rather than a generic demo pipeline.
 
@@ -27,10 +27,10 @@ The emphasis remains a reproducible scientific record rather than a generic demo
 
 ## Repository Scope
 
-The repository currently contains two distinct layers:
+The repository currently contains two distinct research layers:
 
 - Stage 2: trajectory-only diffusion prior pre-training and evaluation
-- Stage 3 Phase 1: indoor trajectory imputation benchmark with one contiguous missing span
+- Stage 3: indoor trajectory reconstruction and coarse-to-refined refinement under the fixed `canonical_room3` benchmark
 
 The Stage 2 scientific question is narrow:
 
@@ -38,10 +38,19 @@ The Stage 2 scientific question is narrow:
 - Which filtering policy gives the best balance between motion realism and sample coverage?
 - How do the four official variants compare when protocol and model are held fixed?
 
-The current Stage 3 Phase 1 engineering question is intentionally minimal:
+The current Stage 3 engineering question is now structured across five active layers:
 
-- Given a degraded coarse absolute indoor trajectory with one contiguous missing span, how well do simple completion baselines reconstruct the clean trajectory?
-- How often do reconstructed trajectories violate a minimal occupancy-map geometry check?
+1. Phase 1 `canonical_room3` benchmark
+2. Random-span statistical evaluation
+3. Controlled coarse reconstruction benchmark
+4. DDPM refinement interface and alpha sweep
+5. Geometry feasibility extension with `wall_door_v1`, `obstacle_v1`, and `two_room_v1`
+
+The central Stage 3 problem is:
+
+- Given a degraded coarse indoor trajectory with one contiguous missing span, how well do simple reconstruction baselines recover the clean target?
+- After coarse reconstruction, does a DDPM-based refinement interface improve missing-segment quality without changing the fixed benchmark definition?
+- Under synthetic geometry-feasibility stress tests, how often do existing outputs produce infeasible transitions?
 
 ## Stage 2 Interpretation
 
@@ -210,6 +219,43 @@ The current controlled benchmark is still intentionally simple:
 - it reuses the same three baseline families: Linear, Savitzky-Golay, and Kalman
 - it keeps the same full-trajectory, masked-segment, and geometry metric views
 - it is meant as a reproducible engineering benchmark layer, not a new model family
+
+## Stage 3 Geometry Feasibility Extension
+
+The Stage 3 geometry extension is now a three-profile evaluation layer:
+
+- `wall_door_v1`
+- `obstacle_v1`
+- `two_room_v1`
+
+These profiles are synthetic feasibility stress tests, not real-room navigation benchmarks.
+They do not replace `canonical_room3`.
+They do not define new reconstruction methods.
+
+Shared interpretation:
+
+- clean target windows are filtered for feasibility before geometry evaluation
+- existing Phase 1, controlled benchmark, refinement, and alpha-sweep outputs are evaluated only on the feasible clean-target subset
+- normalized geometry violation rates are emphasized over raw counts
+
+Current retention rates:
+
+- `wall_door_v1`: `0.832035`
+- `obstacle_v1`: `0.704959`
+- `two_room_v1`: `0.763563`
+
+Current geometry outputs:
+
+- `outputs/stage3/geometry_extension/`
+- `outputs/stage3/geometry_extension/wall_door_v1/`
+- `outputs/stage3/geometry_extension/obstacle_v1/`
+- `outputs/stage3/geometry_extension/two_room_v1/`
+
+Cross-profile summary:
+
+- `outputs/stage3/geometry_extension/geometry_profiles_summary.csv`
+- `outputs/stage3/geometry_extension/geometry_profiles_summary.md`
+- `docs/assets/stage3/geometry_profiles_comparison.png`
 
 ## Change Record Rule
 

@@ -4,9 +4,11 @@
 
 This document defines Stage 3 geometry feasibility extensions for evaluation.
 
-These profiles do not replace `canonical_room3`.
-They do not define new reconstruction methods.
-They are synthetic feasibility stress tests layered on top of already-generated trajectories.
+These profiles are geometry feasibility extensions layered on top of already-generated trajectories.
+
+- They do not replace `canonical_room3`.
+- They are not new reconstruction methods.
+- They are synthetic feasibility stress tests.
 
 ## Relationship To Existing Stage 3 Assets
 
@@ -32,24 +34,26 @@ Primary normalized metrics:
 - `mean_infeasible_transitions_per_window`
 - `masked_infeasible_transition_rate` when a missing mask is available
 
+Raw counts may still appear in CSV outputs, but normalized geometry violation rates are the main reported metrics.
+
 ## Geometry Profiles
 
 ### 1. `wall_door_v1`
 
 - Room boundary: `[0, 3] x [0, 3]`
-- Internal wall: vertical wall at `x = 1.5`
+- Internal wall: `x = 1.5`
 - Door opening: `y in [1.2, 1.8]`
 
 ### 2. `obstacle_v1`
 
 - Room boundary: `[0, 3] x [0, 3]`
-- Central blocked obstacle: `[1.2, 1.8] x [1.2, 1.8]`
+- Blocked rectangle: `x in [1.2, 1.8]`, `y in [1.2, 1.8]`
 
 ### 3. `two_room_v1`
 
 - Room boundary: `[0, 3] x [0, 3]`
-- Internal wall: vertical wall at `x = 1.5`
-- Narrow transition opening: `y in [1.35, 1.65]`
+- Internal wall: `x = 1.5`
+- Narrow opening: `y in [1.35, 1.65]`
 
 ## Interpretation
 
@@ -60,6 +64,16 @@ Primary normalized metrics:
 - Clean target windows are first filtered for each geometry profile.
 - Geometry metrics are interpreted only on the clean-target feasible subset.
 - Normalized rates are emphasized over raw counts.
+
+## Output Navigation
+
+- `outputs/stage3/geometry_extension/`
+- `outputs/stage3/geometry_extension/wall_door_v1/`
+- `outputs/stage3/geometry_extension/obstacle_v1/`
+- `outputs/stage3/geometry_extension/two_room_v1/`
+- `outputs/stage3/geometry_extension/geometry_profiles_summary.csv`
+- `outputs/stage3/geometry_extension/geometry_profiles_summary.md`
+- `docs/assets/stage3/geometry_profiles_comparison.png`
 
 ## Limitation
 
