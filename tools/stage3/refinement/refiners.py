@@ -3,15 +3,18 @@ from __future__ import annotations
 import numpy as np
 from scipy.signal import savgol_filter
 
+from tools.stage3.refinement.ddpm_refiner import ddpm_prior_interface_v0
 
 REFINER_NAMES = [
     "identity_refiner",
     "light_savgol_refiner",
+    "ddpm_prior_interface_v0",
 ]
 
 REFINER_LABELS = {
     "identity_refiner": "Identity",
     "light_savgol_refiner": "Light SG",
+    "ddpm_prior_interface_v0": "DDPM prior v0",
 }
 
 
@@ -44,7 +47,13 @@ def light_savgol_refiner(traj: np.ndarray, window_length: int = 5, polyorder: in
 
 def run_refiner(refiner_name: str, traj: np.ndarray):
     if refiner_name == "identity_refiner":
-        return identity_refiner(traj)
+        return identity_refiner(traj), {"refiner_name": "identity_refiner"}
     if refiner_name == "light_savgol_refiner":
-        return light_savgol_refiner(traj)
+        return light_savgol_refiner(traj), {
+            "refiner_name": "light_savgol_refiner",
+            "window_length": 5,
+            "polyorder": 2,
+        }
+    if refiner_name == "ddpm_prior_interface_v0":
+        return ddpm_prior_interface_v0(traj)
     raise ValueError(f"Unsupported refiner: {refiner_name}")

@@ -1,0 +1,20 @@
+{
+  "degradation": "missing_only",
+  "coarse_method": "linear_interp",
+  "refiner": "ddpm_prior_interface_v0",
+  "input_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/controlled_benchmark/reconstruction/recon_missing_only_linear_interp_span20_fixed_seed42.npy",
+  "output_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/refinement/refined/refined_missing_only_linear_interp_ddpm_prior_interface_v0.npy",
+  "refiner_name": "ddpm_prior_interface_v0",
+  "refiner_type": "projection_style_prior_denoise",
+  "stage2_objective": "optimization_best",
+  "stage2_variant": "none",
+  "stage2_train_seed": 42,
+  "stage2_train_epochs": 100,
+  "stage2_checkpoint_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/best_model.pt",
+  "stage2_best_epoch": 68,
+  "stage2_best_val_loss": 0.08729857769655999,
+  "projection_timestep": 20,
+  "blend_weight": 0.35,
+  "device": "cpu",
+  "limitation": "This v0 interface is not a full conditional diffusion posterior. It performs a one-shot prior projection in relative displacement space."
+}

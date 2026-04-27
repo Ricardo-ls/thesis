@@ -1,0 +1,8 @@
+{
+  "degradation": "missing_noise",
+  "coarse_method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+  "refiner": "identity_refiner",
+  "input_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_span20_fixed_seed42.npy",
+  "output_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/refinement/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_identity_refiner.npy",
+  "refiner_name": "identity_refiner"
+}

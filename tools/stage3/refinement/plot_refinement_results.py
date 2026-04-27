@@ -83,12 +83,13 @@ def row_lookup(rows: list[dict], degradation: str, coarse_method: str, refiner: 
 def plot_metric_comparison(rows: list[dict], metric: str, ylabel: str, output_path: Path):
     labels = [f"{DEGRADATION_LABELS[d]}\n{METHOD_LABELS[m]}" for d in DEGRADATION_NAMES for m in METHODS]
     x = np.arange(len(labels))
-    width = 0.25
-    fig, ax = plt.subplots(figsize=(14.0, 4.8))
+    width = 0.2
+    fig, ax = plt.subplots(figsize=(14.8, 4.8))
     palette = {
         "coarse": "#4C78A8",
         "identity_refiner": "#9E9E9E",
         "light_savgol_refiner": "#E45756",
+        "ddpm_prior_interface_v0": "#54A24B",
     }
 
     coarse_values = [
@@ -96,23 +97,33 @@ def plot_metric_comparison(rows: list[dict], metric: str, ylabel: str, output_pa
         for degradation in DEGRADATION_NAMES
         for coarse_method in METHODS
     ]
-    identity_values = coarse_values
+    identity_values = [
+        row_lookup(rows, degradation, coarse_method, "identity_refiner")[metric]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
     sg_values = [
         row_lookup(rows, degradation, coarse_method, "light_savgol_refiner")[metric]
         for degradation in DEGRADATION_NAMES
         for coarse_method in METHODS
     ]
+    ddpm_values = [
+        row_lookup(rows, degradation, coarse_method, "ddpm_prior_interface_v0")[metric]
+        for degradation in DEGRADATION_NAMES
+        for coarse_method in METHODS
+    ]
 
-    ax.bar(x - width, coarse_values, width=width, color=palette["coarse"], label="Coarse")
-    ax.bar(x, identity_values, width=width, color=palette["identity_refiner"], label="Identity")
-    ax.bar(x + width, sg_values, width=width, color=palette["light_savgol_refiner"], label="Light SG")
+    ax.bar(x - 1.5 * width, coarse_values, width=width, color=palette["coarse"], label="Coarse")
+    ax.bar(x - 0.5 * width, identity_values, width=width, color=palette["identity_refiner"], label="Identity")
+    ax.bar(x + 0.5 * width, sg_values, width=width, color=palette["light_savgol_refiner"], label="Light SG")
+    ax.bar(x + 1.5 * width, ddpm_values, width=width, color=palette["ddpm_prior_interface_v0"], label="DDPM prior v0")
     ax.set_xticks(x)
     ax.set_xticklabels(labels, rotation=35, ha="right")
     ax.set_ylabel(ylabel)
     ax.grid(axis="y", linewidth=0.6, alpha=0.35)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.18))
+    ax.legend(frameon=False, ncol=4, loc="upper center", bbox_to_anchor=(0.5, 1.22))
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
@@ -144,6 +155,65 @@ def plot_improvement(rows: list[dict], output_path: Path):
     ax.spines["right"].set_visible(False)
     ax.legend(frameon=False, ncol=2, loc="upper center", bbox_to_anchor=(0.5, 1.18))
     fig.tight_layout()
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def plot_ddpm_vs_naive(rows: list[dict], output_path: Path):
+    labels = [f"{DEGRADATION_LABELS[d]}\n{METHOD_LABELS[m]}" for d in DEGRADATION_NAMES for m in METHODS]
+    x = np.arange(len(labels))
+    width = 0.22
+    fig, axes = plt.subplots(1, 2, figsize=(14.8, 4.8), sharex=True)
+
+    values = {}
+    for refiner in REFINER_NAMES:
+        values[(refiner, "improvement_ADE")] = [
+            100.0 * row_lookup(rows, degradation, coarse_method, refiner)["improvement_ADE"]
+            for degradation in DEGRADATION_NAMES
+            for coarse_method in METHODS
+        ]
+        values[(refiner, "improvement_masked_ADE")] = [
+            100.0 * row_lookup(rows, degradation, coarse_method, refiner)["improvement_masked_ADE"]
+            for degradation in DEGRADATION_NAMES
+            for coarse_method in METHODS
+        ]
+
+    palette = {
+        "identity_refiner": "#9E9E9E",
+        "light_savgol_refiner": "#E45756",
+        "ddpm_prior_interface_v0": "#54A24B",
+    }
+    offsets = {
+        "identity_refiner": -width,
+        "light_savgol_refiner": 0.0,
+        "ddpm_prior_interface_v0": width,
+    }
+
+    panels = [
+        (axes[0], "improvement_ADE", "Improvement_ADE (%)"),
+        (axes[1], "improvement_masked_ADE", "Improvement_masked_ADE (%)"),
+    ]
+    for ax, metric, ylabel in panels:
+        for refiner in REFINER_NAMES:
+            ax.bar(
+                x + offsets[refiner],
+                values[(refiner, metric)],
+                width=width,
+                color=palette[refiner],
+                label=REFINER_LABELS[refiner],
+            )
+        ax.axhline(0.0, color="#444444", linewidth=0.8)
+        ax.set_xticks(x)
+        ax.set_xticklabels(labels, rotation=35, ha="right")
+        ax.set_ylabel(ylabel)
+        ax.grid(axis="y", linewidth=0.6, alpha=0.35)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
+    axes[0].set_title("Full-trajectory view")
+    axes[1].set_title("Missing-segment view")
+    axes[1].legend(frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(-0.1, 1.22))
+    fig.suptitle("DDPM prior v0 vs naive refinement")
+    fig.tight_layout(rect=[0, 0, 1, 0.95])
     fig.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
 
@@ -249,12 +319,14 @@ def main():
     masked_ade_path = REFINEMENT_FIGURE_DIR / "coarse_vs_refined_masked_ADE.png"
     improvement_path = REFINEMENT_FIGURE_DIR / "improvement_bar_chart.png"
     full_vs_masked_path = REFINEMENT_FIGURE_DIR / "full_vs_masked_refinement_improvement.png"
+    ddpm_vs_naive_path = REFINEMENT_FIGURE_DIR / "ddpm_vs_naive_refinement_improvement.png"
     example_path = REFINEMENT_FIGURE_DIR / "trajectory_example_coarse_refined.png"
 
     plot_metric_comparison(rows, "ADE", "ADE", ade_path)
     plot_metric_comparison(rows, "masked_ADE", "masked_ADE", masked_ade_path)
     plot_improvement(rows, improvement_path)
     plot_full_vs_masked_improvement(rows, full_vs_masked_path)
+    plot_ddpm_vs_naive(rows, ddpm_vs_naive_path)
     plot_trajectory_example(args.sample_idx, tag, example_path)
 
     print("=" * 60)
@@ -263,6 +335,7 @@ def main():
     print(f"masked_ade_path  = {masked_ade_path}")
     print(f"improvement_path = {improvement_path}")
     print(f"full_vs_masked   = {full_vs_masked_path}")
+    print(f"ddpm_vs_naive    = {ddpm_vs_naive_path}")
     print(f"example_path     = {example_path}")
     print("=" * 60)
 

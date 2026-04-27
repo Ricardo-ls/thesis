@@ -112,7 +112,7 @@ def build_report(rows: list[dict], output_path: Path):
         "",
         "- Degradation types: missing_only, missing_noise, missing_drift, missing_noise_drift",
         "- Coarse methods: Linear, SG, Kalman",
-        "- Refiners: Identity, Light SG",
+        "- Refiners: Identity, Light SG, DDPM prior interface v0",
         "",
         "## Metric Interpretation",
         "",
@@ -144,7 +144,27 @@ def build_report(rows: list[dict], output_path: Path):
             "",
             "This report keeps full-trajectory metrics and masked metrics as complementary views.",
             "The key question for refinement is whether masked_ADE improves, because that directly reflects missing-segment reconstruction quality.",
-        ]
+            "",
+            "## First learned-prior refinement interface",
+            "",
+        "The `ddpm_prior_interface_v0` refiner is the first Stage 3 interface-level connection to the Stage 2 learned prior.",
+        "It is not yet a fully optimized conditional diffusion refinement model.",
+        "Instead, it uses a one-shot prior projection in relative displacement space and then maps the result back to absolute trajectories.",
+        "Its purpose is to verify that Stage 2 prior checkpoints can be connected cleanly to Stage 3 coarse reconstructions.",
+        "",
+        "In the current benchmark, the interface is operational but the v0 prior refinement does not improve over the simple baselines.",
+        "Its mean ADE and mean masked_ADE are both worse than Identity and Light SG across all three coarse-method families.",
+        "This is still a useful result because it validates the integration path without overclaiming performance.",
+        "",
+        "## Figures",
+        "",
+        "- `figures/coarse_vs_refined_ADE.png`",
+        "- `figures/coarse_vs_refined_masked_ADE.png`",
+        "- `figures/improvement_bar_chart.png`",
+        "- `figures/full_vs_masked_refinement_improvement.png`",
+        "- `figures/ddpm_vs_naive_refinement_improvement.png`",
+        "- `figures/trajectory_example_coarse_refined.png`",
+    ]
     )
 
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 import sys
 
@@ -28,15 +29,26 @@ REFINEMENT_ROOT_DIR = PROJECT_ROOT / "outputs" / "stage3" / "refinement"
 REFINED_DIR = REFINEMENT_ROOT_DIR / "refined"
 REFINEMENT_EVAL_DIR = REFINEMENT_ROOT_DIR / "eval"
 REFINEMENT_FIGURE_DIR = REFINEMENT_ROOT_DIR / "figures"
+REFINEMENT_METADATA_DIR = REFINEMENT_ROOT_DIR / "metadata"
 
 
 def ensure_refinement_dirs():
-    for path in [REFINEMENT_ROOT_DIR, REFINED_DIR, REFINEMENT_EVAL_DIR, REFINEMENT_FIGURE_DIR]:
+    for path in [
+        REFINEMENT_ROOT_DIR,
+        REFINED_DIR,
+        REFINEMENT_EVAL_DIR,
+        REFINEMENT_FIGURE_DIR,
+        REFINEMENT_METADATA_DIR,
+    ]:
         path.mkdir(parents=True, exist_ok=True)
 
 
 def refined_path(degradation: str, coarse_method: str, refiner_name: str):
     return REFINED_DIR / f"refined_{degradation}_{coarse_method}_{refiner_name}.npy"
+
+
+def refinement_metadata_path(degradation: str, coarse_method: str, refiner_name: str):
+    return REFINEMENT_METADATA_DIR / f"refined_{degradation}_{coarse_method}_{refiner_name}.json"
 
 
 def load_array(path: Path):
@@ -75,9 +87,19 @@ def main():
                     f"Coarse shape mismatch for {degradation}/{coarse_method}: {coarse.shape} vs {clean.shape}"
                 )
             for refiner_name in REFINER_NAMES:
-                refined = run_refiner(refiner_name, coarse)
+                refined, metadata = run_refiner(refiner_name, coarse)
                 out_path = refined_path(degradation, coarse_method, refiner_name)
                 np.save(out_path, refined)
+                metadata_path = refinement_metadata_path(degradation, coarse_method, refiner_name)
+                metadata_record = {
+                    "degradation": degradation,
+                    "coarse_method": coarse_method,
+                    "refiner": refiner_name,
+                    "input_path": str(coarse_path),
+                    "output_path": str(out_path),
+                    **metadata,
+                }
+                metadata_path.write_text(json.dumps(metadata_record, indent=2), encoding="utf-8")
                 print(f"[done] {degradation:20s} {coarse_method:30s} {refiner_name:22s} -> {out_path}")
 
     print("=" * 60)
