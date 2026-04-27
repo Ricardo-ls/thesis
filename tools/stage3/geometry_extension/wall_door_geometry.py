@@ -117,3 +117,87 @@ def compute_wall_door_metrics(
         "total_points": total_points,
         "total_segments": total_segments,
     }
+
+
+def compute_wall_door_window_diagnostics(
+    traj: np.ndarray,
+    profile: WallDoorGeometryProfile,
+    obs_mask: np.ndarray | None = None,
+) -> dict[str, np.ndarray | float | int]:
+    traj = np.asarray(traj, dtype=np.float32)
+    if traj.ndim != 3 or traj.shape[-1] != 2:
+        raise ValueError(f"Expected trajectory batch [N, T, 2], got {traj.shape}")
+
+    num_windows = traj.shape[0]
+    seq_len = traj.shape[1]
+    total_points = int(num_windows * seq_len)
+    total_segments = int(num_windows * max(seq_len - 1, 0))
+
+    x = traj[:, :, 0]
+    y = traj[:, :, 1]
+    boundary_mask = (
+        (x < profile.x_min)
+        | (x > profile.x_max)
+        | (y < profile.y_min)
+        | (y > profile.y_max)
+    )
+
+    if seq_len >= 2:
+        x0 = x[:, :-1]
+        y0 = y[:, :-1]
+        x1 = x[:, 1:]
+        y1 = y[:, 1:]
+
+        dx0 = x0 - profile.wall_x
+        dx1 = x1 - profile.wall_x
+        crossing_mask = (dx0 != 0.0) & (dx1 != 0.0) & ((dx0 * dx1) < 0.0)
+
+        denom = x1 - x0
+        t = np.zeros_like(x0, dtype=np.float32)
+        np.divide(profile.wall_x - x0, denom, out=t, where=denom != 0.0)
+        crossing_y = (1.0 - t) * y0 + t * y1
+        door_mask = crossing_mask & (crossing_y >= profile.door_y_min) & (crossing_y <= profile.door_y_max)
+
+        endpoint_off_mask = boundary_mask[:, :-1] | boundary_mask[:, 1:]
+        infeasible_transition_mask = endpoint_off_mask | (crossing_mask & ~door_mask)
+    else:
+        crossing_mask = np.zeros((num_windows, 0), dtype=bool)
+        door_mask = np.zeros((num_windows, 0), dtype=bool)
+        infeasible_transition_mask = np.zeros((num_windows, 0), dtype=bool)
+
+    clean_off_map_ratio = boundary_mask.mean(axis=1).astype(np.float32)
+    boundary_violation_count_by_window = boundary_mask.sum(axis=1).astype(np.int64)
+    internal_wall_crossing_count_by_window = crossing_mask.sum(axis=1).astype(np.int64)
+    door_valid_crossing_count_by_window = door_mask.sum(axis=1).astype(np.int64)
+    infeasible_transition_count_by_window = infeasible_transition_mask.sum(axis=1).astype(np.int64)
+    window_has_violation = infeasible_transition_count_by_window > 0
+
+    result: dict[str, np.ndarray | float | int] = {
+        "clean_off_map_ratio_by_window": clean_off_map_ratio,
+        "boundary_violation_count_by_window": boundary_violation_count_by_window,
+        "internal_wall_crossing_count_by_window": internal_wall_crossing_count_by_window,
+        "door_valid_crossing_count_by_window": door_valid_crossing_count_by_window,
+        "infeasible_transition_count_by_window": infeasible_transition_count_by_window,
+        "window_has_violation": window_has_violation,
+        "infeasible_transition_mask": infeasible_transition_mask,
+        "total_points": total_points,
+        "total_segments": total_segments,
+    }
+
+    if obs_mask is not None:
+        obs_mask = np.asarray(obs_mask, dtype=np.uint8)
+        if obs_mask.shape != traj.shape[:2]:
+            raise ValueError(f"obs_mask shape {obs_mask.shape} does not match trajectory shape {traj.shape[:2]}")
+        if seq_len >= 2:
+            masked_segment_mask = (obs_mask[:, :-1] == 0) | (obs_mask[:, 1:] == 0)
+        else:
+            masked_segment_mask = np.zeros((num_windows, 0), dtype=bool)
+        result["masked_segment_mask"] = masked_segment_mask
+        result["masked_segment_count"] = int(masked_segment_mask.sum())
+        result["masked_infeasible_transition_count"] = int((infeasible_transition_mask & masked_segment_mask).sum())
+    else:
+        result["masked_segment_mask"] = None
+        result["masked_segment_count"] = 0
+        result["masked_infeasible_transition_count"] = 0
+
+    return result
