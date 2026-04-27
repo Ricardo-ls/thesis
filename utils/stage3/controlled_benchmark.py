@@ -35,14 +35,16 @@ DEGRADATION_LABELS = {
     "missing_noise_drift": "Missing + noise + drift",
 }
 
-DEGRADATION_DIR = OUTPUT_DIR / "degradation"
-RECONSTRUCTION_DIR = OUTPUT_DIR / "reconstruction"
-CONTROLLED_EVAL_DIR = OUTPUT_DIR / "eval"
-CONTROLLED_FIGURE_DIR = OUTPUT_DIR / "figures"
+CONTROLLED_ROOT_DIR = OUTPUT_DIR / "controlled_benchmark"
+DEGRADATION_DIR = CONTROLLED_ROOT_DIR / "degradation"
+RECONSTRUCTION_DIR = CONTROLLED_ROOT_DIR / "reconstruction"
+CONTROLLED_EVAL_DIR = CONTROLLED_ROOT_DIR / "eval"
+CONTROLLED_FIGURE_DIR = CONTROLLED_ROOT_DIR / "figures"
 
 
 def ensure_controlled_dirs():
     dirs = {
+        "controlled_root": CONTROLLED_ROOT_DIR,
         "degradation": DEGRADATION_DIR,
         "reconstruction": RECONSTRUCTION_DIR,
         "eval": CONTROLLED_EVAL_DIR,

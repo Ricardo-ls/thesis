@@ -19,10 +19,11 @@ The emphasis remains a reproducible scientific record rather than a generic demo
 
 1. This README for the project-level scope and repository map.
 2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the Stage 2 interpretation and figures.
-3. [`docs/stage3/stage3_phase1_formal_spec.md`](docs/stage3/stage3_phase1_formal_spec.md) for the formal Stage 3 phase-1 problem definition and scope boundary.
-4. [`docs/stage3/stage3_phase1_plan.md`](docs/stage3/stage3_phase1_plan.md) for the current Stage 3 phase-1 benchmark boundary.
-5. [`变更记录.md`](变更记录.md) for the required Chinese modification record.
-6. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
+3. [`docs/stage3/README.md`](docs/stage3/README.md) for Stage 3 navigation.
+4. [`docs/stage3/planning/stage3_phase1_formal_spec.md`](docs/stage3/planning/stage3_phase1_formal_spec.md) for the formal Stage 3 phase-1 problem definition and scope boundary.
+5. [`docs/stage3/planning/stage3_phase1_plan.md`](docs/stage3/planning/stage3_phase1_plan.md) for the current Stage 3 phase-1 benchmark boundary.
+6. [`变更记录.md`](变更记录.md) for the required Chinese modification record.
+7. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
 
 ## Repository Scope
 
@@ -71,7 +72,7 @@ The authoritative registry lives in [`utils/prior/ablation_paths.py`](utils/prio
 
 - [`docs/`](docs): paper-facing narrative, figures, and archived notes
 - [`docs/archive/`](docs/archive): historical and phase-specific documentation
-- [`docs/stage3/`](docs/stage3): Stage 3 benchmark plans and engineering notes
+- [`docs/stage3/`](docs/stage3): Stage 3 navigation, benchmark notes, and archive material
 - [`变更记录.md`](变更记录.md): repository-level Chinese modification record
 - [`outputs/prior/train/`](outputs/prior/train): training snapshots organized by variant and seed
 - [`outputs/prior/sample/`](outputs/prior/sample): reverse-sampling artifacts organized to mirror train
@@ -150,7 +151,7 @@ This phase does not yet include:
 - room graph or door semantics
 - multi-dataset comparison
 
-For a more formal Stage 3 statement, use [`docs/stage3/stage3_phase1_formal_spec.md`](docs/stage3/stage3_phase1_formal_spec.md).
+For a more formal Stage 3 statement, use [`docs/stage3/planning/stage3_phase1_formal_spec.md`](docs/stage3/planning/stage3_phase1_formal_spec.md).
 
 ## Stage 3 Controlled Benchmark
 
@@ -180,20 +181,27 @@ The current default configuration is:
 
 The generated outputs are organized as:
 
-- `outputs/stage3/degradation/`
-- `outputs/stage3/reconstruction/`
-- `outputs/stage3/eval/`
-- `outputs/stage3/figures/`
+- `outputs/stage3/controlled_benchmark/degradation/`
+- `outputs/stage3/controlled_benchmark/reconstruction/`
+- `outputs/stage3/controlled_benchmark/eval/`
+- `outputs/stage3/controlled_benchmark/figures/`
 
 The machine-readable summary for the controlled benchmark is:
 
-- `outputs/stage3/eval/metrics_summary.csv`
-- `outputs/stage3/eval/metrics_summary.json`
+- `outputs/stage3/controlled_benchmark/eval/metrics_summary.csv`
+- `outputs/stage3/controlled_benchmark/eval/metrics_summary.json`
 
 The figure set currently includes:
 
 - four representative trajectory comparison figures, one for each degradation
 - bar charts for `ADE`, `RMSE`, and `masked_ADE` across degradation settings
+
+Current code entry points live under:
+
+- `tools/stage3/controlled/`
+
+Compatibility wrappers are retained at the older `tools/stage3/*.py` locations
+so older commands can still dispatch to the moved modules.
 
 The current controlled benchmark is still intentionally simple:
 

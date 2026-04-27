@@ -131,11 +131,11 @@ The current Phase 1 scaffold is organized as follows:
 - `tools/stage3/baselines/`: simple completion baselines
 - `tools/stage3/eval/`: reconstruction and geometry metrics
 - `utils/stage3/`: shared path and I/O helpers
-- `docs/stage3/`: Stage 3 planning and specification notes
+- `docs/stage3/`: Stage 3 navigation, planning, benchmark notes, and archive layers
 - `outputs/stage3/phase1/canonical_room3/`: generated local Phase 1 outputs
 
 The active protocol document is
-`docs/stage3/stage3_phase1_room3_protocol.md`.
+`docs/stage3/phase1_canonical_room3/stage3_phase1_room3_protocol.md`.
 
 ## Interpretation Rule
 

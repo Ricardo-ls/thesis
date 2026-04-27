@@ -5,9 +5,9 @@ protocol.
 
 Use these documents as the authoritative run references:
 
-- `docs/stage3/stage3_phase1_room3_protocol.md`
-- `docs/stage3/stage3_phase1_experiment_checklist.md`
-- `docs/stage3/stage3_phase1_runbook.md`
+- `docs/stage3/phase1_canonical_room3/stage3_phase1_room3_protocol.md`
+- `docs/stage3/phase1_canonical_room3/stage3_phase1_experiment_checklist.md`
+- `docs/stage3/phase1_canonical_room3/stage3_phase1_runbook.md`
 
 The active output root is:
 

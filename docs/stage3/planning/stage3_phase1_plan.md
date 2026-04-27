@@ -43,7 +43,7 @@ This phase does not include:
 - complex obstacle maps
 
 The canonical room3 protocol is documented in
-`docs/stage3/stage3_phase1_room3_protocol.md`.
+`docs/stage3/phase1_canonical_room3/stage3_phase1_room3_protocol.md`.
 
 Metric interpretation uses two complementary views:
 
