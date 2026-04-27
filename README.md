@@ -196,9 +196,11 @@ The figure set currently includes:
 - four representative trajectory comparison figures, one for each degradation
 - bar charts for `ADE`, `RMSE`, and `masked_ADE` across degradation settings
 
-Current code entry points live under:
+The standard command entry points are:
 
-- `tools/stage3/controlled/`
+- `.venv/bin/python -m tools.stage3.controlled.build_controlled_degradation`
+- `.venv/bin/python -m tools.stage3.controlled.run_coarse_reconstruction_baselines`
+- `.venv/bin/python -m tools.stage3.controlled.evaluate_coarse_reconstruction`
 
 Compatibility wrappers are retained at the older `tools/stage3/*.py` locations
 so older commands can still dispatch to the moved modules.
