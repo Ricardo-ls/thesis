@@ -44,7 +44,7 @@ The current Stage 3 engineering question is now structured across five active la
 2. Random-span statistical evaluation
 3. Controlled coarse reconstruction benchmark
 4. DDPM refinement interface and alpha sweep
-5. Geometry feasibility extension with `wall_door_v1`, `obstacle_v1`, and `two_room_v1`
+5. Geometry feasibility extension with `obstacle_v1` and `two_room_v1`
 
 The central Stage 3 problem is:
 
@@ -222,9 +222,8 @@ The current controlled benchmark is still intentionally simple:
 
 ## Stage 3 Geometry Feasibility Extension
 
-The Stage 3 geometry extension is now a three-profile evaluation layer:
+The Stage 3 geometry extension is now a two-profile evaluation layer:
 
-- `wall_door_v1`
 - `obstacle_v1`
 - `two_room_v1`
 
@@ -240,14 +239,12 @@ Shared interpretation:
 
 Current retention rates:
 
-- `wall_door_v1`: `0.832035`
 - `obstacle_v1`: `0.704959`
 - `two_room_v1`: `0.763563`
 
 Current geometry outputs:
 
 - `outputs/stage3/geometry_extension/`
-- `outputs/stage3/geometry_extension/wall_door_v1/`
 - `outputs/stage3/geometry_extension/obstacle_v1/`
 - `outputs/stage3/geometry_extension/two_room_v1/`
 

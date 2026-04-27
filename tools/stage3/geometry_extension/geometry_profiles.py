@@ -22,20 +22,6 @@ class GeometryProfile:
     obstacle_y_max: float | None = None
 
 
-def wall_door_v1_profile() -> GeometryProfile:
-    return GeometryProfile(
-        profile_name="wall_door_v1",
-        x_min=0.0,
-        x_max=3.0,
-        y_min=0.0,
-        y_max=3.0,
-        constraint_type="internal_wall_with_door",
-        wall_x=1.5,
-        door_y_min=1.2,
-        door_y_max=1.8,
-    )
-
-
 def obstacle_v1_profile() -> GeometryProfile:
     return GeometryProfile(
         profile_name="obstacle_v1",
@@ -66,7 +52,7 @@ def two_room_v1_profile() -> GeometryProfile:
 
 
 def all_geometry_profiles() -> list[GeometryProfile]:
-    return [wall_door_v1_profile(), obstacle_v1_profile(), two_room_v1_profile()]
+    return [obstacle_v1_profile(), two_room_v1_profile()]
 
 
 def _boundary_mask(traj: np.ndarray, profile: GeometryProfile) -> np.ndarray:

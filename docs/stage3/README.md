@@ -6,7 +6,7 @@ Stage 3 is organized around five active benchmark and evaluation layers:
 2. Random-span statistical evaluation
 3. Controlled coarse reconstruction benchmark
 4. DDPM refinement interface and alpha sweep
-5. Geometry feasibility extension: `wall_door_v1`, `obstacle_v1`, and `two_room_v1`
+5. Geometry feasibility extension: `obstacle_v1` and `two_room_v1`
 
 The documentation tree is grouped into four folders:
 
@@ -41,7 +41,6 @@ Output navigation:
 - `outputs/stage3/refinement/`
 - `outputs/stage3/refinement/alpha_sweep/`
 - `outputs/stage3/geometry_extension/`
-- `outputs/stage3/geometry_extension/wall_door_v1/`
 - `outputs/stage3/geometry_extension/obstacle_v1/`
 - `outputs/stage3/geometry_extension/two_room_v1/`
 - `outputs/stage3/geometry_extension/geometry_profiles_summary.csv`
@@ -50,6 +49,6 @@ Output navigation:
 
 Geometry-feasibility note:
 
-- `wall_door_v1`, `obstacle_v1`, and `two_room_v1` are synthetic feasibility stress tests
+- `obstacle_v1` and `two_room_v1` are synthetic feasibility stress tests
 - they do not replace `canonical_room3`
 - clean target windows are filtered first, and normalized violation rates are emphasized in the final reporting

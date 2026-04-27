@@ -8,7 +8,7 @@ The active Stage 3 mainline now has five layers:
 2. Random-span statistical evaluation
 3. Controlled coarse reconstruction benchmark
 4. DDPM refinement interface and alpha sweep
-5. Geometry feasibility extension: `wall_door_v1`, `obstacle_v1`, and `two_room_v1`
+5. Geometry feasibility extension: `obstacle_v1` and `two_room_v1`
 
 Stage 2 prior and DDPM work is complete background context and is not changed by Stage 3 repository reorganization.
 
@@ -114,7 +114,6 @@ Current geometry extension root:
 
 Current profiles:
 
-- `wall_door_v1`
 - `obstacle_v1`
 - `two_room_v1`
 
@@ -131,7 +130,6 @@ Profile summary:
 
 | Profile | Main constraint | Retention rate |
 | --- | --- | ---: |
-| `wall_door_v1` | internal wall with door opening | 0.832035 |
 | `obstacle_v1` | central blocked obstacle | 0.704959 |
 | `two_room_v1` | internal wall with narrow transition opening | 0.763563 |
 
@@ -146,7 +144,7 @@ Current geometry metrics:
 Current interpretation:
 
 - `obstacle_v1` is currently the strongest geometry stress test by `window_violation_rate`
-- `two_room_v1` is stricter than `wall_door_v1` because it narrows the valid transition opening
+- `two_room_v1` is the wall-partition profile with the narrower valid transition opening
 - existing refinement outputs do not show a clear geometry-feasibility advantage over each other
 - this layer is evaluation-only, not a new reconstruction method
 

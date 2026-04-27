@@ -54,17 +54,14 @@ DEGRADATION_NAMES = [
 ]
 CONTROLLED_METHODS = ["input_degraded", *METHODS]
 PROFILE_MAIN_CONSTRAINT = {
-    "wall_door_v1": "internal wall with door opening y in [1.2, 1.8]",
     "obstacle_v1": "central rectangular obstacle [1.2, 1.8] x [1.2, 1.8]",
     "two_room_v1": "internal wall with narrow opening y in [1.35, 1.65]",
 }
 PROFILE_LAYOUT_DOC_TARGETS = {
-    "wall_door_v1": DOCS_ASSET_ROOT / "wall_door_v1_layout.png",
     "obstacle_v1": DOCS_ASSET_ROOT / "obstacle_v1_layout.png",
     "two_room_v1": DOCS_ASSET_ROOT / "two_room_v1_layout.png",
 }
 PROFILE_SUMMARY_DOC_TARGETS = {
-    "wall_door_v1": DOCS_ASSET_ROOT / "geometry_violation_summary.png",
     "obstacle_v1": DOCS_ASSET_ROOT / "obstacle_v1_geometry_violation_summary.png",
     "two_room_v1": DOCS_ASSET_ROOT / "two_room_v1_geometry_violation_summary.png",
 }
@@ -185,12 +182,8 @@ def compute_filter_summary(clean: np.ndarray, profile: GeometryProfile) -> tuple
                     "feasible_windows": int(feasible_mask.sum()),
                     "discarded_windows": int(total_windows - feasible_mask.sum()),
                     "retention_rate": float(feasible_mask.mean()) if total_windows > 0 else 0.0,
-                    ("same_side_windows" if profile.profile_name == "wall_door_v1" else "same_room_windows"): int(
-                        same_room.sum()
-                    ),
-                    ("door_transition_windows" if profile.profile_name == "wall_door_v1" else "room_transition_windows"): int(
-                        transition.sum()
-                    ),
+                    "same_room_windows": int(same_room.sum()),
+                    "room_transition_windows": int(transition.sum()),
                     "valid_crossing_windows": int((feasible_mask & (clean_door_valid > 0)).sum()),
                 }
             ]
@@ -255,7 +248,7 @@ def build_row(
         "total_segments": total_segments,
     }
 
-    if profile.profile_name in {"wall_door_v1", "two_room_v1"}:
+    if profile.profile_name == "two_room_v1":
         internal = int(np.asarray(diagnostics["internal_wall_crossing_count_by_window"]).sum())
         door_valid = int(np.asarray(diagnostics["door_valid_crossing_count_by_window"]).sum())
         row.update(
@@ -432,12 +425,34 @@ def markdown_table(df: pd.DataFrame) -> str:
 
 def plot_layout(profile: GeometryProfile, output_path: Path):
     fig, ax = plt.subplots(figsize=(4.6, 4.6))
-    ax.add_patch(Rectangle((profile.x_min, profile.y_min), profile.x_max - profile.x_min, profile.y_max - profile.y_min, fill=False, linewidth=2.2, edgecolor="#1f2937"))
-    if profile.profile_name in {"wall_door_v1", "two_room_v1"}:
+    ax.add_patch(
+        Rectangle(
+            (profile.x_min, profile.y_min),
+            profile.x_max - profile.x_min,
+            profile.y_max - profile.y_min,
+            fill=False,
+            linewidth=2.2,
+            edgecolor="#1f2937",
+        )
+    )
+    if profile.profile_name == "two_room_v1":
+        wall_color = "#7c2d12"
+        door_color = "#059669"
         ax.plot([profile.wall_x, profile.wall_x], [profile.y_min, profile.door_y_min], color="#9a3412", linewidth=4.0)
         ax.plot([profile.wall_x, profile.wall_x], [profile.door_y_max, profile.y_max], color="#9a3412", linewidth=4.0)
         ax.plot([profile.wall_x, profile.wall_x], [profile.door_y_min, profile.door_y_max], color="#10b981", linewidth=4.0)
-        ax.text(float(profile.wall_x) + 0.06, float(profile.door_y_max) + 0.04, "door", fontsize=9)
+        ax.plot([profile.wall_x - 0.08, profile.wall_x + 0.08], [profile.door_y_min, profile.door_y_min], color=door_color, linewidth=2.0)
+        ax.plot([profile.wall_x - 0.08, profile.wall_x + 0.08], [profile.door_y_max, profile.door_y_max], color=door_color, linewidth=2.0)
+        ax.annotate(
+            "",
+            xy=(float(profile.wall_x) + 0.18, float(profile.door_y_max)),
+            xytext=(float(profile.wall_x) + 0.18, float(profile.door_y_min)),
+            arrowprops=dict(arrowstyle="<->", color=door_color, linewidth=1.8),
+        )
+        ax.text(float(profile.wall_x) + 0.23, 0.5 * float(profile.door_y_min + profile.door_y_max), "opening", color=door_color, fontsize=9, va="center")
+        ax.text(float(profile.wall_x) + 0.06, float(profile.door_y_max) + 0.04, f"y in [{profile.door_y_min:.2f}, {profile.door_y_max:.2f}]", fontsize=8.5, color=door_color)
+        ax.text(float(profile.wall_x) - 0.62, 0.18, "wall x = 1.5", fontsize=8.5, color=wall_color)
+        ax.text(0.18, 2.82, "narrower valid passage", fontsize=9, color=door_color)
     if profile.profile_name == "obstacle_v1":
         ax.add_patch(
             Rectangle(
@@ -493,7 +508,7 @@ def plot_profile_summary(profile_name: str, summary_df: pd.DataFrame, output_pat
 
 def plot_cross_profile_summary(summary_df: pd.DataFrame, output_path: Path):
     family_order = ["phase1_baseline", "controlled_benchmark", "refinement", "refinement_alpha_sweep"]
-    profile_order = ["wall_door_v1", "obstacle_v1", "two_room_v1"]
+    profile_order = ["obstacle_v1", "two_room_v1"]
     grouped = (
         summary_df.groupby(["geometry_profile", "source_family"], as_index=False)[["evaluated_windows", "window_violation_count"]].sum()
     )
@@ -654,18 +669,12 @@ Primary normalized metrics:
 
 ## Geometry Profiles
 
-### 1. `wall_door_v1`
-
-- Room boundary: `[0, 3] x [0, 3]`
-- Internal wall: vertical wall at `x = 1.5`
-- Door opening: `y in [1.2, 1.8]`
-
-### 2. `obstacle_v1`
+### 1. `obstacle_v1`
 
 - Room boundary: `[0, 3] x [0, 3]`
 - Central blocked obstacle: `[1.2, 1.8] x [1.2, 1.8]`
 
-### 3. `two_room_v1`
+### 2. `two_room_v1`
 
 - Room boundary: `[0, 3] x [0, 3]`
 - Internal wall: vertical wall at `x = 1.5`
@@ -702,7 +711,6 @@ def build_figure_manifest():
 - `overall_stage3_objective.png`
 - `missing_reconstruction_task.png`
 - `refinement_interface_v0_v1_v2.png`
-- `wall_door_v1_layout.png`
 - `obstacle_v1_layout.png`
 - `two_room_v1_layout.png`
 
@@ -724,7 +732,6 @@ def build_figure_manifest():
 
 ### 5. Geometry extension
 
-- `geometry_violation_summary.png`
 - `obstacle_v1_geometry_violation_summary.png`
 - `two_room_v1_geometry_violation_summary.png`
 - `geometry_profiles_comparison.png`
@@ -734,7 +741,6 @@ def build_figure_manifest():
 | overall_stage3_objective.png | conceptual | programmatic schematic | Show the Stage 3 reconstruction/refinement objective. | generated | Stage 3 is missing indoor trajectory reconstruction, not generic forecasting. |
 | missing_reconstruction_task.png | conceptual | programmatic schematic | Show the one contiguous missing-segment task definition. | generated | Missing-segment reconstruction quality should be read against the clean target. |
 | refinement_interface_v0_v1_v2.png | conceptual | programmatic schematic | Explain v0/v1/v2 DDPM refinement interfaces. | generated | v0 changes the whole trajectory; v1/v2 protect observed points. |
-| wall_door_v1_layout.png | conceptual | `tools/stage3/geometry_extension/run_geometry_extension.py` | Explain the wall-door geometry extension layout. | generated | `canonical_room3` stays fixed while `wall_door_v1` adds feasibility constraints. |
 | obstacle_v1_layout.png | conceptual | `tools/stage3/geometry_extension/run_geometry_extension.py` | Explain the obstacle geometry extension layout. | generated | `obstacle_v1` adds a central blocked region as a feasibility stress test. |
 | two_room_v1_layout.png | conceptual | `tools/stage3/geometry_extension/run_geometry_extension.py` | Explain the narrow-opening room-transition layout. | generated | `two_room_v1` tightens room-transition feasibility without changing the benchmark itself. |
 | full_vs_masked_comparison.png | data-result | `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/full_vs_masked_comparison.png` | Show full vs masked metric ranking differences. | copied | Full-trajectory consistency and missing-segment reconstruction quality can rank methods differently. |
@@ -744,7 +750,6 @@ def build_figure_manifest():
 | refinement_v0_v1_v2_comparison.png | data-result | `outputs/stage3/refinement/eval/refinement_metrics.csv` | Compare identity, Light SG, DDPM v0, DDPM v1, and DDPM v2 alpha=0.25. | generated | v0 proves integration, v1 protects observed points, and v2 blends the DDPM candidate into the missing span. |
 | alpha_sweep_masked_ADE.png | data-result | `outputs/stage3/refinement/alpha_sweep/alpha_sweep_summary.csv` | Show alpha sensitivity by coarse method. | generated | Linear and Savitzky-Golay prefer alpha=0.00, while Kalman benefits only from very small alpha. |
 | alpha_sweep_improvement_masked_ADE.png | data-result | `outputs/stage3/refinement/alpha_sweep/alpha_sweep_summary.csv` | Show masked_ADE improvement relative to alpha=0.00. | generated | Large alpha usually hurts, which indicates the unconditional DDPM prior is not a reliable direct refiner. |
-| geometry_violation_summary.png | data-result | `outputs/stage3/geometry_extension/wall_door_v1/geometry_summary.csv` | Summarize geometry feasibility violations under `wall_door_v1`. | generated | `wall_door_v1` reveals how often existing outputs rely on infeasible wall transitions. |
 | obstacle_v1_geometry_violation_summary.png | data-result | `outputs/stage3/geometry_extension/obstacle_v1/geometry_summary.csv` | Summarize geometry feasibility violations under `obstacle_v1`. | generated | `obstacle_v1` checks whether trajectories remain feasible around a blocked central region. |
 | two_room_v1_geometry_violation_summary.png | data-result | `outputs/stage3/geometry_extension/two_room_v1/geometry_summary.csv` | Summarize geometry feasibility violations under `two_room_v1`. | generated | `two_room_v1` tests whether outputs can pass through a narrower valid transition opening. |
 | geometry_profiles_comparison.png | data-result | `outputs/stage3/geometry_extension/geometry_profiles_summary.csv` | Compare profile-level window violation rates by source family. | generated | Cross-profile normalized rates show how geometry strictness changes feasibility diagnostics. |

@@ -27,8 +27,6 @@ DOCS_ASSET_ROOT = PROJECT_ROOT / "docs" / "assets" / "stage3"
 PHASE1_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "phase1" / "canonical_room3"
 CONTROLLED_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "controlled_benchmark"
 REFINEMENT_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "refinement"
-GEOM_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "geometry_extension" / "wall_door_v1"
-
 METHOD_NAME_MAP = {
     "linear_interp": "Linear",
     "savgol_w5_p2": "Savitzky-Golay",
@@ -159,31 +157,6 @@ def generate_refinement_interface(path: Path):
         ax.annotate("", xy=(0.47, y + 0.08), xytext=(0.42, y + 0.08), arrowprops=dict(arrowstyle="->", lw=1.8))
         ax.annotate("", xy=(0.74, y + 0.08), xytext=(0.69, y + 0.08), arrowprops=dict(arrowstyle="->", lw=1.8))
     ax.text(0.5, 0.95, "DDPM refinement interfaces: v0 integration, v1 observed-point protection, v2 masked blending", ha="center", fontsize=13, weight="bold")
-    save_figure(fig, path)
-
-
-def generate_wall_door_layout(path: Path):
-    fig, ax = plt.subplots(figsize=(6.5, 6.5))
-    ax.set_xlim(0, 3)
-    ax.set_ylim(0, 3)
-    ax.set_aspect("equal", adjustable="box")
-    ax.grid(alpha=0.2)
-    ax.set_xlabel("x (m)")
-    ax.set_ylabel("y (m)")
-    ax.set_title("wall_door_v1 geometry extension")
-
-    ax.plot([0, 3, 3, 0, 0], [0, 0, 3, 3, 0], color="#1F1F1F", lw=2.2, label="Room boundary")
-    ax.plot([1.5, 1.5], [0, 1.2], color="#444444", lw=4)
-    ax.plot([1.5, 1.5], [1.8, 3.0], color="#444444", lw=4, label="Internal wall")
-    ax.plot([1.5, 1.5], [1.2, 1.8], color="#2CA02C", lw=6, label="Door opening")
-
-    valid = np.array([[0.7, 1.35], [1.5, 1.5], [2.3, 1.65]], dtype=np.float32)
-    invalid = np.array([[0.6, 2.4], [1.5, 2.2], [2.25, 2.05]], dtype=np.float32)
-    ax.plot(valid[:, 0], valid[:, 1], color="#1F77B4", lw=2.5, marker="o", label="Valid crossing")
-    ax.plot(invalid[:, 0], invalid[:, 1], color="#D62728", lw=2.5, marker="o", label="Invalid wall crossing")
-    ax.text(0.05, 2.86, "canonical_room3 remains the fixed reference benchmark", fontsize=9)
-    ax.text(0.05, 2.70, "wall_door_v1 is a separate feasibility extension", fontsize=9)
-    ax.legend(frameon=False, loc="lower right")
     save_figure(fig, path)
 
 
@@ -337,37 +310,6 @@ def generate_alpha_sweep_improvement(path: Path):
     return [str(REFINEMENT_ROOT / "alpha_sweep" / "alpha_sweep_summary.csv")]
 
 
-def generate_geometry_violation_summary(path: Path):
-    csv_path = GEOM_ROOT / "geometry_summary.csv"
-    if not csv_path.exists():
-        return False, [str(csv_path)]
-    df = pd.read_csv(csv_path)
-    family_df = (
-        df.groupby("source_family", as_index=False)[
-            ["off_map_ratio", "internal_wall_crossing_count", "door_valid_crossing_count", "infeasible_transition_count"]
-        ]
-        .sum()
-    )
-    metrics = [
-        ("off_map_ratio", "off_map_ratio"),
-        ("internal_wall_crossing_count", "internal_wall_crossing_count"),
-        ("door_valid_crossing_count", "door_valid_crossing_count"),
-        ("infeasible_transition_count", "infeasible_transition_count"),
-    ]
-    fig, axes = plt.subplots(2, 2, figsize=(12, 8))
-    axes = axes.ravel()
-    for ax, (col, title) in zip(axes, metrics):
-        ax.bar(family_df["source_family"], family_df[col], color="#4C78A8")
-        ax.set_title(title)
-        ax.tick_params(axis="x", rotation=15)
-        ax.grid(axis="y", alpha=0.25)
-    fig.suptitle("wall_door_v1 geometry extension: feasibility violations across Stage 3 outputs")
-    fig.tight_layout(rect=(0, 0, 1, 0.95))
-    fig.savefig(path, dpi=220, bbox_inches="tight")
-    plt.close(fig)
-    return True, [str(csv_path)]
-
-
 def build_manifest(records: list[dict], path: Path, todos: list[str], missing: list[str]):
     lines = [
         "# Figure Manifest",
@@ -379,7 +321,6 @@ def build_manifest(records: list[dict], path: Path, todos: list[str], missing: l
         "- `overall_stage3_objective.png`",
         "- `missing_reconstruction_task.png`",
         "- `refinement_interface_v0_v1_v2.png`",
-        "- `wall_door_v1_layout.png`",
         "",
         "### 2. Benchmark evidence",
         "",
@@ -396,10 +337,6 @@ def build_manifest(records: list[dict], path: Path, todos: list[str], missing: l
         "- `refinement_v0_v1_v2_comparison.png`",
         "- `alpha_sweep_masked_ADE.png`",
         "- `alpha_sweep_improvement_masked_ADE.png`",
-        "",
-        "### 5. Geometry extension wall_door_v1",
-        "",
-        "- `geometry_violation_summary.png`",
         "",
         "| Figure filename | Type | Source files used | Purpose | Status | Short interpretation |",
         "| --- | --- | --- | --- | --- | --- |",
@@ -433,7 +370,6 @@ def main():
         ("overall_stage3_objective.png", generate_overall_stage3_objective, "conceptual", "Show the Stage 3 reconstruction/refinement objective.", "Stage 3 is missing indoor trajectory reconstruction, not generic forecasting."),
         ("missing_reconstruction_task.png", generate_missing_reconstruction_task, "conceptual", "Show the one contiguous missing-segment task definition.", "Missing-segment reconstruction quality should be read against the clean target."),
         ("refinement_interface_v0_v1_v2.png", generate_refinement_interface, "conceptual", "Explain v0/v1/v2 DDPM refinement interfaces.", "v0 changes the whole trajectory; v1/v2 protect observed points."),
-        ("wall_door_v1_layout.png", generate_wall_door_layout, "conceptual", "Explain the wall-door geometry extension layout.", "canonical_room3 stays fixed while wall_door_v1 adds feasibility constraints."),
     ]
     for filename, fn, fig_type, purpose, interp in conceptual_specs:
         out = FIG_ROOT / filename
@@ -501,20 +437,6 @@ def main():
     generated_paths.append(out)
     copied_paths.append(copy_to_docs(out))
     add_manifest_record(records, filename=out.name, type="data-result", sources=", ".join(srcs), purpose="Show masked_ADE improvement relative to alpha=0.00.", status="generated", interpretation="Large alpha usually hurts, which indicates the unconditional DDPM prior is not a reliable direct refiner.")
-
-    out = FIG_ROOT / "geometry_violation_summary.png"
-    ok, srcs = generate_geometry_violation_summary(out)
-    if ok:
-        generated_paths.append(out)
-        copied_paths.append(copy_to_docs(out))
-        status = "generated"
-        interp = "wall_door_v1 reveals how often existing outputs rely on infeasible indoor transitions."
-    else:
-        missing_sources.extend(srcs)
-        todos.append("Generate wall_door_v1 geometry metrics before plotting geometry_violation_summary.png.")
-        status = "TODO"
-        interp = "Geometry metrics are required before violation summary plotting."
-    add_manifest_record(records, filename=out.name, type="data-result", sources=", ".join(srcs), purpose="Summarize geometry feasibility violations under wall_door_v1.", status=status, interpretation=interp)
 
     build_manifest(records, FIG_ROOT / "figure_manifest.md", todos, missing_sources)
     shutil.copy2(FIG_ROOT / "figure_manifest.md", DOCS_ASSET_ROOT / "figure_manifest.md")
