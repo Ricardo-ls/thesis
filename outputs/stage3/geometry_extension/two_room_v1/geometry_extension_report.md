@@ -12,24 +12,24 @@ Normalized rates are emphasized over raw counts.
 
 ## Geometry Profile
 
-- `profile_name`: `wall_door_v1`
-- Main constraint: internal wall with door opening y in [1.2, 1.8]
+- `profile_name`: `two_room_v1`
+- Main constraint: internal wall with narrow opening y in [1.35, 1.65]
 - Room boundary: `[0, 3] x [0, 3]`
 
 ## Filter Summary
 
-| profile_name | total_windows | feasible_windows | discarded_windows | retention_rate | same_side_windows | door_transition_windows | valid_crossing_windows |
+| profile_name | total_windows | feasible_windows | discarded_windows | retention_rate | same_room_windows | room_transition_windows | valid_crossing_windows |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| wall_door_v1 | 36073 | 30014 | 6059 | 0.832035 | 25053 | 4961 | 4961 |
+| two_room_v1 | 36073 | 27544 | 8529 | 0.763563 | 25053 | 2491 | 2491 |
 
 ## Summary By Source Family
 
 | source_family | evaluated_windows | window_violation_rate | infeasible_transition_rate | mean_infeasible_transitions_per_window | masked_infeasible_transition_rate | off_map_ratio |
 | --- | --- | --- | --- | --- | --- | --- |
-| controlled_benchmark | 480224 | 0.021592 | 0.002047 | 0.038884 | 0.001085 | 0.000150 |
-| phase1_baseline | 2341092 | 0.002381 | 0.000195 | 0.003707 | 0.000614 | 0.000023 |
-| refinement | 1800840 | 0.021012 | 0.001889 | 0.035888 | 0.001456 | 0.000215 |
-| refinement_alpha_sweep | 2521176 | 0.021748 | 0.001997 | 0.037939 | 0.001445 | 0.000165 |
+| controlled_benchmark | 440704 | 0.028096 | 0.002695 | 0.051209 | 0.001438 | 0.000159 |
+| phase1_baseline | 2148432 | 0.003925 | 0.000290 | 0.005507 | 0.000841 | 0.000023 |
+| refinement | 1652640 | 0.027671 | 0.002474 | 0.047004 | 0.001934 | 0.000231 |
+| refinement_alpha_sweep | 2313696 | 0.028727 | 0.002643 | 0.050216 | 0.001946 | 0.000175 |
 
 
 ## Output Files
@@ -39,5 +39,5 @@ Normalized rates are emphasized over raw counts.
 - `geometry_metrics.csv`
 - `geometry_summary.csv`
 - `geometry_extension_report.md`
-- `figures/wall_door_v1_layout.png`
+- `figures/two_room_v1_layout.png`
 - `figures/geometry_violation_summary.png`
