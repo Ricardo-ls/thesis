@@ -44,9 +44,9 @@ Standard outputs:
 - `metrics_by_seed.csv`
 - `metrics_summary_mean_std.csv`
 - `random_span_statistics_report.md`
-- `figures/ADE_mean_std_bar.png`
-- `figures/RMSE_mean_std_bar.png`
-- `figures/masked_ADE_mean_std_bar.png`
+- `figures/random_span_ADE_mean_std.png`
+- `figures/random_span_RMSE_mean_std.png`
+- `figures/random_span_masked_ADE_mean_std.png`
 - `figures/full_vs_masked_comparison.png`
 
 Current role:

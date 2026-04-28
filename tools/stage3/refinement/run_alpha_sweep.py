@@ -153,50 +153,103 @@ def plot_metric(summary_df: pd.DataFrame, metric: str, ylabel: str, output_path:
             min_masked_ADE=("masked_ADE", "min"),
             max_masked_ADE=("masked_ADE", "max"),
         )
+        alpha_values = sorted(agg_df["alpha"].unique())
+        alpha_to_pos = {alpha: idx for idx, alpha in enumerate(alpha_values)}
 
-        fig, ax = plt.subplots(figsize=(8.8, 5.4))
+        fig, ax = plt.subplots(figsize=(9.2, 5.8))
+        fig.patch.set_facecolor("white")
+        ax.set_facecolor("#FCFCFB")
+        shared_best_done = False
         for coarse_method in METHODS:
             method_df = agg_df[agg_df["coarse_method"] == coarse_method].sort_values("alpha")
             style = style_map[coarse_method]
             lower = method_df["mean_masked_ADE"] - method_df["min_masked_ADE"]
             upper = method_df["max_masked_ADE"] - method_df["mean_masked_ADE"]
+            x_pos = np.array([alpha_to_pos[a] for a in method_df["alpha"]], dtype=float)
+            ax.fill_between(
+                x_pos,
+                method_df["min_masked_ADE"].to_numpy(),
+                method_df["max_masked_ADE"].to_numpy(),
+                color=style["color"],
+                alpha=0.08,
+                zorder=1,
+            )
             ax.errorbar(
-                method_df["alpha"],
+                x_pos,
                 method_df["mean_masked_ADE"],
                 yerr=np.vstack([lower.to_numpy(), upper.to_numpy()]),
                 color=style["color"],
                 marker=style["marker"],
-                markersize=9,
-                linewidth=3.2,
-                elinewidth=1.2,
-                capsize=3,
-                alpha=0.95,
+                markersize=10.5,
+                linewidth=3.8,
+                elinewidth=1.5,
+                capsize=4,
+                alpha=0.98,
                 label=style["label"],
+                zorder=2,
             )
 
             best_row = method_df.sort_values(["mean_masked_ADE", "alpha"]).iloc[0]
             y_offset = 10 if coarse_method == "kalman_cv_dt1.0_q1e-3_r1e-2" else -18
-            ax.annotate(
-                f"best {best_row['alpha']:.2f}",
-                xy=(best_row["alpha"], best_row["mean_masked_ADE"]),
-                xytext=(8, y_offset),
-                textcoords="offset points",
+            best_x = alpha_to_pos[float(best_row["alpha"])]
+            ax.scatter(
+                [best_x],
+                [best_row["mean_masked_ADE"]],
+                s=170,
+                marker=style["marker"],
                 color=style["color"],
-                fontsize=12,
-                weight="bold",
+                edgecolors="white",
+                linewidths=1.4,
+                zorder=3,
             )
+            if coarse_method in {"linear_interp", "savgol_w5_p2"}:
+                if not shared_best_done:
+                    shared_best_done = True
+                    ax.annotate(
+                        "Linear + Savitzky-Golay:\nbest alpha = 0.00",
+                        xy=(best_x, best_row["mean_masked_ADE"]),
+                        xytext=(16, -28),
+                        textcoords="offset points",
+                        color="#1E3A8A",
+                        fontsize=12.5,
+                        weight="bold",
+                    )
+            else:
+                ax.annotate(
+                    f"Kalman:\nbest alpha = {best_row['alpha']:.2f}",
+                    xy=(best_x, best_row["mean_masked_ADE"]),
+                    xytext=(10, y_offset),
+                    textcoords="offset points",
+                    color=style["color"],
+                    fontsize=12.5,
+                    weight="bold",
+                )
 
         ax.set_title("Alpha sensitivity: missing-segment reconstruction quality", pad=12, weight="bold")
         ax.set_xlabel("alpha")
         ax.set_ylabel("mean masked_ADE")
-        ax.set_xticks(sorted(agg_df["alpha"].unique()))
-        ax.grid(axis="y", alpha=0.22, linewidth=0.8)
+        ax.set_xticks(np.arange(len(alpha_values)))
+        ax.set_xticklabels([f"{alpha:.2f}" for alpha in alpha_values])
+        ax.tick_params(axis="x", labelrotation=90)
+        ax.grid(axis="y", color="#CBD5E1", alpha=0.4, linewidth=0.9)
+        ax.grid(axis="x", visible=False)
         for spine in ax.spines.values():
-            spine.set_linewidth(1.3)
+            spine.set_linewidth(1.5)
+            spine.set_color("#111827")
         ax.legend(frameon=False, loc="upper right")
-        ax.text(0.99, 0.03, "Lower is better", transform=ax.transAxes, ha="right", va="bottom", fontsize=12, color="#374151")
+        ax.text(0.99, 0.03, "Lower is better", transform=ax.transAxes, ha="right", va="bottom", fontsize=13, color="#374151")
+        ax.text(
+            0.01,
+            0.97,
+            "Mean across four degradation settings",
+            transform=ax.transAxes,
+            ha="left",
+            va="top",
+            fontsize=12.5,
+            color="#4B5563",
+        )
         fig.tight_layout()
-        fig.savefig(output_path, dpi=260, bbox_inches="tight")
+        fig.savefig(output_path, dpi=300, bbox_inches="tight")
         plt.close(fig)
         return
 

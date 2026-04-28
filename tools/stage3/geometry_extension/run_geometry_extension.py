@@ -32,7 +32,6 @@ from utils.stage3.controlled_benchmark import METHODS
 DOCS_ROOT = PROJECT_ROOT / "docs"
 DOCS_ASSET_ROOT = DOCS_ROOT / "assets" / "stage3"
 GEOMETRY_OUT_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "geometry_extension"
-FIGURE_ASSET_MANIFEST = PROJECT_ROOT / "outputs" / "stage3" / "figure_assets" / "figure_manifest.md"
 DOCS_FIGURE_MANIFEST = DOCS_ASSET_ROOT / "figure_manifest.md"
 PROTOCOL_DOC_PATH = DOCS_ROOT / "stage3_geometry_extension_protocol.md"
 
@@ -768,7 +767,6 @@ These profiles are synthetic feasibility stress tests applied after scaling ETH+
 Their violation counts should be interpreted as feasibility diagnostics under artificial layouts, not as direct evidence of real-room navigation failure.
 The main geometry evaluation is computed only on the feasible clean-target subset, so normalized violation rates should be read as conditional diagnostics on that retained subset.
 """
-    FIGURE_ASSET_MANIFEST.write_text(text, encoding="utf-8")
     DOCS_FIGURE_MANIFEST.write_text(text, encoding="utf-8")
 
 

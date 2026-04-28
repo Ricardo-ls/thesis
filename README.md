@@ -142,9 +142,9 @@ Random-span statistical reliability:
 - mean and std summaries live in `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv`
 - the report lives in `outputs/stage3/phase1/canonical_room3/random_span_statistics/random_span_statistics_report.md`
 - the standard figures are:
-  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/ADE_mean_std_bar.png`
-  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/RMSE_mean_std_bar.png`
-  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/masked_ADE_mean_std_bar.png`
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/random_span_ADE_mean_std.png`
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/random_span_RMSE_mean_std.png`
+  - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/random_span_masked_ADE_mean_std.png`
   - `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/full_vs_masked_comparison.png`
 
 The full-vs-masked comparison figure is the current standard visual summary for

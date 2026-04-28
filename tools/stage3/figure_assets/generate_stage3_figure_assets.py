@@ -2,7 +2,6 @@ from __future__ import annotations
 
 import os
 from pathlib import Path
-import shutil
 import sys
 
 os.environ.setdefault("MPLCONFIGDIR", "/tmp/stage3_mplconfig")
@@ -21,8 +20,8 @@ if str(PROJECT_ROOT) not in sys.path:
 from tools.stage3.refinement.run_refinement_interface import load_array
 from utils.stage3.controlled_benchmark import DEGRADATION_LABELS, DEGRADATION_NAMES, METHOD_LABELS, METHODS
 
-FIG_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "figure_assets"
 DOCS_ASSET_ROOT = PROJECT_ROOT / "docs" / "assets" / "stage3"
+FIG_ROOT = DOCS_ASSET_ROOT
 
 PHASE1_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "phase1" / "canonical_room3"
 CONTROLLED_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "controlled_benchmark"
@@ -40,7 +39,6 @@ METHOD_NAME_MAP = {
 
 
 def ensure_dirs():
-    FIG_ROOT.mkdir(parents=True, exist_ok=True)
     DOCS_ASSET_ROOT.mkdir(parents=True, exist_ok=True)
 
 
@@ -51,9 +49,7 @@ def save_figure(fig: plt.Figure, path: Path):
 
 
 def copy_to_docs(path: Path):
-    target = DOCS_ASSET_ROOT / path.name
-    shutil.copy2(path, target)
-    return target
+    return path
 
 
 def add_manifest_record(records: list[dict], **kwargs):
@@ -193,9 +189,9 @@ def generate_controlled_degradation_examples(path: Path):
 
     plt.rcParams.update(
         {
-            "font.size": 15,
-            "axes.titlesize": 17,
-            "axes.labelsize": 16,
+            "font.size": 16,
+            "axes.titlesize": 18,
+            "axes.labelsize": 17,
             "xtick.labelsize": 14,
             "ytick.labelsize": 14,
             "legend.fontsize": 14,
@@ -212,26 +208,41 @@ def generate_controlled_degradation_examples(path: Path):
     degraded_color = "#C62828"
     missing_color = "#1565C0"
 
-    fig, axes = plt.subplots(2, 2, figsize=(11.5, 9.8), sharex=True, sharey=True)
+    x_min = float(gt[:, 0].min() - 0.18)
+    x_max = float(gt[:, 0].max() + 0.18)
+    y_min = float(gt[:, 1].min() - 0.18)
+    y_max = float(gt[:, 1].max() + 0.18)
+
+    fig, axes = plt.subplots(2, 2, figsize=(12.2, 9.8), sharex=True, sharey=True)
+    fig.patch.set_facecolor("white")
     axes = axes.ravel()
     for ax, degradation in zip(axes, DEGRADATION_NAMES):
         degraded = np.load(CONTROLLED_ROOT / "degradation" / f"degraded_{degradation}_span20_fixed_seed42.npy", allow_pickle=False).astype(np.float32)
         deg = degraded[sample_idx]
+        ax.set_facecolor("#FCFCFB")
+        ax.plot(
+            gt[:, 0],
+            gt[:, 1],
+            color="white",
+            lw=6.0,
+            linestyle=(0, (10, 7)),
+            zorder=0,
+        )
         ax.plot(
             gt[:, 0],
             gt[:, 1],
             color=clean_color,
-            lw=3.8,
-            linestyle=(0, (8, 6)),
+            lw=4.0,
+            linestyle=(0, (10, 7)),
             dash_capstyle="butt",
-            zorder=1,
+            zorder=1.2,
             label="Clean target",
         )
         ax.plot(
             deg[:, 0],
             deg[:, 1],
             color=degraded_color,
-            lw=3.4,
+            lw=3.8,
             solid_capstyle="round",
             zorder=2,
             label="Degraded/coarse input",
@@ -242,36 +253,47 @@ def generate_controlled_degradation_examples(path: Path):
                 gt[missing_pts, 0],
                 gt[missing_pts, 1],
                 color=missing_color,
-                s=80,
+                s=88,
                 marker="o",
                 edgecolors="white",
-                linewidths=1.2,
-                zorder=3,
+                linewidths=1.6,
+                zorder=3.2,
                 label="Missing segment",
             )
         ax.set_title(panel_titles[degradation], pad=10, weight="bold")
-        ax.set_xlim(0, 3)
-        ax.set_ylim(0, 3)
+        ax.set_xlim(x_min, x_max)
+        ax.set_ylim(y_min, y_max)
         ax.set_aspect("equal", adjustable="box")
-        ax.grid(alpha=0.20, linewidth=0.8)
+        ax.grid(color="#CBD5E1", alpha=0.28, linewidth=0.85)
         for spine in ax.spines.values():
-            spine.set_linewidth(1.4)
+            spine.set_linewidth(1.5)
+            spine.set_color("#374151")
         ax.set_xlabel("x")
         ax.set_ylabel("y")
     handles, labels = axes[0].get_legend_handles_labels()
+    fig.suptitle("Controlled benchmark degradation settings", fontsize=23, weight="bold", y=0.995)
+    fig.text(
+        0.5,
+        0.952,
+        "Clean target vs. degraded input, with the missing segment highlighted",
+        ha="center",
+        va="center",
+        fontsize=14,
+        color="#4B5563",
+    )
     fig.legend(
         handles[:3],
         labels[:3],
         frameon=False,
         loc="upper center",
         ncol=3,
-        bbox_to_anchor=(0.5, 0.98),
+        bbox_to_anchor=(0.5, 0.928),
         handlelength=3.0,
-        columnspacing=1.8,
+        columnspacing=1.5,
+        handletextpad=0.5,
     )
-    fig.suptitle("Controlled benchmark degradation settings", fontsize=21, weight="bold", y=1.03)
-    fig.tight_layout(rect=(0, 0, 1, 0.92))
-    fig.savefig(path, dpi=220, bbox_inches="tight")
+    fig.tight_layout(rect=(0, 0, 1, 0.82))
+    fig.savefig(path, dpi=260, bbox_inches="tight")
     plt.close(fig)
     return [
         str(CONTROLLED_ROOT / "degradation" / "clean.npy"),
@@ -319,11 +341,11 @@ def generate_alpha_sweep_mean_masked_ade(path: Path):
 
     plt.rcParams.update(
         {
-            "font.size": 15,
-            "axes.titlesize": 19,
-            "axes.labelsize": 16,
-            "xtick.labelsize": 14,
-            "ytick.labelsize": 14,
+            "font.size": 16,
+            "axes.titlesize": 20,
+            "axes.labelsize": 17,
+            "xtick.labelsize": 15,
+            "ytick.labelsize": 15,
             "legend.fontsize": 14,
         }
     )
@@ -334,48 +356,103 @@ def generate_alpha_sweep_mean_masked_ade(path: Path):
         "kalman_cv_dt1.0_q1e-3_r1e-2": {"color": "#B45309", "marker": "^", "label": "Kalman"},
     }
 
-    fig, ax = plt.subplots(figsize=(8.8, 5.4))
+    alpha_values = sorted(plot_df["alpha"].unique())
+    alpha_to_pos = {alpha: idx for idx, alpha in enumerate(alpha_values)}
+
+    fig, ax = plt.subplots(figsize=(9.2, 5.8))
+    fig.patch.set_facecolor("white")
+    ax.set_facecolor("#FCFCFB")
+    shared_best_done = False
     for method in METHODS:
         method_df = plot_df[plot_df["coarse_method"] == method].sort_values("alpha")
         style = style_map[method]
         lower = method_df["mean_masked_ADE"] - method_df["min_masked_ADE"]
         upper = method_df["max_masked_ADE"] - method_df["mean_masked_ADE"]
+        x_pos = np.array([alpha_to_pos[a] for a in method_df["alpha"]], dtype=float)
+        ax.fill_between(
+            x_pos,
+            method_df["min_masked_ADE"].to_numpy(),
+            method_df["max_masked_ADE"].to_numpy(),
+            color=style["color"],
+            alpha=0.08,
+            zorder=1,
+        )
         ax.errorbar(
-            method_df["alpha"],
+            x_pos,
             method_df["mean_masked_ADE"],
             yerr=np.vstack([lower.to_numpy(), upper.to_numpy()]),
             color=style["color"],
             marker=style["marker"],
-            markersize=9,
-            linewidth=3.2,
-            elinewidth=1.2,
-            capsize=3,
-            alpha=0.95,
+            markersize=10.5,
+            linewidth=3.8,
+            elinewidth=1.5,
+            capsize=4,
+            alpha=0.98,
             label=style["label"],
+            zorder=2,
         )
 
         best_row = method_df.sort_values(["mean_masked_ADE", "alpha"]).iloc[0]
-        ax.annotate(
-            f"best {best_row['alpha']:.2f}",
-            xy=(best_row["alpha"], best_row["mean_masked_ADE"]),
-            xytext=(8, -18 if method != "kalman_cv_dt1.0_q1e-3_r1e-2" else 10),
-            textcoords="offset points",
+        best_x = alpha_to_pos[float(best_row["alpha"])]
+        y_offset = -18 if method != "kalman_cv_dt1.0_q1e-3_r1e-2" else 10
+        ax.scatter(
+            [best_x],
+            [best_row["mean_masked_ADE"]],
+            s=170,
+            marker=style["marker"],
             color=style["color"],
-            fontsize=12,
-            weight="bold",
+            edgecolors="white",
+            linewidths=1.4,
+            zorder=3,
         )
+        if method in {"linear_interp", "savgol_w5_p2"}:
+            if not shared_best_done:
+                shared_best_done = True
+                ax.annotate(
+                    "Linear + Savitzky-Golay:\nbest alpha = 0.00",
+                    xy=(best_x, best_row["mean_masked_ADE"]),
+                    xytext=(16, -28),
+                    textcoords="offset points",
+                    color="#1E3A8A",
+                    fontsize=12.5,
+                    weight="bold",
+                )
+        else:
+            ax.annotate(
+                f"Kalman:\nbest alpha = {best_row['alpha']:.2f}",
+                xy=(best_x, best_row["mean_masked_ADE"]),
+                xytext=(10, y_offset),
+                textcoords="offset points",
+                color=style["color"],
+                fontsize=12.5,
+                weight="bold",
+            )
 
     ax.set_title("Alpha sensitivity: missing-segment reconstruction quality", pad=12, weight="bold")
     ax.set_xlabel("alpha")
     ax.set_ylabel("mean masked_ADE")
-    ax.set_xticks(ALPHAS := sorted(plot_df["alpha"].unique()))
-    ax.grid(axis="y", alpha=0.22, linewidth=0.8)
+    ax.set_xticks(np.arange(len(alpha_values)))
+    ax.set_xticklabels([f"{alpha:.2f}" for alpha in alpha_values])
+    ax.tick_params(axis="x", labelrotation=90)
+    ax.grid(axis="y", color="#CBD5E1", alpha=0.4, linewidth=0.9)
+    ax.grid(axis="x", visible=False)
     for spine in ax.spines.values():
-        spine.set_linewidth(1.3)
+        spine.set_linewidth(1.5)
+        spine.set_color("#111827")
     ax.legend(frameon=False, loc="upper right")
-    ax.text(0.99, 0.03, "Lower is better", transform=ax.transAxes, ha="right", va="bottom", fontsize=12, color="#374151")
+    ax.text(0.99, 0.03, "Lower is better", transform=ax.transAxes, ha="right", va="bottom", fontsize=13, color="#374151")
+    ax.text(
+        0.01,
+        0.97,
+        "Mean across four degradation settings",
+        transform=ax.transAxes,
+        ha="left",
+        va="top",
+        fontsize=12.5,
+        color="#4B5563",
+    )
     fig.tight_layout()
-    fig.savefig(path, dpi=260, bbox_inches="tight")
+    fig.savefig(path, dpi=300, bbox_inches="tight")
     plt.close(fig)
     return [str(csv_path)]
 
@@ -565,15 +642,10 @@ def main():
     add_manifest_record(records, filename=out.name, type="data-result", sources=", ".join(srcs), purpose="Show masked_ADE improvement relative to alpha=0.00.", status="generated", interpretation="Large alpha usually hurts, which indicates the unconditional DDPM prior is not a reliable direct refiner.")
 
     build_manifest(records, FIG_ROOT / "figure_manifest.md", todos, missing_sources)
-    shutil.copy2(FIG_ROOT / "figure_manifest.md", DOCS_ASSET_ROOT / "figure_manifest.md")
 
     print("=" * 72)
-    print("Generated figure paths")
+    print("Generated docs/assets/stage3 figure paths")
     for path in generated_paths:
-        print(path)
-    print("-" * 72)
-    print("Copied docs/assets/stage3 figure paths")
-    for path in copied_paths:
         print(path)
     print(DOCS_ASSET_ROOT / "figure_manifest.md")
     print("-" * 72)

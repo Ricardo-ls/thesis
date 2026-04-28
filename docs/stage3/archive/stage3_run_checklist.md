@@ -16,3 +16,7 @@ The active output root is:
 The old flat `outputs/stage3/data`, `outputs/stage3/baselines`, and
 `outputs/stage3/eval` paths are no longer the formal Stage 3 Phase 1 output
 layout.
+
+They are now kept only as archived leftovers under:
+
+- `outputs/stage3/archive/legacy_flat_outputs/`
