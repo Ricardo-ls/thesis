@@ -213,7 +213,7 @@ def generate_controlled_degradation_examples(path: Path):
     y_min = float(gt[:, 1].min() - 0.18)
     y_max = float(gt[:, 1].max() + 0.18)
 
-    fig, axes = plt.subplots(2, 2, figsize=(12.2, 9.8), sharex=True, sharey=True)
+    fig, axes = plt.subplots(2, 2, figsize=(12.2, 8.9), sharex=True, sharey=True)
     fig.patch.set_facecolor("white")
     axes = axes.ravel()
     for ax, degradation in zip(axes, DEGRADATION_NAMES):
@@ -260,7 +260,7 @@ def generate_controlled_degradation_examples(path: Path):
                 zorder=3.2,
                 label="Missing segment",
             )
-        ax.set_title(panel_titles[degradation], pad=10, weight="bold")
+        ax.set_title(panel_titles[degradation], pad=8, weight="bold")
         ax.set_xlim(x_min, x_max)
         ax.set_ylim(y_min, y_max)
         ax.set_aspect("equal", adjustable="box")
@@ -271,14 +271,14 @@ def generate_controlled_degradation_examples(path: Path):
         ax.set_xlabel("x")
         ax.set_ylabel("y")
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.suptitle("Controlled benchmark degradation settings", fontsize=23, weight="bold", y=0.995)
+    fig.suptitle("Controlled benchmark degradation settings", fontsize=22, weight="bold", y=0.975)
     fig.text(
         0.5,
-        0.952,
+        0.935,
         "Clean target vs. degraded input, with the missing segment highlighted",
         ha="center",
         va="center",
-        fontsize=14,
+        fontsize=13,
         color="#4B5563",
     )
     fig.legend(
@@ -287,12 +287,12 @@ def generate_controlled_degradation_examples(path: Path):
         frameon=False,
         loc="upper center",
         ncol=3,
-        bbox_to_anchor=(0.5, 0.928),
+        bbox_to_anchor=(0.5, 0.905),
         handlelength=3.0,
         columnspacing=1.5,
         handletextpad=0.5,
     )
-    fig.tight_layout(rect=(0, 0, 1, 0.82))
+    fig.subplots_adjust(left=0.08, right=0.98, bottom=0.08, top=0.82, wspace=0.11, hspace=0.28)
     fig.savefig(path, dpi=260, bbox_inches="tight")
     plt.close(fig)
     return [
