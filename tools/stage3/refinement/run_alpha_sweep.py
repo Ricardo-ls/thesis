@@ -142,6 +142,64 @@ def summarize_metrics(metrics_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def plot_metric(summary_df: pd.DataFrame, metric: str, ylabel: str, output_path: Path, *, reference_metric: str | None = None):
+    if metric == "masked_ADE":
+        style_map = {
+            "linear_interp": {"color": "#1D4ED8", "marker": "o", "label": "Linear"},
+            "savgol_w5_p2": {"color": "#047857", "marker": "s", "label": "Savitzky-Golay"},
+            "kalman_cv_dt1.0_q1e-3_r1e-2": {"color": "#B45309", "marker": "^", "label": "Kalman"},
+        }
+        agg_df = summary_df.groupby(["coarse_method", "alpha"], as_index=False).agg(
+            mean_masked_ADE=("masked_ADE", "mean"),
+            min_masked_ADE=("masked_ADE", "min"),
+            max_masked_ADE=("masked_ADE", "max"),
+        )
+
+        fig, ax = plt.subplots(figsize=(8.8, 5.4))
+        for coarse_method in METHODS:
+            method_df = agg_df[agg_df["coarse_method"] == coarse_method].sort_values("alpha")
+            style = style_map[coarse_method]
+            lower = method_df["mean_masked_ADE"] - method_df["min_masked_ADE"]
+            upper = method_df["max_masked_ADE"] - method_df["mean_masked_ADE"]
+            ax.errorbar(
+                method_df["alpha"],
+                method_df["mean_masked_ADE"],
+                yerr=np.vstack([lower.to_numpy(), upper.to_numpy()]),
+                color=style["color"],
+                marker=style["marker"],
+                markersize=9,
+                linewidth=3.2,
+                elinewidth=1.2,
+                capsize=3,
+                alpha=0.95,
+                label=style["label"],
+            )
+
+            best_row = method_df.sort_values(["mean_masked_ADE", "alpha"]).iloc[0]
+            y_offset = 10 if coarse_method == "kalman_cv_dt1.0_q1e-3_r1e-2" else -18
+            ax.annotate(
+                f"best {best_row['alpha']:.2f}",
+                xy=(best_row["alpha"], best_row["mean_masked_ADE"]),
+                xytext=(8, y_offset),
+                textcoords="offset points",
+                color=style["color"],
+                fontsize=12,
+                weight="bold",
+            )
+
+        ax.set_title("Alpha sensitivity: missing-segment reconstruction quality", pad=12, weight="bold")
+        ax.set_xlabel("alpha")
+        ax.set_ylabel("mean masked_ADE")
+        ax.set_xticks(sorted(agg_df["alpha"].unique()))
+        ax.grid(axis="y", alpha=0.22, linewidth=0.8)
+        for spine in ax.spines.values():
+            spine.set_linewidth(1.3)
+        ax.legend(frameon=False, loc="upper right")
+        ax.text(0.99, 0.03, "Lower is better", transform=ax.transAxes, ha="right", va="bottom", fontsize=12, color="#374151")
+        fig.tight_layout()
+        fig.savefig(output_path, dpi=260, bbox_inches="tight")
+        plt.close(fig)
+        return
+
     fig, axes = plt.subplots(2, 2, figsize=(11, 8), sharex=True)
     axes = axes.ravel()
 
@@ -235,6 +293,8 @@ def build_report(metrics_df: pd.DataFrame, summary_df: pd.DataFrame, output_path
         "",
         "This sweep tests whether the fixed alpha=0.25 used by `ddpm_prior_masked_blend_v2` is appropriate.",
         "Observed points are preserved, while missing points are blended with the cached `ddpm_prior_interface_v0` candidate.",
+        "The main summary figure reports mean `masked_ADE` by alpha across the four degradation settings for each coarse method.",
+        "`Lower is better` for every point in that summary figure.",
         "",
         "## Questions",
         "",

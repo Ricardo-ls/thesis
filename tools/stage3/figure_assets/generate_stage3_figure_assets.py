@@ -191,27 +191,86 @@ def generate_controlled_degradation_examples(path: Path):
     gt = clean[sample_idx]
     obs_mask = mask[sample_idx]
 
-    fig, axes = plt.subplots(2, 2, figsize=(10, 9), sharex=True, sharey=True)
+    plt.rcParams.update(
+        {
+            "font.size": 15,
+            "axes.titlesize": 17,
+            "axes.labelsize": 16,
+            "xtick.labelsize": 14,
+            "ytick.labelsize": 14,
+            "legend.fontsize": 14,
+        }
+    )
+
+    panel_titles = {
+        "missing_only": "Missing only",
+        "missing_noise": "Missing + noise",
+        "missing_drift": "Missing + drift",
+        "missing_noise_drift": "Missing + noise + drift",
+    }
+    clean_color = "#4B5563"
+    degraded_color = "#C62828"
+    missing_color = "#1565C0"
+
+    fig, axes = plt.subplots(2, 2, figsize=(11.5, 9.8), sharex=True, sharey=True)
     axes = axes.ravel()
     for ax, degradation in zip(axes, DEGRADATION_NAMES):
         degraded = np.load(CONTROLLED_ROOT / "degradation" / f"degraded_{degradation}_span20_fixed_seed42.npy", allow_pickle=False).astype(np.float32)
         deg = degraded[sample_idx]
-        ax.plot(gt[:, 0], gt[:, 1], color="#BBBBBB", lw=1.6, linestyle="--", label="Clean")
-        ax.plot(deg[:, 0], deg[:, 1], color="#D62728", lw=2.2, label="Degraded / coarse input")
+        ax.plot(
+            gt[:, 0],
+            gt[:, 1],
+            color=clean_color,
+            lw=3.8,
+            linestyle=(0, (8, 6)),
+            dash_capstyle="butt",
+            zorder=1,
+            label="Clean target",
+        )
+        ax.plot(
+            deg[:, 0],
+            deg[:, 1],
+            color=degraded_color,
+            lw=3.4,
+            solid_capstyle="round",
+            zorder=2,
+            label="Degraded/coarse input",
+        )
         missing_pts = np.where(~obs_mask)[0]
         if len(missing_pts) > 0:
-            ax.scatter(gt[missing_pts, 0], gt[missing_pts, 1], color="#1F77B4", s=14, label="Missing segment")
-        ax.set_title(DEGRADATION_LABELS[degradation])
+            ax.scatter(
+                gt[missing_pts, 0],
+                gt[missing_pts, 1],
+                color=missing_color,
+                s=80,
+                marker="o",
+                edgecolors="white",
+                linewidths=1.2,
+                zorder=3,
+                label="Missing segment",
+            )
+        ax.set_title(panel_titles[degradation], pad=10, weight="bold")
         ax.set_xlim(0, 3)
         ax.set_ylim(0, 3)
         ax.set_aspect("equal", adjustable="box")
-        ax.grid(alpha=0.25)
+        ax.grid(alpha=0.20, linewidth=0.8)
+        for spine in ax.spines.values():
+            spine.set_linewidth(1.4)
         ax.set_xlabel("x")
         ax.set_ylabel("y")
     handles, labels = axes[0].get_legend_handles_labels()
-    fig.legend(handles[:3], labels[:3], frameon=False, loc="upper center", ncol=3)
-    fig.suptitle("Controlled benchmark degradation settings")
-    fig.tight_layout(rect=(0, 0, 1, 0.94))
+    fig.legend(
+        handles[:3],
+        labels[:3],
+        frameon=False,
+        loc="upper center",
+        ncol=3,
+        bbox_to_anchor=(0.5, 0.98),
+        handlelength=3.0,
+        columnspacing=1.8,
+    )
+    fig.suptitle("Controlled benchmark degradation settings", fontsize=21, weight="bold", y=1.03)
+    fig.tight_layout(rect=(0, 0, 1, 0.92))
     fig.savefig(path, dpi=220, bbox_inches="tight")
     plt.close(fig)
     return [
@@ -249,6 +308,78 @@ def generate_controlled_metric_summary(path: Path):
     return True, [str(csv_path)], todos
 
 
+def generate_alpha_sweep_mean_masked_ade(path: Path):
+    csv_path = REFINEMENT_ROOT / "alpha_sweep" / "alpha_sweep_summary.csv"
+    df = pd.read_csv(csv_path)
+    plot_df = df.groupby(["coarse_method", "alpha"], as_index=False).agg(
+        mean_masked_ADE=("masked_ADE", "mean"),
+        min_masked_ADE=("masked_ADE", "min"),
+        max_masked_ADE=("masked_ADE", "max"),
+    )
+
+    plt.rcParams.update(
+        {
+            "font.size": 15,
+            "axes.titlesize": 19,
+            "axes.labelsize": 16,
+            "xtick.labelsize": 14,
+            "ytick.labelsize": 14,
+            "legend.fontsize": 14,
+        }
+    )
+
+    style_map = {
+        "linear_interp": {"color": "#1D4ED8", "marker": "o", "label": "Linear"},
+        "savgol_w5_p2": {"color": "#047857", "marker": "s", "label": "Savitzky-Golay"},
+        "kalman_cv_dt1.0_q1e-3_r1e-2": {"color": "#B45309", "marker": "^", "label": "Kalman"},
+    }
+
+    fig, ax = plt.subplots(figsize=(8.8, 5.4))
+    for method in METHODS:
+        method_df = plot_df[plot_df["coarse_method"] == method].sort_values("alpha")
+        style = style_map[method]
+        lower = method_df["mean_masked_ADE"] - method_df["min_masked_ADE"]
+        upper = method_df["max_masked_ADE"] - method_df["mean_masked_ADE"]
+        ax.errorbar(
+            method_df["alpha"],
+            method_df["mean_masked_ADE"],
+            yerr=np.vstack([lower.to_numpy(), upper.to_numpy()]),
+            color=style["color"],
+            marker=style["marker"],
+            markersize=9,
+            linewidth=3.2,
+            elinewidth=1.2,
+            capsize=3,
+            alpha=0.95,
+            label=style["label"],
+        )
+
+        best_row = method_df.sort_values(["mean_masked_ADE", "alpha"]).iloc[0]
+        ax.annotate(
+            f"best {best_row['alpha']:.2f}",
+            xy=(best_row["alpha"], best_row["mean_masked_ADE"]),
+            xytext=(8, -18 if method != "kalman_cv_dt1.0_q1e-3_r1e-2" else 10),
+            textcoords="offset points",
+            color=style["color"],
+            fontsize=12,
+            weight="bold",
+        )
+
+    ax.set_title("Alpha sensitivity: missing-segment reconstruction quality", pad=12, weight="bold")
+    ax.set_xlabel("alpha")
+    ax.set_ylabel("mean masked_ADE")
+    ax.set_xticks(ALPHAS := sorted(plot_df["alpha"].unique()))
+    ax.grid(axis="y", alpha=0.22, linewidth=0.8)
+    for spine in ax.spines.values():
+        spine.set_linewidth(1.3)
+    ax.legend(frameon=False, loc="upper right")
+    ax.text(0.99, 0.03, "Lower is better", transform=ax.transAxes, ha="right", va="bottom", fontsize=12, color="#374151")
+    fig.tight_layout()
+    fig.savefig(path, dpi=260, bbox_inches="tight")
+    plt.close(fig)
+    return [str(csv_path)]
+
+
 def generate_refinement_comparison(path: Path):
     df = pd.read_csv(REFINEMENT_ROOT / "eval" / "refinement_metrics.csv")
     order = [
@@ -278,18 +409,7 @@ def generate_refinement_comparison(path: Path):
 
 
 def generate_alpha_sweep_masked_ade(path: Path):
-    df = pd.read_csv(REFINEMENT_ROOT / "alpha_sweep" / "alpha_sweep_summary.csv")
-    fig, ax = plt.subplots(figsize=(8.5, 4.8))
-    for method in METHODS:
-        sub = df[df["coarse_method"] == method].sort_values("alpha")
-        ax.plot(sub["alpha"], sub["masked_ADE"], marker="o", lw=2, label=pretty_method(method))
-    ax.set_xlabel("alpha")
-    ax.set_ylabel("masked_ADE")
-    ax.set_title("Alpha sensitivity: missing-segment reconstruction quality")
-    ax.grid(alpha=0.25)
-    ax.legend(frameon=False)
-    save_figure(fig, path)
-    return [str(REFINEMENT_ROOT / "alpha_sweep" / "alpha_sweep_summary.csv")]
+    return generate_alpha_sweep_mean_masked_ade(path)
 
 
 def generate_alpha_sweep_improvement(path: Path):
@@ -431,6 +551,12 @@ def main():
     generated_paths.append(out)
     copied_paths.append(copy_to_docs(out))
     add_manifest_record(records, filename=out.name, type="data-result", sources=", ".join(srcs), purpose="Show alpha sensitivity by coarse method.", status="generated", interpretation="Linear and Savitzky-Golay prefer alpha=0.00, while Kalman benefits only from very small alpha.")
+
+    out = FIG_ROOT / "alpha_sweep_mean_masked_ADE.png"
+    srcs = generate_alpha_sweep_mean_masked_ade(out)
+    generated_paths.append(out)
+    copied_paths.append(copy_to_docs(out))
+    add_manifest_record(records, filename=out.name, type="data-result", sources=", ".join(srcs), purpose="Show mean masked_ADE by alpha for the three coarse methods.", status="generated", interpretation="Linear and Savitzky-Golay are best at alpha=0.00, while Kalman is best near alpha=0.10.")
 
     out = FIG_ROOT / "alpha_sweep_improvement_masked_ADE.png"
     srcs = generate_alpha_sweep_improvement(out)
