@@ -1,0 +1,35 @@
+{
+  "median_case": {
+    "condition": "span20_fixed_seed42",
+    "trajectory_id": 173,
+    "seed": 0,
+    "missing_start": 8,
+    "missing_len": 4,
+    "coarse_method": "linear_interp",
+    "delta_masked_ADE_definition": "coarse_masked_ADE - final_masked_ADE",
+    "delta_masked_ADE": -0.012171952985227108,
+    "figure_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/canonical_v1/figures/ddpm_case_median_five_column.png"
+  },
+  "best_improvement_case": {
+    "condition": "span30_fixed_seed42",
+    "trajectory_id": 216,
+    "seed": 3,
+    "missing_start": 7,
+    "missing_len": 6,
+    "coarse_method": "linear_interp",
+    "delta_masked_ADE_definition": "coarse_masked_ADE - final_masked_ADE",
+    "delta_masked_ADE": 0.10457243397831917,
+    "figure_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/canonical_v1/figures/ddpm_case_best_improvement_five_column.png"
+  },
+  "worst_degradation_case": {
+    "condition": "span30_fixed_seed42",
+    "trajectory_id": 878,
+    "seed": 1,
+    "missing_start": 7,
+    "missing_len": 6,
+    "coarse_method": "linear_interp",
+    "delta_masked_ADE_definition": "coarse_masked_ADE - final_masked_ADE",
+    "delta_masked_ADE": -0.45784875378012657,
+    "figure_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/canonical_v1/figures/ddpm_case_worst_degradation_five_column.png"
+  }
+}

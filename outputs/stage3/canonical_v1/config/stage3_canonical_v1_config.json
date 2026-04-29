@@ -1,0 +1,66 @@
+{
+  "experiment_name": "stage3_canonical_v1",
+  "dataset": "canonical_room3",
+  "conditions": [
+    "span10_fixed_seed42",
+    "span20_fixed_seed42",
+    "span30_fixed_seed42",
+    "span20_random_seed42",
+    "span20_random_seed43",
+    "span20_random_seed44"
+  ],
+  "methods": [
+    "linear_interp",
+    "savgol_w5_p2",
+    "kalman_cv_dt1.0_q1e-3_r1e-2",
+    "ddpm_v3_inpainting",
+    "ddpm_v3_inpainting_anchored"
+  ],
+  "metrics": [
+    "ADE",
+    "FDE",
+    "RMSE",
+    "masked_ADE",
+    "masked_RMSE",
+    "endpoint_error",
+    "path_length_error",
+    "acceleration_error",
+    "off_map_ratio",
+    "wall_crossing_count"
+  ],
+  "max_trajectories": 1024,
+  "num_ddpm_seeds": 5,
+  "ddpm_device": "cpu",
+  "prior": {
+    "objective": "optimization_best",
+    "variant": "none",
+    "checkpoint_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/best_model.pt",
+    "run_metadata": {
+      "variant": "none",
+      "train_seed": 42,
+      "train_epochs": 100,
+      "run_tag": "seed42-100epoch",
+      "train_tag": "ddpm_eth_ucy_none_h128",
+      "run_dir": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch",
+      "ckpt_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/best_model.pt",
+      "current_run_best_epoch": 68,
+      "current_run_best_val_loss": 0.08729857769655999,
+      "run_note_path": null,
+      "loss_history_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/loss_history.csv"
+    }
+  },
+  "geometry_usage": "evaluation-only",
+  "trajectory_level_aggregations": [
+    "seed_mean",
+    "seed_median",
+    "seed_best",
+    "seed_worst"
+  ],
+  "main_comparison_aggregations": [
+    "deterministic",
+    "seed_mean",
+    "seed_median",
+    "seed_worst"
+  ],
+  "oracle_diagnostic_aggregation": "seed_best"
+}

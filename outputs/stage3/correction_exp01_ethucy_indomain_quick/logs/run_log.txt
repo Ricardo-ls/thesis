@@ -1,0 +1,23 @@
+========================================================================
+Running exp01_ethucy_indomain_quick
+input_abs_path       = /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20.npy
+max_trajectories     = 128
+missing_condition    = missing_only
+span_ratio           = 0.2
+span_mode            = fixed
+seed                 = 42
+num_ddpm_seeds       = 5
+========================================================================
+Running linear interpolation baseline
+Running Savitzky-Golay baseline
+Running Kalman baseline
+Running ddpm_v3_inpainting
+Running ddpm_v3_inpainting_anchored
+========================================================================
+output_root_path     = /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick
+number_of_cases      = 1664
+methods_evaluated    = linear_interp, savgol_w5_p2, kalman_cv_dt1.0_q1e-3_r1e-2, ddpm_v3_inpainting, ddpm_v3_inpainting_anchored
+generated_tables     = /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick/tables/full_stats_matrix.csv, /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick/tables/full_stats_matrix.md, /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick/tables/summary_key_metrics.md
+generated_figures    = /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick/figures/median_case_five_column.png, /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick/figures/best_ddpm_improvement_five_column.png, /Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/correction_exp01_ethucy_indomain_quick/figures/worst_ddpm_degradation_five_column.png
+warnings: none
+========================================================================
