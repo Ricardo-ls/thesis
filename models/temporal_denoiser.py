@@ -20,7 +20,7 @@ class TimeEmbedding(nn.Module):
 
 
 class TemporalDenoiser1D(nn.Module):
-    def __init__(self, max_timesteps: int = 100, in_channels: int = 2, hidden_dim: int = 64):
+    def __init__(self, max_timesteps: int = 100, in_channels: int = 5, hidden_dim: int = 64):
         super().__init__()
 
         self.time_emb = TimeEmbedding(max_timesteps=max_timesteps, emb_dim=hidden_dim)
@@ -60,3 +60,13 @@ class TemporalDenoiser1D(nn.Module):
 
         out = self.output_proj(h)   # [B, 2, 19]
         return out
+
+
+class ConditionalTemporalDenoiser1D(TemporalDenoiser1D):
+    def __init__(self, max_timesteps: int = 100, hidden_dim: int = 128):
+        super().__init__(max_timesteps=max_timesteps, in_channels=5, hidden_dim=hidden_dim)
+        self.output_proj = nn.Conv1d(hidden_dim, 2, kernel_size=3, padding=1)
+
+    def forward(self, x: torch.Tensor, t: torch.Tensor, obs_mask: torch.Tensor, masked_obs: torch.Tensor):
+        inp = torch.cat([x, obs_mask, masked_obs], dim=1)
+        return super().forward(inp, t)

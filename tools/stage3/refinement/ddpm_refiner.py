@@ -12,7 +12,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from models.temporal_denoiser import TemporalDenoiser1D
+from models.temporal_denoiser import ConditionalTemporalDenoiser1D, TemporalDenoiser1D
 from diffusion.ddpm_utils import DDPMForwardProcess
 from utils.prior.ablation_paths import get_recommended_prior_paths, to_abs_path
 from utils.prior.run_metadata import resolve_current_run_metadata
@@ -111,6 +111,51 @@ def _load_prior_checkpoint_cached(
 def load_prior_checkpoint(config: DDPMPriorInterfaceConfig):
     return _load_prior_checkpoint_cached(
         config.objective,
+        config.train_seed,
+        config.train_epochs,
+        config.timesteps,
+        config.hidden_dim,
+        config.device,
+    )
+
+
+@lru_cache(maxsize=4)
+def _load_conditional_prior_checkpoint_cached(
+    train_seed: int,
+    train_epochs: int,
+    timesteps: int,
+    hidden_dim: int,
+    device: str,
+):
+    train_tag = "ddpm_eth_ucy_conditional_none_h128"
+    run_tag = f"seed{train_seed}-{train_epochs}epoch"
+    run_dir = PROJECT_ROOT / "outputs" / "prior" / "train" / train_tag / run_tag
+    ckpt_path = run_dir / "best_model.pt"
+    if not ckpt_path.exists():
+        raise FileNotFoundError(f"Conditional prior checkpoint not found: {ckpt_path}")
+
+    checkpoint = torch.load(ckpt_path, map_location=device)
+    model = ConditionalTemporalDenoiser1D(
+        max_timesteps=timesteps,
+        hidden_dim=hidden_dim,
+    ).to(device)
+    model.load_state_dict(checkpoint["model_state_dict"])
+    model.eval()
+
+    metadata = {
+        "train_tag": train_tag,
+        "run_tag": run_tag,
+        "ckpt_path": str(ckpt_path),
+        "best_epoch": checkpoint.get("epoch"),
+        "conditioning": checkpoint.get("conditioning", "obs_mask + masked_obs"),
+        "span_start": checkpoint.get("span_start", 8),
+        "span_end_exclusive": checkpoint.get("span_end_exclusive", 12),
+    }
+    return model, checkpoint, metadata
+
+
+def load_conditional_prior_checkpoint(config: DDPMPriorInterfaceConfig):
+    return _load_conditional_prior_checkpoint_cached(
         config.train_seed,
         config.train_epochs,
         config.timesteps,
@@ -376,4 +421,70 @@ def ddpm_prior_inpainting_v3(
         results.append(abs_out)
 
     # Stack into (N, num_samples_per_traj, T, 2)
+    return np.stack(results, axis=1)
+
+
+@torch.no_grad()
+def ddpm_conditional_sample_v4(
+    clean_obs: np.ndarray,
+    obs_mask: np.ndarray,
+    num_samples: int = 5,
+    seed_base: int = 42,
+    config: "DDPMPriorInterfaceConfig | None" = None,
+) -> np.ndarray:
+    config = config or DDPMPriorInterfaceConfig()
+    config.device = resolve_device(config.device)
+    device = config.device
+
+    clean_obs = np.asarray(clean_obs, dtype=np.float32)
+    obs_mask = np.asarray(obs_mask, dtype=np.uint8)
+    n, t, _ = clean_obs.shape
+    t_rel = t - 1
+
+    rel_clean = np.diff(clean_obs, axis=1).astype(np.float32)
+    rel_obs_left = obs_mask[:, :-1]
+    rel_obs_right = obs_mask[:, 1:]
+    rel_obs = ((rel_obs_left == 1) & (rel_obs_right == 1)).astype(np.float32)
+
+    rel_clean_m = torch.from_numpy(rel_clean).permute(0, 2, 1).to(device)
+    obs_mask_m = torch.from_numpy(rel_obs).unsqueeze(1).to(device)
+    masked_obs_m = rel_clean_m.clone()
+    masked_obs_m = masked_obs_m * obs_mask_m
+    rel_mask_bool = obs_mask_m.expand(-1, 2, -1) > 0.5
+
+    start_pts = clean_obs[:, 0, :]
+    model, _, meta = load_conditional_prior_checkpoint(config)
+    diffusion = DDPMForwardProcess(timesteps=config.timesteps, device=device)
+    betas = diffusion.betas
+    sqrt_recip_alphas = torch.sqrt(1.0 / diffusion.alphas)
+    sqrt_one_minus_abs = diffusion.sqrt_one_minus_alpha_bars
+    t_steps = config.timesteps
+
+    results: list[np.ndarray] = []
+    for s in range(num_samples):
+        torch.manual_seed(seed_base + s)
+        x = torch.randn(n, 2, t_rel, device=device)
+        x[rel_mask_bool] = rel_clean_m[rel_mask_bool]
+
+        for t_scalar in reversed(range(t_steps)):
+            t_batch = torch.full((n,), t_scalar, device=device, dtype=torch.long)
+            eps_pred = model(x, t_batch, obs_mask_m, masked_obs_m)
+            beta_t = betas[t_scalar]
+            sqrt_recip_a_t = sqrt_recip_alphas[t_scalar]
+            sqrt_1m_ab_t = sqrt_one_minus_abs[t_scalar]
+
+            x_prev_mean = sqrt_recip_a_t * (x - (beta_t / sqrt_1m_ab_t) * eps_pred)
+            if t_scalar > 0:
+                x_prev = x_prev_mean + torch.sqrt(beta_t) * torch.randn_like(x)
+            else:
+                x_prev = x_prev_mean
+
+            x_prev[rel_mask_bool] = rel_clean_m[rel_mask_bool]
+            x = x_prev
+
+        rel_out = x.permute(0, 2, 1).cpu().numpy().astype(np.float32)
+        abs_out = rel_to_abs(rel_out, start_pts)
+        results.append(abs_out)
+
+    _ = meta
     return np.stack(results, axis=1)

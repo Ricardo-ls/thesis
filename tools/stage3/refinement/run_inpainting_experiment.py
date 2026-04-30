@@ -1,17 +1,6 @@
-"""run_inpainting_experiment.py
-
-Validates the hypothesis that the unconditional DDPM prior fails for conditional
-trajectory reconstruction (v1/v2 post-hoc projection) because the model sees no
-context during reverse sampling.  RePaint-style inpainting (v3) clamps observed
-frames back at every reverse step, testing whether continuous context conditioning
-improves missing-segment quality.
-
-Usage:
-    .venv/bin/python -m tools.stage3.refinement.run_inpainting_experiment
-"""
-
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import os
@@ -29,72 +18,48 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-# ── Experiment constants ───────────────────────────────────────────────────────
-N_EXPERIMENT  = 1024    # first N trajectories (documents computation budget)
-BEST_ALPHA_V2 = 0.1     # best blend alpha from prior alpha-sweep
-NUM_SEEDS_V3  = 5       # independent reverse-diffusion passes for v3
-SEED_BASE_V3  = 42
-TAG           = "span20_fixed_seed42"
-
-DEGRADATION_NAMES  = [
-    "missing_only",
-    "missing_noise",
-    "missing_drift",
-    "missing_noise_drift",
-]
-DEGRADATION_LABELS = {
-    "missing_only":        "Missing Only",
-    "missing_noise":       "Missing + Noise",
-    "missing_drift":       "Missing + Drift",
-    "missing_noise_drift": "Missing + Noise + Drift",
-}
-METRIC_NAMES = [
-    "ADE", "RMSE", "masked_ADE", "masked_RMSE",
-    "wall_crossing_count", "off_map_ratio",
-]
-METHOD_ORDER = [
-    "linear_interp",
-    "savgol_w5_p2",
-    "kalman_cv_dt1.0_q1e-3_r1e-2",
-    "ddpm_v1_masked_replace",
-    "ddpm_v2_blend_alpha0.1",
-    "ddpm_v3_inpainting",
-]
-METHOD_LABELS = {
-    "linear_interp":                "Linear",
-    "savgol_w5_p2":                 "Savitzky-Golay",
-    "kalman_cv_dt1.0_q1e-3_r1e-2": "Kalman",
-    "ddpm_v1_masked_replace":       "DDPM v1 (masked-replace)",
-    "ddpm_v2_blend_alpha0.1":       f"DDPM v2 (blend α={BEST_ALPHA_V2})",
-    "ddpm_v3_inpainting":           "DDPM v3 (RePaint inpainting)",
-}
-
-# ── Paths ──────────────────────────────────────────────────────────────────────
-CTRL_DEGRAD = (
-    PROJECT_ROOT / "outputs" / "stage3" / "controlled_benchmark" / "degradation"
-)
-CTRL_RECON = (
-    PROJECT_ROOT / "outputs" / "stage3" / "controlled_benchmark" / "reconstruction"
-)
-EXP_ROOT   = PROJECT_ROOT / "outputs" / "stage3" / "inpainting_experiment"
-PLOT_DIR   = EXP_ROOT / "trajectory_plots"
-FULL_CSV   = EXP_ROOT / "full_results.csv"
-VAR_CSV    = EXP_ROOT / "variance_decomposition.csv"
-REPORT_MD  = EXP_ROOT / "REPORT.md"
-
-# ── Imports ────────────────────────────────────────────────────────────────────
+from tools.stage3.baselines.run_kalman import kalman_reconstruct, validate_sample as validate_kalman_sample
+from tools.stage3.baselines.run_linear_interp import interpolate_sample
+from tools.stage3.baselines.run_savgol import validate_and_interp
+from tools.stage3.controlled.evaluate_coarse_reconstruction import room3_map_meta
 from tools.stage3.refinement.ddpm_refiner import (
     DDPMPriorInterfaceConfig,
-    ddpm_prior_masked_replace_v1,
-    ddpm_prior_masked_blend_v2,
+    ddpm_conditional_sample_v4,
     ddpm_prior_inpainting_v3,
 )
-from tools.stage3.controlled.evaluate_coarse_reconstruction import room3_map_meta
 
 
-# ── Utility ────────────────────────────────────────────────────────────────────
+N_EXPERIMENT = 1024
+NUM_SEEDS_DEFAULT = 5
+SEED_BASE_DEFAULT = 42
+DEGRADATION_DEFAULT = "missing_only"
+OUTPUT_ROOT = PROJECT_ROOT / "outputs" / "stage3" / "conditional_experiment"
+PLOT_DIR = OUTPUT_ROOT / "trajectory_plots"
+CTRL_DEGRAD = PROJECT_ROOT / "outputs" / "stage3" / "controlled_benchmark" / "degradation"
+CTRL_RECON = PROJECT_ROOT / "outputs" / "stage3" / "controlled_benchmark" / "reconstruction"
+
+METHOD_LABELS = {
+    "linear_interp": "Linear interpolation",
+    "linear_extrapolate": "Linear extrapolation",
+    "ddpm_v3_anchored": "DDPM v3 anchored",
+    "ddpm_v4_conditional": "DDPM v4 conditional",
+}
+METRIC_NAMES = [
+    "ADE",
+    "RMSE",
+    "FDE",
+    "masked_ADE",
+    "masked_RMSE",
+    "endpoint_error",
+    "path_length_error",
+    "acceleration_error",
+    "wall_crossing_count",
+    "off_map_ratio",
+]
+
+
 def ensure_dirs() -> None:
-    EXP_ROOT.mkdir(parents=True, exist_ok=True)
+    OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
     PLOT_DIR.mkdir(parents=True, exist_ok=True)
 
 
@@ -104,747 +69,557 @@ def load_npy(path: Path) -> np.ndarray:
     return np.load(path, allow_pickle=False)
 
 
-# ── Per-trajectory metrics ─────────────────────────────────────────────────────
-def compute_metrics_per_traj(
-    clean: np.ndarray,     # (N, T, 2)
-    pred: np.ndarray,      # (N, T, 2)
-    obs_mask: np.ndarray,  # (N, T)  uint8
-    map_meta: dict,
-) -> dict[str, np.ndarray]:
-    """Return one scalar per trajectory for each metric."""
-    N, T, _ = clean.shape
-    diff  = pred - clean                           # (N, T, 2)
-    pe    = np.linalg.norm(diff, axis=-1)          # (N, T)
-    ade   = pe.mean(axis=1)                        # (N,)
-    rmse  = np.sqrt((diff ** 2).sum(axis=-1).mean(axis=1))  # (N,)
+def build_obs_mask(num_samples: int, seq_len: int, gap_type: str) -> tuple[np.ndarray, int, int]:
+    obs_mask = np.ones((num_samples, seq_len), dtype=np.uint8)
+    if gap_type == "interior":
+        span_start, span_end = 8, 11
+    elif gap_type == "suffix":
+        span_start, span_end = 16, 19
+    else:
+        raise ValueError(f"Unsupported gap_type: {gap_type}")
+    obs_mask[:, span_start : span_end + 1] = 0
+    return obs_mask, span_start, span_end
 
-    miss_mask = obs_mask == 0                      # (N, T) bool
-    has_miss  = miss_mask.any(axis=1)              # (N,) bool
 
-    masked_ade  = np.full(N, np.nan)
-    masked_rmse = np.full(N, np.nan)
-    idx = np.where(has_miss)[0]
-    for i in idx:
-        m = miss_mask[i]
-        masked_ade[i]  = pe[i, m].mean()
-        masked_rmse[i] = np.sqrt((diff[i][m] ** 2).mean())
+def build_degraded_missing_only(clean: np.ndarray, obs_mask: np.ndarray) -> np.ndarray:
+    degraded = clean.copy()
+    degraded[obs_mask == 0] = np.nan
+    return degraded
 
-    # Geometry (empty room: no internal walls → wall_crossing_count = 0)
+
+def run_linear_interp_batch(traj_obs: np.ndarray, obs_mask: np.ndarray) -> np.ndarray:
+    out = np.zeros_like(traj_obs, dtype=np.float32)
+    for idx in range(traj_obs.shape[0]):
+        out[idx] = interpolate_sample(traj_obs[idx], obs_mask[idx], index=idx)
+    return out
+
+
+def run_linear_extrapolate_batch(traj_obs: np.ndarray, obs_mask: np.ndarray) -> np.ndarray:
+    out = traj_obs.copy().astype(np.float32)
+    for idx in range(traj_obs.shape[0]):
+        obs = obs_mask[idx]
+        last_obs_idx = int(np.where(obs == 1)[0][-1])
+        if last_obs_idx >= 1:
+            velocity = traj_obs[idx, last_obs_idx] - traj_obs[idx, last_obs_idx - 1]
+        else:
+            velocity = np.zeros(2, dtype=np.float32)
+        pred = traj_obs[idx].copy()
+        for t in range(last_obs_idx + 1, len(obs)):
+            steps = t - last_obs_idx
+            pred[t] = traj_obs[idx, last_obs_idx] + steps * velocity
+        out[idx] = pred.astype(np.float32)
+    return out
+
+
+def run_savgol_batch(traj_obs: np.ndarray, obs_mask: np.ndarray, window_length: int = 5, polyorder: int = 2) -> np.ndarray:
+    from scipy.signal import savgol_filter
+
+    out = np.zeros_like(traj_obs, dtype=np.float32)
+    for idx in range(traj_obs.shape[0]):
+        filled = validate_and_interp(traj_obs[idx], obs_mask[idx], index=idx)
+        for dim in range(filled.shape[1]):
+            out[idx, :, dim] = savgol_filter(
+                filled[:, dim],
+                window_length=window_length,
+                polyorder=polyorder,
+                mode="interp",
+            ).astype(np.float32)
+    return out
+
+
+def run_kalman_batch(
+    traj_obs: np.ndarray,
+    obs_mask: np.ndarray,
+    dt: float = 1.0,
+    process_var: float = 1e-3,
+    measure_var: float = 1e-2,
+) -> np.ndarray:
+    out = np.zeros_like(traj_obs, dtype=np.float32)
+    for idx in range(traj_obs.shape[0]):
+        validate_kalman_sample(obs_mask[idx], index=idx)
+        out[idx] = kalman_reconstruct(
+            traj_obs=traj_obs[idx],
+            mask=obs_mask[idx],
+            dt=dt,
+            process_var=process_var,
+            measure_var=measure_var,
+        )
+    return out
+
+
+def anchor_missing_spans(pred_ns: np.ndarray, observed_abs: np.ndarray, obs_mask: np.ndarray) -> np.ndarray:
+    pred_ns = pred_ns.astype(np.float32, copy=True)
+    n, s, _, _ = pred_ns.shape
+    for traj_idx in range(n):
+        missing_idx = np.where(obs_mask[traj_idx] == 0)[0]
+        if missing_idx.size == 0:
+            pred_ns[traj_idx] = observed_abs[traj_idx][None, :, :]
+            continue
+        left = int(missing_idx[0] - 1) if missing_idx[0] > 0 else None
+        right = int(missing_idx[-1] + 1) if missing_idx[-1] + 1 < obs_mask.shape[1] else None
+        observed_bool = obs_mask[traj_idx] == 1
+        for seed_idx in range(s):
+            if left is not None and right is not None:
+                segment = pred_ns[traj_idx, seed_idx, left : right + 1].copy()
+                seg_len = right - left
+                left_delta = observed_abs[traj_idx, left] - segment[0]
+                right_delta = observed_abs[traj_idx, right] - segment[-1]
+                for local_idx in range(seg_len + 1):
+                    lam = local_idx / seg_len if seg_len > 0 else 0.0
+                    segment[local_idx] = segment[local_idx] + (1.0 - lam) * left_delta + lam * right_delta
+                segment[0] = observed_abs[traj_idx, left]
+                segment[-1] = observed_abs[traj_idx, right]
+                pred_ns[traj_idx, seed_idx, left : right + 1] = segment
+            pred_ns[traj_idx, seed_idx, observed_bool] = observed_abs[traj_idx, observed_bool]
+    return pred_ns
+
+
+def compute_metrics_per_traj(clean: np.ndarray, pred: np.ndarray, obs_mask: np.ndarray, map_meta: dict) -> dict[str, np.ndarray]:
+    n, _, _ = clean.shape
+    diff = pred - clean
+    pe = np.linalg.norm(diff, axis=-1)
+    ade = pe.mean(axis=1)
+    rmse = np.sqrt((diff ** 2).sum(axis=-1).mean(axis=1))
+    fde = pe[:, -1]
+
+    miss_mask = obs_mask == 0
+    masked_ade = np.full(n, np.nan, dtype=np.float64)
+    masked_rmse = np.full(n, np.nan, dtype=np.float64)
+    endpoint_error = np.full(n, np.nan, dtype=np.float64)
+    path_length_error = np.full(n, np.nan, dtype=np.float64)
+    acceleration_error = np.full(n, np.nan, dtype=np.float64)
+    for idx in range(n):
+        m = miss_mask[idx]
+        if not np.any(m):
+            continue
+        masked_ade[idx] = pe[idx, m].mean()
+        masked_rmse[idx] = np.sqrt((diff[idx][m] ** 2).mean())
+        last_missing = int(np.where(m)[0][-1])
+        endpoint_error[idx] = pe[idx, last_missing]
+        pred_len = np.linalg.norm(np.diff(pred[idx], axis=0), axis=-1).sum()
+        clean_len = np.linalg.norm(np.diff(clean[idx], axis=0), axis=-1).sum()
+        path_length_error[idx] = abs(pred_len - clean_len)
+        pred_acc = np.diff(pred[idx], n=2, axis=0)
+        clean_acc = np.diff(clean[idx], n=2, axis=0)
+        acceleration_error[idx] = np.sqrt(((pred_acc - clean_acc) ** 2).sum(axis=-1).mean())
+
     xlo, xhi = map_meta["x_min"], map_meta["x_max"]
     ylo, yhi = map_meta["y_min"], map_meta["y_max"]
-    outside  = (
+    outside = (
         (pred[:, :, 0] < xlo) | (pred[:, :, 0] > xhi) |
         (pred[:, :, 1] < ylo) | (pred[:, :, 1] > yhi)
     )
     off_map = outside.mean(axis=1).astype(float)
-    wall_x  = np.zeros(N, dtype=float)
+    wall_x = np.zeros(n, dtype=float)
 
     return {
-        "ADE":                 ade,
-        "RMSE":                rmse,
-        "masked_ADE":          masked_ade,
-        "masked_RMSE":         masked_rmse,
+        "ADE": ade,
+        "RMSE": rmse,
+        "FDE": fde,
+        "masked_ADE": masked_ade,
+        "masked_RMSE": masked_rmse,
+        "endpoint_error": endpoint_error,
+        "path_length_error": path_length_error,
+        "acceleration_error": acceleration_error,
         "wall_crossing_count": wall_x,
-        "off_map_ratio":       off_map,
+        "off_map_ratio": off_map,
     }
 
 
-def summarize_arr(arr: np.ndarray) -> dict:
-    """Summary statistics ignoring NaN."""
+def summarize_arr(arr: np.ndarray) -> dict[str, float]:
     a = arr[np.isfinite(arr)]
     if len(a) == 0:
         nan = float("nan")
-        return dict(mean=nan, std=nan, min=nan, max=nan, median=nan, p25=nan, p75=nan)
-    return dict(
-        mean=float(np.mean(a)),
-        std=float(np.std(a)),
-        min=float(np.min(a)),
-        max=float(np.max(a)),
-        median=float(np.median(a)),
-        p25=float(np.percentile(a, 25)),
-        p75=float(np.percentile(a, 75)),
-    )
+        return {"mean": nan, "std": nan, "min": nan, "max": nan, "median": nan, "p25": nan, "p75": nan}
+    return {
+        "mean": float(np.mean(a)),
+        "std": float(np.std(a)),
+        "min": float(np.min(a)),
+        "max": float(np.max(a)),
+        "median": float(np.median(a)),
+        "p25": float(np.percentile(a, 25)),
+        "p75": float(np.percentile(a, 75)),
+    }
 
 
-# ── CSV builders ───────────────────────────────────────────────────────────────
 FULL_FIELDS = [
-    "method", "degradation", "metric",
+    "method", "degradation", "gap_type", "metric",
     "mean", "std", "min", "max", "median", "p25", "p75",
     "n_trajectories", "n_seeds", "n_total",
 ]
 VAR_FIELDS = [
-    "method", "degradation", "metric",
+    "method", "degradation", "gap_type", "metric",
     "std_across_trajectories", "std_across_seeds", "std_total",
 ]
 
 
-def build_full_rows(
-    method: str,
-    degradation: str,
-    metrics_ns: dict[str, np.ndarray],   # metric → (N,) or (N, S)
-) -> list[dict]:
-    rows = []
+def build_full_rows(method: str, degradation: str, gap_type: str, metrics_ns: dict[str, np.ndarray]) -> list[dict]:
+    rows: list[dict] = []
     for metric in METRIC_NAMES:
         arr = metrics_ns[metric]
-        N   = arr.shape[0]
-        S   = arr.shape[1] if arr.ndim == 2 else 1
+        n = arr.shape[0]
+        s = arr.shape[1] if arr.ndim == 2 else 1
         flat = arr.flatten()
         stats = summarize_arr(flat)
-        n_total = int(np.isfinite(flat).sum())
-        rows.append({
-            "method": method, "degradation": degradation, "metric": metric,
-            **stats,
-            "n_trajectories": N, "n_seeds": S, "n_total": n_total,
-        })
+        rows.append(
+            {
+                "method": method,
+                "degradation": degradation,
+                "gap_type": gap_type,
+                "metric": metric,
+                **stats,
+                "n_trajectories": n,
+                "n_seeds": s,
+                "n_total": int(np.isfinite(flat).sum()),
+            }
+        )
     return rows
 
 
-def build_var_rows(
-    method: str,
-    degradation: str,
-    metrics_ns: dict[str, np.ndarray],   # metric → (N,) or (N, S)
-) -> list[dict]:
-    rows = []
+def build_var_rows(method: str, degradation: str, gap_type: str, metrics_ns: dict[str, np.ndarray]) -> list[dict]:
+    rows: list[dict] = []
     for metric in METRIC_NAMES:
         arr = metrics_ns[metric]
-        N   = arr.shape[0]
-        S   = arr.shape[1] if arr.ndim == 2 else 1
-
+        n = arr.shape[0]
+        s = arr.shape[1] if arr.ndim == 2 else 1
         flat = arr.flatten()
         std_total = float(np.nanstd(flat[np.isfinite(flat)])) if np.isfinite(flat).any() else float("nan")
-
-        if S > 1:
-            # std_across_trajectories: per-seed std over N, averaged across seeds
-            std_traj = float(np.mean([np.nanstd(arr[:, s]) for s in range(S)]))
-            # std_across_seeds: per-trajectory std over seeds, averaged across trajs
-            std_seed = float(np.mean([np.nanstd(arr[i, :]) for i in range(N)]))
+        if s > 1:
+            std_traj = float(np.mean([np.nanstd(arr[:, seed]) for seed in range(s)]))
+            std_seed = float(np.mean([np.nanstd(arr[idx, :]) for idx in range(n)]))
         else:
-            # Deterministic: only trajectory-level variance
             col = arr[:, 0] if arr.ndim == 2 else arr
             std_traj = float(np.nanstd(col[np.isfinite(col)]))
             std_seed = float("nan")
-
-        rows.append({
-            "method": method, "degradation": degradation, "metric": metric,
-            "std_across_trajectories": std_traj,
-            "std_across_seeds":        std_seed,
-            "std_total":               std_total,
-        })
+        rows.append(
+            {
+                "method": method,
+                "degradation": degradation,
+                "gap_type": gap_type,
+                "metric": metric,
+                "std_across_trajectories": std_traj,
+                "std_across_seeds": std_seed,
+                "std_total": std_total,
+            }
+        )
     return rows
 
 
 def write_csv(path: Path, fieldnames: list[str], rows: list[dict]) -> None:
     with path.open("w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=fieldnames)
-        w.writeheader()
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
         for row in rows:
-            w.writerow({k: row.get(k, "") for k in fieldnames})
+            writer.writerow({k: row.get(k, "") for k in fieldnames})
 
 
-# ── Trajectory plots ────────────────────────────────────────────────────────────
 def draw_traj(ax, traj, obs_mask, color, lw=2.0, alpha=1.0, label=None):
-    """Draw a 2-D trajectory; for degraded input only draw observed segments."""
     if obs_mask is not None:
         drawn = False
         for t in range(traj.shape[0] - 1):
             if obs_mask[t] and obs_mask[t + 1]:
                 kw = {"label": label} if (not drawn and label) else {}
-                ax.plot(traj[t:t + 2, 0], traj[t:t + 2, 1],
-                        color=color, lw=lw, alpha=alpha, **kw)
+                ax.plot(traj[t:t + 2, 0], traj[t:t + 2, 1], color=color, lw=lw, alpha=alpha, **kw)
                 drawn = True
     else:
         ax.plot(traj[:, 0], traj[:, 1], color=color, lw=lw, alpha=alpha, label=label)
 
 
 def plot_case(
-    pct: int,
+    title: str,
     sample_idx: int,
-    clean: np.ndarray,       # (T, 2)
-    degraded: np.ndarray,    # (T, 2)
-    coarse: np.ndarray,      # (T, 2)
-    v3_samples: np.ndarray,  # (S, T, 2)
-    obs_mask: np.ndarray,    # (T,)
-    masked_ade_coarse: float,
-    masked_ade_v3: float,
+    clean: np.ndarray,
+    degraded: np.ndarray,
+    coarse: np.ndarray,
+    ddpm_candidate: np.ndarray,
+    final_refined: np.ndarray,
+    obs_mask: np.ndarray,
     span_start: int,
     span_end: int,
     out_path: Path,
+    delta_masked_ade: float,
 ) -> None:
-    S = v3_samples.shape[0]
-    v3_mean = v3_samples.mean(axis=0)   # (T, 2)
-
     fig, axes = plt.subplots(1, 5, figsize=(18, 4), squeeze=True)
-    COLORS = ["#1f77b4", "#7f7f7f", "#d62728", "#ff7f0e", "#2ca02c"]
-
-    improvement = (masked_ade_coarse - masked_ade_v3) / (masked_ade_coarse + 1e-9) * 100
-    col_titles = [
-        "Col 1 – Clean Target",
-        f"Col 2 – Degraded\n(span {span_start}:{span_end})",
-        f"Col 3 – Coarse (Linear)\nmADE={masked_ade_coarse:.4f}",
-        "Col 4 – v3 Single Sample",
-        f"Col 5 – v3 Mean ({S} seeds)\nmADE={masked_ade_v3:.4f} ({improvement:+.1f}%)",
+    cols = [
+        ("Clean target", clean, None, "#1f77b4"),
+        ("Degraded input", degraded, obs_mask, "#7f7f7f"),
+        ("Coarse reconstruction", coarse, None, "#d62728"),
+        ("DDPM candidate", ddpm_candidate, None, "#ff7f0e"),
+        ("Final refined output", final_refined, None, "#2ca02c"),
     ]
-
-    # Col 1: clean target
-    draw_traj(axes[0], clean, None, COLORS[0])
-    # mark missing segment on clean
-    axes[0].plot(clean[span_start:span_end + 1, 0],
-                 clean[span_start:span_end + 1, 1],
-                 "o--", color=COLORS[0], ms=4, alpha=0.6)
-
-    # Col 2: degraded (observed frames only)
-    draw_traj(axes[1], degraded, obs_mask, COLORS[1])
-
-    # Col 3: coarse reconstruction
-    draw_traj(axes[2], coarse, None, COLORS[2])
-    axes[2].plot(coarse[span_start:span_end + 1, 0],
-                 coarse[span_start:span_end + 1, 1],
-                 "o", color=COLORS[2], ms=4, alpha=0.5)
-
-    # Col 4: v3 single sample (seed 0)
-    draw_traj(axes[3], v3_samples[0], None, COLORS[3])
-    axes[3].plot(v3_samples[0, span_start:span_end + 1, 0],
-                 v3_samples[0, span_start:span_end + 1, 1],
-                 "o", color=COLORS[3], ms=4, alpha=0.5)
-
-    # Col 5: v3 mean + all samples as thin lines
-    for s in range(S):
-        draw_traj(axes[4], v3_samples[s], None, COLORS[4], lw=0.8, alpha=0.3)
-    draw_traj(axes[4], v3_mean, None, COLORS[4], lw=2.5)
-    axes[4].plot(v3_mean[span_start:span_end + 1, 0],
-                 v3_mean[span_start:span_end + 1, 1],
-                 "o", color=COLORS[4], ms=4)
-
-    for i, ax in enumerate(axes):
+    for ax, (col_title, traj, mask, color) in zip(axes, cols):
+        draw_traj(ax, traj, mask, color)
+        ax.plot(traj[span_start:span_end + 1, 0], traj[span_start:span_end + 1, 1], "o", color=color, ms=4, alpha=0.6)
         ax.set_xlim(-0.15, 3.15)
         ax.set_ylim(-0.15, 3.15)
         ax.set_aspect("equal")
-        ax.set_title(col_titles[i], fontsize=8)
+        ax.set_title(col_title, fontsize=8)
         ax.tick_params(labelsize=7)
         ax.grid(True, alpha=0.25, lw=0.5)
-        ax.set_xlabel("x", fontsize=7)
-        ax.set_ylabel("y", fontsize=7)
-
-    fig.suptitle(
-        f"p{pct} case  |  sample_idx={sample_idx}  |  span {span_start}:{span_end}",
-        fontsize=10,
-    )
+    fig.suptitle(f"{title} | sample_idx={sample_idx} | span={span_start}:{span_end} | delta_masked_ADE={delta_masked_ade:+.4f}", fontsize=10)
     fig.tight_layout()
     fig.savefig(out_path, dpi=150, bbox_inches="tight")
     plt.close(fig)
 
 
-# ── Report ─────────────────────────────────────────────────────────────────────
-def _md_table(df_rows: list[dict], cols: list[str], fmt: dict[str, str] | None = None) -> str:
-    fmt = fmt or {}
-    header = "| " + " | ".join(cols) + " |"
-    sep    = "| " + " | ".join(["---"] * len(cols)) + " |"
-    lines  = [header, sep]
-    for row in df_rows:
-        cells = []
-        for c in cols:
-            val = row.get(c, "")
-            if isinstance(val, float):
-                f = fmt.get(c, ".5f")
-                cells.append(f"{val:{f}}" if not (val != val) else "nan")
-            else:
-                cells.append(str(val))
-        lines.append("| " + " | ".join(cells) + " |")
-    return "\n".join(lines)
+def get_summary_mean(rows: list[dict], method: str, metric: str) -> float:
+    for row in rows:
+        if row["method"] == method and row["metric"] == metric:
+            return float(row["mean"])
+    return float("nan")
+
+
+def select_and_plot_cases(
+    clean: np.ndarray,
+    degraded: np.ndarray,
+    coarse: np.ndarray,
+    cond_preds: np.ndarray,
+    cond_metrics: dict[str, np.ndarray],
+    obs_mask: np.ndarray,
+    span_start: int,
+    span_end: int,
+    gap_type: str,
+) -> list[dict]:
+    cond_mean = np.nanmean(cond_metrics["masked_ADE"], axis=1)
+    coarse_metric = compute_metrics_per_traj(clean, coarse, obs_mask, room3_map_meta())["masked_ADE"]
+    improvement = coarse_metric - cond_mean
+
+    threshold = np.nanpercentile(cond_mean, 50)
+    median_idx = int(np.nanargmin(np.abs(cond_mean - threshold)))
+    best_idx = int(np.nanargmax(improvement))
+    worst_idx = int(np.nanargmin(improvement))
+    cases = [
+        ("median", median_idx, PLOT_DIR / f"{gap_type}_case_median.png"),
+        ("best_improvement", best_idx, PLOT_DIR / f"{gap_type}_case_best_improvement.png"),
+        ("worst_degradation", worst_idx, PLOT_DIR / f"{gap_type}_case_worst_degradation.png"),
+    ]
+    selected = []
+    for name, idx, out_path in cases:
+        final_refined = np.nanmean(cond_preds[idx], axis=0)
+        ddpm_candidate = cond_preds[idx, 0]
+        delta = float(coarse_metric[idx] - cond_mean[idx])
+        plot_case(
+            title=f"{gap_type} | conditional v4 | {name}",
+            sample_idx=idx,
+            clean=clean[idx],
+            degraded=degraded[idx],
+            coarse=coarse[idx],
+            ddpm_candidate=ddpm_candidate,
+            final_refined=final_refined,
+            obs_mask=obs_mask[idx],
+            span_start=span_start,
+            span_end=span_end,
+            out_path=out_path,
+            delta_masked_ade=delta,
+        )
+        selected.append(
+            {
+                "name": name,
+                "sample_idx": idx,
+                "plot_path": str(out_path),
+                "delta_masked_ADE_definition": "coarse_masked_ADE - final_masked_ADE",
+                "delta_masked_ADE": delta,
+            }
+        )
+    return selected
 
 
 def generate_report(
+    args,
     full_rows: list[dict],
     var_rows: list[dict],
-    n_trajectories: int,
-    n_seeds: int,
+    selected_cases: list[dict],
     elapsed_sec: float,
+    span_start: int,
+    span_end: int,
 ) -> str:
-    """Build REPORT.md content from result rows."""
-
-    # ── Extract key tables ────────────────────────────────────────────────────
-    def get_metric(rows, method, degradation, metric):
-        for r in rows:
-            if r["method"] == method and r["degradation"] == degradation and r["metric"] == metric:
-                return r
-        return {}
-
-    # masked_ADE summary table for all methods × missing_only
-    masked_ade_rows = [
-        {
-            "Method": METHOD_LABELS.get(m, m),
-            **{
-                DEGRADATION_LABELS[d]: f"{get_metric(full_rows, m, d, 'masked_ADE').get('mean', float('nan')):.5f}"
-                for d in DEGRADATION_NAMES
-            },
-        }
-        for m in METHOD_ORDER
-    ]
-
-    # Check whether v3 improves over v1/v2 on masked_ADE (across degradations)
-    v3_beats_v1 = []
-    v3_beats_v2 = []
-    for d in DEGRADATION_NAMES:
-        v3_mean   = get_metric(full_rows, "ddpm_v3_inpainting",    d, "masked_ADE").get("mean", float("inf"))
-        v1_mean   = get_metric(full_rows, "ddpm_v1_masked_replace", d, "masked_ADE").get("mean", float("inf"))
-        v2_mean   = get_metric(full_rows, "ddpm_v2_blend_alpha0.1", d, "masked_ADE").get("mean", float("inf"))
-        v3_beats_v1.append(v3_mean < v1_mean)
-        v3_beats_v2.append(v3_mean < v2_mean)
-
-    n_beats_v1 = sum(v3_beats_v1)
-    n_beats_v2 = sum(v3_beats_v2)
-    hypothesis_supported = (n_beats_v1 >= 3) and (n_beats_v2 >= 3)
-
-    verdict_str = "**SUPPORTED**" if hypothesis_supported else "**NOT SUPPORTED**"
-    verdict_detail = (
-        f"v3 outperforms v1 in {n_beats_v1}/4 degradations "
-        f"and v2 in {n_beats_v2}/4 degradations on masked_ADE."
-    )
-
-    # Best method per degradation on masked_ADE
-    best_rows = []
-    for d in DEGRADATION_NAMES:
-        d_rows = [(m, get_metric(full_rows, m, d, "masked_ADE").get("mean", float("inf")))
-                  for m in METHOD_ORDER]
-        best_m, best_v = min(d_rows, key=lambda x: x[1])
-        best_rows.append({
-            "Degradation": DEGRADATION_LABELS[d],
-            "Best Method": METHOD_LABELS.get(best_m, best_m),
-            "masked_ADE":  f"{best_v:.5f}",
-        })
-
-    DDPM_METHODS_SET = {"ddpm_v1_masked_replace", "ddpm_v2_blend_alpha0.1", "ddpm_v3_inpainting"}
-
-    # Variance decomposition table
-    var_table_rows = [
-        {
-            "Method": METHOD_LABELS.get(r["method"], r["method"]),
-            "Degradation": DEGRADATION_LABELS.get(r["degradation"], r["degradation"]),
-            "Metric": r["metric"],
-            "std_across_trajectories": r["std_across_trajectories"],
-            "std_across_seeds":        r["std_across_seeds"],
-            "std_total":               r["std_total"],
-        }
-        for r in var_rows
-        if r["method"] in DDPM_METHODS_SET and r["metric"] == "masked_ADE"
-    ]
-
-    # ── Build markdown ─────────────────────────────────────────────────────────
-    lines = []
-
-    lines += [
-        "# Stage 3 Inpainting Experiment — Hypothesis Validation Report",
+    lines = [
+        "# Conditional DDPM Experiment Report",
         "",
-        f"*Generated automatically. Experiment completed in {elapsed_sec:.0f} s.*",
+        f"*Generated automatically in {elapsed_sec:.0f} s for gap_type=`{args.gap_type}`.*",
         "",
-        "---",
+        "## §1 Goal",
         "",
-        "## §1 Hypothesis",
+        "Test whether moving conditioning into the DDPM training stage improves missing-trajectory reconstruction quality relative to the existing unconditional inpainting interface.",
         "",
-        "**One-sentence hypothesis:**",
-        "> The DDPM prior fails for trajectory reconstruction because it is trained *unconditionally*",
-        "> and is applied *outside* the reverse sampling loop (v1/v2), preventing the missing segment",
-        "> from being conditioned on the observed context during generation.",
+        "## §2 Protocol",
         "",
-        "**Why inpainting-style sampling should fix this:**",
-        "RePaint (v3) clamps the observed relative displacements back to their forward-diffused level",
-        "at every reverse step (t → t−1). This forces the reverse chain to remain consistent with the",
-        "observed frames throughout the entire denoising trajectory, rather than generating a",
-        "context-free sample and only applying the mask post-hoc (v1) or blending it weakly (v2).",
+        f"- dataset: canonical room3 (`outputs/stage3/controlled_benchmark/degradation/clean.npy`), first {N_EXPERIMENT} trajectories",
+        f"- degradation: `{args.degradation}`",
+        f"- gap_type: `{args.gap_type}`",
+        f"- span: frames {span_start}-{span_end} inclusive",
+        f"- methods: `{args.methods}`",
+        f"- n_seeds per DDPM method: `{args.n_seeds}`",
         "",
-        "---",
+        "## §3 Methods",
         "",
-        "## §2 Method Rationale",
+        "- `ddpm_v3_anchored`: existing unconditional DDPM inpainting plus endpoint/observed anchoring",
+        "- `ddpm_v4_conditional`: conditional DDPM trained with observed mask and masked observations concatenated into the denoiser input",
+        "- `linear_interp` / `linear_extrapolate`: deterministic coarse baseline depending on gap type",
         "",
-        "| Method | Category | Description |",
-        "| --- | --- | --- |",
-        "| Linear | Classical baseline | Linear interpolation across the missing span |",
-        "| Savitzky-Golay | Classical baseline | SG filter with w=5, p=2, then gap-fill |",
-        "| Kalman | Classical baseline | Constant-velocity Kalman filter |",
-        f"| DDPM v1 | Learned (post-hoc) | v0 single-shot projection → hard-replace missing |",
-        f"| DDPM v2 | Learned (post-hoc) | v0 projection → blend α={BEST_ALPHA_V2} on missing |",
-        f"| DDPM v3 | Learned (inpainting) | RePaint-style: clamp known frames at every reverse step |",
-        "",
-        "**v3 known limitations:**",
-        "- The prior was trained on ETH+UCY relative displacements; room3 coordinates are a",
-        "  linearly rescaled version of the same data. Any distributional shift between training",
-        "  and test coordinate scales will affect all DDPM variants equally.",
-        "- The prior is *unconditional* — it models the marginal p(trajectory), not",
-        "  p(trajectory | start, end). v3 constrains the observed steps but does not inject",
-        "  endpoint information in a structured way.",
-        "- `num_samples_per_traj=5` seeds are reported; spread estimates may be noisy.",
-        "",
-        "---",
-        "",
-        "## §3 Experiment Setup",
-        "",
-        f"- **Data source:** `datasets/processed/data_eth_ucy_20.npy` normalized to",
-        "  canonical room3 [0,3]×[0,3] via `build_imputation_dataset.py`.",
-        f"- **N trajectories used:** {n_trajectories} (first {n_trajectories} of 36073;",
-        "  chosen to keep wall-clock time under 10 min on CPU).",
-        f"- **Degradation pipeline:** 4 synthetic settings (missing_only, missing_noise,",
-        "  missing_drift, missing_noise_drift) with fixed span [8,11] (4 frames / 20%",
-        "  of T=20), seed=42.",
-        f"- **Metrics:** ADE, RMSE (full trajectory); masked_ADE, masked_RMSE (missing",
-        "  segment only); wall_crossing_count, off_map_ratio (geometry, empty-room).",
-        "- **Averaging:** For deterministic methods (baselines, v1, v2), one value per",
-        "  trajectory → statistics across N trajectories. For v3, each trajectory has",
-        f"  {n_seeds} independent reverse-process samples → per-trajectory mean reported",
-        "  in the primary table; raw (N, S) values used for variance decomposition.",
-        "- **Geometry declaration:** `wall_crossing_count` and `off_map_ratio` are",
-        "  *evaluation-only* metrics. No geometry conditioning or loss term is used in",
-        "  any method. Empty room3 has no internal walls, so wall_crossing_count = 0",
-        "  for all methods by construction.",
-        "",
-        "---",
-        "",
-        "## §4 Full Results",
-        "",
-        "### masked_ADE by method and degradation (primary metric)",
+        "## §4 Primary Results (masked_ADE mean)",
         "",
     ]
-
-    # masked_ADE table
-    cols4 = ["Method"] + [DEGRADATION_LABELS[d] for d in DEGRADATION_NAMES]
-    lines.append(_md_table(masked_ade_rows, cols4))
-    lines += ["", "### Best method per degradation (masked_ADE)", ""]
-    lines.append(_md_table(best_rows, ["Degradation", "Best Method", "masked_ADE"]))
+    lines.append("| Method | masked_ADE mean | masked_ADE std | FDE mean |")
+    lines.append("| --- | --- | --- | --- |")
+    for method in args.methods.split(","):
+        m_ade = get_summary_mean([r for r in full_rows if r["metric"] == "masked_ADE"], method, "masked_ADE")
+        fde = get_summary_mean([r for r in full_rows if r["metric"] == "FDE"], method, "FDE")
+        std = next(r["std"] for r in full_rows if r["method"] == method and r["metric"] == "masked_ADE")
+        lines.append(f"| {method} | {m_ade:.6f} | {std:.6f} | {fde:.6f} |")
     lines += [
         "",
-        "*(See `full_results.csv` for complete statistics including ADE, RMSE, masked_RMSE,*",
-        " *wall_crossing_count, off_map_ratio, n_trajectories, n_seeds, n_total for every*",
-        " *method × degradation × metric combination.)*",
+        "## §5 Variance",
         "",
-        "---",
+        "See `variance_decomposition_*.csv`. `std_across_trajectories` averages per-seed trajectory spread; `std_across_seeds` averages per-trajectory seed spread; `std_total` mixes both sources.",
         "",
-        "## §5 Figures",
+        "## §6 Evidence Chain",
         "",
-        "Trajectory visualisations are in `trajectory_plots/`. Five cases are shown,",
-        "selected at the p10, p25, p50, p75, p90 percentiles of v3 masked_ADE on",
-        "`missing_only` degradation (to avoid cherry-picking).",
+        "1. Compare deterministic coarse baseline against `ddpm_v3_anchored` to see whether the existing unconditional inpainting pipeline helps at all under the selected gap type.",
+        "2. Compare `ddpm_v3_anchored` against `ddpm_v4_conditional` to test whether moving conditioning into training improves the learned reconstruction interface.",
+        "3. Inspect representative five-column trajectory figures to verify whether gains come from cleaner missing-span geometry rather than trivial endpoint restoration.",
         "",
-        "Each figure shows 5 columns:",
-        "- **Col 1** – Clean target (ground truth, with missing segment dotted)",
-        "- **Col 2** – Degraded input (observed frames only)",
-        "- **Col 3** – Coarse reconstruction (Linear interpolation)",
-        "- **Col 4** – v3 single sample (seed 0)",
-        f"- **Col 5** – v3 mean over {n_seeds} seeds (thin lines = individual samples,",
-        "  thick line = mean)",
+        "## §7 Verdict Rule",
         "",
-        "Figure annotation: `sample_idx`, `span_start:span_end`, `masked_ADE_coarse`,",
-        "`masked_ADE_v3`, `improvement_pct` (negative = worse).",
+        "- Primary pass criterion: `ddpm_v4_conditional` has lower `masked_ADE` mean than `ddpm_v3_anchored` on the same gap type.",
+        "- Secondary support: `std_across_seeds` should not explode relative to v3.",
+        "- Practical support: representative figures should show smoother missing-span reconstruction, not only endpoint clamping.",
         "",
-        "**Figure 3 / Figure 5 spread note:**",
-        "The `std_across_seeds` column in `variance_decomposition.csv` directly quantifies",
-        "within-trajectory spread across the 5 reverse-diffusion seeds. This answers the",
-        "question of whether observed spread in trajectory figures reflects population",
-        "heterogeneity (std_across_trajectories) or DDPM stochasticity (std_across_seeds).",
-        "",
-        "---",
-        "",
-        "## §6 Discussion",
-        "",
-        f"### Verdict: hypothesis is {verdict_str}",
-        "",
-        f"*{verdict_detail}*",
+        "## Representative Cases",
         "",
     ]
-
-    if hypothesis_supported:
-        lines += [
-            "**Interpretation (hypothesis supported):**",
-            "Clamping observed frames at every reverse step consistently improves masked_ADE",
-            "over the post-hoc projection approaches (v1/v2). This is strong evidence that",
-            "the prior-task mismatch identified in §1 is real: when the reverse chain can",
-            "'see' the boundary observations, it generates missing segments that connect",
-            "smoothly to the context.",
-            "",
-            "**However, caveats remain:**",
-            "1. Classical baselines (Linear, SG) may still outperform v3 on clean missing-only",
-            "   cases, because they directly interpolate between observed endpoints while v3",
-            "   must discover the constraint implicitly through the inpainting clamp.",
-            "2. If v3 does not outperform classical baselines, the residual gap is likely due",
-            "   to coordinate-scale domain mismatch (ETH+UCY training scale ≠ room3 scale).",
-        ]
-    else:
-        lines += [
-            "**Interpretation (hypothesis not supported):**",
-            "The inpainting-style conditioning did not consistently improve over the post-hoc",
-            "projection baselines (v1/v2). Two plausible next-level explanations:",
-            "",
-            "1. **Coordinate-scale domain mismatch.** The prior was trained on ETH+UCY",
-            "   relative displacements. Room3 data is the same dataset rescaled to [0,3]×[0,3].",
-            "   The scale of relative steps in room3 differs from the training distribution.",
-            "   Even with perfect inpainting conditioning, the prior's generative mode may not",
-            "   produce room3-scale displacements. Fix: retrain on room3-scale data, or",
-            "   normalize inputs to the prior's training distribution before inpainting.",
-            "",
-            "2. **Short sequence / large missing fraction.** With T=20 and span_len=4 (20%),",
-            "   the observed context is limited (8 frames on one side, 8 on the other). A",
-            "   simple interpolation (Linear) that directly uses the boundary endpoints will",
-            "   dominate. The DDPM prior adds unnecessary distributional noise on top of what",
-            "   is essentially a short-range interpolation problem.",
-        ]
-
-    lines += [
-        "",
-        "---",
-        "",
-        "## §7 Next Hypothesis",
-        "",
-    ]
-
-    if hypothesis_supported:
-        lines += [
-            "**Next hypothesis:** The residual gap between v3 and classical baselines is caused",
-            "by coordinate-scale domain mismatch between the ETH+UCY training distribution and",
-            "the room3 test distribution. Retraining (or fine-tuning) the DDPM prior on",
-            "room3-scale trajectories should close this gap.",
-            "",
-            "*Proposed validation:* Rescale room3 inputs to the ETH+UCY training scale before",
-            "feeding to the prior (and rescale outputs back). If this closes the gap without",
-            "retraining, the scale mismatch is confirmed as the primary remaining factor.",
-        ]
-    else:
-        lines += [
-            "**Next hypothesis:** The primary failure mode is coordinate-scale domain mismatch.",
-            "Normalizing room3 relative displacements to the ETH+UCY training distribution",
-            "(mean / std standardization using training statistics) before calling the DDPM",
-            "prior, and denormalizing afterward, should substantially improve inpainting v3.",
-            "",
-            "*Proposed validation:* Compute mean and std of relative steps from",
-            "`data_eth_ucy_20_rel.npy`; apply z-score normalization to room3 inputs before",
-            "the DDPM reverse chain; apply inverse normalization to outputs. Re-run this",
-            "experiment and compare masked_ADE before and after normalization.",
-        ]
-
-    lines += [
-        "",
-        "---",
-        "",
-        "## §8 Variance Decomposition (masked_ADE for DDPM methods)",
-        "",
-        "| Method | Degradation | std_across_trajectories | std_across_seeds | std_total |",
-        "| --- | --- | --- | --- | --- |",
-    ]
-    for r in var_table_rows:
-        v = r['std_across_seeds']
-        if isinstance(v, str):
-            std_seed_str = v
-        elif v != v:  # NaN check
-            std_seed_str = "nan"
-        else:
-            std_seed_str = f"{v:.5f}"
-        lines.append(
-            f"| {r['Method']} | {r['Degradation']} | "
-            f"{r['std_across_trajectories']:.5f} | "
-            f"{std_seed_str} | "
-            f"{r['std_total']:.5f} |"
-        )
-
-    lines += [
-        "",
-        "*(std_across_seeds = nan for deterministic methods v1 and v2)*",
-        "",
-    ]
-
+    for case in selected_cases:
+        lines.append(f"- {case['name']}: sample_idx={case['sample_idx']}, delta_masked_ADE={case['delta_masked_ADE']:+.6f}, plot={case['plot_path']}")
+    lines.append("")
     return "\n".join(lines)
 
 
-# ── Main ────────────────────────────────────────────────────────────────────────
 def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--gap_type", type=str, default="interior", choices=["interior", "suffix"])
+    parser.add_argument("--methods", type=str, default="linear_interp,ddpm_v3_anchored,ddpm_v4_conditional")
+    parser.add_argument("--degradation", type=str, default=DEGRADATION_DEFAULT)
+    parser.add_argument("--n_seeds", type=int, default=NUM_SEEDS_DEFAULT)
+    args = parser.parse_args()
+
     ensure_dirs()
     t0 = time.time()
+    methods = [item.strip() for item in args.methods.split(",") if item.strip()]
+    if args.degradation != "missing_only":
+        raise ValueError("This conditional experiment currently supports only degradation=missing_only.")
 
-    # ── Load data ─────────────────────────────────────────────────────────────
-    print(f"Loading data (first {N_EXPERIMENT} trajectories) …")
-    clean   = load_npy(CTRL_DEGRAD / "clean.npy")[:N_EXPERIMENT]                # (N, T, 2)
-    mask    = load_npy(CTRL_DEGRAD / f"mask_{TAG}.npy")[:N_EXPERIMENT]          # (N, T)
-    N, T, _ = clean.shape
+    print(f"Loading clean data (first {N_EXPERIMENT} trajectories) …")
+    clean = load_npy(CTRL_DEGRAD / "clean.npy")[:N_EXPERIMENT]
+    n, seq_len, _ = clean.shape
+    obs_mask, span_start, span_end = build_obs_mask(n, seq_len, args.gap_type)
 
-    # Span boundaries (fixed for all trajectories)
-    miss_cols   = np.where(mask[0] == 0)[0]
-    span_start  = int(miss_cols[0])
-    span_end    = int(miss_cols[-1])
+    if args.gap_type == "interior":
+        degraded = load_npy(CTRL_DEGRAD / "degraded_missing_only_span20_fixed_seed42.npy")[:N_EXPERIMENT]
+        linear_pred = load_npy(CTRL_RECON / "recon_missing_only_linear_interp_span20_fixed_seed42.npy")[:N_EXPERIMENT]
+    else:
+        degraded = build_degraded_missing_only(clean, obs_mask)
+        linear_pred = run_linear_extrapolate_batch(degraded, obs_mask)
 
     map_meta = room3_map_meta()
-    config   = DDPMPriorInterfaceConfig(device="auto")
+    config = DDPMPriorInterfaceConfig(device="auto")
+    full_rows: list[dict] = []
+    var_rows: list[dict] = []
+    selected_cases: list[dict] = []
 
-    all_full_rows: list[dict] = []
-    all_var_rows:  list[dict] = []
+    cache_det = {
+        "linear_interp": linear_pred,
+        "linear_extrapolate": linear_pred,
+    }
 
-    # Per-degradation storage for v3 (for trajectory plots on missing_only)
-    v3_metrics_missing_only: dict[str, np.ndarray] | None = None
-    v3_preds_missing_only:   np.ndarray | None = None
-    degraded_missing_only:   np.ndarray | None = None
+    conditional_preds = None
+    conditional_metrics = None
+    coarse_for_plot = linear_pred
 
-    DDPM_METHODS = {"ddpm_v1_masked_replace", "ddpm_v2_blend_alpha0.1", "ddpm_v3_inpainting"}
-
-    for deg in DEGRADATION_NAMES:
-        print(f"\n{'='*60}")
-        print(f"Degradation: {deg}")
-        print('='*60)
-
-        degraded = load_npy(CTRL_DEGRAD / f"degraded_{deg}_{TAG}.npy")[:N_EXPERIMENT]
-
-        # Coarse reconstruction files
-        recon: dict[str, np.ndarray] = {}
-        for baseline in ["linear_interp", "savgol_w5_p2", "kalman_cv_dt1.0_q1e-3_r1e-2"]:
-            recon[baseline] = load_npy(
-                CTRL_RECON / f"recon_{deg}_{baseline}_{TAG}.npy"
-            )[:N_EXPERIMENT]
-
-        # ── Baselines ─────────────────────────────────────────────────────────
-        for method, pred in recon.items():
-            print(f"  {method} …", end=" ", flush=True)
-            m = compute_metrics_per_traj(clean, pred, mask, map_meta)
-            m_1d = {k: v[:, None] for k, v in m.items()}   # shape (N,1) for uniformity
-            all_full_rows.extend(build_full_rows(method, deg, m_1d))
-            all_var_rows.extend(build_var_rows(method, deg, m_1d))
-            print(f"masked_ADE={m['masked_ADE'].mean():.4f}")
-
-        # ── DDPM v1 (masked replace) ───────────────────────────────────────────
-        print("  ddpm_v1_masked_replace …", end=" ", flush=True)
-        coarse_for_ddpm = recon["linear_interp"]
-        v1_pred, _ = ddpm_prior_masked_replace_v1(coarse_for_ddpm, mask, config=config)
-        v1_m = compute_metrics_per_traj(clean, v1_pred, mask, map_meta)
-        v1_m_1d = {k: v[:, None] for k, v in v1_m.items()}
-        all_full_rows.extend(build_full_rows("ddpm_v1_masked_replace", deg, v1_m_1d))
-        all_var_rows.extend(build_var_rows("ddpm_v1_masked_replace", deg, v1_m_1d))
-        print(f"masked_ADE={v1_m['masked_ADE'].mean():.4f}")
-
-        # ── DDPM v2 (masked blend) ────────────────────────────────────────────
-        print(f"  ddpm_v2_blend_alpha{BEST_ALPHA_V2} …", end=" ", flush=True)
-        v2_pred, _ = ddpm_prior_masked_blend_v2(
-            coarse_for_ddpm, mask, alpha=BEST_ALPHA_V2, config=config
-        )
-        v2_m = compute_metrics_per_traj(clean, v2_pred, mask, map_meta)
-        v2_m_1d = {k: v[:, None] for k, v in v2_m.items()}
-        all_full_rows.extend(build_full_rows("ddpm_v2_blend_alpha0.1", deg, v2_m_1d))
-        all_var_rows.extend(build_var_rows("ddpm_v2_blend_alpha0.1", deg, v2_m_1d))
-        print(f"masked_ADE={v2_m['masked_ADE'].mean():.4f}")
-
-        # ── DDPM v3 (RePaint inpainting) ──────────────────────────────────────
-        print(f"  ddpm_v3_inpainting ({NUM_SEEDS_V3} seeds × 100 steps) …", flush=True)
-        t_v3 = time.time()
-        v3_preds = ddpm_prior_inpainting_v3(
-            degraded,
-            mask,
-            num_samples_per_traj=NUM_SEEDS_V3,
-            seed_base=SEED_BASE_V3,
-            config=config,
-        )   # (N, S, T, 2)
-        dt_v3 = time.time() - t_v3
-        print(f"    done in {dt_v3:.1f} s")
-
-        # Per-seed metrics → (N, S) arrays
-        seed_metric_lists: dict[str, list[np.ndarray]] = {k: [] for k in METRIC_NAMES}
-        for s in range(NUM_SEEDS_V3):
-            m_s = compute_metrics_per_traj(clean, v3_preds[:, s], mask, map_meta)
-            for k in METRIC_NAMES:
-                seed_metric_lists[k].append(m_s[k])
-        v3_metrics_ns: dict[str, np.ndarray] = {
-            k: np.stack(v, axis=1) for k, v in seed_metric_lists.items()
-        }   # (N, S)
-
-        all_full_rows.extend(build_full_rows("ddpm_v3_inpainting", deg, v3_metrics_ns))
-        all_var_rows.extend(build_var_rows("ddpm_v3_inpainting", deg, v3_metrics_ns))
-        print(f"  masked_ADE={v3_metrics_ns['masked_ADE'].mean():.4f}")
-
-        if deg == "missing_only":
-            v3_metrics_missing_only = v3_metrics_ns
-            v3_preds_missing_only   = v3_preds
-            degraded_missing_only   = degraded
-
-    # ── Write CSVs ───────────────────────────────────────────────────────────
-    print("\nWriting CSVs …")
-    write_csv(FULL_CSV, FULL_FIELDS, all_full_rows)
-    write_csv(VAR_CSV,  VAR_FIELDS,  all_var_rows)
-    print(f"  full_results.csv   → {FULL_CSV}")
-    print(f"  variance_decomp.csv → {VAR_CSV}")
-
-    # ── Trajectory plots ─────────────────────────────────────────────────────
-    print("\nGenerating trajectory plots …")
-    if v3_metrics_missing_only is not None and v3_preds_missing_only is not None:
-        # Per-trajectory masked_ADE for v3: mean over seeds
-        v3_mADE_per_traj = np.nanmean(v3_metrics_missing_only["masked_ADE"], axis=1)   # (N,)
-
-        # Coarse (linear) masked_ADE for same degradation
-        lin_mADE_per_traj = np.array([
-            r["mean"] for r in all_full_rows
-            if r["method"] == "linear_interp"
-            and r["degradation"] == "missing_only"
-            and r["metric"] == "masked_ADE"
-        ])
-        # Recompute per-traj coarse for plot
-        lin_pred = load_npy(
-            CTRL_RECON / f"recon_missing_only_linear_interp_{TAG}.npy"
-        )[:N_EXPERIMENT]
-        lin_m = compute_metrics_per_traj(clean, lin_pred, mask, map_meta)
-        coarse_mADE_per_traj = lin_m["masked_ADE"]   # (N,)
-
-        percentiles = [10, 25, 50, 75, 90]
-        for pct in percentiles:
-            threshold = np.nanpercentile(v3_mADE_per_traj, pct)
-            # Find trajectory closest to that percentile
-            dists     = np.abs(v3_mADE_per_traj - threshold)
-            idx       = int(np.nanargmin(dists))
-
-            out_path = PLOT_DIR / f"case_p{pct}_sample{idx}.png"
-            plot_case(
-                pct=pct,
-                sample_idx=idx,
-                clean=clean[idx],
-                degraded=degraded_missing_only[idx],
-                coarse=lin_pred[idx],
-                v3_samples=v3_preds_missing_only[idx],   # (S, T, 2)
-                obs_mask=mask[idx],
-                masked_ade_coarse=float(coarse_mADE_per_traj[idx]),
-                masked_ade_v3=float(v3_mADE_per_traj[idx]),
-                span_start=span_start,
-                span_end=span_end,
-                out_path=out_path,
+    for method in methods:
+        print(f"Running {method} …")
+        if method in {"linear_interp", "linear_extrapolate", "savgol_w5_p2", "kalman_cv_dt1.0_q1e-3_r1e-2"}:
+            if method not in cache_det:
+                if method == "savgol_w5_p2":
+                    if args.gap_type == "suffix":
+                        raise ValueError("savgol_w5_p2 is not supported for suffix gap because it requires a right boundary observation.")
+                    cache_det[method] = load_npy(CTRL_RECON / "recon_missing_only_savgol_w5_p2_span20_fixed_seed42.npy")[:N_EXPERIMENT]
+                elif method == "kalman_cv_dt1.0_q1e-3_r1e-2":
+                    if args.gap_type == "suffix":
+                        raise ValueError("kalman_cv_dt1.0_q1e-3_r1e-2 is not supported for suffix gap because it requires a terminal observation.")
+                    cache_det[method] = load_npy(CTRL_RECON / "recon_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_span20_fixed_seed42.npy")[:N_EXPERIMENT]
+            pred = cache_det[method]
+            metrics = compute_metrics_per_traj(clean, pred, obs_mask, map_meta)
+            metrics_ns = {k: v[:, None] for k, v in metrics.items()}
+        elif method == "ddpm_v3_anchored":
+            raw_preds = ddpm_prior_inpainting_v3(
+                degraded,
+                obs_mask,
+                num_samples_per_traj=args.n_seeds,
+                seed_base=SEED_BASE_DEFAULT,
+                config=config,
             )
-            print(f"  p{pct}  sample_idx={idx}  mADE_coarse={coarse_mADE_per_traj[idx]:.4f}"
-                  f"  mADE_v3={v3_mADE_per_traj[idx]:.4f}")
+            anchored = anchor_missing_spans(raw_preds, degraded, obs_mask)
+            metrics_ns = {
+                k: np.stack(
+                    [compute_metrics_per_traj(clean, anchored[:, s], obs_mask, map_meta)[k] for s in range(args.n_seeds)],
+                    axis=1,
+                )
+                for k in METRIC_NAMES
+            }
+        elif method == "ddpm_v4_conditional":
+            conditional_preds = ddpm_conditional_sample_v4(
+                degraded,
+                obs_mask,
+                num_samples=args.n_seeds,
+                seed_base=SEED_BASE_DEFAULT,
+                config=config,
+            )
+            conditional_metrics = {
+                k: np.stack(
+                    [compute_metrics_per_traj(clean, conditional_preds[:, s], obs_mask, map_meta)[k] for s in range(args.n_seeds)],
+                    axis=1,
+                )
+                for k in METRIC_NAMES
+            }
+            metrics_ns = conditional_metrics
+        else:
+            raise ValueError(f"Unsupported method: {method}")
 
-    # ── Report ────────────────────────────────────────────────────────────────
-    print("\nGenerating REPORT.md …")
+        full_rows.extend(build_full_rows(method, args.degradation, args.gap_type, metrics_ns))
+        var_rows.extend(build_var_rows(method, args.degradation, args.gap_type, metrics_ns))
+        print(f"  masked_ADE={np.nanmean(metrics_ns['masked_ADE']):.6f}")
+
+    if conditional_preds is not None and conditional_metrics is not None:
+        selected_cases = select_and_plot_cases(
+            clean=clean,
+            degraded=degraded,
+            coarse=coarse_for_plot,
+            cond_preds=conditional_preds,
+            cond_metrics=conditional_metrics,
+            obs_mask=obs_mask,
+            span_start=span_start,
+            span_end=span_end,
+            gap_type=args.gap_type,
+        )
+        with (OUTPUT_ROOT / "selected_cases.json").open("w", encoding="utf-8") as f:
+            json.dump(selected_cases, f, indent=2)
+
+    suffix = "interior" if args.gap_type == "interior" else "suffix"
+    full_csv = OUTPUT_ROOT / f"full_results_{suffix}.csv"
+    var_csv = OUTPUT_ROOT / f"variance_decomposition_{suffix}.csv"
+    report_md = OUTPUT_ROOT / "REPORT.md"
+    write_csv(full_csv, FULL_FIELDS, full_rows)
+    write_csv(var_csv, VAR_FIELDS, var_rows)
+
     elapsed = time.time() - t0
-    report_txt = generate_report(
-        full_rows=all_full_rows,
-        var_rows=all_var_rows,
-        n_trajectories=N,
-        n_seeds=NUM_SEEDS_V3,
-        elapsed_sec=elapsed,
-    )
-    REPORT_MD.write_text(report_txt, encoding="utf-8")
-    print(f"  {REPORT_MD}")
+    report_txt = generate_report(args, full_rows, var_rows, selected_cases, elapsed, span_start, span_end)
+    report_md.write_text(report_txt, encoding="utf-8")
 
-    # ── Self-check ────────────────────────────────────────────────────────────
-    print("\n── Self-check ──────────────────────────────────────────────────────")
-    expected_rows = len(METHOD_ORDER) * len(DEGRADATION_NAMES) * len(METRIC_NAMES)
-    print(f"  full_results.csv rows: {len(all_full_rows)} (expected {expected_rows})")
-    missing_combos = [
-        (m, d, k)
-        for m in METHOD_ORDER
-        for d in DEGRADATION_NAMES
-        for k in METRIC_NAMES
-        if not any(r["method"] == m and r["degradation"] == d and r["metric"] == k
-                   for r in all_full_rows)
-    ]
-    if missing_combos:
-        print(f"  MISSING CELLS: {missing_combos}")
-    else:
-        print("  ✓ All method × degradation × metric cells present")
-
-    plot_files = list(PLOT_DIR.glob("case_p*.png"))
-    print(f"  Trajectory plots: {len(plot_files)} (expected 5)")
-    for f in sorted(plot_files):
-        print(f"    {f.name}")
-
-    print(f"\nTotal elapsed: {elapsed:.0f} s")
-    print("Done.")
+    print(f"full_results   -> {full_csv}")
+    print(f"variance_csv   -> {var_csv}")
+    print(f"report         -> {report_md}")
+    print(f"trajectory_dir -> {PLOT_DIR}")
+    print(f"elapsed_sec    -> {elapsed:.1f}")
 
 
 if __name__ == "__main__":
