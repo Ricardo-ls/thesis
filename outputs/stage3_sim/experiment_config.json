@@ -1,0 +1,154 @@
+{
+  "curvature_thresholds": {
+    "p33": 0.04995374009013176,
+    "p66": 0.07648421078920364
+  },
+  "ddpm_seeds": [
+    42,
+    1,
+    2,
+    43,
+    44
+  ],
+  "degradation_params": {
+    "bias_high": {
+      "actual_ade": 0.30029988288879395,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.24219628906250001,
+      "target_ade": 0.3,
+      "tolerance_high": 0.34,
+      "tolerance_low": 0.26
+    },
+    "bias_low": {
+      "actual_ade": 0.04844586178660393,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.039072304687500004,
+      "target_ade": 0.05,
+      "tolerance_high": 0.065,
+      "tolerance_low": 0.035
+    },
+    "bias_medium": {
+      "actual_ade": 0.1549994945526123,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.125009375,
+      "target_ade": 0.15,
+      "tolerance_high": 0.175,
+      "tolerance_low": 0.125
+    },
+    "burst_medium": {
+      "actual_ade": 0.14888551831245422,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.05860345703125001,
+      "target_ade": 0.15,
+      "tolerance_high": 0.175,
+      "tolerance_low": 0.125
+    },
+    "calibration_note": "mean_step_size=0.165796m at 3Hz. Parameters are calibrated on the first 500 simulated test trajectories to target full-trajectory ADE levels.",
+    "combined_medium": {
+      "actual_ade": 0.2754218876361847,
+      "diagnostic_only": true,
+      "in_tolerance": null,
+      "sigma_b": 0.125009375,
+      "sigma_d": 0.042978535156250004,
+      "sigma_g": 0.1171969140625,
+      "target_ade": null
+    },
+    "drift_high": {
+      "actual_ade": 0.3026171326637268,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma_step": 0.0859470703125,
+      "target_ade": 0.3,
+      "tolerance_high": 0.34,
+      "tolerance_low": 0.26
+    },
+    "drift_low": {
+      "actual_ade": 0.048173245042562485,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma_step": 0.013681806640625002,
+      "target_ade": 0.05,
+      "tolerance_high": 0.065,
+      "tolerance_low": 0.035
+    },
+    "drift_medium": {
+      "actual_ade": 0.15132617950439453,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma_step": 0.042978535156250004,
+      "target_ade": 0.15,
+      "tolerance_high": 0.175,
+      "tolerance_low": 0.125
+    },
+    "gaussian_high": {
+      "actual_ade": 0.30110108852386475,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.24219628906250001,
+      "target_ade": 0.3,
+      "tolerance_high": 0.34,
+      "tolerance_low": 0.26
+    },
+    "gaussian_low": {
+      "actual_ade": 0.04857511445879936,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.039072304687500004,
+      "target_ade": 0.05,
+      "tolerance_high": 0.065,
+      "tolerance_low": 0.035
+    },
+    "gaussian_medium": {
+      "actual_ade": 0.14570048451423645,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.1171969140625,
+      "target_ade": 0.15,
+      "tolerance_high": 0.175,
+      "tolerance_low": 0.125
+    },
+    "jump_medium": {
+      "actual_ade": 0.14920377731323242,
+      "in_tolerance": true,
+      "out_of_tolerance": false,
+      "sigma": 0.203133984375,
+      "target_ade": 0.15,
+      "tolerance_high": 0.175,
+      "tolerance_low": 0.125
+    }
+  },
+  "degradation_seed_base": {
+    "bias_medium": 20000,
+    "burst_medium": 50000,
+    "combined_medium": 60000,
+    "drift_medium": 30000,
+    "gaussian_medium": 10000,
+    "jump_medium": 40000
+  },
+  "eth_checkpoint_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/best_model.pt",
+  "finetuned_checkpoint_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_finetuned_h128/seed42-100epoch/best_model.pt",
+  "kalman_source": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/tools/stage3_global/methods/classical.py",
+  "relative_noise_scales": {
+    "bias_medium": 3.1122461052746075e-08,
+    "burst_medium": 0.27529823780059814,
+    "combined_medium": 0.17058876156806946,
+    "drift_medium": 0.04309878498315811,
+    "gaussian_medium": 0.1662609875202179,
+    "jump_medium": 0.048411719501018524
+  },
+  "signal_scale": 0.13753825426101685,
+  "t_start_values": {
+    "bias_medium": 1,
+    "burst_medium": 80,
+    "combined_medium": 80,
+    "drift_medium": 31,
+    "gaussian_medium": 80,
+    "jump_medium": 35
+  },
+  "test_n": 1000,
+  "val_n": 2000
+}

@@ -1,0 +1,30 @@
+{
+  "N": 200,
+  "degradation": "gaussian_medium",
+  "sdedit_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "t_start_list": [
+    1,
+    2,
+    3,
+    5
+  ],
+  "noisy_ADE_mean": 0.06256657093763351,
+  "kalman_ADE_mean": 0.08500171452760696,
+  "best_sdedit_method": "sdedit_t2",
+  "best_sdedit_ADE_mean": 0.06081181392073631,
+  "best_delta_ADE_vs_noisy": -0.001754753291606903,
+  "best_improved_fraction_vs_noisy": 0.765,
+  "best_wilcoxon_p_vs_noisy": 1.674860201699921e-13,
+  "best_delta_ADE_vs_kalman": -0.024189896881580353,
+  "best_improved_fraction_vs_kalman": 0.795,
+  "best_wilcoxon_p_vs_kalman": 1.2256427123690647e-22,
+  "sdedit_supported_vs_noisy": true,
+  "sdedit_supported_vs_kalman": true,
+  "interpretation": "stable_refinement_signal_vs_noisy"
+}

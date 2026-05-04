@@ -1,0 +1,10002 @@
+[
+  {
+    "idx": 0,
+    "behavior": "pacing",
+    "mean_speed": 0.47599828243255615
+  },
+  {
+    "idx": 1,
+    "behavior": "pacing",
+    "mean_speed": 0.38444072008132935
+  },
+  {
+    "idx": 2,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9311301708221436
+  },
+  {
+    "idx": 3,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2922303080558777
+  },
+  {
+    "idx": 4,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6470775604248047
+  },
+  {
+    "idx": 5,
+    "behavior": "pacing",
+    "mean_speed": 0.5372495055198669
+  },
+  {
+    "idx": 6,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9062303304672241
+  },
+  {
+    "idx": 7,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5067241191864014
+  },
+  {
+    "idx": 8,
+    "behavior": "pacing",
+    "mean_speed": 0.47938239574432373
+  },
+  {
+    "idx": 9,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3515661954879761
+  },
+  {
+    "idx": 10,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6352598071098328
+  },
+  {
+    "idx": 11,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8457357287406921
+  },
+  {
+    "idx": 12,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7341176271438599
+  },
+  {
+    "idx": 13,
+    "behavior": "stationary",
+    "mean_speed": 0.14847807586193085
+  },
+  {
+    "idx": 14,
+    "behavior": "pacing",
+    "mean_speed": 0.43701276183128357
+  },
+  {
+    "idx": 15,
+    "behavior": "pacing",
+    "mean_speed": 0.4570179283618927
+  },
+  {
+    "idx": 16,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5702358484268188
+  },
+  {
+    "idx": 17,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32045525312423706
+  },
+  {
+    "idx": 18,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7712521553039551
+  },
+  {
+    "idx": 19,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0149600505828857
+  },
+  {
+    "idx": 20,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4704037308692932
+  },
+  {
+    "idx": 21,
+    "behavior": "multi_goal",
+    "mean_speed": 0.36649370193481445
+  },
+  {
+    "idx": 22,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.10658153146505356
+  },
+  {
+    "idx": 23,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7896686792373657
+  },
+  {
+    "idx": 24,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2501746118068695
+  },
+  {
+    "idx": 25,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2263176441192627
+  },
+  {
+    "idx": 26,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5066193342208862
+  },
+  {
+    "idx": 27,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23930656909942627
+  },
+  {
+    "idx": 28,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6866446137428284
+  },
+  {
+    "idx": 29,
+    "behavior": "goal_directed",
+    "mean_speed": 0.521975576877594
+  },
+  {
+    "idx": 30,
+    "behavior": "stationary",
+    "mean_speed": 0.10686841607093811
+  },
+  {
+    "idx": 31,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6004394292831421
+  },
+  {
+    "idx": 32,
+    "behavior": "stationary",
+    "mean_speed": 0.09666779637336731
+  },
+  {
+    "idx": 33,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8969581127166748
+  },
+  {
+    "idx": 34,
+    "behavior": "stationary",
+    "mean_speed": 0.10742631554603577
+  },
+  {
+    "idx": 35,
+    "behavior": "pacing",
+    "mean_speed": 0.5030163526535034
+  },
+  {
+    "idx": 36,
+    "behavior": "multi_goal",
+    "mean_speed": 0.19179710745811462
+  },
+  {
+    "idx": 37,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.11275455355644226
+  },
+  {
+    "idx": 38,
+    "behavior": "pacing",
+    "mean_speed": 0.3731250762939453
+  },
+  {
+    "idx": 39,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3045858144760132
+  },
+  {
+    "idx": 40,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6522258520126343
+  },
+  {
+    "idx": 41,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6295499801635742
+  },
+  {
+    "idx": 42,
+    "behavior": "pacing",
+    "mean_speed": 0.5029577016830444
+  },
+  {
+    "idx": 43,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8742334842681885
+  },
+  {
+    "idx": 44,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4369412362575531
+  },
+  {
+    "idx": 45,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30186060070991516
+  },
+  {
+    "idx": 46,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5563398599624634
+  },
+  {
+    "idx": 47,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6013129949569702
+  },
+  {
+    "idx": 48,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5590184330940247
+  },
+  {
+    "idx": 49,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9527686834335327
+  },
+  {
+    "idx": 50,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3877495229244232
+  },
+  {
+    "idx": 51,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.511480450630188
+  },
+  {
+    "idx": 52,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6365981101989746
+  },
+  {
+    "idx": 53,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3542343080043793
+  },
+  {
+    "idx": 54,
+    "behavior": "pacing",
+    "mean_speed": 0.6515113711357117
+  },
+  {
+    "idx": 55,
+    "behavior": "pacing",
+    "mean_speed": 0.531653881072998
+  },
+  {
+    "idx": 56,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4085621237754822
+  },
+  {
+    "idx": 57,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3946915864944458
+  },
+  {
+    "idx": 58,
+    "behavior": "stationary",
+    "mean_speed": 0.10743336379528046
+  },
+  {
+    "idx": 59,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.17332547903060913
+  },
+  {
+    "idx": 60,
+    "behavior": "goal_directed",
+    "mean_speed": 0.752041220664978
+  },
+  {
+    "idx": 61,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5422769784927368
+  },
+  {
+    "idx": 62,
+    "behavior": "stationary",
+    "mean_speed": 0.13183636963367462
+  },
+  {
+    "idx": 63,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4807611107826233
+  },
+  {
+    "idx": 64,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5841842293739319
+  },
+  {
+    "idx": 65,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3951959013938904
+  },
+  {
+    "idx": 66,
+    "behavior": "stationary",
+    "mean_speed": 0.16982725262641907
+  },
+  {
+    "idx": 67,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4233788251876831
+  },
+  {
+    "idx": 68,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.37497323751449585
+  },
+  {
+    "idx": 69,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5627590417861938
+  },
+  {
+    "idx": 70,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7603472471237183
+  },
+  {
+    "idx": 71,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9985197186470032
+  },
+  {
+    "idx": 72,
+    "behavior": "pacing",
+    "mean_speed": 0.5329345464706421
+  },
+  {
+    "idx": 73,
+    "behavior": "pacing",
+    "mean_speed": 0.3237958252429962
+  },
+  {
+    "idx": 74,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7928507328033447
+  },
+  {
+    "idx": 75,
+    "behavior": "stationary",
+    "mean_speed": 0.11288083344697952
+  },
+  {
+    "idx": 76,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2260487675666809
+  },
+  {
+    "idx": 77,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.16011513769626617
+  },
+  {
+    "idx": 78,
+    "behavior": "stationary",
+    "mean_speed": 0.09986232966184616
+  },
+  {
+    "idx": 79,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2730499505996704
+  },
+  {
+    "idx": 80,
+    "behavior": "stationary",
+    "mean_speed": 0.10565541684627533
+  },
+  {
+    "idx": 81,
+    "behavior": "pacing",
+    "mean_speed": 0.5261735916137695
+  },
+  {
+    "idx": 82,
+    "behavior": "pacing",
+    "mean_speed": 0.4766108989715576
+  },
+  {
+    "idx": 83,
+    "behavior": "stationary",
+    "mean_speed": 0.10866336524486542
+  },
+  {
+    "idx": 84,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5550401210784912
+  },
+  {
+    "idx": 85,
+    "behavior": "goal_directed",
+    "mean_speed": 0.802874743938446
+  },
+  {
+    "idx": 86,
+    "behavior": "pacing",
+    "mean_speed": 0.4160330891609192
+  },
+  {
+    "idx": 87,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9087361693382263
+  },
+  {
+    "idx": 88,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5202582478523254
+  },
+  {
+    "idx": 89,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7418658137321472
+  },
+  {
+    "idx": 90,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8167232275009155
+  },
+  {
+    "idx": 91,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2183646559715271
+  },
+  {
+    "idx": 92,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6502270698547363
+  },
+  {
+    "idx": 93,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6957829594612122
+  },
+  {
+    "idx": 94,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7611144781112671
+  },
+  {
+    "idx": 95,
+    "behavior": "stationary",
+    "mean_speed": 0.11642447113990784
+  },
+  {
+    "idx": 96,
+    "behavior": "multi_goal",
+    "mean_speed": 0.31749072670936584
+  },
+  {
+    "idx": 97,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4699479639530182
+  },
+  {
+    "idx": 98,
+    "behavior": "pacing",
+    "mean_speed": 0.5297836661338806
+  },
+  {
+    "idx": 99,
+    "behavior": "pacing",
+    "mean_speed": 0.5078284740447998
+  },
+  {
+    "idx": 100,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9632484912872314
+  },
+  {
+    "idx": 101,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3272499144077301
+  },
+  {
+    "idx": 102,
+    "behavior": "pacing",
+    "mean_speed": 0.3444039225578308
+  },
+  {
+    "idx": 103,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3540002107620239
+  },
+  {
+    "idx": 104,
+    "behavior": "stationary",
+    "mean_speed": 0.12122831493616104
+  },
+  {
+    "idx": 105,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.161212757229805
+  },
+  {
+    "idx": 106,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38672295212745667
+  },
+  {
+    "idx": 107,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6039022207260132
+  },
+  {
+    "idx": 108,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8697434663772583
+  },
+  {
+    "idx": 109,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3870961368083954
+  },
+  {
+    "idx": 110,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9109598994255066
+  },
+  {
+    "idx": 111,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.639136791229248
+  },
+  {
+    "idx": 112,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5200872421264648
+  },
+  {
+    "idx": 113,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8756221532821655
+  },
+  {
+    "idx": 114,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8781070709228516
+  },
+  {
+    "idx": 115,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9624234437942505
+  },
+  {
+    "idx": 116,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.16767190396785736
+  },
+  {
+    "idx": 117,
+    "behavior": "stationary",
+    "mean_speed": 0.09786146879196167
+  },
+  {
+    "idx": 118,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2959640622138977
+  },
+  {
+    "idx": 119,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3413067162036896
+  },
+  {
+    "idx": 120,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7849565744400024
+  },
+  {
+    "idx": 121,
+    "behavior": "stationary",
+    "mean_speed": 0.12278559803962708
+  },
+  {
+    "idx": 122,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9832704067230225
+  },
+  {
+    "idx": 123,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6201034784317017
+  },
+  {
+    "idx": 124,
+    "behavior": "pacing",
+    "mean_speed": 0.6799578666687012
+  },
+  {
+    "idx": 125,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6833027601242065
+  },
+  {
+    "idx": 126,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6644508242607117
+  },
+  {
+    "idx": 127,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4348950684070587
+  },
+  {
+    "idx": 128,
+    "behavior": "pacing",
+    "mean_speed": 0.4521670937538147
+  },
+  {
+    "idx": 129,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7915933132171631
+  },
+  {
+    "idx": 130,
+    "behavior": "goal_directed",
+    "mean_speed": 0.688079833984375
+  },
+  {
+    "idx": 131,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8463909029960632
+  },
+  {
+    "idx": 132,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5637531876564026
+  },
+  {
+    "idx": 133,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5114889740943909
+  },
+  {
+    "idx": 134,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.689905047416687
+  },
+  {
+    "idx": 135,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30282914638519287
+  },
+  {
+    "idx": 136,
+    "behavior": "pacing",
+    "mean_speed": 0.3258841633796692
+  },
+  {
+    "idx": 137,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1640762835741043
+  },
+  {
+    "idx": 138,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3975587487220764
+  },
+  {
+    "idx": 139,
+    "behavior": "pacing",
+    "mean_speed": 0.6069827079772949
+  },
+  {
+    "idx": 140,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6489876508712769
+  },
+  {
+    "idx": 141,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1527639776468277
+  },
+  {
+    "idx": 142,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6093818545341492
+  },
+  {
+    "idx": 143,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5820608139038086
+  },
+  {
+    "idx": 144,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30491524934768677
+  },
+  {
+    "idx": 145,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7853114604949951
+  },
+  {
+    "idx": 146,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7171637415885925
+  },
+  {
+    "idx": 147,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5303369760513306
+  },
+  {
+    "idx": 148,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3960634768009186
+  },
+  {
+    "idx": 149,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.19201523065567017
+  },
+  {
+    "idx": 150,
+    "behavior": "pacing",
+    "mean_speed": 0.6168982982635498
+  },
+  {
+    "idx": 151,
+    "behavior": "multi_goal",
+    "mean_speed": 0.521573007106781
+  },
+  {
+    "idx": 152,
+    "behavior": "stationary",
+    "mean_speed": 0.12127990275621414
+  },
+  {
+    "idx": 153,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5900919437408447
+  },
+  {
+    "idx": 154,
+    "behavior": "stationary",
+    "mean_speed": 0.11644759774208069
+  },
+  {
+    "idx": 155,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6286178231239319
+  },
+  {
+    "idx": 156,
+    "behavior": "pacing",
+    "mean_speed": 0.7006836533546448
+  },
+  {
+    "idx": 157,
+    "behavior": "pacing",
+    "mean_speed": 0.7281146049499512
+  },
+  {
+    "idx": 158,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4635249376296997
+  },
+  {
+    "idx": 159,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5276095271110535
+  },
+  {
+    "idx": 160,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7284823656082153
+  },
+  {
+    "idx": 161,
+    "behavior": "pacing",
+    "mean_speed": 0.4170834422111511
+  },
+  {
+    "idx": 162,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37864387035369873
+  },
+  {
+    "idx": 163,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.24595986306667328
+  },
+  {
+    "idx": 164,
+    "behavior": "stationary",
+    "mean_speed": 0.10999833047389984
+  },
+  {
+    "idx": 165,
+    "behavior": "goal_directed",
+    "mean_speed": 0.733190655708313
+  },
+  {
+    "idx": 166,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.09434713423252106
+  },
+  {
+    "idx": 167,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8742579221725464
+  },
+  {
+    "idx": 168,
+    "behavior": "pacing",
+    "mean_speed": 0.49386361241340637
+  },
+  {
+    "idx": 169,
+    "behavior": "multi_goal",
+    "mean_speed": 0.41797173023223877
+  },
+  {
+    "idx": 170,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6714426279067993
+  },
+  {
+    "idx": 171,
+    "behavior": "pacing",
+    "mean_speed": 0.6311340928077698
+  },
+  {
+    "idx": 172,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9353631734848022
+  },
+  {
+    "idx": 173,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.26409631967544556
+  },
+  {
+    "idx": 174,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5305694341659546
+  },
+  {
+    "idx": 175,
+    "behavior": "stationary",
+    "mean_speed": 0.12522318959236145
+  },
+  {
+    "idx": 176,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.654577374458313
+  },
+  {
+    "idx": 177,
+    "behavior": "pacing",
+    "mean_speed": 0.5555224418640137
+  },
+  {
+    "idx": 178,
+    "behavior": "stationary",
+    "mean_speed": 0.13791415095329285
+  },
+  {
+    "idx": 179,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3929731845855713
+  },
+  {
+    "idx": 180,
+    "behavior": "goal_directed",
+    "mean_speed": 0.536562442779541
+  },
+  {
+    "idx": 181,
+    "behavior": "stationary",
+    "mean_speed": 0.11543527990579605
+  },
+  {
+    "idx": 182,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4150516390800476
+  },
+  {
+    "idx": 183,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4776212275028229
+  },
+  {
+    "idx": 184,
+    "behavior": "pacing",
+    "mean_speed": 0.4236801266670227
+  },
+  {
+    "idx": 185,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6122130155563354
+  },
+  {
+    "idx": 186,
+    "behavior": "pacing",
+    "mean_speed": 0.5398199558258057
+  },
+  {
+    "idx": 187,
+    "behavior": "stationary",
+    "mean_speed": 0.12971541285514832
+  },
+  {
+    "idx": 188,
+    "behavior": "goal_directed",
+    "mean_speed": 0.964545488357544
+  },
+  {
+    "idx": 189,
+    "behavior": "multi_goal",
+    "mean_speed": 0.29582923650741577
+  },
+  {
+    "idx": 190,
+    "behavior": "multi_goal",
+    "mean_speed": 0.21241222321987152
+  },
+  {
+    "idx": 191,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8563351035118103
+  },
+  {
+    "idx": 192,
+    "behavior": "stationary",
+    "mean_speed": 0.12603814899921417
+  },
+  {
+    "idx": 193,
+    "behavior": "multi_goal",
+    "mean_speed": 0.45293933153152466
+  },
+  {
+    "idx": 194,
+    "behavior": "stationary",
+    "mean_speed": 0.1153080016374588
+  },
+  {
+    "idx": 195,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5937439203262329
+  },
+  {
+    "idx": 196,
+    "behavior": "multi_goal",
+    "mean_speed": 0.21977372467517853
+  },
+  {
+    "idx": 197,
+    "behavior": "goal_directed",
+    "mean_speed": 0.609452486038208
+  },
+  {
+    "idx": 198,
+    "behavior": "pacing",
+    "mean_speed": 0.41851806640625
+  },
+  {
+    "idx": 199,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7647808790206909
+  },
+  {
+    "idx": 200,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6744410395622253
+  },
+  {
+    "idx": 201,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4811154007911682
+  },
+  {
+    "idx": 202,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5098161101341248
+  },
+  {
+    "idx": 203,
+    "behavior": "multi_goal",
+    "mean_speed": 0.43388617038726807
+  },
+  {
+    "idx": 204,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5976500511169434
+  },
+  {
+    "idx": 205,
+    "behavior": "pacing",
+    "mean_speed": 0.4445072412490845
+  },
+  {
+    "idx": 206,
+    "behavior": "pacing",
+    "mean_speed": 0.4742651581764221
+  },
+  {
+    "idx": 207,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.41757193207740784
+  },
+  {
+    "idx": 208,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9010958671569824
+  },
+  {
+    "idx": 209,
+    "behavior": "multi_goal",
+    "mean_speed": 0.443997323513031
+  },
+  {
+    "idx": 210,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2934466600418091
+  },
+  {
+    "idx": 211,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8674590587615967
+  },
+  {
+    "idx": 212,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3488079309463501
+  },
+  {
+    "idx": 213,
+    "behavior": "stationary",
+    "mean_speed": 0.1326834261417389
+  },
+  {
+    "idx": 214,
+    "behavior": "pacing",
+    "mean_speed": 0.2965659499168396
+  },
+  {
+    "idx": 215,
+    "behavior": "pacing",
+    "mean_speed": 0.4925800561904907
+  },
+  {
+    "idx": 216,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9337689876556396
+  },
+  {
+    "idx": 217,
+    "behavior": "multi_goal",
+    "mean_speed": 0.26799243688583374
+  },
+  {
+    "idx": 218,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43662673234939575
+  },
+  {
+    "idx": 219,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8839811086654663
+  },
+  {
+    "idx": 220,
+    "behavior": "stationary",
+    "mean_speed": 0.13500384986400604
+  },
+  {
+    "idx": 221,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5794370174407959
+  },
+  {
+    "idx": 222,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5770009756088257
+  },
+  {
+    "idx": 223,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5831470489501953
+  },
+  {
+    "idx": 224,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6705365180969238
+  },
+  {
+    "idx": 225,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5010362267494202
+  },
+  {
+    "idx": 226,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.41869884729385376
+  },
+  {
+    "idx": 227,
+    "behavior": "goal_directed",
+    "mean_speed": 0.930367648601532
+  },
+  {
+    "idx": 228,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5711276531219482
+  },
+  {
+    "idx": 229,
+    "behavior": "pacing",
+    "mean_speed": 0.4838155508041382
+  },
+  {
+    "idx": 230,
+    "behavior": "multi_goal",
+    "mean_speed": 0.35510826110839844
+  },
+  {
+    "idx": 231,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9276419878005981
+  },
+  {
+    "idx": 232,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.631576657295227
+  },
+  {
+    "idx": 233,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.42024874687194824
+  },
+  {
+    "idx": 234,
+    "behavior": "stationary",
+    "mean_speed": 0.1185779720544815
+  },
+  {
+    "idx": 235,
+    "behavior": "multi_goal",
+    "mean_speed": 0.40343177318573
+  },
+  {
+    "idx": 236,
+    "behavior": "pacing",
+    "mean_speed": 0.4965735077857971
+  },
+  {
+    "idx": 237,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6476806998252869
+  },
+  {
+    "idx": 238,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.42451706528663635
+  },
+  {
+    "idx": 239,
+    "behavior": "multi_goal",
+    "mean_speed": 0.41061532497406006
+  },
+  {
+    "idx": 240,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3608728051185608
+  },
+  {
+    "idx": 241,
+    "behavior": "pacing",
+    "mean_speed": 0.5380567312240601
+  },
+  {
+    "idx": 242,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5737605690956116
+  },
+  {
+    "idx": 243,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9422552585601807
+  },
+  {
+    "idx": 244,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5158566236495972
+  },
+  {
+    "idx": 245,
+    "behavior": "stationary",
+    "mean_speed": 0.12282489985227585
+  },
+  {
+    "idx": 246,
+    "behavior": "pacing",
+    "mean_speed": 0.41429603099823
+  },
+  {
+    "idx": 247,
+    "behavior": "stationary",
+    "mean_speed": 0.10453204810619354
+  },
+  {
+    "idx": 248,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7797611951828003
+  },
+  {
+    "idx": 249,
+    "behavior": "goal_directed",
+    "mean_speed": 0.511541485786438
+  },
+  {
+    "idx": 250,
+    "behavior": "pacing",
+    "mean_speed": 0.46124690771102905
+  },
+  {
+    "idx": 251,
+    "behavior": "pacing",
+    "mean_speed": 0.6790566444396973
+  },
+  {
+    "idx": 252,
+    "behavior": "multi_goal",
+    "mean_speed": 0.36945629119873047
+  },
+  {
+    "idx": 253,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6493025422096252
+  },
+  {
+    "idx": 254,
+    "behavior": "pacing",
+    "mean_speed": 0.44752275943756104
+  },
+  {
+    "idx": 255,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5075275897979736
+  },
+  {
+    "idx": 256,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38092637062072754
+  },
+  {
+    "idx": 257,
+    "behavior": "pacing",
+    "mean_speed": 0.5018501877784729
+  },
+  {
+    "idx": 258,
+    "behavior": "pacing",
+    "mean_speed": 0.5980349779129028
+  },
+  {
+    "idx": 259,
+    "behavior": "multi_goal",
+    "mean_speed": 0.499004602432251
+  },
+  {
+    "idx": 260,
+    "behavior": "pacing",
+    "mean_speed": 0.4191609025001526
+  },
+  {
+    "idx": 261,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5432260632514954
+  },
+  {
+    "idx": 262,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2209547907114029
+  },
+  {
+    "idx": 263,
+    "behavior": "pacing",
+    "mean_speed": 0.41657114028930664
+  },
+  {
+    "idx": 264,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9029607772827148
+  },
+  {
+    "idx": 265,
+    "behavior": "multi_goal",
+    "mean_speed": 0.523544430732727
+  },
+  {
+    "idx": 266,
+    "behavior": "pacing",
+    "mean_speed": 0.36175572872161865
+  },
+  {
+    "idx": 267,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8231822848320007
+  },
+  {
+    "idx": 268,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4105452597141266
+  },
+  {
+    "idx": 269,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8955307602882385
+  },
+  {
+    "idx": 270,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3989143371582031
+  },
+  {
+    "idx": 271,
+    "behavior": "multi_goal",
+    "mean_speed": 0.29618120193481445
+  },
+  {
+    "idx": 272,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4129498600959778
+  },
+  {
+    "idx": 273,
+    "behavior": "pacing",
+    "mean_speed": 0.6570708155632019
+  },
+  {
+    "idx": 274,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4108370840549469
+  },
+  {
+    "idx": 275,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4181258976459503
+  },
+  {
+    "idx": 276,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2711268663406372
+  },
+  {
+    "idx": 277,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6644335985183716
+  },
+  {
+    "idx": 278,
+    "behavior": "stationary",
+    "mean_speed": 0.10094410926103592
+  },
+  {
+    "idx": 279,
+    "behavior": "pacing",
+    "mean_speed": 0.6006539463996887
+  },
+  {
+    "idx": 280,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5923241376876831
+  },
+  {
+    "idx": 281,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8458730578422546
+  },
+  {
+    "idx": 282,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9341322183609009
+  },
+  {
+    "idx": 283,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4717199206352234
+  },
+  {
+    "idx": 284,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8415433168411255
+  },
+  {
+    "idx": 285,
+    "behavior": "multi_goal",
+    "mean_speed": 0.15040314197540283
+  },
+  {
+    "idx": 286,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.37901124358177185
+  },
+  {
+    "idx": 287,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8395669460296631
+  },
+  {
+    "idx": 288,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.12095092982053757
+  },
+  {
+    "idx": 289,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7141396999359131
+  },
+  {
+    "idx": 290,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6571656465530396
+  },
+  {
+    "idx": 291,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4033626616001129
+  },
+  {
+    "idx": 292,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24657830595970154
+  },
+  {
+    "idx": 293,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6381257772445679
+  },
+  {
+    "idx": 294,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2411891222000122
+  },
+  {
+    "idx": 295,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7997019290924072
+  },
+  {
+    "idx": 296,
+    "behavior": "pacing",
+    "mean_speed": 0.4353226125240326
+  },
+  {
+    "idx": 297,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7841508388519287
+  },
+  {
+    "idx": 298,
+    "behavior": "stationary",
+    "mean_speed": 0.11015012860298157
+  },
+  {
+    "idx": 299,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6159717440605164
+  },
+  {
+    "idx": 300,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5049364566802979
+  },
+  {
+    "idx": 301,
+    "behavior": "pacing",
+    "mean_speed": 0.4064531922340393
+  },
+  {
+    "idx": 302,
+    "behavior": "pacing",
+    "mean_speed": 0.6938627362251282
+  },
+  {
+    "idx": 303,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5432097315788269
+  },
+  {
+    "idx": 304,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6984866261482239
+  },
+  {
+    "idx": 305,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9404584765434265
+  },
+  {
+    "idx": 306,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5266808867454529
+  },
+  {
+    "idx": 307,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7348340153694153
+  },
+  {
+    "idx": 308,
+    "behavior": "stationary",
+    "mean_speed": 0.1091771274805069
+  },
+  {
+    "idx": 309,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4705365300178528
+  },
+  {
+    "idx": 310,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6935847997665405
+  },
+  {
+    "idx": 311,
+    "behavior": "pacing",
+    "mean_speed": 0.4518055021762848
+  },
+  {
+    "idx": 312,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6479388475418091
+  },
+  {
+    "idx": 313,
+    "behavior": "goal_directed",
+    "mean_speed": 0.529641330242157
+  },
+  {
+    "idx": 314,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8912134766578674
+  },
+  {
+    "idx": 315,
+    "behavior": "goal_directed",
+    "mean_speed": 0.59371417760849
+  },
+  {
+    "idx": 316,
+    "behavior": "multi_goal",
+    "mean_speed": 0.29776376485824585
+  },
+  {
+    "idx": 317,
+    "behavior": "multi_goal",
+    "mean_speed": 0.45138055086135864
+  },
+  {
+    "idx": 318,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5814653635025024
+  },
+  {
+    "idx": 319,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9516082406044006
+  },
+  {
+    "idx": 320,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8078729510307312
+  },
+  {
+    "idx": 321,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.41301485896110535
+  },
+  {
+    "idx": 322,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8533391952514648
+  },
+  {
+    "idx": 323,
+    "behavior": "pacing",
+    "mean_speed": 0.4339810609817505
+  },
+  {
+    "idx": 324,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7629717588424683
+  },
+  {
+    "idx": 325,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8418563604354858
+  },
+  {
+    "idx": 326,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5920106768608093
+  },
+  {
+    "idx": 327,
+    "behavior": "pacing",
+    "mean_speed": 0.5385795831680298
+  },
+  {
+    "idx": 328,
+    "behavior": "stationary",
+    "mean_speed": 0.12182477116584778
+  },
+  {
+    "idx": 329,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7042608261108398
+  },
+  {
+    "idx": 330,
+    "behavior": "pacing",
+    "mean_speed": 0.6457622647285461
+  },
+  {
+    "idx": 331,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1787092685699463
+  },
+  {
+    "idx": 332,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9593193531036377
+  },
+  {
+    "idx": 333,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.18778344988822937
+  },
+  {
+    "idx": 334,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5023998618125916
+  },
+  {
+    "idx": 335,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7992221117019653
+  },
+  {
+    "idx": 336,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5253639817237854
+  },
+  {
+    "idx": 337,
+    "behavior": "multi_goal",
+    "mean_speed": 0.21497893333435059
+  },
+  {
+    "idx": 338,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6244395971298218
+  },
+  {
+    "idx": 339,
+    "behavior": "stationary",
+    "mean_speed": 0.11006374657154083
+  },
+  {
+    "idx": 340,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5177096128463745
+  },
+  {
+    "idx": 341,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5415638089179993
+  },
+  {
+    "idx": 342,
+    "behavior": "multi_goal",
+    "mean_speed": 0.39198562502861023
+  },
+  {
+    "idx": 343,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8895909786224365
+  },
+  {
+    "idx": 344,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7752810716629028
+  },
+  {
+    "idx": 345,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7515909671783447
+  },
+  {
+    "idx": 346,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9732218980789185
+  },
+  {
+    "idx": 347,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9972449541091919
+  },
+  {
+    "idx": 348,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5610942840576172
+  },
+  {
+    "idx": 349,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7965787649154663
+  },
+  {
+    "idx": 350,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5541313886642456
+  },
+  {
+    "idx": 351,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7148855328559875
+  },
+  {
+    "idx": 352,
+    "behavior": "pacing",
+    "mean_speed": 0.5938817262649536
+  },
+  {
+    "idx": 353,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8760121464729309
+  },
+  {
+    "idx": 354,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7666382789611816
+  },
+  {
+    "idx": 355,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42280134558677673
+  },
+  {
+    "idx": 356,
+    "behavior": "stationary",
+    "mean_speed": 0.10698730498552322
+  },
+  {
+    "idx": 357,
+    "behavior": "pacing",
+    "mean_speed": 0.708828330039978
+  },
+  {
+    "idx": 358,
+    "behavior": "goal_directed",
+    "mean_speed": 0.56789630651474
+  },
+  {
+    "idx": 359,
+    "behavior": "pacing",
+    "mean_speed": 0.5351414680480957
+  },
+  {
+    "idx": 360,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5203357338905334
+  },
+  {
+    "idx": 361,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6520792245864868
+  },
+  {
+    "idx": 362,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6776703596115112
+  },
+  {
+    "idx": 363,
+    "behavior": "stationary",
+    "mean_speed": 0.12862098217010498
+  },
+  {
+    "idx": 364,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8612112998962402
+  },
+  {
+    "idx": 365,
+    "behavior": "goal_directed",
+    "mean_speed": 0.648525595664978
+  },
+  {
+    "idx": 366,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42927122116088867
+  },
+  {
+    "idx": 367,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5349821448326111
+  },
+  {
+    "idx": 368,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4659046232700348
+  },
+  {
+    "idx": 369,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7043665647506714
+  },
+  {
+    "idx": 370,
+    "behavior": "pacing",
+    "mean_speed": 0.6528803110122681
+  },
+  {
+    "idx": 371,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8847784996032715
+  },
+  {
+    "idx": 372,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2979414761066437
+  },
+  {
+    "idx": 373,
+    "behavior": "pacing",
+    "mean_speed": 0.6435142755508423
+  },
+  {
+    "idx": 374,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8780015707015991
+  },
+  {
+    "idx": 375,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.30187302827835083
+  },
+  {
+    "idx": 376,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9728495478630066
+  },
+  {
+    "idx": 377,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2439962923526764
+  },
+  {
+    "idx": 378,
+    "behavior": "pacing",
+    "mean_speed": 0.500852644443512
+  },
+  {
+    "idx": 379,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5438363552093506
+  },
+  {
+    "idx": 380,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34622684121131897
+  },
+  {
+    "idx": 381,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32926759123802185
+  },
+  {
+    "idx": 382,
+    "behavior": "pacing",
+    "mean_speed": 0.46967813372612
+  },
+  {
+    "idx": 383,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6447849869728088
+  },
+  {
+    "idx": 384,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3779052495956421
+  },
+  {
+    "idx": 385,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3409399688243866
+  },
+  {
+    "idx": 386,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2668984830379486
+  },
+  {
+    "idx": 387,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4848482608795166
+  },
+  {
+    "idx": 388,
+    "behavior": "pacing",
+    "mean_speed": 0.24689769744873047
+  },
+  {
+    "idx": 389,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9644784927368164
+  },
+  {
+    "idx": 390,
+    "behavior": "pacing",
+    "mean_speed": 0.4655218720436096
+  },
+  {
+    "idx": 391,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5129683613777161
+  },
+  {
+    "idx": 392,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5837423801422119
+  },
+  {
+    "idx": 393,
+    "behavior": "pacing",
+    "mean_speed": 0.6190873384475708
+  },
+  {
+    "idx": 394,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0025050640106201
+  },
+  {
+    "idx": 395,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6900653839111328
+  },
+  {
+    "idx": 396,
+    "behavior": "stationary",
+    "mean_speed": 0.09957025945186615
+  },
+  {
+    "idx": 397,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.23624905943870544
+  },
+  {
+    "idx": 398,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.17058271169662476
+  },
+  {
+    "idx": 399,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5694292783737183
+  },
+  {
+    "idx": 400,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4142114818096161
+  },
+  {
+    "idx": 401,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9382462501525879
+  },
+  {
+    "idx": 402,
+    "behavior": "stationary",
+    "mean_speed": 0.08857912570238113
+  },
+  {
+    "idx": 403,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4139176607131958
+  },
+  {
+    "idx": 404,
+    "behavior": "pacing",
+    "mean_speed": 0.6576975584030151
+  },
+  {
+    "idx": 405,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24618813395500183
+  },
+  {
+    "idx": 406,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8988760709762573
+  },
+  {
+    "idx": 407,
+    "behavior": "stationary",
+    "mean_speed": 0.10995283722877502
+  },
+  {
+    "idx": 408,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4631078243255615
+  },
+  {
+    "idx": 409,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4628211259841919
+  },
+  {
+    "idx": 410,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3822840750217438
+  },
+  {
+    "idx": 411,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6708357334136963
+  },
+  {
+    "idx": 412,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5772209167480469
+  },
+  {
+    "idx": 413,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6374422907829285
+  },
+  {
+    "idx": 414,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7619431018829346
+  },
+  {
+    "idx": 415,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8897790312767029
+  },
+  {
+    "idx": 416,
+    "behavior": "multi_goal",
+    "mean_speed": 0.608370840549469
+  },
+  {
+    "idx": 417,
+    "behavior": "stationary",
+    "mean_speed": 0.10781976580619812
+  },
+  {
+    "idx": 418,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8926690816879272
+  },
+  {
+    "idx": 419,
+    "behavior": "stationary",
+    "mean_speed": 0.11223310232162476
+  },
+  {
+    "idx": 420,
+    "behavior": "stationary",
+    "mean_speed": 0.10113595426082611
+  },
+  {
+    "idx": 421,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3745756149291992
+  },
+  {
+    "idx": 422,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6737176775932312
+  },
+  {
+    "idx": 423,
+    "behavior": "stationary",
+    "mean_speed": 0.0980483889579773
+  },
+  {
+    "idx": 424,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7437412142753601
+  },
+  {
+    "idx": 425,
+    "behavior": "multi_goal",
+    "mean_speed": 0.1919805109500885
+  },
+  {
+    "idx": 426,
+    "behavior": "pacing",
+    "mean_speed": 0.5587450265884399
+  },
+  {
+    "idx": 427,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4884833097457886
+  },
+  {
+    "idx": 428,
+    "behavior": "multi_goal",
+    "mean_speed": 0.27855372428894043
+  },
+  {
+    "idx": 429,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6496299505233765
+  },
+  {
+    "idx": 430,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4912598133087158
+  },
+  {
+    "idx": 431,
+    "behavior": "pacing",
+    "mean_speed": 0.3725120723247528
+  },
+  {
+    "idx": 432,
+    "behavior": "pacing",
+    "mean_speed": 0.4824565351009369
+  },
+  {
+    "idx": 433,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6527694463729858
+  },
+  {
+    "idx": 434,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5887482166290283
+  },
+  {
+    "idx": 435,
+    "behavior": "stationary",
+    "mean_speed": 0.1235179603099823
+  },
+  {
+    "idx": 436,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3149590790271759
+  },
+  {
+    "idx": 437,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7549283504486084
+  },
+  {
+    "idx": 438,
+    "behavior": "pacing",
+    "mean_speed": 0.5347860455513
+  },
+  {
+    "idx": 439,
+    "behavior": "stationary",
+    "mean_speed": 0.10772047936916351
+  },
+  {
+    "idx": 440,
+    "behavior": "pacing",
+    "mean_speed": 0.47262680530548096
+  },
+  {
+    "idx": 441,
+    "behavior": "goal_directed",
+    "mean_speed": 0.537848711013794
+  },
+  {
+    "idx": 442,
+    "behavior": "goal_directed",
+    "mean_speed": 0.82503342628479
+  },
+  {
+    "idx": 443,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23388823866844177
+  },
+  {
+    "idx": 444,
+    "behavior": "stationary",
+    "mean_speed": 0.10965919494628906
+  },
+  {
+    "idx": 445,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4567314684391022
+  },
+  {
+    "idx": 446,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5126165151596069
+  },
+  {
+    "idx": 447,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4051584005355835
+  },
+  {
+    "idx": 448,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6058111190795898
+  },
+  {
+    "idx": 449,
+    "behavior": "pacing",
+    "mean_speed": 0.4001007080078125
+  },
+  {
+    "idx": 450,
+    "behavior": "multi_goal",
+    "mean_speed": 0.39640921354293823
+  },
+  {
+    "idx": 451,
+    "behavior": "stationary",
+    "mean_speed": 0.12798529863357544
+  },
+  {
+    "idx": 452,
+    "behavior": "stationary",
+    "mean_speed": 0.1108408272266388
+  },
+  {
+    "idx": 453,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3303033411502838
+  },
+  {
+    "idx": 454,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.7310994267463684
+  },
+  {
+    "idx": 455,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24003562331199646
+  },
+  {
+    "idx": 456,
+    "behavior": "pacing",
+    "mean_speed": 0.397192120552063
+  },
+  {
+    "idx": 457,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4374381899833679
+  },
+  {
+    "idx": 458,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3899463415145874
+  },
+  {
+    "idx": 459,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4313894212245941
+  },
+  {
+    "idx": 460,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5383628606796265
+  },
+  {
+    "idx": 461,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3007434606552124
+  },
+  {
+    "idx": 462,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0026309490203857
+  },
+  {
+    "idx": 463,
+    "behavior": "stationary",
+    "mean_speed": 0.13315197825431824
+  },
+  {
+    "idx": 464,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7748312950134277
+  },
+  {
+    "idx": 465,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5601720809936523
+  },
+  {
+    "idx": 466,
+    "behavior": "stationary",
+    "mean_speed": 0.1373949646949768
+  },
+  {
+    "idx": 467,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5826077461242676
+  },
+  {
+    "idx": 468,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2810153365135193
+  },
+  {
+    "idx": 469,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6413431167602539
+  },
+  {
+    "idx": 470,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6360563039779663
+  },
+  {
+    "idx": 471,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8313349485397339
+  },
+  {
+    "idx": 472,
+    "behavior": "pacing",
+    "mean_speed": 0.6048039197921753
+  },
+  {
+    "idx": 473,
+    "behavior": "pacing",
+    "mean_speed": 0.6236913204193115
+  },
+  {
+    "idx": 474,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6354998350143433
+  },
+  {
+    "idx": 475,
+    "behavior": "pacing",
+    "mean_speed": 0.6994308233261108
+  },
+  {
+    "idx": 476,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6503335237503052
+  },
+  {
+    "idx": 477,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9624884128570557
+  },
+  {
+    "idx": 478,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6088186502456665
+  },
+  {
+    "idx": 479,
+    "behavior": "pacing",
+    "mean_speed": 0.6360667943954468
+  },
+  {
+    "idx": 480,
+    "behavior": "goal_directed",
+    "mean_speed": 0.729220986366272
+  },
+  {
+    "idx": 481,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5867844820022583
+  },
+  {
+    "idx": 482,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7679522037506104
+  },
+  {
+    "idx": 483,
+    "behavior": "pacing",
+    "mean_speed": 0.5032809376716614
+  },
+  {
+    "idx": 484,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7001582384109497
+  },
+  {
+    "idx": 485,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2712413966655731
+  },
+  {
+    "idx": 486,
+    "behavior": "stationary",
+    "mean_speed": 0.11365996301174164
+  },
+  {
+    "idx": 487,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8319640159606934
+  },
+  {
+    "idx": 488,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4587704837322235
+  },
+  {
+    "idx": 489,
+    "behavior": "stationary",
+    "mean_speed": 0.11220449209213257
+  },
+  {
+    "idx": 490,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7161272764205933
+  },
+  {
+    "idx": 491,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3733620047569275
+  },
+  {
+    "idx": 492,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5225233435630798
+  },
+  {
+    "idx": 493,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.19908982515335083
+  },
+  {
+    "idx": 494,
+    "behavior": "goal_directed",
+    "mean_speed": 0.684869110584259
+  },
+  {
+    "idx": 495,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6950839757919312
+  },
+  {
+    "idx": 496,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7236502170562744
+  },
+  {
+    "idx": 497,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7403210401535034
+  },
+  {
+    "idx": 498,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5211217999458313
+  },
+  {
+    "idx": 499,
+    "behavior": "pacing",
+    "mean_speed": 0.48992234468460083
+  },
+  {
+    "idx": 500,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.40794146060943604
+  },
+  {
+    "idx": 501,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4189639091491699
+  },
+  {
+    "idx": 502,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7588398456573486
+  },
+  {
+    "idx": 503,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5237904787063599
+  },
+  {
+    "idx": 504,
+    "behavior": "pacing",
+    "mean_speed": 0.6878026723861694
+  },
+  {
+    "idx": 505,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5777121186256409
+  },
+  {
+    "idx": 506,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5683242082595825
+  },
+  {
+    "idx": 507,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6490501165390015
+  },
+  {
+    "idx": 508,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9779510498046875
+  },
+  {
+    "idx": 509,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3692699074745178
+  },
+  {
+    "idx": 510,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5344102382659912
+  },
+  {
+    "idx": 511,
+    "behavior": "pacing",
+    "mean_speed": 0.5021411180496216
+  },
+  {
+    "idx": 512,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6782881617546082
+  },
+  {
+    "idx": 513,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9350919127464294
+  },
+  {
+    "idx": 514,
+    "behavior": "pacing",
+    "mean_speed": 0.6096164584159851
+  },
+  {
+    "idx": 515,
+    "behavior": "stationary",
+    "mean_speed": 0.11250430345535278
+  },
+  {
+    "idx": 516,
+    "behavior": "pacing",
+    "mean_speed": 0.4753410220146179
+  },
+  {
+    "idx": 517,
+    "behavior": "stationary",
+    "mean_speed": 0.09956575930118561
+  },
+  {
+    "idx": 518,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3897240161895752
+  },
+  {
+    "idx": 519,
+    "behavior": "pacing",
+    "mean_speed": 0.4176960289478302
+  },
+  {
+    "idx": 520,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7937568426132202
+  },
+  {
+    "idx": 521,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5481993556022644
+  },
+  {
+    "idx": 522,
+    "behavior": "pacing",
+    "mean_speed": 0.37195247411727905
+  },
+  {
+    "idx": 523,
+    "behavior": "multi_goal",
+    "mean_speed": 0.46559643745422363
+  },
+  {
+    "idx": 524,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4686187505722046
+  },
+  {
+    "idx": 525,
+    "behavior": "pacing",
+    "mean_speed": 0.6430147886276245
+  },
+  {
+    "idx": 526,
+    "behavior": "pacing",
+    "mean_speed": 0.4923941195011139
+  },
+  {
+    "idx": 527,
+    "behavior": "stationary",
+    "mean_speed": 0.13670381903648376
+  },
+  {
+    "idx": 528,
+    "behavior": "pacing",
+    "mean_speed": 0.4594980776309967
+  },
+  {
+    "idx": 529,
+    "behavior": "pacing",
+    "mean_speed": 0.40878984332084656
+  },
+  {
+    "idx": 530,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7075335383415222
+  },
+  {
+    "idx": 531,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5579715371131897
+  },
+  {
+    "idx": 532,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47351962327957153
+  },
+  {
+    "idx": 533,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9371623992919922
+  },
+  {
+    "idx": 534,
+    "behavior": "stationary",
+    "mean_speed": 0.10750347375869751
+  },
+  {
+    "idx": 535,
+    "behavior": "pacing",
+    "mean_speed": 0.42096689343452454
+  },
+  {
+    "idx": 536,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5854846239089966
+  },
+  {
+    "idx": 537,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7764847278594971
+  },
+  {
+    "idx": 538,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5183457732200623
+  },
+  {
+    "idx": 539,
+    "behavior": "multi_goal",
+    "mean_speed": 0.436637818813324
+  },
+  {
+    "idx": 540,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8533012866973877
+  },
+  {
+    "idx": 541,
+    "behavior": "goal_directed",
+    "mean_speed": 0.775401771068573
+  },
+  {
+    "idx": 542,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.23598870635032654
+  },
+  {
+    "idx": 543,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8493971228599548
+  },
+  {
+    "idx": 544,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9677524566650391
+  },
+  {
+    "idx": 545,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5761648416519165
+  },
+  {
+    "idx": 546,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.06905253976583481
+  },
+  {
+    "idx": 547,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5111629962921143
+  },
+  {
+    "idx": 548,
+    "behavior": "pacing",
+    "mean_speed": 0.6713581681251526
+  },
+  {
+    "idx": 549,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6535906791687012
+  },
+  {
+    "idx": 550,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6752681136131287
+  },
+  {
+    "idx": 551,
+    "behavior": "pacing",
+    "mean_speed": 0.364755243062973
+  },
+  {
+    "idx": 552,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7207106351852417
+  },
+  {
+    "idx": 553,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6021633744239807
+  },
+  {
+    "idx": 554,
+    "behavior": "multi_goal",
+    "mean_speed": 0.14220908284187317
+  },
+  {
+    "idx": 555,
+    "behavior": "pacing",
+    "mean_speed": 0.5738469362258911
+  },
+  {
+    "idx": 556,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43246978521347046
+  },
+  {
+    "idx": 557,
+    "behavior": "pacing",
+    "mean_speed": 0.6389159560203552
+  },
+  {
+    "idx": 558,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9917684197425842
+  },
+  {
+    "idx": 559,
+    "behavior": "stationary",
+    "mean_speed": 0.08914154767990112
+  },
+  {
+    "idx": 560,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8438880443572998
+  },
+  {
+    "idx": 561,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9635425806045532
+  },
+  {
+    "idx": 562,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6681699156761169
+  },
+  {
+    "idx": 563,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6479038596153259
+  },
+  {
+    "idx": 564,
+    "behavior": "pacing",
+    "mean_speed": 0.3601846694946289
+  },
+  {
+    "idx": 565,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49146538972854614
+  },
+  {
+    "idx": 566,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7295396327972412
+  },
+  {
+    "idx": 567,
+    "behavior": "pacing",
+    "mean_speed": 0.421487033367157
+  },
+  {
+    "idx": 568,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8213169574737549
+  },
+  {
+    "idx": 569,
+    "behavior": "pacing",
+    "mean_speed": 0.6122058033943176
+  },
+  {
+    "idx": 570,
+    "behavior": "goal_directed",
+    "mean_speed": 0.607664167881012
+  },
+  {
+    "idx": 571,
+    "behavior": "stationary",
+    "mean_speed": 0.09076040983200073
+  },
+  {
+    "idx": 572,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6314710974693298
+  },
+  {
+    "idx": 573,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5294939279556274
+  },
+  {
+    "idx": 574,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5453006029129028
+  },
+  {
+    "idx": 575,
+    "behavior": "goal_directed",
+    "mean_speed": 0.55626380443573
+  },
+  {
+    "idx": 576,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5393079519271851
+  },
+  {
+    "idx": 577,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5767697691917419
+  },
+  {
+    "idx": 578,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.42955246567726135
+  },
+  {
+    "idx": 579,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6839364767074585
+  },
+  {
+    "idx": 580,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5002058148384094
+  },
+  {
+    "idx": 581,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9489290714263916
+  },
+  {
+    "idx": 582,
+    "behavior": "goal_directed",
+    "mean_speed": 0.942517876625061
+  },
+  {
+    "idx": 583,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6075029373168945
+  },
+  {
+    "idx": 584,
+    "behavior": "multi_goal",
+    "mean_speed": 0.31170639395713806
+  },
+  {
+    "idx": 585,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7540202736854553
+  },
+  {
+    "idx": 586,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5392618179321289
+  },
+  {
+    "idx": 587,
+    "behavior": "stationary",
+    "mean_speed": 0.12134835124015808
+  },
+  {
+    "idx": 588,
+    "behavior": "multi_goal",
+    "mean_speed": 0.573686957359314
+  },
+  {
+    "idx": 589,
+    "behavior": "stationary",
+    "mean_speed": 0.12730786204338074
+  },
+  {
+    "idx": 590,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8704327940940857
+  },
+  {
+    "idx": 591,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5956798791885376
+  },
+  {
+    "idx": 592,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.16310377418994904
+  },
+  {
+    "idx": 593,
+    "behavior": "stationary",
+    "mean_speed": 0.0892656072974205
+  },
+  {
+    "idx": 594,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8404250144958496
+  },
+  {
+    "idx": 595,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6429324746131897
+  },
+  {
+    "idx": 596,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6918026208877563
+  },
+  {
+    "idx": 597,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4479488134384155
+  },
+  {
+    "idx": 598,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5193015336990356
+  },
+  {
+    "idx": 599,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5270959138870239
+  },
+  {
+    "idx": 600,
+    "behavior": "multi_goal",
+    "mean_speed": 0.45385026931762695
+  },
+  {
+    "idx": 601,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7653930187225342
+  },
+  {
+    "idx": 602,
+    "behavior": "pacing",
+    "mean_speed": 0.38477587699890137
+  },
+  {
+    "idx": 603,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2661220133304596
+  },
+  {
+    "idx": 604,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4555100202560425
+  },
+  {
+    "idx": 605,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4230762720108032
+  },
+  {
+    "idx": 606,
+    "behavior": "pacing",
+    "mean_speed": 0.3980608582496643
+  },
+  {
+    "idx": 607,
+    "behavior": "pacing",
+    "mean_speed": 0.3558501899242401
+  },
+  {
+    "idx": 608,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4450853168964386
+  },
+  {
+    "idx": 609,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9599401950836182
+  },
+  {
+    "idx": 610,
+    "behavior": "pacing",
+    "mean_speed": 0.5320079326629639
+  },
+  {
+    "idx": 611,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9275071620941162
+  },
+  {
+    "idx": 612,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7731771469116211
+  },
+  {
+    "idx": 613,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5515233278274536
+  },
+  {
+    "idx": 614,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7811996936798096
+  },
+  {
+    "idx": 615,
+    "behavior": "stationary",
+    "mean_speed": 0.09404979646205902
+  },
+  {
+    "idx": 616,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9853769540786743
+  },
+  {
+    "idx": 617,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6256476640701294
+  },
+  {
+    "idx": 618,
+    "behavior": "multi_goal",
+    "mean_speed": 0.16260263323783875
+  },
+  {
+    "idx": 619,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8899247646331787
+  },
+  {
+    "idx": 620,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7319040298461914
+  },
+  {
+    "idx": 621,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6774557828903198
+  },
+  {
+    "idx": 622,
+    "behavior": "pacing",
+    "mean_speed": 0.6759465932846069
+  },
+  {
+    "idx": 623,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6153067350387573
+  },
+  {
+    "idx": 624,
+    "behavior": "pacing",
+    "mean_speed": 0.5336295366287231
+  },
+  {
+    "idx": 625,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7957228422164917
+  },
+  {
+    "idx": 626,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4432631731033325
+  },
+  {
+    "idx": 627,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7672488689422607
+  },
+  {
+    "idx": 628,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9580370187759399
+  },
+  {
+    "idx": 629,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38253459334373474
+  },
+  {
+    "idx": 630,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37954503297805786
+  },
+  {
+    "idx": 631,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4532020688056946
+  },
+  {
+    "idx": 632,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6468108296394348
+  },
+  {
+    "idx": 633,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8951507806777954
+  },
+  {
+    "idx": 634,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8623586297035217
+  },
+  {
+    "idx": 635,
+    "behavior": "goal_directed",
+    "mean_speed": 0.86539626121521
+  },
+  {
+    "idx": 636,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6755464673042297
+  },
+  {
+    "idx": 637,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8879553079605103
+  },
+  {
+    "idx": 638,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6565672159194946
+  },
+  {
+    "idx": 639,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5548559427261353
+  },
+  {
+    "idx": 640,
+    "behavior": "multi_goal",
+    "mean_speed": 0.530586838722229
+  },
+  {
+    "idx": 641,
+    "behavior": "stationary",
+    "mean_speed": 0.11158338189125061
+  },
+  {
+    "idx": 642,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42982208728790283
+  },
+  {
+    "idx": 643,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4084433317184448
+  },
+  {
+    "idx": 644,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2759874165058136
+  },
+  {
+    "idx": 645,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8909717798233032
+  },
+  {
+    "idx": 646,
+    "behavior": "goal_directed",
+    "mean_speed": 0.558133602142334
+  },
+  {
+    "idx": 647,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9099403619766235
+  },
+  {
+    "idx": 648,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.36434227228164673
+  },
+  {
+    "idx": 649,
+    "behavior": "stationary",
+    "mean_speed": 0.1312263458967209
+  },
+  {
+    "idx": 650,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5572565793991089
+  },
+  {
+    "idx": 651,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.25922900438308716
+  },
+  {
+    "idx": 652,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4048919081687927
+  },
+  {
+    "idx": 653,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8838934898376465
+  },
+  {
+    "idx": 654,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4159032702445984
+  },
+  {
+    "idx": 655,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7670290470123291
+  },
+  {
+    "idx": 656,
+    "behavior": "pacing",
+    "mean_speed": 0.4089304208755493
+  },
+  {
+    "idx": 657,
+    "behavior": "pacing",
+    "mean_speed": 0.5479797124862671
+  },
+  {
+    "idx": 658,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5449700355529785
+  },
+  {
+    "idx": 659,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.06822658330202103
+  },
+  {
+    "idx": 660,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5123013257980347
+  },
+  {
+    "idx": 661,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3645302653312683
+  },
+  {
+    "idx": 662,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7116135358810425
+  },
+  {
+    "idx": 663,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42111480236053467
+  },
+  {
+    "idx": 664,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9488430023193359
+  },
+  {
+    "idx": 665,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5118588209152222
+  },
+  {
+    "idx": 666,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5042059421539307
+  },
+  {
+    "idx": 667,
+    "behavior": "pacing",
+    "mean_speed": 0.6007208824157715
+  },
+  {
+    "idx": 668,
+    "behavior": "goal_directed",
+    "mean_speed": 0.48873770236968994
+  },
+  {
+    "idx": 669,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5931466817855835
+  },
+  {
+    "idx": 670,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5910088419914246
+  },
+  {
+    "idx": 671,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7375268936157227
+  },
+  {
+    "idx": 672,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6186245083808899
+  },
+  {
+    "idx": 673,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7342139482498169
+  },
+  {
+    "idx": 674,
+    "behavior": "stationary",
+    "mean_speed": 0.12673886120319366
+  },
+  {
+    "idx": 675,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4110020399093628
+  },
+  {
+    "idx": 676,
+    "behavior": "stationary",
+    "mean_speed": 0.1120276004076004
+  },
+  {
+    "idx": 677,
+    "behavior": "pacing",
+    "mean_speed": 0.48060810565948486
+  },
+  {
+    "idx": 678,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8615853786468506
+  },
+  {
+    "idx": 679,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6133022308349609
+  },
+  {
+    "idx": 680,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4032297134399414
+  },
+  {
+    "idx": 681,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8724330067634583
+  },
+  {
+    "idx": 682,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5954045057296753
+  },
+  {
+    "idx": 683,
+    "behavior": "multi_goal",
+    "mean_speed": 0.20721480250358582
+  },
+  {
+    "idx": 684,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7089500427246094
+  },
+  {
+    "idx": 685,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9821712970733643
+  },
+  {
+    "idx": 686,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3777652382850647
+  },
+  {
+    "idx": 687,
+    "behavior": "pacing",
+    "mean_speed": 0.5653415322303772
+  },
+  {
+    "idx": 688,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9119107723236084
+  },
+  {
+    "idx": 689,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5157783031463623
+  },
+  {
+    "idx": 690,
+    "behavior": "pacing",
+    "mean_speed": 0.5607602000236511
+  },
+  {
+    "idx": 691,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6959413290023804
+  },
+  {
+    "idx": 692,
+    "behavior": "pacing",
+    "mean_speed": 0.3514404594898224
+  },
+  {
+    "idx": 693,
+    "behavior": "goal_directed",
+    "mean_speed": 0.785617470741272
+  },
+  {
+    "idx": 694,
+    "behavior": "pacing",
+    "mean_speed": 0.5851877927780151
+  },
+  {
+    "idx": 695,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9251017570495605
+  },
+  {
+    "idx": 696,
+    "behavior": "pacing",
+    "mean_speed": 0.33582139015197754
+  },
+  {
+    "idx": 697,
+    "behavior": "pacing",
+    "mean_speed": 0.43291616439819336
+  },
+  {
+    "idx": 698,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9593322277069092
+  },
+  {
+    "idx": 699,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6506361365318298
+  },
+  {
+    "idx": 700,
+    "behavior": "pacing",
+    "mean_speed": 0.48654472827911377
+  },
+  {
+    "idx": 701,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8921821117401123
+  },
+  {
+    "idx": 702,
+    "behavior": "multi_goal",
+    "mean_speed": 0.45182204246520996
+  },
+  {
+    "idx": 703,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9711028337478638
+  },
+  {
+    "idx": 704,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49660491943359375
+  },
+  {
+    "idx": 705,
+    "behavior": "multi_goal",
+    "mean_speed": 0.546535313129425
+  },
+  {
+    "idx": 706,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5741100907325745
+  },
+  {
+    "idx": 707,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.45663100481033325
+  },
+  {
+    "idx": 708,
+    "behavior": "pacing",
+    "mean_speed": 0.3364570736885071
+  },
+  {
+    "idx": 709,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8756932020187378
+  },
+  {
+    "idx": 710,
+    "behavior": "pacing",
+    "mean_speed": 0.5934758186340332
+  },
+  {
+    "idx": 711,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8751133680343628
+  },
+  {
+    "idx": 712,
+    "behavior": "pacing",
+    "mean_speed": 0.41226619482040405
+  },
+  {
+    "idx": 713,
+    "behavior": "pacing",
+    "mean_speed": 0.6463072896003723
+  },
+  {
+    "idx": 714,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9845201969146729
+  },
+  {
+    "idx": 715,
+    "behavior": "pacing",
+    "mean_speed": 0.5173524022102356
+  },
+  {
+    "idx": 716,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.13798323273658752
+  },
+  {
+    "idx": 717,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5205157995223999
+  },
+  {
+    "idx": 718,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5070145130157471
+  },
+  {
+    "idx": 719,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2869322896003723
+  },
+  {
+    "idx": 720,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5028321146965027
+  },
+  {
+    "idx": 721,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.20761185884475708
+  },
+  {
+    "idx": 722,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4056776165962219
+  },
+  {
+    "idx": 723,
+    "behavior": "multi_goal",
+    "mean_speed": 0.26728296279907227
+  },
+  {
+    "idx": 724,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6314330101013184
+  },
+  {
+    "idx": 725,
+    "behavior": "pacing",
+    "mean_speed": 0.4751291871070862
+  },
+  {
+    "idx": 726,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6856130361557007
+  },
+  {
+    "idx": 727,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4991847276687622
+  },
+  {
+    "idx": 728,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.40245750546455383
+  },
+  {
+    "idx": 729,
+    "behavior": "multi_goal",
+    "mean_speed": 0.19828549027442932
+  },
+  {
+    "idx": 730,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6498523950576782
+  },
+  {
+    "idx": 731,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6477238535881042
+  },
+  {
+    "idx": 732,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9063168168067932
+  },
+  {
+    "idx": 733,
+    "behavior": "goal_directed",
+    "mean_speed": 0.917978048324585
+  },
+  {
+    "idx": 734,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7702019214630127
+  },
+  {
+    "idx": 735,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5944581031799316
+  },
+  {
+    "idx": 736,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5299404859542847
+  },
+  {
+    "idx": 737,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7412061095237732
+  },
+  {
+    "idx": 738,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5570645928382874
+  },
+  {
+    "idx": 739,
+    "behavior": "multi_goal",
+    "mean_speed": 0.542420506477356
+  },
+  {
+    "idx": 740,
+    "behavior": "goal_directed",
+    "mean_speed": 0.741428017616272
+  },
+  {
+    "idx": 741,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5196171998977661
+  },
+  {
+    "idx": 742,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6382765769958496
+  },
+  {
+    "idx": 743,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2930470108985901
+  },
+  {
+    "idx": 744,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.31706923246383667
+  },
+  {
+    "idx": 745,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8441770076751709
+  },
+  {
+    "idx": 746,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9011938571929932
+  },
+  {
+    "idx": 747,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8122900724411011
+  },
+  {
+    "idx": 748,
+    "behavior": "pacing",
+    "mean_speed": 0.5272926092147827
+  },
+  {
+    "idx": 749,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.132853701710701
+  },
+  {
+    "idx": 750,
+    "behavior": "multi_goal",
+    "mean_speed": 0.36166778206825256
+  },
+  {
+    "idx": 751,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5841678977012634
+  },
+  {
+    "idx": 752,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5205471515655518
+  },
+  {
+    "idx": 753,
+    "behavior": "multi_goal",
+    "mean_speed": 0.44941747188568115
+  },
+  {
+    "idx": 754,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3350129723548889
+  },
+  {
+    "idx": 755,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8208487033843994
+  },
+  {
+    "idx": 756,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5661466121673584
+  },
+  {
+    "idx": 757,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5240086317062378
+  },
+  {
+    "idx": 758,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9773813486099243
+  },
+  {
+    "idx": 759,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7674957513809204
+  },
+  {
+    "idx": 760,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4474087953567505
+  },
+  {
+    "idx": 761,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37118297815322876
+  },
+  {
+    "idx": 762,
+    "behavior": "stationary",
+    "mean_speed": 0.11147120594978333
+  },
+  {
+    "idx": 763,
+    "behavior": "goal_directed",
+    "mean_speed": 0.657629668712616
+  },
+  {
+    "idx": 764,
+    "behavior": "multi_goal",
+    "mean_speed": 0.22537283599376678
+  },
+  {
+    "idx": 765,
+    "behavior": "pacing",
+    "mean_speed": 0.591827929019928
+  },
+  {
+    "idx": 766,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23017282783985138
+  },
+  {
+    "idx": 767,
+    "behavior": "pacing",
+    "mean_speed": 0.4377604126930237
+  },
+  {
+    "idx": 768,
+    "behavior": "multi_goal",
+    "mean_speed": 0.31930679082870483
+  },
+  {
+    "idx": 769,
+    "behavior": "pacing",
+    "mean_speed": 0.4160640239715576
+  },
+  {
+    "idx": 770,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4849966764450073
+  },
+  {
+    "idx": 771,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5533087253570557
+  },
+  {
+    "idx": 772,
+    "behavior": "multi_goal",
+    "mean_speed": 0.45603838562965393
+  },
+  {
+    "idx": 773,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4286421537399292
+  },
+  {
+    "idx": 774,
+    "behavior": "pacing",
+    "mean_speed": 0.5019182562828064
+  },
+  {
+    "idx": 775,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8551145792007446
+  },
+  {
+    "idx": 776,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9287965297698975
+  },
+  {
+    "idx": 777,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5458706617355347
+  },
+  {
+    "idx": 778,
+    "behavior": "stationary",
+    "mean_speed": 0.10675762593746185
+  },
+  {
+    "idx": 779,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5321167707443237
+  },
+  {
+    "idx": 780,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3533581793308258
+  },
+  {
+    "idx": 781,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5372613668441772
+  },
+  {
+    "idx": 782,
+    "behavior": "pacing",
+    "mean_speed": 0.49655672907829285
+  },
+  {
+    "idx": 783,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9351613521575928
+  },
+  {
+    "idx": 784,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8232770562171936
+  },
+  {
+    "idx": 785,
+    "behavior": "stationary",
+    "mean_speed": 0.10422167927026749
+  },
+  {
+    "idx": 786,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7939388751983643
+  },
+  {
+    "idx": 787,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3755962550640106
+  },
+  {
+    "idx": 788,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8110804557800293
+  },
+  {
+    "idx": 789,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33037298917770386
+  },
+  {
+    "idx": 790,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.571697473526001
+  },
+  {
+    "idx": 791,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30170220136642456
+  },
+  {
+    "idx": 792,
+    "behavior": "multi_goal",
+    "mean_speed": 0.476291298866272
+  },
+  {
+    "idx": 793,
+    "behavior": "stationary",
+    "mean_speed": 0.128525972366333
+  },
+  {
+    "idx": 794,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0123276710510254
+  },
+  {
+    "idx": 795,
+    "behavior": "pacing",
+    "mean_speed": 0.3578856885433197
+  },
+  {
+    "idx": 796,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5518771409988403
+  },
+  {
+    "idx": 797,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6545881032943726
+  },
+  {
+    "idx": 798,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.19340842962265015
+  },
+  {
+    "idx": 799,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4339922368526459
+  },
+  {
+    "idx": 800,
+    "behavior": "multi_goal",
+    "mean_speed": 0.577519416809082
+  },
+  {
+    "idx": 801,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.20279766619205475
+  },
+  {
+    "idx": 802,
+    "behavior": "pacing",
+    "mean_speed": 0.6065238118171692
+  },
+  {
+    "idx": 803,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5588574409484863
+  },
+  {
+    "idx": 804,
+    "behavior": "stationary",
+    "mean_speed": 0.12569251656532288
+  },
+  {
+    "idx": 805,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6019327640533447
+  },
+  {
+    "idx": 806,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3331923186779022
+  },
+  {
+    "idx": 807,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3526652753353119
+  },
+  {
+    "idx": 808,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8814437389373779
+  },
+  {
+    "idx": 809,
+    "behavior": "stationary",
+    "mean_speed": 0.1482984870672226
+  },
+  {
+    "idx": 810,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49239885807037354
+  },
+  {
+    "idx": 811,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5427014827728271
+  },
+  {
+    "idx": 812,
+    "behavior": "stationary",
+    "mean_speed": 0.13820111751556396
+  },
+  {
+    "idx": 813,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3284587562084198
+  },
+  {
+    "idx": 814,
+    "behavior": "goal_directed",
+    "mean_speed": 0.927314281463623
+  },
+  {
+    "idx": 815,
+    "behavior": "goal_directed",
+    "mean_speed": 0.883165717124939
+  },
+  {
+    "idx": 816,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4101267457008362
+  },
+  {
+    "idx": 817,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9159988760948181
+  },
+  {
+    "idx": 818,
+    "behavior": "stationary",
+    "mean_speed": 0.09833190590143204
+  },
+  {
+    "idx": 819,
+    "behavior": "stationary",
+    "mean_speed": 0.11545415222644806
+  },
+  {
+    "idx": 820,
+    "behavior": "pacing",
+    "mean_speed": 0.40710264444351196
+  },
+  {
+    "idx": 821,
+    "behavior": "pacing",
+    "mean_speed": 0.6133850812911987
+  },
+  {
+    "idx": 822,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8011939525604248
+  },
+  {
+    "idx": 823,
+    "behavior": "stationary",
+    "mean_speed": 0.11613430827856064
+  },
+  {
+    "idx": 824,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9337179064750671
+  },
+  {
+    "idx": 825,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38291698694229126
+  },
+  {
+    "idx": 826,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2675028443336487
+  },
+  {
+    "idx": 827,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6454092264175415
+  },
+  {
+    "idx": 828,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6508198976516724
+  },
+  {
+    "idx": 829,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7595698833465576
+  },
+  {
+    "idx": 830,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.48956215381622314
+  },
+  {
+    "idx": 831,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6767299771308899
+  },
+  {
+    "idx": 832,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47508466243743896
+  },
+  {
+    "idx": 833,
+    "behavior": "goal_directed",
+    "mean_speed": 0.848677396774292
+  },
+  {
+    "idx": 834,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33561795949935913
+  },
+  {
+    "idx": 835,
+    "behavior": "goal_directed",
+    "mean_speed": 0.558411717414856
+  },
+  {
+    "idx": 836,
+    "behavior": "multi_goal",
+    "mean_speed": 0.632076621055603
+  },
+  {
+    "idx": 837,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47265398502349854
+  },
+  {
+    "idx": 838,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5920658111572266
+  },
+  {
+    "idx": 839,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9366711974143982
+  },
+  {
+    "idx": 840,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30008596181869507
+  },
+  {
+    "idx": 841,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5675729513168335
+  },
+  {
+    "idx": 842,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2158430516719818
+  },
+  {
+    "idx": 843,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.600577712059021
+  },
+  {
+    "idx": 844,
+    "behavior": "multi_goal",
+    "mean_speed": 0.21425822377204895
+  },
+  {
+    "idx": 845,
+    "behavior": "stationary",
+    "mean_speed": 0.10386499762535095
+  },
+  {
+    "idx": 846,
+    "behavior": "goal_directed",
+    "mean_speed": 0.763870120048523
+  },
+  {
+    "idx": 847,
+    "behavior": "goal_directed",
+    "mean_speed": 0.852339506149292
+  },
+  {
+    "idx": 848,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6601415872573853
+  },
+  {
+    "idx": 849,
+    "behavior": "stationary",
+    "mean_speed": 0.12967683374881744
+  },
+  {
+    "idx": 850,
+    "behavior": "goal_directed",
+    "mean_speed": 0.930060625076294
+  },
+  {
+    "idx": 851,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24317367374897003
+  },
+  {
+    "idx": 852,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9460372924804688
+  },
+  {
+    "idx": 853,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34824782609939575
+  },
+  {
+    "idx": 854,
+    "behavior": "stationary",
+    "mean_speed": 0.14640890061855316
+  },
+  {
+    "idx": 855,
+    "behavior": "pacing",
+    "mean_speed": 0.5621086359024048
+  },
+  {
+    "idx": 856,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5323203802108765
+  },
+  {
+    "idx": 857,
+    "behavior": "stationary",
+    "mean_speed": 0.1173107773065567
+  },
+  {
+    "idx": 858,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7392821311950684
+  },
+  {
+    "idx": 859,
+    "behavior": "pacing",
+    "mean_speed": 0.4161731004714966
+  },
+  {
+    "idx": 860,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7987957000732422
+  },
+  {
+    "idx": 861,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6314293146133423
+  },
+  {
+    "idx": 862,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5067033171653748
+  },
+  {
+    "idx": 863,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.40872466564178467
+  },
+  {
+    "idx": 864,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.392964631319046
+  },
+  {
+    "idx": 865,
+    "behavior": "pacing",
+    "mean_speed": 0.5444816946983337
+  },
+  {
+    "idx": 866,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7177786231040955
+  },
+  {
+    "idx": 867,
+    "behavior": "pacing",
+    "mean_speed": 0.555126965045929
+  },
+  {
+    "idx": 868,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8465518951416016
+  },
+  {
+    "idx": 869,
+    "behavior": "multi_goal",
+    "mean_speed": 0.39740484952926636
+  },
+  {
+    "idx": 870,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4046074151992798
+  },
+  {
+    "idx": 871,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9513058662414551
+  },
+  {
+    "idx": 872,
+    "behavior": "pacing",
+    "mean_speed": 0.5952695608139038
+  },
+  {
+    "idx": 873,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6063891649246216
+  },
+  {
+    "idx": 874,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5672010183334351
+  },
+  {
+    "idx": 875,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5885951519012451
+  },
+  {
+    "idx": 876,
+    "behavior": "goal_directed",
+    "mean_speed": 0.944933295249939
+  },
+  {
+    "idx": 877,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2638656198978424
+  },
+  {
+    "idx": 878,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9743640422821045
+  },
+  {
+    "idx": 879,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9234500527381897
+  },
+  {
+    "idx": 880,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5412827730178833
+  },
+  {
+    "idx": 881,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.42661938071250916
+  },
+  {
+    "idx": 882,
+    "behavior": "stationary",
+    "mean_speed": 0.11581338196992874
+  },
+  {
+    "idx": 883,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.37797099351882935
+  },
+  {
+    "idx": 884,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23033297061920166
+  },
+  {
+    "idx": 885,
+    "behavior": "stationary",
+    "mean_speed": 0.09908168017864227
+  },
+  {
+    "idx": 886,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7075875401496887
+  },
+  {
+    "idx": 887,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9542089700698853
+  },
+  {
+    "idx": 888,
+    "behavior": "goal_directed",
+    "mean_speed": 0.793006181716919
+  },
+  {
+    "idx": 889,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3544260859489441
+  },
+  {
+    "idx": 890,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5448641180992126
+  },
+  {
+    "idx": 891,
+    "behavior": "goal_directed",
+    "mean_speed": 0.673290491104126
+  },
+  {
+    "idx": 892,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7984127998352051
+  },
+  {
+    "idx": 893,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7947303056716919
+  },
+  {
+    "idx": 894,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7690072059631348
+  },
+  {
+    "idx": 895,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6310794949531555
+  },
+  {
+    "idx": 896,
+    "behavior": "stationary",
+    "mean_speed": 0.13792718946933746
+  },
+  {
+    "idx": 897,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.47525274753570557
+  },
+  {
+    "idx": 898,
+    "behavior": "multi_goal",
+    "mean_speed": 0.46116963028907776
+  },
+  {
+    "idx": 899,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4969157576560974
+  },
+  {
+    "idx": 900,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9629661440849304
+  },
+  {
+    "idx": 901,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3749546706676483
+  },
+  {
+    "idx": 902,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8381937742233276
+  },
+  {
+    "idx": 903,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3511822521686554
+  },
+  {
+    "idx": 904,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6284446716308594
+  },
+  {
+    "idx": 905,
+    "behavior": "multi_goal",
+    "mean_speed": 0.40786153078079224
+  },
+  {
+    "idx": 906,
+    "behavior": "multi_goal",
+    "mean_speed": 0.22387173771858215
+  },
+  {
+    "idx": 907,
+    "behavior": "multi_goal",
+    "mean_speed": 0.1996280550956726
+  },
+  {
+    "idx": 908,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7320629358291626
+  },
+  {
+    "idx": 909,
+    "behavior": "pacing",
+    "mean_speed": 0.37600743770599365
+  },
+  {
+    "idx": 910,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6043953895568848
+  },
+  {
+    "idx": 911,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8920334577560425
+  },
+  {
+    "idx": 912,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4634157419204712
+  },
+  {
+    "idx": 913,
+    "behavior": "goal_directed",
+    "mean_speed": 0.54395592212677
+  },
+  {
+    "idx": 914,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3484192490577698
+  },
+  {
+    "idx": 915,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5739221572875977
+  },
+  {
+    "idx": 916,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5429597496986389
+  },
+  {
+    "idx": 917,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4576970636844635
+  },
+  {
+    "idx": 918,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9772679805755615
+  },
+  {
+    "idx": 919,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3812440037727356
+  },
+  {
+    "idx": 920,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9859836101531982
+  },
+  {
+    "idx": 921,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9319561719894409
+  },
+  {
+    "idx": 922,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5687139630317688
+  },
+  {
+    "idx": 923,
+    "behavior": "goal_directed",
+    "mean_speed": 0.980679988861084
+  },
+  {
+    "idx": 924,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7566355466842651
+  },
+  {
+    "idx": 925,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4009965658187866
+  },
+  {
+    "idx": 926,
+    "behavior": "pacing",
+    "mean_speed": 0.4946628212928772
+  },
+  {
+    "idx": 927,
+    "behavior": "stationary",
+    "mean_speed": 0.09788461029529572
+  },
+  {
+    "idx": 928,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3432618975639343
+  },
+  {
+    "idx": 929,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8295783996582031
+  },
+  {
+    "idx": 930,
+    "behavior": "pacing",
+    "mean_speed": 0.6244456171989441
+  },
+  {
+    "idx": 931,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3636910319328308
+  },
+  {
+    "idx": 932,
+    "behavior": "pacing",
+    "mean_speed": 0.5353044271469116
+  },
+  {
+    "idx": 933,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5722215175628662
+  },
+  {
+    "idx": 934,
+    "behavior": "pacing",
+    "mean_speed": 0.5241026878356934
+  },
+  {
+    "idx": 935,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3268117308616638
+  },
+  {
+    "idx": 936,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7222610712051392
+  },
+  {
+    "idx": 937,
+    "behavior": "goal_directed",
+    "mean_speed": 0.4983958303928375
+  },
+  {
+    "idx": 938,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5888319611549377
+  },
+  {
+    "idx": 939,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5963116884231567
+  },
+  {
+    "idx": 940,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5206071734428406
+  },
+  {
+    "idx": 941,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2713351547718048
+  },
+  {
+    "idx": 942,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7324166893959045
+  },
+  {
+    "idx": 943,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8716566562652588
+  },
+  {
+    "idx": 944,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7769839763641357
+  },
+  {
+    "idx": 945,
+    "behavior": "stationary",
+    "mean_speed": 0.12366428971290588
+  },
+  {
+    "idx": 946,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23625430464744568
+  },
+  {
+    "idx": 947,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4582135081291199
+  },
+  {
+    "idx": 948,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9888051748275757
+  },
+  {
+    "idx": 949,
+    "behavior": "pacing",
+    "mean_speed": 0.6408993005752563
+  },
+  {
+    "idx": 950,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4954897165298462
+  },
+  {
+    "idx": 951,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8820508718490601
+  },
+  {
+    "idx": 952,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32778266072273254
+  },
+  {
+    "idx": 953,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7067440748214722
+  },
+  {
+    "idx": 954,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6994941234588623
+  },
+  {
+    "idx": 955,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6169956922531128
+  },
+  {
+    "idx": 956,
+    "behavior": "pacing",
+    "mean_speed": 0.647708535194397
+  },
+  {
+    "idx": 957,
+    "behavior": "pacing",
+    "mean_speed": 0.480177104473114
+  },
+  {
+    "idx": 958,
+    "behavior": "multi_goal",
+    "mean_speed": 0.28505441546440125
+  },
+  {
+    "idx": 959,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47415778040885925
+  },
+  {
+    "idx": 960,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7589391469955444
+  },
+  {
+    "idx": 961,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8685044646263123
+  },
+  {
+    "idx": 962,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9081822633743286
+  },
+  {
+    "idx": 963,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9981783628463745
+  },
+  {
+    "idx": 964,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6703780293464661
+  },
+  {
+    "idx": 965,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9532406330108643
+  },
+  {
+    "idx": 966,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9114895462989807
+  },
+  {
+    "idx": 967,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7961686849594116
+  },
+  {
+    "idx": 968,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8701275587081909
+  },
+  {
+    "idx": 969,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6925762891769409
+  },
+  {
+    "idx": 970,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8373186588287354
+  },
+  {
+    "idx": 971,
+    "behavior": "pacing",
+    "mean_speed": 0.416993111371994
+  },
+  {
+    "idx": 972,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5763967633247375
+  },
+  {
+    "idx": 973,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5850684642791748
+  },
+  {
+    "idx": 974,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7478145360946655
+  },
+  {
+    "idx": 975,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43293702602386475
+  },
+  {
+    "idx": 976,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3314661383628845
+  },
+  {
+    "idx": 977,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8553809523582458
+  },
+  {
+    "idx": 978,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38833361864089966
+  },
+  {
+    "idx": 979,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9826316833496094
+  },
+  {
+    "idx": 980,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8873583078384399
+  },
+  {
+    "idx": 981,
+    "behavior": "goal_directed",
+    "mean_speed": 0.631130576133728
+  },
+  {
+    "idx": 982,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5282790064811707
+  },
+  {
+    "idx": 983,
+    "behavior": "stationary",
+    "mean_speed": 0.11178600788116455
+  },
+  {
+    "idx": 984,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7396197319030762
+  },
+  {
+    "idx": 985,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9838203191757202
+  },
+  {
+    "idx": 986,
+    "behavior": "stationary",
+    "mean_speed": 0.14020022749900818
+  },
+  {
+    "idx": 987,
+    "behavior": "stationary",
+    "mean_speed": 0.11736391484737396
+  },
+  {
+    "idx": 988,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8254711031913757
+  },
+  {
+    "idx": 989,
+    "behavior": "pacing",
+    "mean_speed": 0.530698835849762
+  },
+  {
+    "idx": 990,
+    "behavior": "stationary",
+    "mean_speed": 0.09740704298019409
+  },
+  {
+    "idx": 991,
+    "behavior": "stationary",
+    "mean_speed": 0.10244405269622803
+  },
+  {
+    "idx": 992,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.7260648012161255
+  },
+  {
+    "idx": 993,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5098252296447754
+  },
+  {
+    "idx": 994,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6790536642074585
+  },
+  {
+    "idx": 995,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8930342197418213
+  },
+  {
+    "idx": 996,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8028862476348877
+  },
+  {
+    "idx": 997,
+    "behavior": "stationary",
+    "mean_speed": 0.1269507110118866
+  },
+  {
+    "idx": 998,
+    "behavior": "stationary",
+    "mean_speed": 0.12480253726243973
+  },
+  {
+    "idx": 999,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3374282717704773
+  },
+  {
+    "idx": 1000,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7915087938308716
+  },
+  {
+    "idx": 1001,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8063258528709412
+  },
+  {
+    "idx": 1002,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8972246646881104
+  },
+  {
+    "idx": 1003,
+    "behavior": "stationary",
+    "mean_speed": 0.1234981119632721
+  },
+  {
+    "idx": 1004,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7092336416244507
+  },
+  {
+    "idx": 1005,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5276151895523071
+  },
+  {
+    "idx": 1006,
+    "behavior": "pacing",
+    "mean_speed": 0.37715017795562744
+  },
+  {
+    "idx": 1007,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7640191316604614
+  },
+  {
+    "idx": 1008,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5586138367652893
+  },
+  {
+    "idx": 1009,
+    "behavior": "pacing",
+    "mean_speed": 0.554936408996582
+  },
+  {
+    "idx": 1010,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5710388422012329
+  },
+  {
+    "idx": 1011,
+    "behavior": "stationary",
+    "mean_speed": 0.10579083859920502
+  },
+  {
+    "idx": 1012,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5852571725845337
+  },
+  {
+    "idx": 1013,
+    "behavior": "pacing",
+    "mean_speed": 0.3933199644088745
+  },
+  {
+    "idx": 1014,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3481355309486389
+  },
+  {
+    "idx": 1015,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8653658628463745
+  },
+  {
+    "idx": 1016,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9539074301719666
+  },
+  {
+    "idx": 1017,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34258586168289185
+  },
+  {
+    "idx": 1018,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.17037378251552582
+  },
+  {
+    "idx": 1019,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2942933440208435
+  },
+  {
+    "idx": 1020,
+    "behavior": "pacing",
+    "mean_speed": 0.4458053708076477
+  },
+  {
+    "idx": 1021,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6055590510368347
+  },
+  {
+    "idx": 1022,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6287750005722046
+  },
+  {
+    "idx": 1023,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2531260848045349
+  },
+  {
+    "idx": 1024,
+    "behavior": "multi_goal",
+    "mean_speed": 0.543540358543396
+  },
+  {
+    "idx": 1025,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.23686552047729492
+  },
+  {
+    "idx": 1026,
+    "behavior": "stationary",
+    "mean_speed": 0.09696773439645767
+  },
+  {
+    "idx": 1027,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4766078591346741
+  },
+  {
+    "idx": 1028,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7167148590087891
+  },
+  {
+    "idx": 1029,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9038987159729004
+  },
+  {
+    "idx": 1030,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3354901075363159
+  },
+  {
+    "idx": 1031,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7398965358734131
+  },
+  {
+    "idx": 1032,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.26769548654556274
+  },
+  {
+    "idx": 1033,
+    "behavior": "pacing",
+    "mean_speed": 0.4089999198913574
+  },
+  {
+    "idx": 1034,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8628771305084229
+  },
+  {
+    "idx": 1035,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6831255555152893
+  },
+  {
+    "idx": 1036,
+    "behavior": "stationary",
+    "mean_speed": 0.10638658702373505
+  },
+  {
+    "idx": 1037,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.528011679649353
+  },
+  {
+    "idx": 1038,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.39781010150909424
+  },
+  {
+    "idx": 1039,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4817066192626953
+  },
+  {
+    "idx": 1040,
+    "behavior": "pacing",
+    "mean_speed": 0.4611245393753052
+  },
+  {
+    "idx": 1041,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5149839520454407
+  },
+  {
+    "idx": 1042,
+    "behavior": "stationary",
+    "mean_speed": 0.10994401574134827
+  },
+  {
+    "idx": 1043,
+    "behavior": "stationary",
+    "mean_speed": 0.09237410128116608
+  },
+  {
+    "idx": 1044,
+    "behavior": "stationary",
+    "mean_speed": 0.10956262797117233
+  },
+  {
+    "idx": 1045,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3771478533744812
+  },
+  {
+    "idx": 1046,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37731391191482544
+  },
+  {
+    "idx": 1047,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6280849575996399
+  },
+  {
+    "idx": 1048,
+    "behavior": "pacing",
+    "mean_speed": 0.5409198999404907
+  },
+  {
+    "idx": 1049,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9462123513221741
+  },
+  {
+    "idx": 1050,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5428770780563354
+  },
+  {
+    "idx": 1051,
+    "behavior": "pacing",
+    "mean_speed": 0.6455918550491333
+  },
+  {
+    "idx": 1052,
+    "behavior": "pacing",
+    "mean_speed": 0.35493701696395874
+  },
+  {
+    "idx": 1053,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3361126482486725
+  },
+  {
+    "idx": 1054,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5280010104179382
+  },
+  {
+    "idx": 1055,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6803238391876221
+  },
+  {
+    "idx": 1056,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2805398106575012
+  },
+  {
+    "idx": 1057,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6128534078598022
+  },
+  {
+    "idx": 1058,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7678970098495483
+  },
+  {
+    "idx": 1059,
+    "behavior": "stationary",
+    "mean_speed": 0.10066057741641998
+  },
+  {
+    "idx": 1060,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2900294065475464
+  },
+  {
+    "idx": 1061,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7715611457824707
+  },
+  {
+    "idx": 1062,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5182772874832153
+  },
+  {
+    "idx": 1063,
+    "behavior": "pacing",
+    "mean_speed": 0.5194514989852905
+  },
+  {
+    "idx": 1064,
+    "behavior": "pacing",
+    "mean_speed": 0.614423394203186
+  },
+  {
+    "idx": 1065,
+    "behavior": "pacing",
+    "mean_speed": 0.6413332223892212
+  },
+  {
+    "idx": 1066,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5630310773849487
+  },
+  {
+    "idx": 1067,
+    "behavior": "multi_goal",
+    "mean_speed": 0.555107831954956
+  },
+  {
+    "idx": 1068,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7119964957237244
+  },
+  {
+    "idx": 1069,
+    "behavior": "stationary",
+    "mean_speed": 0.10592661798000336
+  },
+  {
+    "idx": 1070,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4727073907852173
+  },
+  {
+    "idx": 1071,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5631911754608154
+  },
+  {
+    "idx": 1072,
+    "behavior": "goal_directed",
+    "mean_speed": 0.852015495300293
+  },
+  {
+    "idx": 1073,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9862691164016724
+  },
+  {
+    "idx": 1074,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.13920561969280243
+  },
+  {
+    "idx": 1075,
+    "behavior": "pacing",
+    "mean_speed": 0.46569883823394775
+  },
+  {
+    "idx": 1076,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7621124982833862
+  },
+  {
+    "idx": 1077,
+    "behavior": "pacing",
+    "mean_speed": 0.4609479308128357
+  },
+  {
+    "idx": 1078,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7180814743041992
+  },
+  {
+    "idx": 1079,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8759114742279053
+  },
+  {
+    "idx": 1080,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4312320947647095
+  },
+  {
+    "idx": 1081,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5448631048202515
+  },
+  {
+    "idx": 1082,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7460730075836182
+  },
+  {
+    "idx": 1083,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43385419249534607
+  },
+  {
+    "idx": 1084,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5664404630661011
+  },
+  {
+    "idx": 1085,
+    "behavior": "stationary",
+    "mean_speed": 0.09671305865049362
+  },
+  {
+    "idx": 1086,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.40954676270484924
+  },
+  {
+    "idx": 1087,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3868906795978546
+  },
+  {
+    "idx": 1088,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8654693365097046
+  },
+  {
+    "idx": 1089,
+    "behavior": "multi_goal",
+    "mean_speed": 0.26220834255218506
+  },
+  {
+    "idx": 1090,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6613839864730835
+  },
+  {
+    "idx": 1091,
+    "behavior": "multi_goal",
+    "mean_speed": 0.654719889163971
+  },
+  {
+    "idx": 1092,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5404320955276489
+  },
+  {
+    "idx": 1093,
+    "behavior": "pacing",
+    "mean_speed": 0.6536258459091187
+  },
+  {
+    "idx": 1094,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5294327735900879
+  },
+  {
+    "idx": 1095,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8234058022499084
+  },
+  {
+    "idx": 1096,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6124118566513062
+  },
+  {
+    "idx": 1097,
+    "behavior": "pacing",
+    "mean_speed": 0.6425825357437134
+  },
+  {
+    "idx": 1098,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6331169009208679
+  },
+  {
+    "idx": 1099,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6236797571182251
+  },
+  {
+    "idx": 1100,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6000286936759949
+  },
+  {
+    "idx": 1101,
+    "behavior": "stationary",
+    "mean_speed": 0.10098668932914734
+  },
+  {
+    "idx": 1102,
+    "behavior": "pacing",
+    "mean_speed": 0.38317614793777466
+  },
+  {
+    "idx": 1103,
+    "behavior": "multi_goal",
+    "mean_speed": 0.28323760628700256
+  },
+  {
+    "idx": 1104,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6380458474159241
+  },
+  {
+    "idx": 1105,
+    "behavior": "multi_goal",
+    "mean_speed": 0.390244722366333
+  },
+  {
+    "idx": 1106,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.7317947745323181
+  },
+  {
+    "idx": 1107,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2401530146598816
+  },
+  {
+    "idx": 1108,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5407034158706665
+  },
+  {
+    "idx": 1109,
+    "behavior": "pacing",
+    "mean_speed": 0.4450797438621521
+  },
+  {
+    "idx": 1110,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7050797343254089
+  },
+  {
+    "idx": 1111,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9612148404121399
+  },
+  {
+    "idx": 1112,
+    "behavior": "multi_goal",
+    "mean_speed": 0.395152747631073
+  },
+  {
+    "idx": 1113,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5146249532699585
+  },
+  {
+    "idx": 1114,
+    "behavior": "stationary",
+    "mean_speed": 0.10612073540687561
+  },
+  {
+    "idx": 1115,
+    "behavior": "pacing",
+    "mean_speed": 0.5094558000564575
+  },
+  {
+    "idx": 1116,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9355825185775757
+  },
+  {
+    "idx": 1117,
+    "behavior": "stationary",
+    "mean_speed": 0.10287021100521088
+  },
+  {
+    "idx": 1118,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8782321214675903
+  },
+  {
+    "idx": 1119,
+    "behavior": "pacing",
+    "mean_speed": 0.5169700384140015
+  },
+  {
+    "idx": 1120,
+    "behavior": "multi_goal",
+    "mean_speed": 0.40632742643356323
+  },
+  {
+    "idx": 1121,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8754525184631348
+  },
+  {
+    "idx": 1122,
+    "behavior": "pacing",
+    "mean_speed": 0.5094611644744873
+  },
+  {
+    "idx": 1123,
+    "behavior": "pacing",
+    "mean_speed": 0.36959266662597656
+  },
+  {
+    "idx": 1124,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.08931472897529602
+  },
+  {
+    "idx": 1125,
+    "behavior": "pacing",
+    "mean_speed": 0.6100503206253052
+  },
+  {
+    "idx": 1126,
+    "behavior": "multi_goal",
+    "mean_speed": 0.29864853620529175
+  },
+  {
+    "idx": 1127,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6802302002906799
+  },
+  {
+    "idx": 1128,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5277048349380493
+  },
+  {
+    "idx": 1129,
+    "behavior": "multi_goal",
+    "mean_speed": 0.324929416179657
+  },
+  {
+    "idx": 1130,
+    "behavior": "stationary",
+    "mean_speed": 0.12116304039955139
+  },
+  {
+    "idx": 1131,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5907360911369324
+  },
+  {
+    "idx": 1132,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42686551809310913
+  },
+  {
+    "idx": 1133,
+    "behavior": "pacing",
+    "mean_speed": 0.5644958019256592
+  },
+  {
+    "idx": 1134,
+    "behavior": "stationary",
+    "mean_speed": 0.10987405478954315
+  },
+  {
+    "idx": 1135,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8009806871414185
+  },
+  {
+    "idx": 1136,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6100034713745117
+  },
+  {
+    "idx": 1137,
+    "behavior": "goal_directed",
+    "mean_speed": 0.52895188331604
+  },
+  {
+    "idx": 1138,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2064945101737976
+  },
+  {
+    "idx": 1139,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6855219006538391
+  },
+  {
+    "idx": 1140,
+    "behavior": "pacing",
+    "mean_speed": 0.5580013990402222
+  },
+  {
+    "idx": 1141,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6507919430732727
+  },
+  {
+    "idx": 1142,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4240790605545044
+  },
+  {
+    "idx": 1143,
+    "behavior": "pacing",
+    "mean_speed": 0.39814162254333496
+  },
+  {
+    "idx": 1144,
+    "behavior": "stationary",
+    "mean_speed": 0.12856438755989075
+  },
+  {
+    "idx": 1145,
+    "behavior": "stationary",
+    "mean_speed": 0.12292316555976868
+  },
+  {
+    "idx": 1146,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8165206909179688
+  },
+  {
+    "idx": 1147,
+    "behavior": "stationary",
+    "mean_speed": 0.11934249103069305
+  },
+  {
+    "idx": 1148,
+    "behavior": "multi_goal",
+    "mean_speed": 0.27281588315963745
+  },
+  {
+    "idx": 1149,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5078206062316895
+  },
+  {
+    "idx": 1150,
+    "behavior": "stationary",
+    "mean_speed": 0.14950957894325256
+  },
+  {
+    "idx": 1151,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5885125398635864
+  },
+  {
+    "idx": 1152,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2018429934978485
+  },
+  {
+    "idx": 1153,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1071263775229454
+  },
+  {
+    "idx": 1154,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7350247502326965
+  },
+  {
+    "idx": 1155,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5436697006225586
+  },
+  {
+    "idx": 1156,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9719865322113037
+  },
+  {
+    "idx": 1157,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2716919183731079
+  },
+  {
+    "idx": 1158,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24495187401771545
+  },
+  {
+    "idx": 1159,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24188721179962158
+  },
+  {
+    "idx": 1160,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6643025875091553
+  },
+  {
+    "idx": 1161,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6557265520095825
+  },
+  {
+    "idx": 1162,
+    "behavior": "pacing",
+    "mean_speed": 0.5239923596382141
+  },
+  {
+    "idx": 1163,
+    "behavior": "stationary",
+    "mean_speed": 0.10847148299217224
+  },
+  {
+    "idx": 1164,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9029543995857239
+  },
+  {
+    "idx": 1165,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8117400407791138
+  },
+  {
+    "idx": 1166,
+    "behavior": "multi_goal",
+    "mean_speed": 0.461764931678772
+  },
+  {
+    "idx": 1167,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7342122793197632
+  },
+  {
+    "idx": 1168,
+    "behavior": "goal_directed",
+    "mean_speed": 0.769274115562439
+  },
+  {
+    "idx": 1169,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5302755236625671
+  },
+  {
+    "idx": 1170,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6191632151603699
+  },
+  {
+    "idx": 1171,
+    "behavior": "multi_goal",
+    "mean_speed": 0.52546226978302
+  },
+  {
+    "idx": 1172,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2081153690814972
+  },
+  {
+    "idx": 1173,
+    "behavior": "goal_directed",
+    "mean_speed": 0.545776903629303
+  },
+  {
+    "idx": 1174,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8567118644714355
+  },
+  {
+    "idx": 1175,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33036088943481445
+  },
+  {
+    "idx": 1176,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23760634660720825
+  },
+  {
+    "idx": 1177,
+    "behavior": "multi_goal",
+    "mean_speed": 0.22172316908836365
+  },
+  {
+    "idx": 1178,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7204326391220093
+  },
+  {
+    "idx": 1179,
+    "behavior": "stationary",
+    "mean_speed": 0.1144246906042099
+  },
+  {
+    "idx": 1180,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5384880304336548
+  },
+  {
+    "idx": 1181,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5194441080093384
+  },
+  {
+    "idx": 1182,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7328857183456421
+  },
+  {
+    "idx": 1183,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3446860909461975
+  },
+  {
+    "idx": 1184,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5177516937255859
+  },
+  {
+    "idx": 1185,
+    "behavior": "multi_goal",
+    "mean_speed": 0.15023986995220184
+  },
+  {
+    "idx": 1186,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5025542974472046
+  },
+  {
+    "idx": 1187,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6267162561416626
+  },
+  {
+    "idx": 1188,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6115972995758057
+  },
+  {
+    "idx": 1189,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.06320833414793015
+  },
+  {
+    "idx": 1190,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.21808654069900513
+  },
+  {
+    "idx": 1191,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5342088937759399
+  },
+  {
+    "idx": 1192,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.20190981030464172
+  },
+  {
+    "idx": 1193,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6381427049636841
+  },
+  {
+    "idx": 1194,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6378607749938965
+  },
+  {
+    "idx": 1195,
+    "behavior": "multi_goal",
+    "mean_speed": 0.48234832286834717
+  },
+  {
+    "idx": 1196,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.45344382524490356
+  },
+  {
+    "idx": 1197,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4085620641708374
+  },
+  {
+    "idx": 1198,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7768476009368896
+  },
+  {
+    "idx": 1199,
+    "behavior": "pacing",
+    "mean_speed": 0.47873663902282715
+  },
+  {
+    "idx": 1200,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9291112422943115
+  },
+  {
+    "idx": 1201,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8509708642959595
+  },
+  {
+    "idx": 1202,
+    "behavior": "stationary",
+    "mean_speed": 0.1442756950855255
+  },
+  {
+    "idx": 1203,
+    "behavior": "stationary",
+    "mean_speed": 0.11641588807106018
+  },
+  {
+    "idx": 1204,
+    "behavior": "multi_goal",
+    "mean_speed": 0.29964855313301086
+  },
+  {
+    "idx": 1205,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8691385984420776
+  },
+  {
+    "idx": 1206,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9728942513465881
+  },
+  {
+    "idx": 1207,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9432834386825562
+  },
+  {
+    "idx": 1208,
+    "behavior": "pacing",
+    "mean_speed": 0.48557040095329285
+  },
+  {
+    "idx": 1209,
+    "behavior": "goal_directed",
+    "mean_speed": 0.638318657875061
+  },
+  {
+    "idx": 1210,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7738249897956848
+  },
+  {
+    "idx": 1211,
+    "behavior": "pacing",
+    "mean_speed": 0.44074541330337524
+  },
+  {
+    "idx": 1212,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9175424575805664
+  },
+  {
+    "idx": 1213,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8707975745201111
+  },
+  {
+    "idx": 1214,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5267107486724854
+  },
+  {
+    "idx": 1215,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9346886873245239
+  },
+  {
+    "idx": 1216,
+    "behavior": "pacing",
+    "mean_speed": 0.38874495029449463
+  },
+  {
+    "idx": 1217,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5627614259719849
+  },
+  {
+    "idx": 1218,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2848998010158539
+  },
+  {
+    "idx": 1219,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6364062428474426
+  },
+  {
+    "idx": 1220,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6402270793914795
+  },
+  {
+    "idx": 1221,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5537114143371582
+  },
+  {
+    "idx": 1222,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.542054295539856
+  },
+  {
+    "idx": 1223,
+    "behavior": "multi_goal",
+    "mean_speed": 0.44884783029556274
+  },
+  {
+    "idx": 1224,
+    "behavior": "pacing",
+    "mean_speed": 0.42769116163253784
+  },
+  {
+    "idx": 1225,
+    "behavior": "goal_directed",
+    "mean_speed": 0.924575686454773
+  },
+  {
+    "idx": 1226,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5021383762359619
+  },
+  {
+    "idx": 1227,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6544967293739319
+  },
+  {
+    "idx": 1228,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3138527274131775
+  },
+  {
+    "idx": 1229,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43722468614578247
+  },
+  {
+    "idx": 1230,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5641884207725525
+  },
+  {
+    "idx": 1231,
+    "behavior": "pacing",
+    "mean_speed": 0.43206852674484253
+  },
+  {
+    "idx": 1232,
+    "behavior": "multi_goal",
+    "mean_speed": 0.18572431802749634
+  },
+  {
+    "idx": 1233,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6550188064575195
+  },
+  {
+    "idx": 1234,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9466835260391235
+  },
+  {
+    "idx": 1235,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9283816814422607
+  },
+  {
+    "idx": 1236,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6673065423965454
+  },
+  {
+    "idx": 1237,
+    "behavior": "pacing",
+    "mean_speed": 0.5701214075088501
+  },
+  {
+    "idx": 1238,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3427581787109375
+  },
+  {
+    "idx": 1239,
+    "behavior": "stationary",
+    "mean_speed": 0.1238318383693695
+  },
+  {
+    "idx": 1240,
+    "behavior": "pacing",
+    "mean_speed": 0.4635934829711914
+  },
+  {
+    "idx": 1241,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6879088878631592
+  },
+  {
+    "idx": 1242,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7808153629302979
+  },
+  {
+    "idx": 1243,
+    "behavior": "goal_directed",
+    "mean_speed": 0.49867013096809387
+  },
+  {
+    "idx": 1244,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9315735697746277
+  },
+  {
+    "idx": 1245,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34739381074905396
+  },
+  {
+    "idx": 1246,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7414433360099792
+  },
+  {
+    "idx": 1247,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9649963974952698
+  },
+  {
+    "idx": 1248,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23966747522354126
+  },
+  {
+    "idx": 1249,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7258399724960327
+  },
+  {
+    "idx": 1250,
+    "behavior": "pacing",
+    "mean_speed": 0.4336763620376587
+  },
+  {
+    "idx": 1251,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.0759754329919815
+  },
+  {
+    "idx": 1252,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5842744708061218
+  },
+  {
+    "idx": 1253,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7483131289482117
+  },
+  {
+    "idx": 1254,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6925085783004761
+  },
+  {
+    "idx": 1255,
+    "behavior": "multi_goal",
+    "mean_speed": 0.28697171807289124
+  },
+  {
+    "idx": 1256,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8676679134368896
+  },
+  {
+    "idx": 1257,
+    "behavior": "goal_directed",
+    "mean_speed": 0.734667181968689
+  },
+  {
+    "idx": 1258,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43151986598968506
+  },
+  {
+    "idx": 1259,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9288443326950073
+  },
+  {
+    "idx": 1260,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49638310074806213
+  },
+  {
+    "idx": 1261,
+    "behavior": "pacing",
+    "mean_speed": 0.5903778076171875
+  },
+  {
+    "idx": 1262,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9727828502655029
+  },
+  {
+    "idx": 1263,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5650347471237183
+  },
+  {
+    "idx": 1264,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5320469737052917
+  },
+  {
+    "idx": 1265,
+    "behavior": "pacing",
+    "mean_speed": 0.5603342056274414
+  },
+  {
+    "idx": 1266,
+    "behavior": "stationary",
+    "mean_speed": 0.12087265402078629
+  },
+  {
+    "idx": 1267,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6084126234054565
+  },
+  {
+    "idx": 1268,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6414960622787476
+  },
+  {
+    "idx": 1269,
+    "behavior": "pacing",
+    "mean_speed": 0.4178239703178406
+  },
+  {
+    "idx": 1270,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9186859130859375
+  },
+  {
+    "idx": 1271,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8336441516876221
+  },
+  {
+    "idx": 1272,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5422163009643555
+  },
+  {
+    "idx": 1273,
+    "behavior": "pacing",
+    "mean_speed": 0.3726935386657715
+  },
+  {
+    "idx": 1274,
+    "behavior": "multi_goal",
+    "mean_speed": 0.44873493909835815
+  },
+  {
+    "idx": 1275,
+    "behavior": "multi_goal",
+    "mean_speed": 0.22729593515396118
+  },
+  {
+    "idx": 1276,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1338392198085785
+  },
+  {
+    "idx": 1277,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6457208395004272
+  },
+  {
+    "idx": 1278,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5617696046829224
+  },
+  {
+    "idx": 1279,
+    "behavior": "stationary",
+    "mean_speed": 0.11981585621833801
+  },
+  {
+    "idx": 1280,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5040925145149231
+  },
+  {
+    "idx": 1281,
+    "behavior": "pacing",
+    "mean_speed": 0.49674397706985474
+  },
+  {
+    "idx": 1282,
+    "behavior": "goal_directed",
+    "mean_speed": 0.908969521522522
+  },
+  {
+    "idx": 1283,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5353181958198547
+  },
+  {
+    "idx": 1284,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38327616453170776
+  },
+  {
+    "idx": 1285,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8996059894561768
+  },
+  {
+    "idx": 1286,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3227075934410095
+  },
+  {
+    "idx": 1287,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7369436025619507
+  },
+  {
+    "idx": 1288,
+    "behavior": "multi_goal",
+    "mean_speed": 0.40004050731658936
+  },
+  {
+    "idx": 1289,
+    "behavior": "pacing",
+    "mean_speed": 0.39513885974884033
+  },
+  {
+    "idx": 1290,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.41559886932373047
+  },
+  {
+    "idx": 1291,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5704120397567749
+  },
+  {
+    "idx": 1292,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6051076054573059
+  },
+  {
+    "idx": 1293,
+    "behavior": "multi_goal",
+    "mean_speed": 0.506646990776062
+  },
+  {
+    "idx": 1294,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6825047731399536
+  },
+  {
+    "idx": 1295,
+    "behavior": "stationary",
+    "mean_speed": 0.13696640729904175
+  },
+  {
+    "idx": 1296,
+    "behavior": "pacing",
+    "mean_speed": 0.6121801137924194
+  },
+  {
+    "idx": 1297,
+    "behavior": "stationary",
+    "mean_speed": 0.12318990379571915
+  },
+  {
+    "idx": 1298,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5804117321968079
+  },
+  {
+    "idx": 1299,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6487492322921753
+  },
+  {
+    "idx": 1300,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43788081407546997
+  },
+  {
+    "idx": 1301,
+    "behavior": "goal_directed",
+    "mean_speed": 0.729947566986084
+  },
+  {
+    "idx": 1302,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6386264562606812
+  },
+  {
+    "idx": 1303,
+    "behavior": "stationary",
+    "mean_speed": 0.11337733268737793
+  },
+  {
+    "idx": 1304,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4619426131248474
+  },
+  {
+    "idx": 1305,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6334522366523743
+  },
+  {
+    "idx": 1306,
+    "behavior": "stationary",
+    "mean_speed": 0.11226978898048401
+  },
+  {
+    "idx": 1307,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6863950490951538
+  },
+  {
+    "idx": 1308,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37188857793807983
+  },
+  {
+    "idx": 1309,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5986908674240112
+  },
+  {
+    "idx": 1310,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4658430814743042
+  },
+  {
+    "idx": 1311,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3398894667625427
+  },
+  {
+    "idx": 1312,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3439721465110779
+  },
+  {
+    "idx": 1313,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5015695691108704
+  },
+  {
+    "idx": 1314,
+    "behavior": "goal_directed",
+    "mean_speed": 0.971484899520874
+  },
+  {
+    "idx": 1315,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9074174165725708
+  },
+  {
+    "idx": 1316,
+    "behavior": "pacing",
+    "mean_speed": 0.3261112570762634
+  },
+  {
+    "idx": 1317,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9016618728637695
+  },
+  {
+    "idx": 1318,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9241702556610107
+  },
+  {
+    "idx": 1319,
+    "behavior": "multi_goal",
+    "mean_speed": 0.38774561882019043
+  },
+  {
+    "idx": 1320,
+    "behavior": "pacing",
+    "mean_speed": 0.3533521294593811
+  },
+  {
+    "idx": 1321,
+    "behavior": "multi_goal",
+    "mean_speed": 0.23900479078292847
+  },
+  {
+    "idx": 1322,
+    "behavior": "stationary",
+    "mean_speed": 0.10324978083372116
+  },
+  {
+    "idx": 1323,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6449713110923767
+  },
+  {
+    "idx": 1324,
+    "behavior": "stationary",
+    "mean_speed": 0.11170336604118347
+  },
+  {
+    "idx": 1325,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8525387048721313
+  },
+  {
+    "idx": 1326,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4320317208766937
+  },
+  {
+    "idx": 1327,
+    "behavior": "goal_directed",
+    "mean_speed": 0.674260675907135
+  },
+  {
+    "idx": 1328,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7655056715011597
+  },
+  {
+    "idx": 1329,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6355015635490417
+  },
+  {
+    "idx": 1330,
+    "behavior": "goal_directed",
+    "mean_speed": 0.740388035774231
+  },
+  {
+    "idx": 1331,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6360102295875549
+  },
+  {
+    "idx": 1332,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.11241352558135986
+  },
+  {
+    "idx": 1333,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9364970326423645
+  },
+  {
+    "idx": 1334,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5987014174461365
+  },
+  {
+    "idx": 1335,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3282257914543152
+  },
+  {
+    "idx": 1336,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9457395672798157
+  },
+  {
+    "idx": 1337,
+    "behavior": "multi_goal",
+    "mean_speed": 0.20441657304763794
+  },
+  {
+    "idx": 1338,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4919801652431488
+  },
+  {
+    "idx": 1339,
+    "behavior": "pacing",
+    "mean_speed": 0.547819197177887
+  },
+  {
+    "idx": 1340,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.09070008993148804
+  },
+  {
+    "idx": 1341,
+    "behavior": "pacing",
+    "mean_speed": 0.6077439785003662
+  },
+  {
+    "idx": 1342,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6821762323379517
+  },
+  {
+    "idx": 1343,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32175150513648987
+  },
+  {
+    "idx": 1344,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7364149689674377
+  },
+  {
+    "idx": 1345,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8798767328262329
+  },
+  {
+    "idx": 1346,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6751726865768433
+  },
+  {
+    "idx": 1347,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.19215169548988342
+  },
+  {
+    "idx": 1348,
+    "behavior": "stationary",
+    "mean_speed": 0.11008289456367493
+  },
+  {
+    "idx": 1349,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5893815755844116
+  },
+  {
+    "idx": 1350,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7881066799163818
+  },
+  {
+    "idx": 1351,
+    "behavior": "stationary",
+    "mean_speed": 0.12359017878770828
+  },
+  {
+    "idx": 1352,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4897868037223816
+  },
+  {
+    "idx": 1353,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8633606433868408
+  },
+  {
+    "idx": 1354,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6096298694610596
+  },
+  {
+    "idx": 1355,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3583741784095764
+  },
+  {
+    "idx": 1356,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9689468145370483
+  },
+  {
+    "idx": 1357,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4668637812137604
+  },
+  {
+    "idx": 1358,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8612918853759766
+  },
+  {
+    "idx": 1359,
+    "behavior": "pacing",
+    "mean_speed": 0.5445848703384399
+  },
+  {
+    "idx": 1360,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4953697919845581
+  },
+  {
+    "idx": 1361,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8258761167526245
+  },
+  {
+    "idx": 1362,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7769708633422852
+  },
+  {
+    "idx": 1363,
+    "behavior": "goal_directed",
+    "mean_speed": 0.900754988193512
+  },
+  {
+    "idx": 1364,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6553417444229126
+  },
+  {
+    "idx": 1365,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4482659101486206
+  },
+  {
+    "idx": 1366,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7971203327178955
+  },
+  {
+    "idx": 1367,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5747095346450806
+  },
+  {
+    "idx": 1368,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8321374654769897
+  },
+  {
+    "idx": 1369,
+    "behavior": "pacing",
+    "mean_speed": 0.5997984409332275
+  },
+  {
+    "idx": 1370,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6001741886138916
+  },
+  {
+    "idx": 1371,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.15492668747901917
+  },
+  {
+    "idx": 1372,
+    "behavior": "pacing",
+    "mean_speed": 0.40154600143432617
+  },
+  {
+    "idx": 1373,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6373367309570312
+  },
+  {
+    "idx": 1374,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49539637565612793
+  },
+  {
+    "idx": 1375,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6136926412582397
+  },
+  {
+    "idx": 1376,
+    "behavior": "multi_goal",
+    "mean_speed": 0.368608295917511
+  },
+  {
+    "idx": 1377,
+    "behavior": "stationary",
+    "mean_speed": 0.11959855258464813
+  },
+  {
+    "idx": 1378,
+    "behavior": "goal_directed",
+    "mean_speed": 0.682881236076355
+  },
+  {
+    "idx": 1379,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.18251587450504303
+  },
+  {
+    "idx": 1380,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5481163859367371
+  },
+  {
+    "idx": 1381,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5387566685676575
+  },
+  {
+    "idx": 1382,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9757982492446899
+  },
+  {
+    "idx": 1383,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9942071437835693
+  },
+  {
+    "idx": 1384,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1569022238254547
+  },
+  {
+    "idx": 1385,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7198883891105652
+  },
+  {
+    "idx": 1386,
+    "behavior": "stationary",
+    "mean_speed": 0.10983755439519882
+  },
+  {
+    "idx": 1387,
+    "behavior": "pacing",
+    "mean_speed": 0.41325438022613525
+  },
+  {
+    "idx": 1388,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8772703409194946
+  },
+  {
+    "idx": 1389,
+    "behavior": "stationary",
+    "mean_speed": 0.10770538449287415
+  },
+  {
+    "idx": 1390,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.48920655250549316
+  },
+  {
+    "idx": 1391,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9270327091217041
+  },
+  {
+    "idx": 1392,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7848045229911804
+  },
+  {
+    "idx": 1393,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3219488263130188
+  },
+  {
+    "idx": 1394,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7872357368469238
+  },
+  {
+    "idx": 1395,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5331546068191528
+  },
+  {
+    "idx": 1396,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5920871496200562
+  },
+  {
+    "idx": 1397,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5398851633071899
+  },
+  {
+    "idx": 1398,
+    "behavior": "stationary",
+    "mean_speed": 0.09800124168395996
+  },
+  {
+    "idx": 1399,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3013807535171509
+  },
+  {
+    "idx": 1400,
+    "behavior": "multi_goal",
+    "mean_speed": 0.39341992139816284
+  },
+  {
+    "idx": 1401,
+    "behavior": "stationary",
+    "mean_speed": 0.09697618335485458
+  },
+  {
+    "idx": 1402,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5805302858352661
+  },
+  {
+    "idx": 1403,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0252916812896729
+  },
+  {
+    "idx": 1404,
+    "behavior": "pacing",
+    "mean_speed": 0.31738537549972534
+  },
+  {
+    "idx": 1405,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9114348888397217
+  },
+  {
+    "idx": 1406,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6663802266120911
+  },
+  {
+    "idx": 1407,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6958849430084229
+  },
+  {
+    "idx": 1408,
+    "behavior": "goal_directed",
+    "mean_speed": 0.819916844367981
+  },
+  {
+    "idx": 1409,
+    "behavior": "pacing",
+    "mean_speed": 0.4242601990699768
+  },
+  {
+    "idx": 1410,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5452543497085571
+  },
+  {
+    "idx": 1411,
+    "behavior": "multi_goal",
+    "mean_speed": 0.14638769626617432
+  },
+  {
+    "idx": 1412,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8379698991775513
+  },
+  {
+    "idx": 1413,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9632147550582886
+  },
+  {
+    "idx": 1414,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7927978038787842
+  },
+  {
+    "idx": 1415,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9132703542709351
+  },
+  {
+    "idx": 1416,
+    "behavior": "goal_directed",
+    "mean_speed": 0.800206184387207
+  },
+  {
+    "idx": 1417,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4622344374656677
+  },
+  {
+    "idx": 1418,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37464407086372375
+  },
+  {
+    "idx": 1419,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8085330724716187
+  },
+  {
+    "idx": 1420,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5430375337600708
+  },
+  {
+    "idx": 1421,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7273777723312378
+  },
+  {
+    "idx": 1422,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6321364045143127
+  },
+  {
+    "idx": 1423,
+    "behavior": "multi_goal",
+    "mean_speed": 0.09932498633861542
+  },
+  {
+    "idx": 1424,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6231999397277832
+  },
+  {
+    "idx": 1425,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7577049732208252
+  },
+  {
+    "idx": 1426,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6148777008056641
+  },
+  {
+    "idx": 1427,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6149176359176636
+  },
+  {
+    "idx": 1428,
+    "behavior": "pacing",
+    "mean_speed": 0.336593896150589
+  },
+  {
+    "idx": 1429,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.24951934814453125
+  },
+  {
+    "idx": 1430,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4497402310371399
+  },
+  {
+    "idx": 1431,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4197935461997986
+  },
+  {
+    "idx": 1432,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7306399345397949
+  },
+  {
+    "idx": 1433,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5376819372177124
+  },
+  {
+    "idx": 1434,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5296863317489624
+  },
+  {
+    "idx": 1435,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3624657988548279
+  },
+  {
+    "idx": 1436,
+    "behavior": "pacing",
+    "mean_speed": 0.3994659185409546
+  },
+  {
+    "idx": 1437,
+    "behavior": "pacing",
+    "mean_speed": 0.5622080564498901
+  },
+  {
+    "idx": 1438,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.232473224401474
+  },
+  {
+    "idx": 1439,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5066524147987366
+  },
+  {
+    "idx": 1440,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5383713245391846
+  },
+  {
+    "idx": 1441,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6205371618270874
+  },
+  {
+    "idx": 1442,
+    "behavior": "stationary",
+    "mean_speed": 0.12576965987682343
+  },
+  {
+    "idx": 1443,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9493516683578491
+  },
+  {
+    "idx": 1444,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6120655536651611
+  },
+  {
+    "idx": 1445,
+    "behavior": "pacing",
+    "mean_speed": 0.385090172290802
+  },
+  {
+    "idx": 1446,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7007606625556946
+  },
+  {
+    "idx": 1447,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5522150993347168
+  },
+  {
+    "idx": 1448,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6565934419631958
+  },
+  {
+    "idx": 1449,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7900673747062683
+  },
+  {
+    "idx": 1450,
+    "behavior": "stationary",
+    "mean_speed": 0.1352933794260025
+  },
+  {
+    "idx": 1451,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9508775472640991
+  },
+  {
+    "idx": 1452,
+    "behavior": "pacing",
+    "mean_speed": 0.5381330847740173
+  },
+  {
+    "idx": 1453,
+    "behavior": "multi_goal",
+    "mean_speed": 0.53215491771698
+  },
+  {
+    "idx": 1454,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5244908332824707
+  },
+  {
+    "idx": 1455,
+    "behavior": "pacing",
+    "mean_speed": 0.4351181983947754
+  },
+  {
+    "idx": 1456,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5430625677108765
+  },
+  {
+    "idx": 1457,
+    "behavior": "stationary",
+    "mean_speed": 0.12618492543697357
+  },
+  {
+    "idx": 1458,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8480713367462158
+  },
+  {
+    "idx": 1459,
+    "behavior": "goal_directed",
+    "mean_speed": 0.633365273475647
+  },
+  {
+    "idx": 1460,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6155092716217041
+  },
+  {
+    "idx": 1461,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.08864401280879974
+  },
+  {
+    "idx": 1462,
+    "behavior": "multi_goal",
+    "mean_speed": 0.36088141798973083
+  },
+  {
+    "idx": 1463,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.067722387611866
+  },
+  {
+    "idx": 1464,
+    "behavior": "goal_directed",
+    "mean_speed": 0.4977285861968994
+  },
+  {
+    "idx": 1465,
+    "behavior": "stationary",
+    "mean_speed": 0.11224827170372009
+  },
+  {
+    "idx": 1466,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7569291591644287
+  },
+  {
+    "idx": 1467,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9684450030326843
+  },
+  {
+    "idx": 1468,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30732691287994385
+  },
+  {
+    "idx": 1469,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9450379014015198
+  },
+  {
+    "idx": 1470,
+    "behavior": "stationary",
+    "mean_speed": 0.11670602113008499
+  },
+  {
+    "idx": 1471,
+    "behavior": "goal_directed",
+    "mean_speed": 0.666059136390686
+  },
+  {
+    "idx": 1472,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5404465198516846
+  },
+  {
+    "idx": 1473,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5592271089553833
+  },
+  {
+    "idx": 1474,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7794249057769775
+  },
+  {
+    "idx": 1475,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5666265487670898
+  },
+  {
+    "idx": 1476,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8598491549491882
+  },
+  {
+    "idx": 1477,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5088152885437012
+  },
+  {
+    "idx": 1478,
+    "behavior": "pacing",
+    "mean_speed": 0.6242668032646179
+  },
+  {
+    "idx": 1479,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4810277819633484
+  },
+  {
+    "idx": 1480,
+    "behavior": "pacing",
+    "mean_speed": 0.5316023826599121
+  },
+  {
+    "idx": 1481,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3811253309249878
+  },
+  {
+    "idx": 1482,
+    "behavior": "multi_goal",
+    "mean_speed": 0.45209991931915283
+  },
+  {
+    "idx": 1483,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6997133493423462
+  },
+  {
+    "idx": 1484,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8985698223114014
+  },
+  {
+    "idx": 1485,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6160897016525269
+  },
+  {
+    "idx": 1486,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9232876300811768
+  },
+  {
+    "idx": 1487,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8653695583343506
+  },
+  {
+    "idx": 1488,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6832280158996582
+  },
+  {
+    "idx": 1489,
+    "behavior": "pacing",
+    "mean_speed": 0.3517221510410309
+  },
+  {
+    "idx": 1490,
+    "behavior": "pacing",
+    "mean_speed": 0.587899923324585
+  },
+  {
+    "idx": 1491,
+    "behavior": "goal_directed",
+    "mean_speed": 0.887824296951294
+  },
+  {
+    "idx": 1492,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5740185976028442
+  },
+  {
+    "idx": 1493,
+    "behavior": "stationary",
+    "mean_speed": 0.1327923983335495
+  },
+  {
+    "idx": 1494,
+    "behavior": "multi_goal",
+    "mean_speed": 0.25693848729133606
+  },
+  {
+    "idx": 1495,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5293365716934204
+  },
+  {
+    "idx": 1496,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9039405584335327
+  },
+  {
+    "idx": 1497,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3923341631889343
+  },
+  {
+    "idx": 1498,
+    "behavior": "multi_goal",
+    "mean_speed": 0.36745449900627136
+  },
+  {
+    "idx": 1499,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2751171290874481
+  },
+  {
+    "idx": 1500,
+    "behavior": "pacing",
+    "mean_speed": 0.5156527757644653
+  },
+  {
+    "idx": 1501,
+    "behavior": "pacing",
+    "mean_speed": 0.6051142811775208
+  },
+  {
+    "idx": 1502,
+    "behavior": "pacing",
+    "mean_speed": 0.4195445775985718
+  },
+  {
+    "idx": 1503,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9199243783950806
+  },
+  {
+    "idx": 1504,
+    "behavior": "goal_directed",
+    "mean_speed": 0.594539999961853
+  },
+  {
+    "idx": 1505,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8159289360046387
+  },
+  {
+    "idx": 1506,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9424713850021362
+  },
+  {
+    "idx": 1507,
+    "behavior": "pacing",
+    "mean_speed": 0.5709866285324097
+  },
+  {
+    "idx": 1508,
+    "behavior": "stationary",
+    "mean_speed": 0.10283958911895752
+  },
+  {
+    "idx": 1509,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32312288880348206
+  },
+  {
+    "idx": 1510,
+    "behavior": "stationary",
+    "mean_speed": 0.10157838463783264
+  },
+  {
+    "idx": 1511,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3853341341018677
+  },
+  {
+    "idx": 1512,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4414976239204407
+  },
+  {
+    "idx": 1513,
+    "behavior": "multi_goal",
+    "mean_speed": 0.393984317779541
+  },
+  {
+    "idx": 1514,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9504377841949463
+  },
+  {
+    "idx": 1515,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.31101280450820923
+  },
+  {
+    "idx": 1516,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7605212330818176
+  },
+  {
+    "idx": 1517,
+    "behavior": "pacing",
+    "mean_speed": 0.46733352541923523
+  },
+  {
+    "idx": 1518,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7507323026657104
+  },
+  {
+    "idx": 1519,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4759278893470764
+  },
+  {
+    "idx": 1520,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7394002676010132
+  },
+  {
+    "idx": 1521,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6565546989440918
+  },
+  {
+    "idx": 1522,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9415714740753174
+  },
+  {
+    "idx": 1523,
+    "behavior": "multi_goal",
+    "mean_speed": 0.28563302755355835
+  },
+  {
+    "idx": 1524,
+    "behavior": "pacing",
+    "mean_speed": 0.6676746606826782
+  },
+  {
+    "idx": 1525,
+    "behavior": "pacing",
+    "mean_speed": 0.523373007774353
+  },
+  {
+    "idx": 1526,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6075383424758911
+  },
+  {
+    "idx": 1527,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7797018885612488
+  },
+  {
+    "idx": 1528,
+    "behavior": "goal_directed",
+    "mean_speed": 0.493790864944458
+  },
+  {
+    "idx": 1529,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5399617552757263
+  },
+  {
+    "idx": 1530,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9578708410263062
+  },
+  {
+    "idx": 1531,
+    "behavior": "stationary",
+    "mean_speed": 0.13284195959568024
+  },
+  {
+    "idx": 1532,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6212674975395203
+  },
+  {
+    "idx": 1533,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8659118413925171
+  },
+  {
+    "idx": 1534,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.7690138816833496
+  },
+  {
+    "idx": 1535,
+    "behavior": "goal_directed",
+    "mean_speed": 0.841747522354126
+  },
+  {
+    "idx": 1536,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7047234773635864
+  },
+  {
+    "idx": 1537,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6626366376876831
+  },
+  {
+    "idx": 1538,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24783068895339966
+  },
+  {
+    "idx": 1539,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7609455585479736
+  },
+  {
+    "idx": 1540,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5869311094284058
+  },
+  {
+    "idx": 1541,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8935747146606445
+  },
+  {
+    "idx": 1542,
+    "behavior": "stationary",
+    "mean_speed": 0.1099407970905304
+  },
+  {
+    "idx": 1543,
+    "behavior": "pacing",
+    "mean_speed": 0.5517413020133972
+  },
+  {
+    "idx": 1544,
+    "behavior": "multi_goal",
+    "mean_speed": 0.35784560441970825
+  },
+  {
+    "idx": 1545,
+    "behavior": "pacing",
+    "mean_speed": 0.7550743818283081
+  },
+  {
+    "idx": 1546,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.18612417578697205
+  },
+  {
+    "idx": 1547,
+    "behavior": "pacing",
+    "mean_speed": 0.49177277088165283
+  },
+  {
+    "idx": 1548,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4710842967033386
+  },
+  {
+    "idx": 1549,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9461647272109985
+  },
+  {
+    "idx": 1550,
+    "behavior": "multi_goal",
+    "mean_speed": 0.1710708737373352
+  },
+  {
+    "idx": 1551,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9221897721290588
+  },
+  {
+    "idx": 1552,
+    "behavior": "stationary",
+    "mean_speed": 0.10096290707588196
+  },
+  {
+    "idx": 1553,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4676485061645508
+  },
+  {
+    "idx": 1554,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.0735800564289093
+  },
+  {
+    "idx": 1555,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4899328947067261
+  },
+  {
+    "idx": 1556,
+    "behavior": "stationary",
+    "mean_speed": 0.11824771761894226
+  },
+  {
+    "idx": 1557,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6266651153564453
+  },
+  {
+    "idx": 1558,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8941864967346191
+  },
+  {
+    "idx": 1559,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6689327955245972
+  },
+  {
+    "idx": 1560,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.20706063508987427
+  },
+  {
+    "idx": 1561,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5953369140625
+  },
+  {
+    "idx": 1562,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.7447163462638855
+  },
+  {
+    "idx": 1563,
+    "behavior": "stationary",
+    "mean_speed": 0.1153230294585228
+  },
+  {
+    "idx": 1564,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9881306886672974
+  },
+  {
+    "idx": 1565,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6474575996398926
+  },
+  {
+    "idx": 1566,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6938427090644836
+  },
+  {
+    "idx": 1567,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7979333400726318
+  },
+  {
+    "idx": 1568,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8694322109222412
+  },
+  {
+    "idx": 1569,
+    "behavior": "goal_directed",
+    "mean_speed": 0.883478045463562
+  },
+  {
+    "idx": 1570,
+    "behavior": "goal_directed",
+    "mean_speed": 0.4901808500289917
+  },
+  {
+    "idx": 1571,
+    "behavior": "pacing",
+    "mean_speed": 0.5547655820846558
+  },
+  {
+    "idx": 1572,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7768748998641968
+  },
+  {
+    "idx": 1573,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47324109077453613
+  },
+  {
+    "idx": 1574,
+    "behavior": "pacing",
+    "mean_speed": 0.3996378183364868
+  },
+  {
+    "idx": 1575,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6009063720703125
+  },
+  {
+    "idx": 1576,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.07275251299142838
+  },
+  {
+    "idx": 1577,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.537039041519165
+  },
+  {
+    "idx": 1578,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8648280501365662
+  },
+  {
+    "idx": 1579,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5858353972434998
+  },
+  {
+    "idx": 1580,
+    "behavior": "goal_directed",
+    "mean_speed": 0.879304051399231
+  },
+  {
+    "idx": 1581,
+    "behavior": "pacing",
+    "mean_speed": 0.522111177444458
+  },
+  {
+    "idx": 1582,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5673726797103882
+  },
+  {
+    "idx": 1583,
+    "behavior": "stationary",
+    "mean_speed": 0.1344892531633377
+  },
+  {
+    "idx": 1584,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7285184860229492
+  },
+  {
+    "idx": 1585,
+    "behavior": "multi_goal",
+    "mean_speed": 0.17466434836387634
+  },
+  {
+    "idx": 1586,
+    "behavior": "pacing",
+    "mean_speed": 0.628861129283905
+  },
+  {
+    "idx": 1587,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7456846237182617
+  },
+  {
+    "idx": 1588,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7865664958953857
+  },
+  {
+    "idx": 1589,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4071004092693329
+  },
+  {
+    "idx": 1590,
+    "behavior": "pacing",
+    "mean_speed": 0.7083743214607239
+  },
+  {
+    "idx": 1591,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6859894394874573
+  },
+  {
+    "idx": 1592,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8832073211669922
+  },
+  {
+    "idx": 1593,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6672399640083313
+  },
+  {
+    "idx": 1594,
+    "behavior": "multi_goal",
+    "mean_speed": 0.35913264751434326
+  },
+  {
+    "idx": 1595,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7714974880218506
+  },
+  {
+    "idx": 1596,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.43210285902023315
+  },
+  {
+    "idx": 1597,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5862707495689392
+  },
+  {
+    "idx": 1598,
+    "behavior": "pacing",
+    "mean_speed": 0.4154653251171112
+  },
+  {
+    "idx": 1599,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.31261879205703735
+  },
+  {
+    "idx": 1600,
+    "behavior": "pacing",
+    "mean_speed": 0.5218915343284607
+  },
+  {
+    "idx": 1601,
+    "behavior": "multi_goal",
+    "mean_speed": 0.36994487047195435
+  },
+  {
+    "idx": 1602,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6772769689559937
+  },
+  {
+    "idx": 1603,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32611414790153503
+  },
+  {
+    "idx": 1604,
+    "behavior": "pacing",
+    "mean_speed": 0.3410436809062958
+  },
+  {
+    "idx": 1605,
+    "behavior": "stationary",
+    "mean_speed": 0.12483365088701248
+  },
+  {
+    "idx": 1606,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9734655618667603
+  },
+  {
+    "idx": 1607,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5377117395401001
+  },
+  {
+    "idx": 1608,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33853650093078613
+  },
+  {
+    "idx": 1609,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8142584562301636
+  },
+  {
+    "idx": 1610,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9675754308700562
+  },
+  {
+    "idx": 1611,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7332670092582703
+  },
+  {
+    "idx": 1612,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7393969297409058
+  },
+  {
+    "idx": 1613,
+    "behavior": "stationary",
+    "mean_speed": 0.10631008446216583
+  },
+  {
+    "idx": 1614,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3851803243160248
+  },
+  {
+    "idx": 1615,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6892052888870239
+  },
+  {
+    "idx": 1616,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6797413229942322
+  },
+  {
+    "idx": 1617,
+    "behavior": "pacing",
+    "mean_speed": 0.5318890810012817
+  },
+  {
+    "idx": 1618,
+    "behavior": "pacing",
+    "mean_speed": 0.46763303875923157
+  },
+  {
+    "idx": 1619,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7163518667221069
+  },
+  {
+    "idx": 1620,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7647058963775635
+  },
+  {
+    "idx": 1621,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2414103001356125
+  },
+  {
+    "idx": 1622,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5060008764266968
+  },
+  {
+    "idx": 1623,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9544154405593872
+  },
+  {
+    "idx": 1624,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7850143909454346
+  },
+  {
+    "idx": 1625,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47773659229278564
+  },
+  {
+    "idx": 1626,
+    "behavior": "pacing",
+    "mean_speed": 0.6745139956474304
+  },
+  {
+    "idx": 1627,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8163565993309021
+  },
+  {
+    "idx": 1628,
+    "behavior": "pacing",
+    "mean_speed": 0.4333750009536743
+  },
+  {
+    "idx": 1629,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8328174352645874
+  },
+  {
+    "idx": 1630,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.21796850860118866
+  },
+  {
+    "idx": 1631,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5553230047225952
+  },
+  {
+    "idx": 1632,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9674365520477295
+  },
+  {
+    "idx": 1633,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9043187499046326
+  },
+  {
+    "idx": 1634,
+    "behavior": "multi_goal",
+    "mean_speed": 0.44677191972732544
+  },
+  {
+    "idx": 1635,
+    "behavior": "pacing",
+    "mean_speed": 0.33871352672576904
+  },
+  {
+    "idx": 1636,
+    "behavior": "pacing",
+    "mean_speed": 0.553889274597168
+  },
+  {
+    "idx": 1637,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3886645436286926
+  },
+  {
+    "idx": 1638,
+    "behavior": "goal_directed",
+    "mean_speed": 0.658572256565094
+  },
+  {
+    "idx": 1639,
+    "behavior": "pacing",
+    "mean_speed": 0.5599948167800903
+  },
+  {
+    "idx": 1640,
+    "behavior": "stationary",
+    "mean_speed": 0.12295231223106384
+  },
+  {
+    "idx": 1641,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6278990507125854
+  },
+  {
+    "idx": 1642,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.663994312286377
+  },
+  {
+    "idx": 1643,
+    "behavior": "multi_goal",
+    "mean_speed": 0.717589795589447
+  },
+  {
+    "idx": 1644,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5766483545303345
+  },
+  {
+    "idx": 1645,
+    "behavior": "pacing",
+    "mean_speed": 0.48226118087768555
+  },
+  {
+    "idx": 1646,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8364694118499756
+  },
+  {
+    "idx": 1647,
+    "behavior": "stationary",
+    "mean_speed": 0.12602360546588898
+  },
+  {
+    "idx": 1648,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9439453482627869
+  },
+  {
+    "idx": 1649,
+    "behavior": "pacing",
+    "mean_speed": 0.39470332860946655
+  },
+  {
+    "idx": 1650,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8089367151260376
+  },
+  {
+    "idx": 1651,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5162550806999207
+  },
+  {
+    "idx": 1652,
+    "behavior": "multi_goal",
+    "mean_speed": 0.30151742696762085
+  },
+  {
+    "idx": 1653,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9501104354858398
+  },
+  {
+    "idx": 1654,
+    "behavior": "pacing",
+    "mean_speed": 0.4881601631641388
+  },
+  {
+    "idx": 1655,
+    "behavior": "pacing",
+    "mean_speed": 0.5479936599731445
+  },
+  {
+    "idx": 1656,
+    "behavior": "pacing",
+    "mean_speed": 0.5146386027336121
+  },
+  {
+    "idx": 1657,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8136278390884399
+  },
+  {
+    "idx": 1658,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9329304099082947
+  },
+  {
+    "idx": 1659,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2715286612510681
+  },
+  {
+    "idx": 1660,
+    "behavior": "pacing",
+    "mean_speed": 0.3955044746398926
+  },
+  {
+    "idx": 1661,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.48261702060699463
+  },
+  {
+    "idx": 1662,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6112868785858154
+  },
+  {
+    "idx": 1663,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7258098125457764
+  },
+  {
+    "idx": 1664,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5050111413002014
+  },
+  {
+    "idx": 1665,
+    "behavior": "stationary",
+    "mean_speed": 0.11222588270902634
+  },
+  {
+    "idx": 1666,
+    "behavior": "goal_directed",
+    "mean_speed": 0.62157142162323
+  },
+  {
+    "idx": 1667,
+    "behavior": "goal_directed",
+    "mean_speed": 0.734186589717865
+  },
+  {
+    "idx": 1668,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4737023115158081
+  },
+  {
+    "idx": 1669,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9116072058677673
+  },
+  {
+    "idx": 1670,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5121521949768066
+  },
+  {
+    "idx": 1671,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8763731718063354
+  },
+  {
+    "idx": 1672,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5862758755683899
+  },
+  {
+    "idx": 1673,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2716355621814728
+  },
+  {
+    "idx": 1674,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8226641416549683
+  },
+  {
+    "idx": 1675,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0044140815734863
+  },
+  {
+    "idx": 1676,
+    "behavior": "multi_goal",
+    "mean_speed": 0.424662709236145
+  },
+  {
+    "idx": 1677,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5498360395431519
+  },
+  {
+    "idx": 1678,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8163710832595825
+  },
+  {
+    "idx": 1679,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5199843645095825
+  },
+  {
+    "idx": 1680,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6515387892723083
+  },
+  {
+    "idx": 1681,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5824441909790039
+  },
+  {
+    "idx": 1682,
+    "behavior": "pacing",
+    "mean_speed": 0.5736873745918274
+  },
+  {
+    "idx": 1683,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9038431644439697
+  },
+  {
+    "idx": 1684,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6909459233283997
+  },
+  {
+    "idx": 1685,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9205275774002075
+  },
+  {
+    "idx": 1686,
+    "behavior": "pacing",
+    "mean_speed": 0.47110795974731445
+  },
+  {
+    "idx": 1687,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9808260202407837
+  },
+  {
+    "idx": 1688,
+    "behavior": "pacing",
+    "mean_speed": 0.587690532207489
+  },
+  {
+    "idx": 1689,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8297101259231567
+  },
+  {
+    "idx": 1690,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7041401863098145
+  },
+  {
+    "idx": 1691,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5974124670028687
+  },
+  {
+    "idx": 1692,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7260581254959106
+  },
+  {
+    "idx": 1693,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49282199144363403
+  },
+  {
+    "idx": 1694,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7457919120788574
+  },
+  {
+    "idx": 1695,
+    "behavior": "pacing",
+    "mean_speed": 0.48626410961151123
+  },
+  {
+    "idx": 1696,
+    "behavior": "stationary",
+    "mean_speed": 0.11694182455539703
+  },
+  {
+    "idx": 1697,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8279736042022705
+  },
+  {
+    "idx": 1698,
+    "behavior": "multi_goal",
+    "mean_speed": 0.411912202835083
+  },
+  {
+    "idx": 1699,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1498669534921646
+  },
+  {
+    "idx": 1700,
+    "behavior": "pacing",
+    "mean_speed": 0.563932478427887
+  },
+  {
+    "idx": 1701,
+    "behavior": "multi_goal",
+    "mean_speed": 0.19215434789657593
+  },
+  {
+    "idx": 1702,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9212884902954102
+  },
+  {
+    "idx": 1703,
+    "behavior": "pacing",
+    "mean_speed": 0.38015976548194885
+  },
+  {
+    "idx": 1704,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4408830404281616
+  },
+  {
+    "idx": 1705,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9494507312774658
+  },
+  {
+    "idx": 1706,
+    "behavior": "pacing",
+    "mean_speed": 0.459919810295105
+  },
+  {
+    "idx": 1707,
+    "behavior": "stationary",
+    "mean_speed": 0.12539678812026978
+  },
+  {
+    "idx": 1708,
+    "behavior": "pacing",
+    "mean_speed": 0.38760513067245483
+  },
+  {
+    "idx": 1709,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3622824549674988
+  },
+  {
+    "idx": 1710,
+    "behavior": "pacing",
+    "mean_speed": 0.539893388748169
+  },
+  {
+    "idx": 1711,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9591047763824463
+  },
+  {
+    "idx": 1712,
+    "behavior": "pacing",
+    "mean_speed": 0.4168812036514282
+  },
+  {
+    "idx": 1713,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7855854034423828
+  },
+  {
+    "idx": 1714,
+    "behavior": "stationary",
+    "mean_speed": 0.12085440754890442
+  },
+  {
+    "idx": 1715,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5460327863693237
+  },
+  {
+    "idx": 1716,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5756750106811523
+  },
+  {
+    "idx": 1717,
+    "behavior": "multi_goal",
+    "mean_speed": 0.19421862065792084
+  },
+  {
+    "idx": 1718,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7844253778457642
+  },
+  {
+    "idx": 1719,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8148863911628723
+  },
+  {
+    "idx": 1720,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5788823366165161
+  },
+  {
+    "idx": 1721,
+    "behavior": "pacing",
+    "mean_speed": 0.4464496374130249
+  },
+  {
+    "idx": 1722,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9565507173538208
+  },
+  {
+    "idx": 1723,
+    "behavior": "stationary",
+    "mean_speed": 0.09736764430999756
+  },
+  {
+    "idx": 1724,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9059180617332458
+  },
+  {
+    "idx": 1725,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33738452196121216
+  },
+  {
+    "idx": 1726,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0049152374267578
+  },
+  {
+    "idx": 1727,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6828398108482361
+  },
+  {
+    "idx": 1728,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47601521015167236
+  },
+  {
+    "idx": 1729,
+    "behavior": "pacing",
+    "mean_speed": 0.6439358592033386
+  },
+  {
+    "idx": 1730,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9219263792037964
+  },
+  {
+    "idx": 1731,
+    "behavior": "multi_goal",
+    "mean_speed": 0.21755433082580566
+  },
+  {
+    "idx": 1732,
+    "behavior": "multi_goal",
+    "mean_speed": 0.611884593963623
+  },
+  {
+    "idx": 1733,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6756287813186646
+  },
+  {
+    "idx": 1734,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5426716804504395
+  },
+  {
+    "idx": 1735,
+    "behavior": "pacing",
+    "mean_speed": 0.3541942238807678
+  },
+  {
+    "idx": 1736,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6622039079666138
+  },
+  {
+    "idx": 1737,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.06372223794460297
+  },
+  {
+    "idx": 1738,
+    "behavior": "stationary",
+    "mean_speed": 0.11328485608100891
+  },
+  {
+    "idx": 1739,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9699971675872803
+  },
+  {
+    "idx": 1740,
+    "behavior": "multi_goal",
+    "mean_speed": 0.43681633472442627
+  },
+  {
+    "idx": 1741,
+    "behavior": "pacing",
+    "mean_speed": 0.4462333917617798
+  },
+  {
+    "idx": 1742,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9490830898284912
+  },
+  {
+    "idx": 1743,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7170580625534058
+  },
+  {
+    "idx": 1744,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9700102806091309
+  },
+  {
+    "idx": 1745,
+    "behavior": "pacing",
+    "mean_speed": 0.6966325640678406
+  },
+  {
+    "idx": 1746,
+    "behavior": "pacing",
+    "mean_speed": 0.47999680042266846
+  },
+  {
+    "idx": 1747,
+    "behavior": "stationary",
+    "mean_speed": 0.11709579080343246
+  },
+  {
+    "idx": 1748,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5194674730300903
+  },
+  {
+    "idx": 1749,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7480133771896362
+  },
+  {
+    "idx": 1750,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7642195224761963
+  },
+  {
+    "idx": 1751,
+    "behavior": "pacing",
+    "mean_speed": 0.5133117437362671
+  },
+  {
+    "idx": 1752,
+    "behavior": "pacing",
+    "mean_speed": 0.5559128522872925
+  },
+  {
+    "idx": 1753,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6553144454956055
+  },
+  {
+    "idx": 1754,
+    "behavior": "multi_goal",
+    "mean_speed": 0.24528181552886963
+  },
+  {
+    "idx": 1755,
+    "behavior": "pacing",
+    "mean_speed": 0.5521883368492126
+  },
+  {
+    "idx": 1756,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33068639039993286
+  },
+  {
+    "idx": 1757,
+    "behavior": "multi_goal",
+    "mean_speed": 0.48440372943878174
+  },
+  {
+    "idx": 1758,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2992255985736847
+  },
+  {
+    "idx": 1759,
+    "behavior": "multi_goal",
+    "mean_speed": 0.09790078550577164
+  },
+  {
+    "idx": 1760,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.10019637644290924
+  },
+  {
+    "idx": 1761,
+    "behavior": "multi_goal",
+    "mean_speed": 0.39487940073013306
+  },
+  {
+    "idx": 1762,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7935372591018677
+  },
+  {
+    "idx": 1763,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8826630115509033
+  },
+  {
+    "idx": 1764,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8851238489151001
+  },
+  {
+    "idx": 1765,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6759227514266968
+  },
+  {
+    "idx": 1766,
+    "behavior": "pacing",
+    "mean_speed": 0.47571220993995667
+  },
+  {
+    "idx": 1767,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.32804495096206665
+  },
+  {
+    "idx": 1768,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5905234217643738
+  },
+  {
+    "idx": 1769,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6827865242958069
+  },
+  {
+    "idx": 1770,
+    "behavior": "stationary",
+    "mean_speed": 0.1233876496553421
+  },
+  {
+    "idx": 1771,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7783716917037964
+  },
+  {
+    "idx": 1772,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2909095287322998
+  },
+  {
+    "idx": 1773,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8121995329856873
+  },
+  {
+    "idx": 1774,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.6041207313537598
+  },
+  {
+    "idx": 1775,
+    "behavior": "pacing",
+    "mean_speed": 0.47131821513175964
+  },
+  {
+    "idx": 1776,
+    "behavior": "stationary",
+    "mean_speed": 0.11233977973461151
+  },
+  {
+    "idx": 1777,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5194520354270935
+  },
+  {
+    "idx": 1778,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5859454870223999
+  },
+  {
+    "idx": 1779,
+    "behavior": "stationary",
+    "mean_speed": 0.1441461592912674
+  },
+  {
+    "idx": 1780,
+    "behavior": "pacing",
+    "mean_speed": 0.4991915225982666
+  },
+  {
+    "idx": 1781,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7731255292892456
+  },
+  {
+    "idx": 1782,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7604639530181885
+  },
+  {
+    "idx": 1783,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42783212661743164
+  },
+  {
+    "idx": 1784,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.4223631024360657
+  },
+  {
+    "idx": 1785,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6710077524185181
+  },
+  {
+    "idx": 1786,
+    "behavior": "pacing",
+    "mean_speed": 0.40666866302490234
+  },
+  {
+    "idx": 1787,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4031098186969757
+  },
+  {
+    "idx": 1788,
+    "behavior": "pacing",
+    "mean_speed": 0.47796422243118286
+  },
+  {
+    "idx": 1789,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.179075688123703
+  },
+  {
+    "idx": 1790,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6700500249862671
+  },
+  {
+    "idx": 1791,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7242870330810547
+  },
+  {
+    "idx": 1792,
+    "behavior": "pacing",
+    "mean_speed": 0.5302861928939819
+  },
+  {
+    "idx": 1793,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8802850842475891
+  },
+  {
+    "idx": 1794,
+    "behavior": "pacing",
+    "mean_speed": 0.48493003845214844
+  },
+  {
+    "idx": 1795,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5503825545310974
+  },
+  {
+    "idx": 1796,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8504049777984619
+  },
+  {
+    "idx": 1797,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.054360345005989075
+  },
+  {
+    "idx": 1798,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5212213397026062
+  },
+  {
+    "idx": 1799,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4870506525039673
+  },
+  {
+    "idx": 1800,
+    "behavior": "pacing",
+    "mean_speed": 0.663031280040741
+  },
+  {
+    "idx": 1801,
+    "behavior": "multi_goal",
+    "mean_speed": 0.48086464405059814
+  },
+  {
+    "idx": 1802,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.3024720549583435
+  },
+  {
+    "idx": 1803,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49971169233322144
+  },
+  {
+    "idx": 1804,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3033226430416107
+  },
+  {
+    "idx": 1805,
+    "behavior": "pacing",
+    "mean_speed": 0.44347795844078064
+  },
+  {
+    "idx": 1806,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6887866258621216
+  },
+  {
+    "idx": 1807,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.17826882004737854
+  },
+  {
+    "idx": 1808,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.48695459961891174
+  },
+  {
+    "idx": 1809,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5833396911621094
+  },
+  {
+    "idx": 1810,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9974852800369263
+  },
+  {
+    "idx": 1811,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7900879383087158
+  },
+  {
+    "idx": 1812,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.10393686592578888
+  },
+  {
+    "idx": 1813,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5909286737442017
+  },
+  {
+    "idx": 1814,
+    "behavior": "stationary",
+    "mean_speed": 0.10558116436004639
+  },
+  {
+    "idx": 1815,
+    "behavior": "multi_goal",
+    "mean_speed": 0.13232527673244476
+  },
+  {
+    "idx": 1816,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8887137174606323
+  },
+  {
+    "idx": 1817,
+    "behavior": "pacing",
+    "mean_speed": 0.5225785970687866
+  },
+  {
+    "idx": 1818,
+    "behavior": "stationary",
+    "mean_speed": 0.12265045940876007
+  },
+  {
+    "idx": 1819,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5335425734519958
+  },
+  {
+    "idx": 1820,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6495546102523804
+  },
+  {
+    "idx": 1821,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5444087982177734
+  },
+  {
+    "idx": 1822,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6369274258613586
+  },
+  {
+    "idx": 1823,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.1178266853094101
+  },
+  {
+    "idx": 1824,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5921858549118042
+  },
+  {
+    "idx": 1825,
+    "behavior": "pacing",
+    "mean_speed": 0.4495844542980194
+  },
+  {
+    "idx": 1826,
+    "behavior": "goal_directed",
+    "mean_speed": 0.695677638053894
+  },
+  {
+    "idx": 1827,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.19535359740257263
+  },
+  {
+    "idx": 1828,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6991466283798218
+  },
+  {
+    "idx": 1829,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4636436998844147
+  },
+  {
+    "idx": 1830,
+    "behavior": "stationary",
+    "mean_speed": 0.1024010181427002
+  },
+  {
+    "idx": 1831,
+    "behavior": "goal_directed",
+    "mean_speed": 0.869664192199707
+  },
+  {
+    "idx": 1832,
+    "behavior": "pacing",
+    "mean_speed": 0.3007887601852417
+  },
+  {
+    "idx": 1833,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7084371447563171
+  },
+  {
+    "idx": 1834,
+    "behavior": "pacing",
+    "mean_speed": 0.4845477342605591
+  },
+  {
+    "idx": 1835,
+    "behavior": "goal_directed",
+    "mean_speed": 0.605981707572937
+  },
+  {
+    "idx": 1836,
+    "behavior": "pacing",
+    "mean_speed": 0.6027686595916748
+  },
+  {
+    "idx": 1837,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3238643407821655
+  },
+  {
+    "idx": 1838,
+    "behavior": "pacing",
+    "mean_speed": 0.46370571851730347
+  },
+  {
+    "idx": 1839,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.21646763384342194
+  },
+  {
+    "idx": 1840,
+    "behavior": "pacing",
+    "mean_speed": 0.4163041114807129
+  },
+  {
+    "idx": 1841,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.37819308042526245
+  },
+  {
+    "idx": 1842,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5388186573982239
+  },
+  {
+    "idx": 1843,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8765890598297119
+  },
+  {
+    "idx": 1844,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9427809715270996
+  },
+  {
+    "idx": 1845,
+    "behavior": "multi_goal",
+    "mean_speed": 0.43797028064727783
+  },
+  {
+    "idx": 1846,
+    "behavior": "multi_goal",
+    "mean_speed": 0.37449783086776733
+  },
+  {
+    "idx": 1847,
+    "behavior": "stationary",
+    "mean_speed": 0.13735522329807281
+  },
+  {
+    "idx": 1848,
+    "behavior": "goal_directed",
+    "mean_speed": 0.813855767250061
+  },
+  {
+    "idx": 1849,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6839227080345154
+  },
+  {
+    "idx": 1850,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6413002610206604
+  },
+  {
+    "idx": 1851,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3275812864303589
+  },
+  {
+    "idx": 1852,
+    "behavior": "pacing",
+    "mean_speed": 0.549324095249176
+  },
+  {
+    "idx": 1853,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5940302610397339
+  },
+  {
+    "idx": 1854,
+    "behavior": "pacing",
+    "mean_speed": 0.4827192425727844
+  },
+  {
+    "idx": 1855,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7644269466400146
+  },
+  {
+    "idx": 1856,
+    "behavior": "pacing",
+    "mean_speed": 0.6693000197410583
+  },
+  {
+    "idx": 1857,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.26933592557907104
+  },
+  {
+    "idx": 1858,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9651347398757935
+  },
+  {
+    "idx": 1859,
+    "behavior": "pacing",
+    "mean_speed": 0.4742377996444702
+  },
+  {
+    "idx": 1860,
+    "behavior": "multi_goal",
+    "mean_speed": 0.2511722445487976
+  },
+  {
+    "idx": 1861,
+    "behavior": "multi_goal",
+    "mean_speed": 0.518097996711731
+  },
+  {
+    "idx": 1862,
+    "behavior": "pacing",
+    "mean_speed": 0.5060302019119263
+  },
+  {
+    "idx": 1863,
+    "behavior": "goal_directed",
+    "mean_speed": 1.0117080211639404
+  },
+  {
+    "idx": 1864,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5345249176025391
+  },
+  {
+    "idx": 1865,
+    "behavior": "stationary",
+    "mean_speed": 0.10357560217380524
+  },
+  {
+    "idx": 1866,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5769814848899841
+  },
+  {
+    "idx": 1867,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3157224655151367
+  },
+  {
+    "idx": 1868,
+    "behavior": "multi_goal",
+    "mean_speed": 0.42820584774017334
+  },
+  {
+    "idx": 1869,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9471137523651123
+  },
+  {
+    "idx": 1870,
+    "behavior": "multi_goal",
+    "mean_speed": 0.29843050241470337
+  },
+  {
+    "idx": 1871,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9982150197029114
+  },
+  {
+    "idx": 1872,
+    "behavior": "stationary",
+    "mean_speed": 0.13408103585243225
+  },
+  {
+    "idx": 1873,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.2789366543292999
+  },
+  {
+    "idx": 1874,
+    "behavior": "pacing",
+    "mean_speed": 0.5361026525497437
+  },
+  {
+    "idx": 1875,
+    "behavior": "multi_goal",
+    "mean_speed": 0.41211676597595215
+  },
+  {
+    "idx": 1876,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7729804515838623
+  },
+  {
+    "idx": 1877,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3389269709587097
+  },
+  {
+    "idx": 1878,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5837700963020325
+  },
+  {
+    "idx": 1879,
+    "behavior": "stationary",
+    "mean_speed": 0.09583805501461029
+  },
+  {
+    "idx": 1880,
+    "behavior": "goal_directed",
+    "mean_speed": 0.722997784614563
+  },
+  {
+    "idx": 1881,
+    "behavior": "pacing",
+    "mean_speed": 0.4447542428970337
+  },
+  {
+    "idx": 1882,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3035418391227722
+  },
+  {
+    "idx": 1883,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9596735239028931
+  },
+  {
+    "idx": 1884,
+    "behavior": "goal_directed",
+    "mean_speed": 0.722986102104187
+  },
+  {
+    "idx": 1885,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5678287744522095
+  },
+  {
+    "idx": 1886,
+    "behavior": "pacing",
+    "mean_speed": 0.5716993808746338
+  },
+  {
+    "idx": 1887,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6062983870506287
+  },
+  {
+    "idx": 1888,
+    "behavior": "stationary",
+    "mean_speed": 0.10893456637859344
+  },
+  {
+    "idx": 1889,
+    "behavior": "pacing",
+    "mean_speed": 0.6915862560272217
+  },
+  {
+    "idx": 1890,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7623209953308105
+  },
+  {
+    "idx": 1891,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5484355092048645
+  },
+  {
+    "idx": 1892,
+    "behavior": "goal_directed",
+    "mean_speed": 0.540691614151001
+  },
+  {
+    "idx": 1893,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3041720986366272
+  },
+  {
+    "idx": 1894,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9077344536781311
+  },
+  {
+    "idx": 1895,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7606542110443115
+  },
+  {
+    "idx": 1896,
+    "behavior": "stationary",
+    "mean_speed": 0.09159810841083527
+  },
+  {
+    "idx": 1897,
+    "behavior": "stationary",
+    "mean_speed": 0.12147301435470581
+  },
+  {
+    "idx": 1898,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4093252420425415
+  },
+  {
+    "idx": 1899,
+    "behavior": "multi_goal",
+    "mean_speed": 0.21799540519714355
+  },
+  {
+    "idx": 1900,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6890734434127808
+  },
+  {
+    "idx": 1901,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5136967897415161
+  },
+  {
+    "idx": 1902,
+    "behavior": "goal_directed",
+    "mean_speed": 0.850806474685669
+  },
+  {
+    "idx": 1903,
+    "behavior": "stationary",
+    "mean_speed": 0.11963450163602829
+  },
+  {
+    "idx": 1904,
+    "behavior": "stationary",
+    "mean_speed": 0.10224637389183044
+  },
+  {
+    "idx": 1905,
+    "behavior": "multi_goal",
+    "mean_speed": 0.33249059319496155
+  },
+  {
+    "idx": 1906,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6145851016044617
+  },
+  {
+    "idx": 1907,
+    "behavior": "pacing",
+    "mean_speed": 0.39378178119659424
+  },
+  {
+    "idx": 1908,
+    "behavior": "pacing",
+    "mean_speed": 0.40752965211868286
+  },
+  {
+    "idx": 1909,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6170356869697571
+  },
+  {
+    "idx": 1910,
+    "behavior": "stationary",
+    "mean_speed": 0.14152342081069946
+  },
+  {
+    "idx": 1911,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9391470551490784
+  },
+  {
+    "idx": 1912,
+    "behavior": "stationary",
+    "mean_speed": 0.12794175744056702
+  },
+  {
+    "idx": 1913,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7805302143096924
+  },
+  {
+    "idx": 1914,
+    "behavior": "goal_directed",
+    "mean_speed": 0.983018696308136
+  },
+  {
+    "idx": 1915,
+    "behavior": "stationary",
+    "mean_speed": 0.11260272562503815
+  },
+  {
+    "idx": 1916,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8102128505706787
+  },
+  {
+    "idx": 1917,
+    "behavior": "multi_goal",
+    "mean_speed": 0.10522370040416718
+  },
+  {
+    "idx": 1918,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.07634322345256805
+  },
+  {
+    "idx": 1919,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5996294021606445
+  },
+  {
+    "idx": 1920,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8508431911468506
+  },
+  {
+    "idx": 1921,
+    "behavior": "stationary",
+    "mean_speed": 0.12626497447490692
+  },
+  {
+    "idx": 1922,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3943557143211365
+  },
+  {
+    "idx": 1923,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7454972863197327
+  },
+  {
+    "idx": 1924,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4114042818546295
+  },
+  {
+    "idx": 1925,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5561649203300476
+  },
+  {
+    "idx": 1926,
+    "behavior": "stationary",
+    "mean_speed": 0.152258962392807
+  },
+  {
+    "idx": 1927,
+    "behavior": "multi_goal",
+    "mean_speed": 0.49546992778778076
+  },
+  {
+    "idx": 1928,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3976570963859558
+  },
+  {
+    "idx": 1929,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34091663360595703
+  },
+  {
+    "idx": 1930,
+    "behavior": "pacing",
+    "mean_speed": 0.4279528856277466
+  },
+  {
+    "idx": 1931,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34241998195648193
+  },
+  {
+    "idx": 1932,
+    "behavior": "pacing",
+    "mean_speed": 0.3351993262767792
+  },
+  {
+    "idx": 1933,
+    "behavior": "pacing",
+    "mean_speed": 0.472892165184021
+  },
+  {
+    "idx": 1934,
+    "behavior": "stationary",
+    "mean_speed": 0.08095194399356842
+  },
+  {
+    "idx": 1935,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6277524828910828
+  },
+  {
+    "idx": 1936,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.13776817917823792
+  },
+  {
+    "idx": 1937,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8387024402618408
+  },
+  {
+    "idx": 1938,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5595707297325134
+  },
+  {
+    "idx": 1939,
+    "behavior": "goal_directed",
+    "mean_speed": 0.9836447238922119
+  },
+  {
+    "idx": 1940,
+    "behavior": "stationary",
+    "mean_speed": 0.11424499750137329
+  },
+  {
+    "idx": 1941,
+    "behavior": "goal_directed",
+    "mean_speed": 0.794625997543335
+  },
+  {
+    "idx": 1942,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7785131335258484
+  },
+  {
+    "idx": 1943,
+    "behavior": "goal_directed",
+    "mean_speed": 0.622586727142334
+  },
+  {
+    "idx": 1944,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6825840473175049
+  },
+  {
+    "idx": 1945,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5113877058029175
+  },
+  {
+    "idx": 1946,
+    "behavior": "pacing",
+    "mean_speed": 0.42736467719078064
+  },
+  {
+    "idx": 1947,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7087310552597046
+  },
+  {
+    "idx": 1948,
+    "behavior": "multi_goal",
+    "mean_speed": 0.35010266304016113
+  },
+  {
+    "idx": 1949,
+    "behavior": "stationary",
+    "mean_speed": 0.13608136773109436
+  },
+  {
+    "idx": 1950,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5870129466056824
+  },
+  {
+    "idx": 1951,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3752381205558777
+  },
+  {
+    "idx": 1952,
+    "behavior": "pacing",
+    "mean_speed": 0.4538334012031555
+  },
+  {
+    "idx": 1953,
+    "behavior": "multi_goal",
+    "mean_speed": 0.32871320843696594
+  },
+  {
+    "idx": 1954,
+    "behavior": "pacing",
+    "mean_speed": 0.4699224829673767
+  },
+  {
+    "idx": 1955,
+    "behavior": "pacing",
+    "mean_speed": 0.5175538063049316
+  },
+  {
+    "idx": 1956,
+    "behavior": "multi_goal",
+    "mean_speed": 0.597069263458252
+  },
+  {
+    "idx": 1957,
+    "behavior": "multi_goal",
+    "mean_speed": 0.34983134269714355
+  },
+  {
+    "idx": 1958,
+    "behavior": "multi_goal",
+    "mean_speed": 0.4305132031440735
+  },
+  {
+    "idx": 1959,
+    "behavior": "multi_goal",
+    "mean_speed": 0.6613315343856812
+  },
+  {
+    "idx": 1960,
+    "behavior": "stationary",
+    "mean_speed": 0.10105913132429123
+  },
+  {
+    "idx": 1961,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5527357459068298
+  },
+  {
+    "idx": 1962,
+    "behavior": "multi_goal",
+    "mean_speed": 0.47119957208633423
+  },
+  {
+    "idx": 1963,
+    "behavior": "pacing",
+    "mean_speed": 0.5000303983688354
+  },
+  {
+    "idx": 1964,
+    "behavior": "stationary",
+    "mean_speed": 0.12457718700170517
+  },
+  {
+    "idx": 1965,
+    "behavior": "pacing",
+    "mean_speed": 0.5497146248817444
+  },
+  {
+    "idx": 1966,
+    "behavior": "stationary",
+    "mean_speed": 0.10525505244731903
+  },
+  {
+    "idx": 1967,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5902523994445801
+  },
+  {
+    "idx": 1968,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7428154349327087
+  },
+  {
+    "idx": 1969,
+    "behavior": "pacing",
+    "mean_speed": 0.5546544194221497
+  },
+  {
+    "idx": 1970,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8700783252716064
+  },
+  {
+    "idx": 1971,
+    "behavior": "goal_directed",
+    "mean_speed": 0.77596116065979
+  },
+  {
+    "idx": 1972,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.46333327889442444
+  },
+  {
+    "idx": 1973,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7908026576042175
+  },
+  {
+    "idx": 1974,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5602588653564453
+  },
+  {
+    "idx": 1975,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5848969221115112
+  },
+  {
+    "idx": 1976,
+    "behavior": "multi_goal",
+    "mean_speed": 0.7457795143127441
+  },
+  {
+    "idx": 1977,
+    "behavior": "goal_directed",
+    "mean_speed": 0.734559178352356
+  },
+  {
+    "idx": 1978,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3494224548339844
+  },
+  {
+    "idx": 1979,
+    "behavior": "pacing",
+    "mean_speed": 0.4292448163032532
+  },
+  {
+    "idx": 1980,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8831950426101685
+  },
+  {
+    "idx": 1981,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7748926877975464
+  },
+  {
+    "idx": 1982,
+    "behavior": "pacing",
+    "mean_speed": 0.4772360920906067
+  },
+  {
+    "idx": 1983,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.736432671546936
+  },
+  {
+    "idx": 1984,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8975611925125122
+  },
+  {
+    "idx": 1985,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8561050891876221
+  },
+  {
+    "idx": 1986,
+    "behavior": "goal_directed",
+    "mean_speed": 0.6831487417221069
+  },
+  {
+    "idx": 1987,
+    "behavior": "pacing",
+    "mean_speed": 0.48637115955352783
+  },
+  {
+    "idx": 1988,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7011085748672485
+  },
+  {
+    "idx": 1989,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8914564847946167
+  },
+  {
+    "idx": 1990,
+    "behavior": "multi_goal",
+    "mean_speed": 0.5155043005943298
+  },
+  {
+    "idx": 1991,
+    "behavior": "goal_directed",
+    "mean_speed": 0.5410507917404175
+  },
+  {
+    "idx": 1992,
+    "behavior": "goal_directed",
+    "mean_speed": 0.8671365976333618
+  },
+  {
+    "idx": 1993,
+    "behavior": "goal_directed",
+    "mean_speed": 0.7548444271087646
+  },
+  {
+    "idx": 1994,
+    "behavior": "boundary_walk",
+    "mean_speed": 0.5087834596633911
+  },
+  {
+    "idx": 1995,
+    "behavior": "stationary",
+    "mean_speed": 0.10382503271102905
+  },
+  {
+    "idx": 1996,
+    "behavior": "pacing",
+    "mean_speed": 0.5537333488464355
+  },
+  {
+    "idx": 1997,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3503870964050293
+  },
+  {
+    "idx": 1998,
+    "behavior": "pacing",
+    "mean_speed": 0.507172703742981
+  },
+  {
+    "idx": 1999,
+    "behavior": "multi_goal",
+    "mean_speed": 0.3757763206958771
+  }
+]

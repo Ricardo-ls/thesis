@@ -1,0 +1,32 @@
+{
+  "best_epoch": 60,
+  "best_val_loss": 0.26114753794670104,
+  "final_val_loss": 0.26114753794670104,
+  "stopped_epoch": 60,
+  "real_step_mean": 0.1780647337436676,
+  "gen_step_mean": 0.1357717365026474,
+  "real_step_p95": 0.3211580514907837,
+  "gen_step_p95": 0.27683401107788086,
+  "real_step_p99": 0.3424466550350189,
+  "gen_step_p99": 0.3151440918445587,
+  "gen_step_max": 0.398625910282135,
+  "real_acc_mean": 0.1538558304309845,
+  "gen_acc_mean": 0.11449747532606125,
+  "large_step_ratio_0p6": 0.0,
+  "out_of_room_ratio_center_start": 0.256,
+  "gen_dx_mean": 4.971815360477194e-05,
+  "gen_dy_mean": 0.0002540427667554468,
+  "real_dx_mean": -0.0018871432403102517,
+  "real_dy_mean": 0.005315850023180246,
+  "dx_bias_gap": 0.0019368613939150237,
+  "dy_bias_gap": 0.0050618072564247996,
+  "pass_criteria": {
+    "criterion_1": true,
+    "criterion_2": true,
+    "criterion_3": true,
+    "criterion_4": true,
+    "criterion_5": true,
+    "criterion_6": true
+  },
+  "passed": true
+}

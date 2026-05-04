@@ -3,14 +3,51 @@
 This repository is the research and archival workspace for the thesis trajectory track.
 
 - Stage 2 is the completed trajectory-only diffusion prior study on ETH+UCY.
-- Stage 3 now covers indoor trajectory reconstruction, coarse-to-refined refinement, and geometry-feasibility evaluation layers.
+- Stage 3 now closes with an indoor global trajectory refinement study using unconditional SDEdit diagnostics and conditional residual DDPM.
 
 The emphasis remains a reproducible scientific record rather than a generic demo pipeline.
+
+## Current Stage 3 Closing Snapshot
+
+The latest deliverable is the Stage 3 indoor closing report. It reframes the task from local missing-span recovery to global sensor-like trajectory refinement, uses unconditional SDEdit as a diagnostic baseline, and shows that conditioning on the degraded trajectory is the main lever for useful DDPM refinement.
+
+Primary report package:
+
+- `outputs/stage3_indoor/report/stage3_report.docx`: final professor-facing Stage 3 closing report with 8 figures, 3 embedded tables, captions, and the closure narrative.
+- `outputs/stage3_indoor/report/figures/`: the exact figure PNGs embedded in the report.
+- `outputs/stage3_indoor/report/tables/`: the exact CSV tables embedded in the report.
+- `outputs/stage3_indoor/report/cache/`: checkpoint-generated trajectory outputs used only for representative trajectory panels.
+- `outputs/stage3_indoor/report/captions.txt`: source, seed, and provenance note for each report figure.
+- `tools/stage3_indoor/build_stage3_closing_report.py`: one-command report builder for the current DOCX-only closing report.
+
+Earlier editable report drafts retained for traceability:
+
+- `stage3_report_complete.docx`: complete Stage 3 report version with the filled generalization table and inserted diagnostic figures.
+- `stage3_report_v3_concise.docx`: concise academic presentation version with 7 sections and appendices.
+- `tools/finalize_report.py`: script that filled missing cells and figures in `stage3_report_complete.docx`.
+- `tools/concise_report.py`: script that created `stage3_report_v3_concise.docx`.
+
+Key experiment artifacts:
+
+- `outputs/stage3_indoor/ddpm_indoor_v2/seed42/`: unconditional indoor DDPM checkpoint and SDEdit diagnostics.
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/`: gaussian-only conditional residual DDPM checkpoints, gaussian scout outputs, generalization diagnostics, and CSV summaries.
+- `data/stage3_indoor/`: indoor train/validation/clean trajectories plus relative normalization parameters used by the Stage 3 indoor experiments.
+- `models/temporal_denoiser_conditional.py`: conditional residual denoiser definition with 4 input channels and 2 output channels.
+
+Document roles:
+
+- `cond_residual_gaussian_summary.csv`: method-level gaussian_medium comparison used for the main positive result.
+- `cond_residual_gaussian_per_traj.csv`: trajectory-level gaussian_medium metrics for paired deltas and statistical checks.
+- `generalization_summary.csv`: method-by-degradation summary for gaussian, drift, jump, burst, bias, and combined diagnostics.
+- `generalization_per_traj.csv`: trajectory-level generalization metrics used for paired interpretation.
+- `cond_residual_gaussian_eval.png`: original multi-panel gaussian scout diagnostic figure.
+- `generalization_diagnostic.png`: original multi-panel generalization diagnostic figure.
 
 ## What This Repo Contains
 
 - Stage 2 training, sampling, and evaluation code
 - Stage 3 phase-1 benchmark scripts for indoor missing-trajectory completion
+- Stage 3 indoor global refinement scripts, checkpoints, diagnostics, and closing report
 - Canonical registry logic for variant and path resolution
 - Seeded training snapshots and evaluation artifacts
 - Paper-facing figures and narrative documentation
@@ -18,12 +55,13 @@ The emphasis remains a reproducible scientific record rather than a generic demo
 ## Read In This Order
 
 1. This README for the project-level scope and repository map.
-2. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the Stage 2 interpretation and figures.
-3. [`docs/stage3/README.md`](docs/stage3/README.md) for Stage 3 navigation.
-4. [`docs/stage3/planning/stage3_phase1_formal_spec.md`](docs/stage3/planning/stage3_phase1_formal_spec.md) for the formal Stage 3 phase-1 problem definition and scope boundary.
-5. [`docs/stage3/planning/stage3_phase1_plan.md`](docs/stage3/planning/stage3_phase1_plan.md) for the current Stage 3 phase-1 benchmark boundary.
-6. [`变更记录.md`](变更记录.md) for the required Chinese modification record.
-7. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
+2. `outputs/stage3_indoor/report/stage3_report.docx` for the current Stage 3 closing report.
+3. `outputs/stage3_indoor/report/captions.txt` for figure provenance and seed details.
+4. [`docs/prior_stage2.md`](docs/prior_stage2.md) for the Stage 2 interpretation and figures.
+5. [`docs/stage3/README.md`](docs/stage3/README.md) for older Stage 3 navigation.
+6. [`docs/stage3/planning/stage3_phase1_formal_spec.md`](docs/stage3/planning/stage3_phase1_formal_spec.md) for the formal Stage 3 phase-1 problem definition and scope boundary.
+7. [`变更记录.md`](变更记录.md) for the required Chinese modification record.
+8. [`utils/prior/ablation_paths.py`](utils/prior/ablation_paths.py) for the canonical registry of Stage 2 variants and paths.
 
 ## Repository Scope
 

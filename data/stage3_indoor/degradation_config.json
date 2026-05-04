@@ -1,0 +1,73 @@
+{
+  "input_clean_path": "data/stage3_indoor/clean_trajs.npy",
+  "experiment_subset": {
+    "slice": "clean_trajs[:1000]",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "dtype": "float32"
+  },
+  "gaussian_medium": {
+    "sigma": 0.05
+  },
+  "bias_medium": {
+    "sigma": 0.15
+  },
+  "drift_medium": {
+    "sigma_step": 0.01,
+    "drift_frame0_zero": true
+  },
+  "jump_medium": {
+    "n_jump_range_inclusive": [
+      2,
+      4
+    ],
+    "jump_frame_range_inclusive": [
+      1,
+      18
+    ],
+    "magnitude_range_m": [
+      0.2,
+      0.5
+    ],
+    "offset_mode": "piecewise_constant_non_cumulative"
+  },
+  "burst_medium": {
+    "burst_length_range_inclusive": [
+      3,
+      5
+    ],
+    "burst_sigma": 0.25,
+    "background_sigma": 0.01
+  },
+  "combined_medium": {
+    "composition_order": [
+      "bias_medium",
+      "drift_medium",
+      "gaussian_medium"
+    ],
+    "independent_seeds": {
+      "gaussian_seed": "42 + i",
+      "bias_seed": "42000 + i",
+      "drift_seed": "84000 + i"
+    },
+    "parameters": {
+      "gaussian_sigma": 0.05,
+      "bias_sigma": 0.15,
+      "drift_sigma_step": 0.01
+    }
+  },
+  "per_trajectory_seed_rule": {
+    "default": "42 + i",
+    "combined": {
+      "gaussian": "42 + i",
+      "bias": "42000 + i",
+      "drift": "84000 + i"
+    }
+  },
+  "postprocess": {
+    "clip_applied": false
+  }
+}

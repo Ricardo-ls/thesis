@@ -1,0 +1,15 @@
+{
+  "best_epoch": 60,
+  "best_val_loss": 0.13365467536449432,
+  "noisy_ADE_mean": 0.06256657093763351,
+  "uncond_sdedit_t2_ADE_mean": 0.06081181392073631,
+  "best_cond_method": "cond_residual_t20",
+  "best_cond_ADE_mean": 0.05569539964199066,
+  "best_cond_delta_vs_noisy": -0.006871167570352554,
+  "best_cond_delta_vs_uncond": -0.005116414278745651,
+  "best_cond_p_vs_noisy": 5.3349935580371266e-11,
+  "best_cond_p_vs_uncond": 6.689548825988823e-08,
+  "conditional_beats_noisy": true,
+  "conditional_beats_unconditional": true,
+  "interpretation": "conditional_improves_over_unconditional"
+}
