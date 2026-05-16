@@ -1,0 +1,7 @@
+setting,n_conditions_better_than_noisy,n_high_no_harm,n_low_preserved,n_low_eligible,mean_ADE,mean_noisy_ADE,mean_vanilla_best_ADE,mean_motion_usage_ratio,mean_noisy_reversion_gap,drift_better_than_noisy,burst_better_than_noisy,case1_success,case2_high_fixed_overall_not,case3_high_still_harm,case4_noisy_reversion,case5_condition_specific
+tau07_gamma2,5,5,4,4,0.1329353597636024,0.13439964596182108,0.13323140858362117,0.4384609177303706,-0.0014642861982186635,True,True,True,False,False,False,False
+tau09_gamma2,5,5,4,4,0.13293626656134924,0.13439964596182108,0.13323140858362117,0.44148085933926184,-0.0014633794004718463,True,True,True,False,False,False,False
+tau05_gamma2,5,5,4,4,0.13295105937868357,0.13439964596182108,0.13323140858362117,0.41050644874356434,-0.0014485865831375122,True,True,True,False,False,False,False
+tau05_gamma1,4,5,4,4,0.1326072532683611,0.13439964596182108,0.13323140858362117,0.551245332582519,-0.0017923926934599876,False,True,True,False,False,False,False
+tau07_gamma1,4,5,4,4,0.13263297018905482,0.13439964596182108,0.13323140858362117,0.6172621669677375,-0.0017666757727662723,False,True,True,False,False,False,False
+tau09_gamma1,4,4,4,4,0.13265288124481836,0.13439964596182108,0.13323140858362117,0.6301644728308113,-0.0017467647170027096,False,True,False,False,False,False,True

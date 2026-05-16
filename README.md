@@ -7,6 +7,32 @@ This repository is the research and archival workspace for the thesis trajectory
 
 The emphasis remains a reproducible scientific record rather than a generic demo pipeline.
 
+## 2026-05-16 Backup Snapshot
+
+This branch is the May 16 backup snapshot for the current Stage 3 SDE mainline cleanup.
+
+Current authoritative navigation now starts from:
+
+- [`docs/stage3_sde/mainline_manifest.md`](docs/stage3_sde/mainline_manifest.md): curated Stage 3 SDE mainline manifest.
+- [`docs/stage3_sde/narrative_alignment.md`](docs/stage3_sde/narrative_alignment.md): scientific framing for unconditional SDEdit / prior-guided refinement and confidence-aware stabilization.
+- [`docs/stage3_sde/output_inventory.md`](docs/stage3_sde/output_inventory.md): curated output inventory.
+- [`docs/stage3_sde/path_mapping.md`](docs/stage3_sde/path_mapping.md): old-to-new path mapping after cleanup.
+- [`outputs/README.md`](outputs/README.md): current `outputs/` directory map.
+- [`backups/2026-05-16_stage3_sde_mainline/README.md`](backups/2026-05-16_stage3_sde_mainline/README.md): this backup snapshot note.
+- [`变更记录.md`](变更记录.md): required Chinese change log.
+
+Current mainline output root:
+
+- `outputs/curated/stage3_sde/mainline/`
+
+Non-mainline attempts and older experiment outputs have been moved under:
+
+- `outputs/curated/stage3_sde/supplementary_ablation/`
+- `outputs/curated/stage3_sde/negative_diagnostic/`
+- `outputs/curated/stage3_sde/legacy_or_deprecated/`
+
+Future work should follow `docs/stage3_sde/mainline_manifest.md` and should not treat Stage 4 DPS, multi-t ablation, or sensor-adapter outputs as the mainline unless explicitly instructed.
+
 ## Current Stage 3 Closing Snapshot
 
 The latest deliverable is the Stage 3 indoor closing report. It reframes the task from local missing-span recovery to global sensor-like trajectory refinement, uses unconditional SDEdit as a diagnostic baseline, and shows that conditioning on the degraded trajectory is the main lever for useful DDPM refinement.

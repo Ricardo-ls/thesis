@@ -1,0 +1,3 @@
+degradation,diagnosis,evidence
+drift_medium,gate too weak + residual direction wrong + drift global residual leakage,gamma=2 passes C2 within 5% ADE of gamma=1; 67.77% of violating high-confidence residuals point opposite the oracle correction; high-confidence frames have tiny noisy error but conditional residual remains nontrivial across the trajectory; delta_0=0.05 passes C2 within 5% ADE
+burst_medium,gate too weak + residual direction wrong + burst boundary effect,gamma=3 passes C2 within 5% ADE of gamma=1; 52.80% of violating high-confidence residuals point opposite the oracle correction; 47.80% of violation excess lies within one frame of low-confidence burst frames; delta_0=0.1 passes C2 within 5% ADE

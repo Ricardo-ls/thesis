@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/sssd_smoke_test.py

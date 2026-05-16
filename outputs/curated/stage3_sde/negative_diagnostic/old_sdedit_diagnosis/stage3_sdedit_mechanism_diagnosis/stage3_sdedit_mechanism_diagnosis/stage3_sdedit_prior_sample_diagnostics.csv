@@ -1,0 +1,4 @@
+source,exists,group,n,step_norm_mean,step_norm_p95,total_length_mean,endpoint_displacement_mean,acceleration_rms_mean,off_room_ratio,nearest_neighbor_l2_mean,note
+outputs/stage3_indoor/ddpm_prior/generated_abs.npy,True,prior_sample,200,0.19267955422401428,0.4200243055820465,3.6609113216400146,1.345792293548584,0.2792133688926697,0.24525,0.34282196887553146,existing old prior sample output; not newly sampled
+outputs/stage3_indoor/ddpm_prior_diagnostics/generated_abs_check.npy,True,prior_sample,512,0.1912442445755005,0.42000627517700195,3.6336402893066406,1.3028749227523804,0.27209946513175964,0.26181640625,0.3611263327685358,existing old prior sample output; not newly sampled
+data/stage3_indoor/clean_trajs.npy,True,clean_reference,2000,0.17831629514694214,0.32180941104888916,3.388009786605835,1.497208833694458,0.2539113461971283,0.0,0.0,clean indoor reference

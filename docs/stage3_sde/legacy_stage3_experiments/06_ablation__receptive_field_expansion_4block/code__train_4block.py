@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/train_4block.py

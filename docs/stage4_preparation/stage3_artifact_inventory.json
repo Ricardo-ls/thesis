@@ -1,0 +1,1795 @@
+{
+  "generated_at": "2026-05-14T16:59:23",
+  "root": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory",
+  "restrictions_observed": [
+    "No Stage 3 outputs modified",
+    "No training run",
+    "No evaluation rerun",
+    "Existing artifacts only"
+  ],
+  "scan_directories": [
+    {
+      "path": "data/stage3_indoor",
+      "exists": true
+    },
+    {
+      "path": "outputs/stage3_indoor",
+      "exists": true
+    },
+    {
+      "path": "tools/stage3_indoor",
+      "exists": true
+    },
+    {
+      "path": "models",
+      "exists": true
+    },
+    {
+      "path": "docs",
+      "exists": true
+    },
+    {
+      "path": "docs/assets",
+      "exists": true
+    },
+    {
+      "path": "figure3",
+      "exists": false
+    },
+    {
+      "path": "figure1",
+      "exists": false
+    }
+  ],
+  "data_files": [
+    {
+      "path": "data/stage3_indoor/clean_trajs.npy",
+      "shape": [
+        2000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.1337549239397049,
+      "max": 2.8648505210876465,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "clean source / likely eval subset via [:200] in Stage 3 reports",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/degraded_bias_medium.npy",
+      "shape": [
+        1000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.23974831402301788,
+      "max": 3.2211365699768066,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "degraded dataset / likely eval candidate",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/degraded_burst_medium.npy",
+      "shape": [
+        1000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.7277692556381226,
+      "max": 3.543795585632324,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "degraded dataset / likely eval candidate",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/degraded_combined_medium.npy",
+      "shape": [
+        1000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.3468431830406189,
+      "max": 3.3161017894744873,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "degraded dataset / likely eval candidate",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/degraded_drift_medium.npy",
+      "shape": [
+        1000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.07128498703241348,
+      "max": 2.9842329025268555,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "degraded dataset / likely eval candidate",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/degraded_gaussian_medium.npy",
+      "shape": [
+        1000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.015415310859680176,
+      "max": 2.989899158477783,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "degraded dataset / likely eval candidate",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/degraded_jump_medium.npy",
+      "shape": [
+        1000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.34296655654907227,
+      "max": 3.3354132175445557,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "degraded dataset / likely eval candidate",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/train_trajs.npy",
+      "shape": [
+        10000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.1318667232990265,
+      "max": 2.869739532470703,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "train",
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/val_trajs.npy",
+      "shape": [
+        2000,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.13427668809890747,
+      "max": 2.8650805950164795,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "val",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/eval_degraded_gaussian.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.015415310859680176,
+      "max": 2.9802017211914062,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "val",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_bias.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.16443128883838654,
+      "max": 3.1436586380004883,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_burst.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.602942943572998,
+      "max": 3.5229477882385254,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_combined.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.253318190574646,
+      "max": 3.254523515701294,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_drift.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.11822491884231567,
+      "max": 2.882467746734619,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_gaussian.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.015415310859680176,
+      "max": 2.9802017211914062,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_jump.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.34146827459335327,
+      "max": 3.3442604541778564,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/gaussian_full_degraded.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.015415310859680176,
+      "max": 2.9802017211914062,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "eval",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior/generated_abs.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -1.828566074371338,
+      "max": 5.441679000854492,
+      "representation": "unknown",
+      "likely_split_or_role": "generated prior sample diagnostic",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior/generated_rel.npy",
+      "shape": [
+        200,
+        19,
+        2
+      ],
+      "dtype": "float32",
+      "min": -1.0008471012115479,
+      "max": 0.9862146973609924,
+      "representation": "relative displacement (inferred from name/shape)",
+      "likely_split_or_role": "generated prior sample diagnostic",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior_diagnostics/generated_abs_check.npy",
+      "shape": [
+        512,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -2.785078525543213,
+      "max": 5.268111705780029,
+      "representation": "unknown",
+      "likely_split_or_role": "generated prior sample diagnostic",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior_diagnostics/generated_rel_check.npy",
+      "shape": [
+        512,
+        19,
+        2
+      ],
+      "dtype": "float32",
+      "min": -1.216749668121338,
+      "max": 0.9077706336975098,
+      "representation": "relative displacement (inferred from name/shape)",
+      "likely_split_or_role": "generated prior sample diagnostic",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/cache/bias_cond_residual_t20_refined.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.17424163222312927,
+      "max": 3.121596097946167,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "cached method output / eval artifact",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/cache/burst_cond_residual_t20_refined.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": -0.4127802848815918,
+      "max": 3.3676095008850098,
+      "representation": "likely absolute coordinates or normalized trajectory coordinates",
+      "likely_split_or_role": "cached method output / eval artifact",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/cache/drift_cond_residual_t20_refined.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.07242918014526367,
+      "max": 2.908527135848999,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "cached method output / eval artifact",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/cache/gaussian_cond_residual_t20_refined.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.048340775072574615,
+      "max": 3.0009849071502686,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "cached method output / eval artifact",
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/cache/gaussian_uncond_sdedit_t2_refined.npy",
+      "shape": [
+        200,
+        20,
+        2
+      ],
+      "dtype": "float32",
+      "min": 0.03332646191120148,
+      "max": 2.973606586456299,
+      "representation": "absolute coordinates in approx. 3m room",
+      "likely_split_or_role": "cached method output / eval artifact",
+      "error": null
+    }
+  ],
+  "split_or_config_files_under_data_stage3_indoor": [
+    {
+      "path": "data/stage3_indoor/degradation_config.json",
+      "suffix": ".json",
+      "size_bytes": 1352
+    },
+    {
+      "path": "data/stage3_indoor/trajs_metadata.json",
+      "suffix": ".json",
+      "size_bytes": 187022
+    }
+  ],
+  "normalization_files": [
+    {
+      "path": "data/stage3_indoor/rel_norm_params.npz",
+      "keys": [
+        "rel_mean",
+        "rel_std",
+        "rel_std_safe"
+      ],
+      "arrays": {
+        "rel_mean": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            -0.0008527934551239014,
+            -0.0006262545939534903
+          ]
+        },
+        "rel_std": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14730313420295715,
+            0.14895851910114288
+          ]
+        },
+        "rel_std_safe": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14730313420295715,
+            0.14895851910114288
+          ]
+        }
+      },
+      "error": null
+    },
+    {
+      "path": "data/stage3_indoor/rel_norm_params_v2.npz",
+      "keys": [
+        "rel_mean",
+        "rel_std"
+      ],
+      "arrays": {
+        "rel_mean": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            3.938507742162756e-09,
+            -1.5433420097465955e-09
+          ]
+        },
+        "rel_std": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14780530333518982,
+            0.14835621416568756
+          ]
+        }
+      },
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/rel_norm_params_v2.npz",
+      "keys": [
+        "rel_mean",
+        "rel_std"
+      ],
+      "arrays": {
+        "rel_mean": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            3.938507742162756e-09,
+            -1.5433420097465955e-09
+          ]
+        },
+        "rel_std": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14780530333518982,
+            0.14835621416568756
+          ]
+        }
+      },
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor/seed42/rel_norm_params.npz",
+      "keys": [
+        "rel_mean",
+        "rel_std",
+        "rel_std_safe"
+      ],
+      "arrays": {
+        "rel_mean": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            -0.0008527934551239014,
+            -0.0006262545939534903
+          ]
+        },
+        "rel_std": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14730313420295715,
+            0.14895851910114288
+          ]
+        },
+        "rel_std_safe": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14730313420295715,
+            0.14895851910114288
+          ]
+        }
+      },
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/rel_norm_params_v2.npz",
+      "keys": [
+        "rel_mean",
+        "rel_std"
+      ],
+      "arrays": {
+        "rel_mean": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            3.938507742162756e-09,
+            -1.5433420097465955e-09
+          ]
+        },
+        "rel_std": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14780530333518982,
+            0.14835621416568756
+          ]
+        }
+      },
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/rel_norm_params_v2.npz",
+      "keys": [
+        "rel_mean",
+        "rel_std"
+      ],
+      "arrays": {
+        "rel_mean": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            3.938507742162756e-09,
+            -1.5433420097465955e-09
+          ]
+        },
+        "rel_std": {
+          "shape": [
+            2
+          ],
+          "dtype": "float32",
+          "values": [
+            0.14780530333518982,
+            0.14835621416568756
+          ]
+        }
+      },
+      "error": null
+    }
+  ],
+  "checkpoints": [
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/best_ema_model.pt",
+      "file_size_bytes": 854721,
+      "file_size_mb": 0.815,
+      "last_modified": "2026-05-01T14:57:28",
+      "inferred_role": "conditional residual DDPM",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/best_model.pt",
+      "file_size_bytes": 854645,
+      "file_size_mb": 0.815,
+      "last_modified": "2026-05-01T14:57:28",
+      "inferred_role": "conditional residual DDPM",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/final_ema_model.pt",
+      "file_size_bytes": 854740,
+      "file_size_mb": 0.815,
+      "last_modified": "2026-05-01T14:57:28",
+      "inferred_role": "conditional residual DDPM",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/final_model.pt",
+      "file_size_bytes": 854664,
+      "file_size_mb": 0.815,
+      "last_modified": "2026-05-01T14:57:28",
+      "inferred_role": "conditional residual DDPM",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor/seed42/best_model.pt",
+      "file_size_bytes": 537781,
+      "file_size_mb": 0.513,
+      "last_modified": "2026-04-30T22:07:10",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_mlp.0.weight",
+          "time_mlp.0.bias",
+          "time_mlp.2.weight",
+          "time_mlp.2.bias",
+          "conv1.weight",
+          "conv1.bias",
+          "conv2.weight",
+          "conv2.bias",
+          "conv3.weight",
+          "conv3.bias",
+          "conv4.weight",
+          "conv4.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor/seed42/final_model.pt",
+      "file_size_bytes": 537799,
+      "file_size_mb": 0.513,
+      "last_modified": "2026-04-30T22:07:38",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_mlp.0.weight",
+          "time_mlp.0.bias",
+          "time_mlp.2.weight",
+          "time_mlp.2.bias",
+          "conv1.weight",
+          "conv1.bias",
+          "conv2.weight",
+          "conv2.bias",
+          "conv3.weight",
+          "conv3.bias",
+          "conv4.weight",
+          "conv4.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/best_ema_model.pt",
+      "file_size_bytes": 851649,
+      "file_size_mb": 0.812,
+      "last_modified": "2026-05-01T08:56:43",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/best_model.pt",
+      "file_size_bytes": 851573,
+      "file_size_mb": 0.812,
+      "last_modified": "2026-05-01T08:56:43",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/final_ema_model.pt",
+      "file_size_bytes": 851668,
+      "file_size_mb": 0.812,
+      "last_modified": "2026-05-01T08:56:43",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/final_model.pt",
+      "file_size_bytes": 851592,
+      "file_size_mb": 0.812,
+      "last_modified": "2026-05-01T08:56:43",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior/last_model.pt",
+      "file_size_bytes": 537781,
+      "file_size_mb": 0.513,
+      "last_modified": "2026-04-30T20:36:11",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_mlp.0.weight",
+          "time_mlp.0.bias",
+          "time_mlp.2.weight",
+          "time_mlp.2.bias",
+          "conv1.weight",
+          "conv1.bias",
+          "conv2.weight",
+          "conv2.bias",
+          "conv3.weight",
+          "conv3.bias",
+          "conv4.weight",
+          "conv4.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior/val_selected_model.pt",
+      "file_size_bytes": 537925,
+      "file_size_mb": 0.513,
+      "last_modified": "2026-04-30T20:36:11",
+      "inferred_role": "indoor prior",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_mlp.0.weight",
+          "time_mlp.0.bias",
+          "time_mlp.2.weight",
+          "time_mlp.2.bias",
+          "conv1.weight",
+          "conv1.bias",
+          "conv2.weight",
+          "conv2.bias",
+          "conv3.weight",
+          "conv3.bias",
+          "conv4.weight",
+          "conv4.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/ckpt_4block_best.pt",
+      "file_size_bytes": 1645655,
+      "file_size_mb": 1.569,
+      "last_modified": "2026-05-06T12:49:13",
+      "inferred_role": "4-block RF expansion",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "block3.0.weight",
+          "block3.0.bias",
+          "block3.2.weight",
+          "block3.2.bias",
+          "block4.0.weight",
+          "block4.0.bias",
+          "block4.2.weight",
+          "block4.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/ckpt_4block_best_ema.pt",
+      "file_size_bytes": 1645763,
+      "file_size_mb": 1.57,
+      "last_modified": "2026-05-06T12:49:13",
+      "inferred_role": "4-block RF expansion",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "block3.0.weight",
+          "block3.0.bias",
+          "block3.2.weight",
+          "block3.2.bias",
+          "block4.0.weight",
+          "block4.0.bias",
+          "block4.2.weight",
+          "block4.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/ckpt_4block_final.pt",
+      "file_size_bytes": 1645682,
+      "file_size_mb": 1.569,
+      "last_modified": "2026-05-06T12:49:13",
+      "inferred_role": "4-block RF expansion",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "block3.0.weight",
+          "block3.0.bias",
+          "block3.2.weight",
+          "block3.2.bias",
+          "block4.0.weight",
+          "block4.0.bias",
+          "block4.2.weight",
+          "block4.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/ckpt_4block_final_ema.pt",
+      "file_size_bytes": 1645790,
+      "file_size_mb": 1.57,
+      "last_modified": "2026-05-06T12:49:13",
+      "inferred_role": "4-block RF expansion",
+      "metadata": {
+        "load_attempted": true,
+        "load_ok": true,
+        "top_level_keys": [
+          "time_emb.embedding.weight",
+          "input_proj.weight",
+          "input_proj.bias",
+          "block1.0.weight",
+          "block1.0.bias",
+          "block1.2.weight",
+          "block1.2.bias",
+          "block2.0.weight",
+          "block2.0.bias",
+          "block2.2.weight",
+          "block2.2.bias",
+          "block3.0.weight",
+          "block3.0.bias",
+          "block3.2.weight",
+          "block3.2.bias",
+          "block4.0.weight",
+          "block4.0.bias",
+          "block4.2.weight",
+          "block4.2.bias",
+          "output_proj.weight",
+          "output_proj.bias"
+        ],
+        "has_model_state_dict": false,
+        "has_ema_state_dict": false,
+        "epoch": null,
+        "val_loss": null,
+        "error": null
+      }
+    }
+  ],
+  "result_csvs": [
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_per_traj.csv",
+      "rows": 1200,
+      "columns": [
+        "traj_idx",
+        "method",
+        "ADE",
+        "RMSE",
+        "smooth",
+        "noisy_ADE",
+        "uncond_ADE",
+        "delta_ADE_vs_noisy",
+        "delta_ADE_vs_uncond",
+        "improved_vs_noisy",
+        "improved_vs_uncond"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_summary.csv",
+      "rows": 6,
+      "columns": [
+        "method",
+        "N",
+        "ADE_mean",
+        "ADE_std",
+        "RMSE_mean",
+        "RMSE_std",
+        "smooth_mean",
+        "smooth_std",
+        "delta_ADE_vs_noisy_mean",
+        "improved_fraction_vs_noisy",
+        "wilcoxon_p_vs_noisy",
+        "delta_ADE_vs_uncond_mean",
+        "improved_fraction_vs_uncond",
+        "wilcoxon_p_vs_uncond"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_per_traj.csv",
+      "rows": 3600,
+      "columns": [
+        "degradation",
+        "degradation_group",
+        "traj_idx",
+        "method",
+        "ADE",
+        "smooth",
+        "noisy_ADE",
+        "noisy_smooth",
+        "delta_ADE_vs_noisy",
+        "delta_smooth_vs_noisy",
+        "improved_ADE_vs_noisy",
+        "improved_smooth_vs_noisy"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": true,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_summary.csv",
+      "rows": 18,
+      "columns": [
+        "degradation",
+        "degradation_group",
+        "method",
+        "N",
+        "ADE_mean",
+        "ADE_std",
+        "smooth_mean",
+        "delta_ADE_vs_noisy_mean",
+        "improved_fraction",
+        "wilcoxon_p_vs_noisy"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": true,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/loss_curve.csv",
+      "rows": 60,
+      "columns": [
+        "epoch",
+        "train_loss",
+        "val_loss_ema"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor/seed42/loss_curve.csv",
+      "rows": 100,
+      "columns": [
+        "epoch",
+        "train_loss",
+        "val_loss"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor/seed42/oor_diagnosis_summary.csv",
+      "rows": 4,
+      "columns": [
+        "strategy",
+        "oor_ratio",
+        "oor_mean_dev",
+        "oor_max_dev",
+        "endpoint_drift_mean",
+        "endpoint_drift_p95"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/loss_curve.csv",
+      "rows": 60,
+      "columns": [
+        "epoch",
+        "train_loss",
+        "val_loss_ema"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/sdedit_gaussian_full_per_traj.csv",
+      "rows": 1200,
+      "columns": [
+        "degradation",
+        "traj_idx",
+        "method",
+        "t_start",
+        "ADE",
+        "RMSE",
+        "smooth",
+        "noisy_ADE",
+        "noisy_RMSE",
+        "noisy_smooth",
+        "kalman_ADE",
+        "kalman_RMSE",
+        "kalman_smooth",
+        "delta_ADE_vs_noisy",
+        "delta_RMSE_vs_noisy",
+        "delta_smooth_vs_noisy",
+        "delta_ADE_vs_kalman",
+        "delta_RMSE_vs_kalman",
+        "delta_smooth_vs_kalman",
+        "improved_ADE_vs_noisy",
+        "improved_RMSE_vs_noisy",
+        "improved_smooth_vs_noisy",
+        "improved_ADE_vs_kalman",
+        "improved_RMSE_vs_kalman",
+        "improved_smooth_vs_kalman"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/sdedit_gaussian_full_summary.csv",
+      "rows": 6,
+      "columns": [
+        "degradation",
+        "method",
+        "t_start",
+        "N",
+        "ADE_mean",
+        "ADE_std",
+        "ADE_median",
+        "ADE_p25",
+        "ADE_p75",
+        "RMSE_mean",
+        "RMSE_std",
+        "smooth_mean",
+        "smooth_std",
+        "ADE_vs_noisy_percent",
+        "delta_ADE_mean",
+        "delta_ADE_median",
+        "delta_ADE_std",
+        "improved_fraction_ADE",
+        "wilcoxon_p_vs_noisy",
+        "delta_RMSE_mean",
+        "improved_fraction_RMSE",
+        "delta_smooth_mean",
+        "smooth_improved_fraction",
+        "ADE_vs_kalman_percent",
+        "delta_ADE_vs_kalman_mean",
+        "delta_ADE_vs_kalman_median",
+        "improved_fraction_ADE_vs_kalman",
+        "wilcoxon_p_vs_kalman"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/sdedit_scout_results.csv",
+      "rows": 10,
+      "columns": [
+        "degradation",
+        "method",
+        "t_start",
+        "N",
+        "ADE_mean",
+        "ADE_std",
+        "smooth_mean",
+        "ADE_vs_noisy_percent",
+        "wilcoxon_p_vs_noisy"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior/loss_curve.csv",
+      "rows": 100,
+      "columns": [
+        "epoch",
+        "train_loss",
+        "val_loss"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior_diagnostics/one_step_denoise.csv",
+      "rows": 6,
+      "columns": [
+        "t",
+        "noisy_error",
+        "denoised_error",
+        "improvement",
+        "improvement_pct"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/ddpm_prior_diagnostics/overfit_loss_curve.csv",
+      "rows": 10,
+      "columns": [
+        "iteration",
+        "loss"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/ablation_results.csv",
+      "rows": 18,
+      "columns": [
+        "method",
+        "degradation",
+        "ADE_mean",
+        "ADE_std",
+        "ADE_median",
+        "RMSE_mean",
+        "smooth_mean",
+        "OOR_rate",
+        "n_traj",
+        "n_seed",
+        "source",
+        "paired_wilcoxon_p_vs_current_2block"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": true,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/raw_4block_eval.csv",
+      "rows": 18000,
+      "columns": [
+        "trajectory_id",
+        "seed",
+        "degradation",
+        "method",
+        "ADE",
+        "RMSE",
+        "smooth",
+        "OOR"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": true,
+      "contains_trajectory_id_column": true,
+      "is_expected_stage3_csv": true,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/receptive_field_expansion/train_4block_log.csv",
+      "rows": 60,
+      "columns": [
+        "epoch",
+        "train_loss",
+        "val_loss",
+        "elapsed_seconds",
+        "is_best"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": true,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/tables/table1_gaussian_medium.csv",
+      "rows": 6,
+      "columns": [
+        "method",
+        "ADE_mean",
+        "ADE_std",
+        "delta_vs_noisy_pct",
+        "improved_fraction",
+        "wilcoxon_p",
+        "smooth_mean"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/tables/table2_generalization.csv",
+      "rows": 6,
+      "columns": [
+        "degradation",
+        "noisy_input_ADE",
+        "kalman_cv_ADE",
+        "uncond_sdedit_ADE",
+        "cond_residual_ADE",
+        "cond_delta_vs_noisy",
+        "cond_p_vs_noisy",
+        "interpretation"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/report/tables/table3_glossary.csv",
+      "rows": 11,
+      "columns": [
+        "term",
+        "definition"
+      ],
+      "contains_degradation_column": false,
+      "contains_method_column": false,
+      "contains_ADE_or_ade_column": false,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/sdedit_diagnostic/diagnostic_per_traj.csv",
+      "rows": 12000,
+      "columns": [
+        "degradation",
+        "method",
+        "t_start",
+        "traj_index",
+        "ADE",
+        "RMSE",
+        "smooth",
+        "step_mean",
+        "step_p95",
+        "step_max",
+        "acc_mean",
+        "acc_p95",
+        "out_of_room_ratio"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    },
+    {
+      "path": "outputs/stage3_indoor/sdedit_diagnostic/diagnostic_summary.csv",
+      "rows": 12,
+      "columns": [
+        "degradation",
+        "method",
+        "t_start",
+        "ADE_mean",
+        "ADE_std",
+        "ADE_median",
+        "ADE_p25",
+        "ADE_p75",
+        "RMSE_mean",
+        "smooth_mean",
+        "step_mean",
+        "step_p95_mean",
+        "step_max_mean",
+        "acc_mean",
+        "acc_p95_mean",
+        "out_of_room_ratio_mean",
+        "n_traj"
+      ],
+      "contains_degradation_column": true,
+      "contains_method_column": true,
+      "contains_ADE_or_ade_column": true,
+      "contains_seed_column": false,
+      "contains_trajectory_id_column": false,
+      "is_expected_stage3_csv": false,
+      "error": null
+    }
+  ],
+  "key_numbers": {
+    "matched_gaussian_diagnostic": {
+      "noisy_input_ADE": 0.06256657093763351,
+      "kalman_cv_ADE": 0.08500171452760696,
+      "unconditional_SDEdit_ADE": 0.06081181392073631,
+      "conditional_residual_DDPM_ADE": 0.05569539964199066
+    },
+    "cross_degradation_diagnostic": [
+      {
+        "degradation": "bias_medium",
+        "noisy_input_ADE": 0.1889956295490265,
+        "unconditional_SDEdit_ADE": 0.18927665054798126,
+        "conditional_residual_DDPM_ADE": 0.18886825442314148,
+        "conditional_p_value_vs_noisy": 0.43986910581588745
+      },
+      {
+        "degradation": "burst_medium",
+        "noisy_input_ADE": 0.07475546002388,
+        "unconditional_SDEdit_ADE": 0.08275182545185089,
+        "conditional_residual_DDPM_ADE": 0.09188491106033325,
+        "conditional_p_value_vs_noisy": 1.0
+      },
+      {
+        "degradation": "combined_medium",
+        "noisy_input_ADE": 0.1990637630224228,
+        "unconditional_SDEdit_ADE": 0.19896553456783295,
+        "conditional_residual_DDPM_ADE": 0.197429358959198,
+        "conditional_p_value_vs_noisy": 0.2316809445619583
+      },
+      {
+        "degradation": "drift_medium",
+        "noisy_input_ADE": 0.01764802448451519,
+        "unconditional_SDEdit_ADE": 0.01948578655719757,
+        "conditional_residual_DDPM_ADE": 0.03159075602889061,
+        "conditional_p_value_vs_noisy": 1.0
+      },
+      {
+        "degradation": "gaussian_medium",
+        "noisy_input_ADE": 0.06256657093763351,
+        "unconditional_SDEdit_ADE": 0.06081181392073631,
+        "conditional_residual_DDPM_ADE": 0.05569539964199066,
+        "conditional_p_value_vs_noisy": 5.3349935580371266e-11
+      },
+      {
+        "degradation": "jump_medium",
+        "noisy_input_ADE": 0.2633684277534485,
+        "unconditional_SDEdit_ADE": 0.25718310475349426,
+        "conditional_residual_DDPM_ADE": 0.24652285873889923,
+        "conditional_p_value_vs_noisy": 2.4046953664424997e-14
+      }
+    ],
+    "receptive_field_expansion": {
+      "current_2block_parameter_count": 212354,
+      "expanded_4block_parameter_count": 409474,
+      "current_RF_including_projection": 13,
+      "expanded_RF_including_projection": 21,
+      "median_relative_ADE_improvement_percent": 0.73,
+      "degradations_where_4block_beats_2block": "4/6",
+      "degradations_where_4block_beats_noisy_input": "1/6"
+    },
+    "sources": {
+      "matched_gaussian_diagnostic": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_summary.csv",
+      "cross_degradation_diagnostic": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_summary.csv",
+      "rf_param_count": "outputs/stage3_indoor/receptive_field_expansion/param_count.txt",
+      "rf_ablation_summary": "outputs/stage3_indoor/receptive_field_expansion/ablation_summary.md"
+    },
+    "missing": []
+  },
+  "e1_checklist": [
+    {
+      "item": "clean evaluation trajectories",
+      "status": "FOUND",
+      "path_or_source": "data/stage3_indoor/clean_trajs.npy",
+      "notes": "Stage 3 reports use paired N=200 subsets from clean trajectories; val_trajs.npy also exists for held-out pool.",
+      "blocking_issue": false
+    },
+    {
+      "item": "degraded trajectories or degradation generator",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_bias.npy, outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_burst.npy, outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_combined.npy, outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_drift.npy, outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_gaussian.npy, outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_jump.npy; generator=tools/stage3_indoor/degrade.py",
+      "notes": "N=200 generalization degraded arrays are present; data/stage3_indoor also has N=1000 degraded_*_medium.npy arrays.",
+      "blocking_issue": false
+    },
+    {
+      "item": "degradation names",
+      "status": "FOUND",
+      "path_or_source": "bias_medium, burst_medium, combined_medium, drift_medium, gaussian_medium, jump_medium",
+      "notes": "Names inferred from degraded array filenames.",
+      "blocking_issue": false
+    },
+    {
+      "item": "noisy_input baseline",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_summary.csv",
+      "notes": "Rows with method=noisy_input provide baseline ADE/RMSE/smooth metrics by degradation.",
+      "blocking_issue": false
+    },
+    {
+      "item": "Stage 3 indoor prior checkpoint",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/best_ema_model.pt",
+      "notes": "Preferred retrained indoor v2 EMA checkpoint for SDEdit diagnostics.",
+      "blocking_issue": false
+    },
+    {
+      "item": "normalization statistics",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/rel_norm_params_v2.npz",
+      "notes": "rel_norm_params_v2.npz is colocated with indoor v2 prior and conditional model outputs.",
+      "blocking_issue": false
+    },
+    {
+      "item": "diffusion schedule",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/prior_check_v2.json",
+      "notes": "timesteps=100; beta schedule details may require reading training code.",
+      "blocking_issue": false
+    },
+    {
+      "item": "SDEdit start step tau_star",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/ddpm_indoor_v2/seed42/sdedit_gaussian_full_conclusion.json",
+      "notes": "best t_start=2; known Stage 3 best t_start is 2.",
+      "blocking_issue": false
+    },
+    {
+      "item": "evaluation seeds",
+      "status": "FOUND",
+      "path_or_source": "outputs/stage3_indoor/report/captions.txt",
+      "notes": "DDPM inference seeds=[42, 43, 44, 45, 46]; degradation seed conventions also exist in degradation_config.json.",
+      "blocking_issue": false
+    },
+    {
+      "item": "trajectory length T",
+      "status": "FOUND",
+      "path_or_source": "data/stage3_indoor/clean_trajs.npy",
+      "notes": "T=20 frames.",
+      "blocking_issue": false
+    },
+    {
+      "item": "coordinate representation",
+      "status": "FOUND",
+      "path_or_source": "data/stage3_indoor/*.npy and rel_norm_params_v2.npz",
+      "notes": "absolute coordinates in 3m x 3m room for clean/degraded arrays; relative displacement normalization for DDPM internals",
+      "blocking_issue": false
+    }
+  ],
+  "E1_READY": true,
+  "blockers": []
+}

@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/diagnose_ddpm_prior.py

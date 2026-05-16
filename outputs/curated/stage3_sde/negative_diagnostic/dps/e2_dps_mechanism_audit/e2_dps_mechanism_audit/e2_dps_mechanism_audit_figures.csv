@@ -1,0 +1,4 @@
+condition,trajectory_id,path
+drift_medium,0,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_mechanism_audit/figures/drift_medium_traj0_mechanism_trace.png
+burst_medium,0,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_mechanism_audit/figures/burst_medium_traj0_mechanism_trace.png
+gaussian_medium,0,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_mechanism_audit/figures/gaussian_medium_traj0_mechanism_trace.png

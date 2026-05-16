@@ -1,0 +1,13 @@
+condition,zeta,zeta_effective,seed,trajectory_id,no_guidance,first_nonfinite_step,first_nonfinite_stage,max_grad_norm,max_update_to_x_ratio,finite,zeta0_finite,zeta_guided_finite
+drift_medium,0.3,0.3,42,0,False,91,likelihood_loss,inf,2025.2912081862896,False,True,False
+drift_medium,1.0,1.0,42,0,False,92,likelihood_loss,inf,7541.610904810667,False,True,False
+drift_medium,3.0,3.0,42,0,False,93,likelihood_loss,inf,24775.346450516536,False,True,False
+burst_medium,0.3,0.3,42,0,False,90,likelihood_loss,inf,2620.660372983915,False,True,False
+burst_medium,1.0,1.0,42,0,False,93,likelihood_loss,5.0261119483038925e+17,7703.0211902562905,False,True,False
+burst_medium,3.0,3.0,42,0,False,93,likelihood_loss,inf,21562.08438686956,False,True,False
+gaussian_medium,0.3,0.3,42,0,False,91,likelihood_loss,inf,2426.5588609306137,False,True,False
+gaussian_medium,1.0,1.0,42,0,False,92,likelihood_loss,inf,6895.809390295771,False,True,False
+gaussian_medium,3.0,3.0,42,0,False,93,likelihood_loss,inf,22136.291159764314,False,True,False
+bias_medium,0.3,0.3,42,0,False,91,likelihood_loss,inf,2182.4469767915252,False,True,False
+bias_medium,1.0,1.0,42,0,False,92,likelihood_loss,inf,7520.892211666235,False,True,False
+bias_medium,3.0,3.0,42,0,False,93,likelihood_loss,inf,24544.601434291668,False,True,False

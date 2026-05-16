@@ -1,0 +1,37 @@
+{
+  "provenance": "Reconstructed in Stage 4 from Stage 3 saved degraded arrays, Stage 3 conditional residual EMA checkpoint, rel_norm_params_v2, t_start=20, and seeds [42,43,44,45,46]. These are not Stage 3 originally saved per-frame artifacts.",
+  "clean_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/data/stage3_indoor/clean_trajs.npy",
+  "checkpoint_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/best_ema_model.pt",
+  "norm_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/rel_norm_params_v2.npz",
+  "summary_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_summary.csv",
+  "sample_seeds": [
+    42,
+    43,
+    44,
+    45,
+    46
+  ],
+  "start_t": 20,
+  "outputs": [
+    {
+      "degradation": "jump_medium",
+      "output_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/reconstructed_stage3_cond_outputs/jump_cond_residual_t20_refined_reconstructed.npy",
+      "shape": "(200, 20, 2)",
+      "computed_ADE_mean": 0.24652285873889923,
+      "computed_ADE_std": 0.0824088379740715,
+      "stage3_summary_ADE_mean": 0.24652285873889923,
+      "abs_diff_ADE_mean": 0.0,
+      "matches_stage3_summary": true
+    },
+    {
+      "degradation": "combined_medium",
+      "output_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/reconstructed_stage3_cond_outputs/combined_cond_residual_t20_refined_reconstructed.npy",
+      "shape": "(200, 20, 2)",
+      "computed_ADE_mean": 0.197429358959198,
+      "computed_ADE_std": 0.09009168297052383,
+      "stage3_summary_ADE_mean": 0.197429358959198,
+      "abs_diff_ADE_mean": 0.0,
+      "matches_stage3_summary": true
+    }
+  ]
+}

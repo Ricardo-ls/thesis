@@ -1,0 +1,5 @@
+SSSD params: 134466
+Custom DDPM params: 212354
+Temporal block used: fallback SSSD-compatible block
+Parameter ratio (SSSD/custom): 0.6332x
+Parameter ratio warning: none

@@ -1,0 +1,53 @@
+{
+  "degradation": "jump_medium",
+  "cache_type": "validated reconstructed Formal E1 c_t cache",
+  "not_archived_original": true,
+  "formula": "c_t = exp(- ||y_t - x_star_t|| / delta_0)",
+  "delta0": 0.3028247952461242,
+  "conditional_source": "matched_protocol_recomputed",
+  "clean_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/data/stage3_indoor/clean_trajs.npy",
+  "degraded_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_jump.npy",
+  "confidence_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/jump_medium_confidence.npy",
+  "shape_clean": [
+    200,
+    20,
+    2
+  ],
+  "shape_degraded": [
+    200,
+    20,
+    2
+  ],
+  "shape_confidence": [
+    200,
+    20
+  ],
+  "shape_valid": true,
+  "range_valid": true,
+  "confidence_min": 0.19186700880527496,
+  "confidence_mean": 0.4931735694408417,
+  "confidence_max": 1.0,
+  "delta_min": 0.0,
+  "delta_mean": 0.2633684575557709,
+  "delta_max": 0.49994945526123047,
+  "n_high_conf_frames": 986,
+  "n_mid_conf_frames": 1675,
+  "n_low_conf_frames": 1339,
+  "n_total_frames": 4000,
+  "formal_e1_expected_high": 986,
+  "formal_e1_expected_mid": 1675,
+  "formal_e1_expected_low": 1339,
+  "high_count_match": true,
+  "mid_count_match": true,
+  "low_count_match": true,
+  "bin_counts_match": true,
+  "per_traj_stats_available": true,
+  "per_traj_min_match": true,
+  "per_traj_mean_match": true,
+  "per_traj_max_match": true,
+  "per_traj_max_abs_diff_min": 8.326672684688674e-17,
+  "per_traj_max_abs_diff_mean": 5.551115123125783e-17,
+  "per_traj_max_abs_diff_max": 8.326672684688674e-17,
+  "per_traj_confidence_stats_match": true,
+  "validation_pass": true
+}

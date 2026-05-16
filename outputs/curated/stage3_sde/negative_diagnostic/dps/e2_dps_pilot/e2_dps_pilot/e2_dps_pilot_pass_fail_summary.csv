@@ -1,0 +1,4 @@
+zeta,H1_drift_high_conf_no_harm_ratio,H1_valid_finite,H1_pass,H2_burst_high_conf_no_harm_ratio,H2_valid_finite,H2_pass,bias_ADE_E2DPS,bias_ADE_E1,bias_red_flag,any_core_signal
+0.3,1.0847503408088084,True,False,1.4853961753904747,True,False,2.2721623222033185,1.6028246402740478,False,False
+1.0,1.7731745576617943,True,False,3.787597569067402,True,False,5.524972766240438,1.6028246402740478,False,False
+3.0,3.776742529639719,True,False,10.313890194515205,True,False,16.23751974741618,1.6028246402740478,False,False

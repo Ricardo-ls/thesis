@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/generalization_diagnostic.py

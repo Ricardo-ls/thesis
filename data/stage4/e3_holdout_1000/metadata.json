@@ -1,0 +1,63 @@
+{
+  "seed_start": 13000,
+  "seed_end": 13999,
+  "n_trajectories": 1000,
+  "trajectory_length": 20,
+  "shape": [
+    1000,
+    20,
+    2
+  ],
+  "dtype": "float32",
+  "room_size": [
+    0.0,
+    3.0
+  ],
+  "clip_range": [
+    0.05,
+    2.95
+  ],
+  "fps": 3.0,
+  "behavior_families": [
+    {
+      "name": "goal_directed",
+      "weight": 0.4
+    },
+    {
+      "name": "multi_goal",
+      "weight": 0.25
+    },
+    {
+      "name": "pacing",
+      "weight": 0.15
+    },
+    {
+      "name": "stationary",
+      "weight": 0.1
+    },
+    {
+      "name": "boundary_walk",
+      "weight": 0.1
+    }
+  ],
+  "behavior_counts": {
+    "goal_directed": 402,
+    "multi_goal": 254,
+    "pacing": 143,
+    "stationary": 107,
+    "boundary_walk": 94
+  },
+  "generation_script_wrapper_path": "tools/stage4/e3_holdout1000_confidence_aware_sdedit.py",
+  "timestamp": "2026-05-15T16:39:17",
+  "overlap_check": {
+    "train_trajs_seed_range": [
+      1000,
+      10999
+    ],
+    "val_trajs_seed_range": [
+      11000,
+      12999
+    ],
+    "this_seed_range_overlaps_train_or_val": false
+  }
+}

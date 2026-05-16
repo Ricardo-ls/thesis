@@ -1,0 +1,99 @@
+{
+  "gaussian_medium": {
+    "output_path": "data/stage4/e3_holdout_1000/degraded_gaussian_medium.npy",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "function_name": "apply_gaussian"
+  },
+  "drift_medium": {
+    "output_path": "data/stage4/e3_holdout_1000/degraded_drift_medium.npy",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "function_name": "apply_drift"
+  },
+  "burst_medium": {
+    "output_path": "data/stage4/e3_holdout_1000/degraded_burst_medium.npy",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "function_name": "apply_burst"
+  },
+  "bias_medium": {
+    "output_path": "data/stage4/e3_holdout_1000/degraded_bias_medium.npy",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "function_name": "apply_bias"
+  },
+  "jump_medium": {
+    "output_path": "data/stage4/e3_holdout_1000/degraded_jump_medium.npy",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "function_name": "apply_jump"
+  },
+  "combined_medium": {
+    "output_path": "data/stage4/e3_holdout_1000/degraded_combined_medium.npy",
+    "shape": [
+      1000,
+      20,
+      2
+    ],
+    "function_name": "apply_combined"
+  },
+  "input_clean_path": "data/stage4/e3_holdout_1000/clean_trajs.npy",
+  "no_old_files_overwritten": true,
+  "seed_rule_default": "42 + i",
+  "combined_seed_rules": {
+    "gaussian": "42 + i",
+    "bias": "42000 + i",
+    "drift": "84000 + i"
+  },
+  "parameters": {
+    "gaussian_medium": {
+      "sigma": 0.05
+    },
+    "drift_medium": {
+      "sigma_step": 0.01
+    },
+    "burst_medium": {
+      "burst_sigma": 0.25,
+      "background_sigma": 0.01
+    },
+    "bias_medium": {
+      "sigma": 0.15
+    },
+    "jump_medium": {
+      "n_jump_range_inclusive": [
+        2,
+        4
+      ],
+      "jump_frame_range_inclusive": [
+        1,
+        18
+      ],
+      "magnitude_range_m": [
+        0.2,
+        0.5
+      ],
+      "offset_mode": "piecewise_constant_non_cumulative"
+    },
+    "combined_medium": {
+      "sigma_g": 0.05,
+      "sigma_b": 0.15,
+      "sigma_d": 0.01
+    }
+  }
+}

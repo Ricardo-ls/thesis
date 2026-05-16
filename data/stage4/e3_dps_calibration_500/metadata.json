@@ -1,0 +1,55 @@
+{
+  "seed_start": 14000,
+  "seed_end": 14499,
+  "n_trajectories": 500,
+  "trajectory_length": 20,
+  "shape": [
+    500,
+    20,
+    2
+  ],
+  "room_size": [
+    0.0,
+    3.0
+  ],
+  "clip_range": [
+    0.05,
+    2.95
+  ],
+  "behavior_families": [
+    {
+      "name": "goal_directed",
+      "weight": 0.4
+    },
+    {
+      "name": "multi_goal",
+      "weight": 0.25
+    },
+    {
+      "name": "pacing",
+      "weight": 0.15
+    },
+    {
+      "name": "stationary",
+      "weight": 0.1
+    },
+    {
+      "name": "boundary_walk",
+      "weight": 0.1
+    }
+  ],
+  "behavior_counts": {
+    "goal_directed": 205,
+    "multi_goal": 122,
+    "pacing": 81,
+    "stationary": 37,
+    "boundary_walk": 55
+  },
+  "generation_script_path": "tools/stage4/e3_dps_calibrated_phaseA.py",
+  "timestamp": "2026-05-15T21:46:36",
+  "overlap_check": {
+    "no_overlap_with_e3_holdout1000_13000_13999": true,
+    "no_overlap_with_train_1000_10999": true,
+    "no_overlap_with_val_11000_12999": true
+  }
+}

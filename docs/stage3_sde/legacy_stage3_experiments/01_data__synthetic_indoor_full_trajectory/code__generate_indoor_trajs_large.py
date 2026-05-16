@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/generate_indoor_trajs_large.py

@@ -1,0 +1,1034 @@
+# Stage 3 SDE Reorganization Dry-Run Summary
+
+Generated: `2026-05-16T13:21:46`
+
+No files were moved by this dry-run.
+
+## Proposed Move Counts
+
+| category | files_proposed_to_move | total_inventory_files |
+| --- | ---: | ---: |
+| MAINLINE_STAGE3_SDE | 157 | 162 |
+| SUPPLEMENTARY_ABLATION | 27 | 27 |
+| NEGATIVE_DIAGNOSTIC | 202 | 202 |
+| FUTURE_SENSOR_INTERFACE | 1 | 1 |
+| LEGACY_OR_DEPRECATED | 106 | 186 |
+| UNKNOWN_NEEDS_MANUAL_REVIEW | 0 | 702 |
+
+- UNKNOWN files blocked as manual review: `702`
+
+## MAINLINE_STAGE3_SDE Paths
+
+- `docs/stage4/e3_frozen_holdout1000_baseline.md` -> `docs/stage3_sde/imported_stage4_docs/e3_frozen_holdout1000_baseline.md`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_clean.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_confidence.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_degraded.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_fused_best_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_fused_best_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_sdedit_t2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/bias_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/bias_medium_sdedit_t3.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_clean.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_confidence.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_degraded.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_fused_best_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_fused_best_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_sdedit_t2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/burst_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/burst_medium_sdedit_t3.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_clean.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_confidence.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_degraded.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_fused_best_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_fused_best_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_sdedit_t2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/combined_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/combined_medium_sdedit_t3.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_clean.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_confidence.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_degraded.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_fused_best_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_fused_best_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_sdedit_t2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/drift_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/drift_medium_sdedit_t3.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_clean.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_confidence.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_degraded.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_fused_best_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_fused_best_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_sdedit_t2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/gaussian_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/gaussian_medium_sdedit_t3.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_clean.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_confidence.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_degraded.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_fused_best_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_fused_best_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_sdedit_t2.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/arrays/jump_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/e3_holdout1000_confidence_aware_sdedit/jump_medium_sdedit_t3.npy`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_confidence_aware_sdedit_summary.md` -> `outputs/curated/stage3_sde/mainline/summaries/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_confidence_aware_sdedit_summary.md`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_confidence_bin_metrics.csv`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_global_t1_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_global_t1_metrics.csv`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_paired_statistics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_paired_statistics.csv`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_per_condition_best_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_per_condition_best_metrics.csv`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_trend_stability_summary.csv` -> `outputs/curated/stage3_sde/mainline/metrics/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_trend_stability_summary.csv`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_vanilla_tstart_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/e3_holdout1000_confidence_aware_sdedit/e3_holdout1000_vanilla_tstart_metrics.csv`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/high_low_conf_comparison_global_t1.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/high_low_conf_comparison_global_t1.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/overall_ade_comparison_global_t1.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/overall_ade_comparison_global_t1.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/overall_ade_comparison_per_condition_best.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/overall_ade_comparison_per_condition_best.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/representative_bias_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/representative_bias_medium.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/representative_burst_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/representative_burst_medium.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/representative_combined_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/representative_combined_medium.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/representative_drift_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/representative_drift_medium.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/representative_gaussian_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/representative_gaussian_medium.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/representative_jump_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/representative_jump_medium.png`
+- `outputs/stage4/e3_holdout1000_confidence_aware_sdedit/figures/tstart_sweep_by_condition.png` -> `outputs/curated/stage3_sde/mainline/figures/e3_holdout1000_confidence_aware_sdedit/tstart_sweep_by_condition.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_clean.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_confidence.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_degraded.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_fused_tau05_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_fused_tau05_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_fused_tau05_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_fused_tau05_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_fused_tau07_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_fused_tau07_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_fused_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_fused_tau07_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_fused_tau09_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_fused_tau09_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_fused_tau09_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_fused_tau09_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_sdedit_t1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_sdedit_t2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/bias_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/bias_medium_sdedit_t3.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_clean.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_confidence.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_degraded.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_fused_tau05_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_fused_tau05_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_fused_tau05_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_fused_tau05_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_fused_tau07_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_fused_tau07_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_fused_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_fused_tau07_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_fused_tau09_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_fused_tau09_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_fused_tau09_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_fused_tau09_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_sdedit_t1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_sdedit_t2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/burst_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/burst_medium_sdedit_t3.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_clean.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_confidence.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_degraded.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_fused_tau05_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_fused_tau05_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_fused_tau05_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_fused_tau05_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_fused_tau07_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_fused_tau07_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_fused_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_fused_tau07_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_fused_tau09_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_fused_tau09_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_fused_tau09_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_fused_tau09_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_sdedit_t1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_sdedit_t2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/combined_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/combined_medium_sdedit_t3.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_clean.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_confidence.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_degraded.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_fused_tau05_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_fused_tau05_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_fused_tau05_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_fused_tau05_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_fused_tau07_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_fused_tau07_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_fused_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_fused_tau07_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_fused_tau09_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_fused_tau09_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_fused_tau09_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_fused_tau09_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_sdedit_t1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_sdedit_t2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/drift_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/drift_medium_sdedit_t3.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_clean.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_confidence.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_degraded.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_fused_tau05_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_fused_tau05_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_fused_tau05_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_fused_tau05_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_fused_tau07_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_fused_tau07_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_fused_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_fused_tau07_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_fused_tau09_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_fused_tau09_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_fused_tau09_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_fused_tau09_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_sdedit_t1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_sdedit_t2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/gaussian_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/gaussian_medium_sdedit_t3.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_clean.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_clean.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_confidence.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_confidence.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_degraded.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_degraded.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_fused_tau05_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_fused_tau05_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_fused_tau05_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_fused_tau05_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_fused_tau07_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_fused_tau07_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_fused_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_fused_tau07_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_fused_tau09_gamma1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_fused_tau09_gamma1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_fused_tau09_gamma2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_fused_tau09_gamma2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_sdedit_t1.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_sdedit_t2.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_sdedit_t2.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/arrays/jump_medium_sdedit_t3.npy` -> `outputs/curated/stage3_sde/mainline/arrays/stage3_sdedit_tstart123_confidence_hardfusion/jump_medium_sdedit_t3.npy`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/high_low_conf_ade_noisy_vanilla_fusion.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/high_low_conf_ade_noisy_vanilla_fusion.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/overall_ade_noisy_vanilla_best_fusion.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/overall_ade_noisy_vanilla_best_fusion.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/representative_bias_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/representative_bias_medium.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/representative_burst_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/representative_burst_medium.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/representative_combined_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/representative_combined_medium.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/representative_drift_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/representative_drift_medium.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/representative_gaussian_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/representative_gaussian_medium.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/representative_jump_medium.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/representative_jump_medium.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/figures/tstart_sweep_ade_by_condition.png` -> `outputs/curated/stage3_sde/mainline/figures/stage3_sdedit_tstart123_confidence_hardfusion/tstart_sweep_ade_by_condition.png`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_best_tstart_by_condition.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_best_tstart_by_condition.csv`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_hardfusion_condition_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_hardfusion_condition_metrics.csv`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_hardfusion_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_hardfusion_confidence_bin_metrics.csv`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_hardfusion_passfail_diagnostic.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_hardfusion_passfail_diagnostic.csv`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_tstart123_hardfusion_summary.md` -> `outputs/curated/stage3_sde/mainline/summaries/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_tstart123_hardfusion_summary.md`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_tstart_sweep_summary.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_tstart_sweep_summary.csv`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_vanilla_condition_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_vanilla_condition_metrics.csv`
+- `outputs/stage4/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_vanilla_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/mainline/metrics/stage3_sdedit_tstart123_confidence_hardfusion/stage3_sdedit_vanilla_confidence_bin_metrics.csv`
+- `tools/stage4/e3_holdout1000_confidence_aware_sdedit.py` -> `tools/curated/stage3_sde/mainline/e3_holdout1000_confidence_aware_sdedit.py`
+- `tools/stage4/stage3_sdedit_tstart123_confidence_hardfusion.py` -> `tools/curated/stage3_sde/mainline/stage3_sdedit_tstart123_confidence_hardfusion.py`
+
+## SUPPLEMENTARY_ABLATION Paths
+
+- `outputs/stage4/e3_gain_bottleneck_minimal_diagnosis/e3_correction_direction_minimal.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/other/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_minimal_diagnosis/e3_correction_direction_minimal.csv`
+- `outputs/stage4/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_decision_matrix.md` -> `outputs/curated/stage3_sde/supplementary_ablation/other/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_decision_matrix.md`
+- `outputs/stage4/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_minimal_summary.md` -> `outputs/curated/stage3_sde/supplementary_ablation/other/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_minimal_summary.md`
+- `outputs/stage4/e3_gain_bottleneck_minimal_diagnosis/e3_oracle_upper_bound_minimal.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/other/e3_gain_bottleneck_minimal_diagnosis/e3_gain_bottleneck_minimal_diagnosis/e3_oracle_upper_bound_minimal.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/cache_inventory.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/cache_inventory.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/cache_inventory.md` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/cache_inventory.md`
+- `outputs/stage4/e3_multit_candidate_source_ablation/cache_inventory_raw_file_list.txt` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/cache_inventory_raw_file_list.txt`
+- `outputs/stage4/e3_multit_candidate_source_ablation/e3_multit_candidate_source_bin_metrics.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/e3_multit_candidate_source_bin_metrics.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/e3_multit_candidate_source_condition_summary.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/e3_multit_candidate_source_condition_summary.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/e3_multit_candidate_source_decision_summary.md` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/e3_multit_candidate_source_decision_summary.md`
+- `outputs/stage4/e3_multit_candidate_source_ablation/e3_multit_candidate_source_full_metrics.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/e3_multit_candidate_source_full_metrics.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/e3_multit_candidate_source_pass_fail_summary.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/e3_multit_candidate_source_ablation/e3_multit_candidate_source_pass_fail_summary.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/figures/bias_medium_median_t1_candidate_source_comparison.png` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/figures/bias_medium_median_t1_candidate_source_comparison.png`
+- `outputs/stage4/e3_multit_candidate_source_ablation/figures/burst_medium_median_t1_candidate_source_comparison.png` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/figures/burst_medium_median_t1_candidate_source_comparison.png`
+- `outputs/stage4/e3_multit_candidate_source_ablation/figures/combined_medium_median_t1_candidate_source_comparison.png` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/figures/combined_medium_median_t1_candidate_source_comparison.png`
+- `outputs/stage4/e3_multit_candidate_source_ablation/figures/drift_medium_median_t1_candidate_source_comparison.png` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/figures/drift_medium_median_t1_candidate_source_comparison.png`
+- `outputs/stage4/e3_multit_candidate_source_ablation/figures/gaussian_medium_median_t1_candidate_source_comparison.png` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/figures/gaussian_medium_median_t1_candidate_source_comparison.png`
+- `outputs/stage4/e3_multit_candidate_source_ablation/figures/jump_medium_median_t1_candidate_source_comparison.png` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/figures/jump_medium_median_t1_candidate_source_comparison.png`
+- `outputs/stage4/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_ade_table.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_ade_table.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_consistency_summary.md` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_consistency_summary.md`
+- `outputs/stage4/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_high_conf_table.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_high_conf_table.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_low_conf_table.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_low_conf_table.csv`
+- `outputs/stage4/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_motion_usage_table.csv` -> `outputs/curated/stage3_sde/supplementary_ablation/multit_candidate_source/e3_multit_candidate_source_ablation/per_condition_consistency/per_condition_motion_usage_table.csv`
+- `tools/stage4/e3_gain_bottleneck_minimal_diagnosis.py` -> `tools/curated/stage3_sde/supplementary_ablation/e3_gain_bottleneck_minimal_diagnosis.py`
+- `tools/stage4/e3_multit_candidate_source_eval.py` -> `tools/curated/stage3_sde/supplementary_ablation/e3_multit_candidate_source_eval.py`
+- `tools/stage4/e3_multit_candidate_source_inventory.py` -> `tools/curated/stage3_sde/supplementary_ablation/e3_multit_candidate_source_inventory.py`
+- `tools/stage4/e3_multit_per_condition_consistency_extract.py` -> `tools/curated/stage3_sde/supplementary_ablation/e3_multit_per_condition_consistency_extract.py`
+
+## NEGATIVE_DIAGNOSTIC Paths
+
+- `docs/stage4/E2_DPS_hypothesis.md` -> `docs/stage3_sde/imported_stage4_docs/E2_DPS_hypothesis.md`
+- `docs/stage4/E2_DPS_hypothesis_amendment_001.md` -> `docs/stage3_sde/imported_stage4_docs/E2_DPS_hypothesis_amendment_001.md`
+- `docs/stage4/E2_DPS_hypothesis_amendment_002.md` -> `docs/stage3_sde/imported_stage4_docs/E2_DPS_hypothesis_amendment_002.md`
+- `docs/stage4/stage3_sde_legacy_audit.md` -> `docs/stage3_sde/imported_stage4_docs/stage3_sde_legacy_audit.md`
+- `outputs/stage3_indoor/sdedit_diagnostic/diagnostic_config.json` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/sdedit_diagnostic/sdedit_diagnostic/diagnostic_config.json`
+- `outputs/stage3_indoor/sdedit_diagnostic/diagnostic_examples.png` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/sdedit_diagnostic/sdedit_diagnostic/diagnostic_examples.png`
+- `outputs/stage3_indoor/sdedit_diagnostic/diagnostic_per_traj.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/sdedit_diagnostic/sdedit_diagnostic/diagnostic_per_traj.csv`
+- `outputs/stage3_indoor/sdedit_diagnostic/diagnostic_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/sdedit_diagnostic/sdedit_diagnostic/diagnostic_summary.csv`
+- `outputs/stage4/e2_dps_interface_audit/e2_dps_interface_audit_case_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_interface_audit/e2_dps_interface_audit/e2_dps_interface_audit_case_summary.csv`
+- `outputs/stage4/e2_dps_interface_audit/e2_dps_interface_audit_initialization_summary.json` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_interface_audit/e2_dps_interface_audit/e2_dps_interface_audit_initialization_summary.json`
+- `outputs/stage4/e2_dps_interface_audit/e2_dps_interface_audit_step_trace.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_interface_audit/e2_dps_interface_audit/e2_dps_interface_audit_step_trace.csv`
+- `outputs/stage4/e2_dps_interface_audit/e2_dps_interface_audit_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_interface_audit/e2_dps_interface_audit/e2_dps_interface_audit_summary.md`
+- `outputs/stage4/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit_case_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit_case_summary.csv`
+- `outputs/stage4/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit_summary.md`
+- `outputs/stage4/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit_trace.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit/e2_dps_mean_likelihood_reaudit_trace.csv`
+- `outputs/stage4/e2_dps_mechanism_audit/e2_dps_mechanism_audit_case_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/e2_dps_mechanism_audit/e2_dps_mechanism_audit_case_summary.csv`
+- `outputs/stage4/e2_dps_mechanism_audit/e2_dps_mechanism_audit_figures.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/e2_dps_mechanism_audit/e2_dps_mechanism_audit_figures.csv`
+- `outputs/stage4/e2_dps_mechanism_audit/e2_dps_mechanism_audit_step_trace.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/e2_dps_mechanism_audit/e2_dps_mechanism_audit_step_trace.csv`
+- `outputs/stage4/e2_dps_mechanism_audit/e2_dps_mechanism_audit_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/e2_dps_mechanism_audit/e2_dps_mechanism_audit_summary.md`
+- `outputs/stage4/e2_dps_mechanism_audit/figures/burst_medium_traj0_mechanism_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/figures/burst_medium_traj0_mechanism_trace.png`
+- `outputs/stage4/e2_dps_mechanism_audit/figures/drift_medium_traj0_mechanism_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/figures/drift_medium_traj0_mechanism_trace.png`
+- `outputs/stage4/e2_dps_mechanism_audit/figures/gaussian_medium_traj0_mechanism_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_mechanism_audit/figures/gaussian_medium_traj0_mechanism_trace.png`
+- `outputs/stage4/e2_dps_nan_diagnosis/e2_dps_nan_case_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis/e2_dps_nan_case_summary.csv`
+- `outputs/stage4/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis_figures.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis_figures.csv`
+- `outputs/stage4/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis_summary.md`
+- `outputs/stage4/e2_dps_nan_diagnosis/e2_dps_nan_trace.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/e2_dps_nan_diagnosis/e2_dps_nan_trace.csv`
+- `outputs/stage4/e2_dps_nan_diagnosis/figures/bias_medium_traj0_zeta0p3_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/figures/bias_medium_traj0_zeta0p3_trace.png`
+- `outputs/stage4/e2_dps_nan_diagnosis/figures/burst_medium_traj0_zeta0p3_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/figures/burst_medium_traj0_zeta0p3_trace.png`
+- `outputs/stage4/e2_dps_nan_diagnosis/figures/drift_medium_traj0_zeta0p3_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/figures/drift_medium_traj0_zeta0p3_trace.png`
+- `outputs/stage4/e2_dps_nan_diagnosis/figures/gaussian_medium_traj0_zeta0p3_trace.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_nan_diagnosis/figures/gaussian_medium_traj0_zeta0p3_trace.png`
+- `outputs/stage4/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit_case_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit_case_summary.csv`
+- `outputs/stage4/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit_summary.md`
+- `outputs/stage4/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit_trace.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit/e2_dps_norm_guidance_reaudit_trace.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_audit_failed.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_audit_failed.md`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_audit_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_audit_summary.md`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_confidence_bin_metrics.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_diagnostics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_diagnostics.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_figures.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_figures.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_full_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_full_metrics.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_pass_fail_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_pass_fail_summary.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_per_trajectory_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_per_trajectory_metrics.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_sampling_diagnostics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_sampling_diagnostics.csv`
+- `outputs/stage4/e2_dps_pilot/e2_dps_pilot_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/e2_dps_pilot/e2_dps_pilot_summary.md`
+- `outputs/stage4/e2_dps_pilot/figures/bias_negative_control_bias_medium_traj11.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/figures/bias_negative_control_bias_medium_traj11.png`
+- `outputs/stage4/e2_dps_pilot/figures/burst_burst_medium_traj9.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/figures/burst_burst_medium_traj9.png`
+- `outputs/stage4/e2_dps_pilot/figures/drift_drift_medium_traj9.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/figures/drift_drift_medium_traj9.png`
+- `outputs/stage4/e2_dps_pilot/figures/jump_diagnostic_jump_medium_traj14.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e2_dps_pilot/figures/jump_diagnostic_jump_medium_traj14.png`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_condition_level_diagnostics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_condition_level_diagnostics.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_condition_level_diagnostics.md` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_condition_level_diagnostics.md`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_confidence_bin_metrics.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_diagnostics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_diagnostics.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_figures.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_figures.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_full_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_full_metrics.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_layered_pass_fail_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_layered_pass_fail_summary.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_optimized_trajectories.npz` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_optimized_trajectories.npz`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_parameter_sweep.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_parameter_sweep.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_pass_fail_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_pass_fail_summary.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_per_trajectory_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_per_trajectory_metrics.csv`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/e2_min_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/e2_min_absolute_posterior_anchoring/e2_min_summary.md`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/figures/bias_absolute_offset_bias_medium_traj83.png` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/figures/bias_absolute_offset_bias_medium_traj83.png`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/figures/burst_boundary_failure_burst_medium_traj107.png` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/figures/burst_boundary_failure_burst_medium_traj107.png`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/figures/combined_degradation_combined_medium_traj36.png` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/figures/combined_degradation_combined_medium_traj36.png`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/figures/drift_high_confidence_e1_failure_drift_medium_traj183.png` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/figures/drift_high_confidence_e1_failure_drift_medium_traj183.png`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/figures/failure_or_ambiguous_jump_medium_traj2.png` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/figures/failure_or_ambiguous_jump_medium_traj2.png`
+- `outputs/stage4/e2_min_absolute_posterior_anchoring/figures/low_confidence_preservation_burst_medium_traj165.png` -> `outputs/curated/stage3_sde/negative_diagnostic/e2_min/e2_min_absolute_posterior_anchoring/figures/low_confidence_preservation_burst_medium_traj165.png`
+- `outputs/stage4/e2_prior_signal_sanity_bias/bias_prior_signal_figures.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/e2_prior_signal_sanity_bias/bias_prior_signal_figures.csv`
+- `outputs/stage4/e2_prior_signal_sanity_bias/bias_prior_signal_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/e2_prior_signal_sanity_bias/bias_prior_signal_metrics.csv`
+- `outputs/stage4/e2_prior_signal_sanity_bias/bias_prior_signal_per_trajectory.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/e2_prior_signal_sanity_bias/bias_prior_signal_per_trajectory.csv`
+- `outputs/stage4/e2_prior_signal_sanity_bias/bias_prior_signal_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/e2_prior_signal_sanity_bias/bias_prior_signal_summary.md`
+- `outputs/stage4/e2_prior_signal_sanity_bias/figures/best_ADE_improvement_traj123.png` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/figures/best_ADE_improvement_traj123.png`
+- `outputs/stage4/e2_prior_signal_sanity_bias/figures/highest_global_alignment_traj7.png` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/figures/highest_global_alignment_traj7.png`
+- `outputs/stage4/e2_prior_signal_sanity_bias/figures/median_global_alignment_traj62.png` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/figures/median_global_alignment_traj62.png`
+- `outputs/stage4/e2_prior_signal_sanity_bias/figures/worst_offset_regression_traj154.png` -> `outputs/curated/stage3_sde/negative_diagnostic/bias_sanity/e2_prior_signal_sanity_bias/figures/worst_offset_regression_traj154.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_clean.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_clean.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_confidence.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_confidence.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_degraded.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_degraded.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_0.0001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_0.0001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_0.0003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_0.0003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_0.001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_0.001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_1e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_1e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_3e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_dps_zeta_3e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/bias_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/bias_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_clean.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_clean.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_confidence.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_confidence.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_degraded.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_degraded.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_0.0001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_0.0001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_0.0003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_0.0003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_0.001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_0.001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_1e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_1e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_3e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_dps_zeta_3e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/burst_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/burst_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_clean.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_clean.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_confidence.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_confidence.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_degraded.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_degraded.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_0.0001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_0.0001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_0.0003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_0.0003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_0.001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_0.001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_1e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_1e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_3e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_dps_zeta_3e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/combined_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/combined_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_clean.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_clean.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_confidence.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_confidence.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_degraded.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_degraded.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_0.0001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_0.0001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_0.0003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_0.0003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_0.001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_0.001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_1e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_1e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_3e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_dps_zeta_3e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/drift_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/drift_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_clean.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_clean.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_confidence.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_confidence.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_degraded.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_degraded.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_0.0001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_0.0001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_0.0003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_0.0003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_0.001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_0.001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_1e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_1e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_3e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_dps_zeta_3e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/gaussian_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/gaussian_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_clean.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_clean.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_confidence.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_confidence.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_degraded.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_degraded.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_0.0001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_0.0001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_0.0003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_0.0003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_0.001.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_0.001.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_1e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_1e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_3e-05.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_dps_zeta_3e-05.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_fused_t1_tau07_gamma2.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_fused_t1_tau07_gamma2.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/arrays/jump_medium_sdedit_t1.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/arrays/jump_medium_sdedit_t1.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_condition_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_condition_summary.csv`
+- `outputs/stage4/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_decision_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_decision_summary.md`
+- `outputs/stage4/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_metrics.csv`
+- `outputs/stage4/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_step_diagnostics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_step_diagnostics.csv`
+- `outputs/stage4/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_zeta_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA/e3_dps_calibrated_phaseA_zeta_summary.csv`
+- `outputs/stage4/e3_dps_calibrated_phaseA/figures/representative_bias_medium.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/figures/representative_bias_medium.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA/figures/representative_burst_medium.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/figures/representative_burst_medium.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA/figures/representative_combined_medium.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/figures/representative_combined_medium.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA/figures/representative_drift_medium.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/figures/representative_drift_medium.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA/figures/representative_gaussian_medium.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/figures/representative_gaussian_medium.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA/figures/representative_jump_medium.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA/figures/representative_jump_medium.png`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/bias_medium_dps_zeta_0.003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/bias_medium_dps_zeta_0.003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/bias_medium_dps_zeta_0.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/bias_medium_dps_zeta_0.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/burst_medium_dps_zeta_0.003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/burst_medium_dps_zeta_0.003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/burst_medium_dps_zeta_0.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/burst_medium_dps_zeta_0.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/combined_medium_dps_zeta_0.003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/combined_medium_dps_zeta_0.003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/combined_medium_dps_zeta_0.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/combined_medium_dps_zeta_0.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/drift_medium_dps_zeta_0.003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/drift_medium_dps_zeta_0.003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/drift_medium_dps_zeta_0.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/drift_medium_dps_zeta_0.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/e3_dps_phaseA_extension_decision_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/e3_dps_phaseA_extension_decision_summary.md`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/e3_dps_phaseA_extension_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/e3_dps_phaseA_extension_metrics.csv`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/e3_dps_phaseA_extension_zeta_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/e3_dps_phaseA_extension_zeta_summary.csv`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/gaussian_medium_dps_zeta_0.003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/gaussian_medium_dps_zeta_0.003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/gaussian_medium_dps_zeta_0.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/gaussian_medium_dps_zeta_0.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/jump_medium_dps_zeta_0.003.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/jump_medium_dps_zeta_0.003.npy`
+- `outputs/stage4/e3_dps_calibrated_phaseA_extension/jump_medium_dps_zeta_0.npy` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_calibrated_phaseA_extension/e3_dps_calibrated_phaseA_extension/jump_medium_dps_zeta_0.npy`
+- `outputs/stage4/e3_dps_extended_sign_check/e3_dps_extended_sign_check.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_extended_sign_check/e3_dps_extended_sign_check/e3_dps_extended_sign_check.csv`
+- `outputs/stage4/e3_dps_extended_sign_check/e3_dps_extended_sign_check_case_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_extended_sign_check/e3_dps_extended_sign_check/e3_dps_extended_sign_check_case_summary.csv`
+- `outputs/stage4/e3_dps_extended_sign_check/e3_dps_extended_sign_check_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_extended_sign_check/e3_dps_extended_sign_check/e3_dps_extended_sign_check_summary.md`
+- `outputs/stage4/e3_dps_single_step_sign_check/e3_dps_single_step_sign_check.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_single_step_sign_check/e3_dps_single_step_sign_check/e3_dps_single_step_sign_check.csv`
+- `outputs/stage4/e3_dps_single_step_sign_check/e3_dps_single_step_sign_check_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_dps_single_step_sign_check/e3_dps_single_step_sign_check/e3_dps_single_step_sign_check_summary.md`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_condition_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_condition_summary.csv`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_decision_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_decision_summary.md`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_metrics.csv`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_seed_zeta_summary.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_seed_zeta_summary.csv`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_step_trace.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_audit/e3_initialized_dps_aligned_step_trace.csv`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/figures/representative_bias_medium_zeta0p3.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/figures/representative_bias_medium_zeta0p3.png`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/figures/representative_burst_medium_zeta0p3.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/figures/representative_burst_medium_zeta0p3.png`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/figures/representative_combined_medium_zeta0p3.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/figures/representative_combined_medium_zeta0p3.png`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/figures/representative_drift_medium_zeta0p3.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/figures/representative_drift_medium_zeta0p3.png`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/figures/representative_gaussian_medium_zeta0p3.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/figures/representative_gaussian_medium_zeta0p3.png`
+- `outputs/stage4/e3_initialized_dps_aligned_audit/figures/representative_jump_medium_zeta0p3.png` -> `outputs/curated/stage3_sde/negative_diagnostic/dps/e3_initialized_dps_aligned_audit/figures/representative_jump_medium_zeta0p3.png`
+- `outputs/stage4/stage3_sde_legacy_audit/stage3_sde_legacy_results_index.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sde_legacy_audit/stage3_sde_legacy_audit/stage3_sde_legacy_results_index.csv`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/figures/representative_gaussian_t2_partial_cache.png` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/figures/representative_gaussian_t2_partial_cache.png`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/figures/tstart_sweep_diagnostic_summary.png` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/figures/tstart_sweep_diagnostic_summary.png`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/figures/tstart_sweep_sdedit_gaussian_full_summary.png` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/figures/tstart_sweep_sdedit_gaussian_full_summary.png`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/figures/tstart_sweep_sdedit_scout_results.png` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/figures/tstart_sweep_sdedit_scout_results.png`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/missing_output_inventory.md` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/missing_output_inventory.md`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_condition_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_condition_metrics.csv`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_confidence_bin_metrics.csv`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_summary.md` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_summary.md`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_output_inventory.md` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_output_inventory.md`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_prior_sample_diagnostics.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_prior_sample_diagnostics.csv`
+- `outputs/stage4/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_tstart_sweep.csv` -> `outputs/curated/stage3_sde/negative_diagnostic/old_sdedit_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_mechanism_diagnosis/stage3_sdedit_tstart_sweep.csv`
+- `tools/stage4/e2_dps_interface_audit.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_dps_interface_audit.py`
+- `tools/stage4/e2_dps_mean_likelihood_reaudit.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_dps_mean_likelihood_reaudit.py`
+- `tools/stage4/e2_dps_mechanism_audit.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_dps_mechanism_audit.py`
+- `tools/stage4/e2_dps_nan_diagnosis.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_dps_nan_diagnosis.py`
+- `tools/stage4/e2_dps_norm_guidance_reaudit.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_dps_norm_guidance_reaudit.py`
+- `tools/stage4/e2_dps_pilot.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_dps_pilot.py`
+- `tools/stage4/e2_min_absolute_posterior_anchoring.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_min_absolute_posterior_anchoring.py`
+- `tools/stage4/e2_min_condition_level_diagnostics.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_min_condition_level_diagnostics.py`
+- `tools/stage4/e2_prior_signal_sanity_bias.py` -> `tools/curated/stage3_sde/negative_diagnostic/e2_prior_signal_sanity_bias.py`
+- `tools/stage4/e3_dps_calibrated_phaseA.py` -> `tools/curated/stage3_sde/negative_diagnostic/e3_dps_calibrated_phaseA.py`
+- `tools/stage4/e3_dps_calibrated_phaseA_extension.py` -> `tools/curated/stage3_sde/negative_diagnostic/e3_dps_calibrated_phaseA_extension.py`
+- `tools/stage4/e3_dps_extended_sign_check.py` -> `tools/curated/stage3_sde/negative_diagnostic/e3_dps_extended_sign_check.py`
+- `tools/stage4/e3_dps_single_step_sign_check.py` -> `tools/curated/stage3_sde/negative_diagnostic/e3_dps_single_step_sign_check.py`
+- `tools/stage4/e3_initialized_dps_aligned_audit.py` -> `tools/curated/stage3_sde/negative_diagnostic/e3_initialized_dps_aligned_audit.py`
+- `tools/stage4/stage3_sdedit_mechanism_diagnosis.py` -> `tools/curated/stage3_sde/negative_diagnostic/stage3_sdedit_mechanism_diagnosis.py`
+
+## FUTURE_SENSOR_INTERFACE Paths
+
+- `docs/stage4/E3_observation_initialized_prior_interface_audit.md` -> `docs/stage3_sde/imported_stage4_docs/E3_observation_initialized_prior_interface_audit.md`
+
+## LEGACY_OR_DEPRECATED Paths
+
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_conclusion.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_conclusion.json`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_eval.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_eval.png`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_per_traj.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_per_traj.csv`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/cond_residual_gaussian_summary.csv`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/eval_degraded_gaussian.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/eval_degraded_gaussian.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_conclusion.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_conclusion.json`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_bias.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_bias.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_burst.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_burst.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_combined.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_combined.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_drift.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_drift.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_gaussian.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_gaussian.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_jump.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_degraded_jump.npy`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_diagnostic.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_diagnostic.png`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_per_traj.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_per_traj.csv`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/generalization_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/generalization_summary.csv`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/loss_curve.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/loss_curve.csv`
+- `outputs/stage3_indoor/conditional_residual_ddpm_gaussian/seed42/rel_norm_params_v2.npz` -> `outputs/curated/stage3_sde/legacy_or_deprecated/conditional_residual_ddpm_gaussian/seed42/rel_norm_params_v2.npz`
+- `outputs/stage3_indoor/report/tables/table1_gaussian_medium.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/report/tables/table1_gaussian_medium.csv`
+- `outputs/stage4/e1_failure_diagnosis/conservative_gate_gamma_ablation.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/conservative_gate_gamma_ablation.csv`
+- `outputs/stage4/e1_failure_diagnosis/delta0_c2_tradeoff.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/delta0_c2_tradeoff.csv`
+- `outputs/stage4/e1_failure_diagnosis/diagnosis_figures.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/diagnosis_figures.csv`
+- `outputs/stage4/e1_failure_diagnosis/diagnosis_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/diagnosis_summary.md`
+- `outputs/stage4/e1_failure_diagnosis/failure_cause_judgment.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/failure_cause_judgment.csv`
+- `outputs/stage4/e1_failure_diagnosis/figures/burst_medium_failure_traj114.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/figures/burst_medium_failure_traj114.png`
+- `outputs/stage4/e1_failure_diagnosis/figures/burst_medium_failure_traj172.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/figures/burst_medium_failure_traj172.png`
+- `outputs/stage4/e1_failure_diagnosis/figures/burst_medium_failure_traj41.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/figures/burst_medium_failure_traj41.png`
+- `outputs/stage4/e1_failure_diagnosis/figures/drift_medium_failure_traj156.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/figures/drift_medium_failure_traj156.png`
+- `outputs/stage4/e1_failure_diagnosis/figures/drift_medium_failure_traj160.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/figures/drift_medium_failure_traj160.png`
+- `outputs/stage4/e1_failure_diagnosis/figures/drift_medium_failure_traj65.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/figures/drift_medium_failure_traj65.png`
+- `outputs/stage4/e1_failure_diagnosis/high_confidence_failure_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/high_confidence_failure_summary.csv`
+- `outputs/stage4/e1_failure_diagnosis/trajectory_dominance.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/trajectory_dominance.csv`
+- `outputs/stage4/e1_failure_diagnosis/worst10_high_confidence_violations.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis/e1_failure_diagnosis/worst10_high_confidence_violations.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/bias_medium_confidence.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/bias_medium_confidence.npy`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/bias_medium_confidence_validation.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/bias_medium_confidence_validation.json`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/burst_medium_confidence.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/burst_medium_confidence.npy`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/burst_medium_confidence_validation.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/burst_medium_confidence_validation.json`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/combined_medium_confidence.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/combined_medium_confidence.npy`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/combined_medium_confidence_validation.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/combined_medium_confidence_validation.json`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/confidence_cache_validation_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/confidence_cache_validation_summary.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/confidence_cache_validation_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/confidence_cache_validation_summary.md`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/drift_medium_confidence.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/drift_medium_confidence.npy`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/drift_medium_confidence_validation.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/drift_medium_confidence_validation.json`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/gaussian_medium_confidence.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/gaussian_medium_confidence.npy`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/gaussian_medium_confidence_validation.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/gaussian_medium_confidence_validation.json`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/jump_medium_confidence.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/jump_medium_confidence.npy`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/confidence_cache/jump_medium_confidence_validation.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/confidence_cache/jump_medium_confidence_validation.json`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_confidence_bin_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_delta0_sweep.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_delta0_sweep.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_full_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_full_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_pass_fail_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_pass_fail_summary.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_per_trajectory_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_per_trajectory_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_protocol_validation_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_protocol_validation_summary.csv`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/e1_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/e1_oracle_residual_gating_6conditions/e1_summary.md`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/failure_or_ambiguous_case_burst_medium_traj165.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/failure_or_ambiguous_case_burst_medium_traj165.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/high_confidence_overcorrection_burst_medium_traj107.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/high_confidence_overcorrection_burst_medium_traj107.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/low_confidence_preserved_burst_medium_traj85.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/low_confidence_preserved_burst_medium_traj85.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/representative_bias_medium_bias_medium_traj154.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/representative_bias_medium_bias_medium_traj154.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/representative_burst_medium_burst_medium_traj107.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/representative_burst_medium_burst_medium_traj107.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/representative_combined_medium_combined_medium_traj123.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/representative_combined_medium_combined_medium_traj123.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/representative_drift_medium_drift_medium_traj53.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/representative_drift_medium_drift_medium_traj53.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/representative_gaussian_medium_gaussian_medium_traj100.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/representative_gaussian_medium_gaussian_medium_traj100.png`
+- `outputs/stage4/e1_oracle_residual_gating_6conditions/figures/representative_jump_medium_jump_medium_traj143.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions/figures/representative_jump_medium_jump_medium_traj143.png`
+- `outputs/stage4/e1_oracle_residual_gating_full/e1_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/e1_oracle_residual_gating_full/e1_confidence_bin_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_full/e1_delta0_sweep.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/e1_oracle_residual_gating_full/e1_delta0_sweep.csv`
+- `outputs/stage4/e1_oracle_residual_gating_full/e1_full_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/e1_oracle_residual_gating_full/e1_full_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_full/e1_pass_fail_summary.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/e1_oracle_residual_gating_full/e1_pass_fail_summary.csv`
+- `outputs/stage4/e1_oracle_residual_gating_full/e1_per_trajectory_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/e1_oracle_residual_gating_full/e1_per_trajectory_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_full/e1_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/e1_oracle_residual_gating_full/e1_summary.md`
+- `outputs/stage4/e1_oracle_residual_gating_full/figures/burst_case_burst_medium_traj107.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/figures/burst_case_burst_medium_traj107.png`
+- `outputs/stage4/e1_oracle_residual_gating_full/figures/drift_case_drift_medium_traj53.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/figures/drift_case_drift_medium_traj53.png`
+- `outputs/stage4/e1_oracle_residual_gating_full/figures/failure_or_ambiguous_case_burst_medium_traj165.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/figures/failure_or_ambiguous_case_burst_medium_traj165.png`
+- `outputs/stage4/e1_oracle_residual_gating_full/figures/high_confidence_overcorrection_burst_medium_traj107.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/figures/high_confidence_overcorrection_burst_medium_traj107.png`
+- `outputs/stage4/e1_oracle_residual_gating_full/figures/low_confidence_preserved_burst_medium_traj85.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full/figures/low_confidence_preserved_burst_medium_traj85.png`
+- `outputs/stage4/e1_oracle_residual_gating_smoke/smoke_examples.npz` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_smoke/e1_oracle_residual_gating_smoke/smoke_examples.npz`
+- `outputs/stage4/e1_oracle_residual_gating_smoke/smoke_examples.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_smoke/e1_oracle_residual_gating_smoke/smoke_examples.png`
+- `outputs/stage4/e1_oracle_residual_gating_smoke/smoke_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_smoke/e1_oracle_residual_gating_smoke/smoke_metrics.csv`
+- `outputs/stage4/e1_oracle_residual_gating_smoke/smoke_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_smoke/e1_oracle_residual_gating_smoke/smoke_summary.md`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_confidence_bin_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_confidence_bin_metrics.csv`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_figures.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_figures.csv`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_full_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_full_metrics.csv`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_interpretation.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_interpretation.csv`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_per_trajectory_metrics.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_per_trajectory_metrics.csv`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_summary.md`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_summary_table.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/e1_supplementary_gamma_delta_ablation/e1_supp_gamma_delta_summary_table.csv`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/case_c2_pass_residual_shutdown.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/case_c2_pass_residual_shutdown.png`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/case_low_conf_residual_preserved.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/case_low_conf_residual_preserved.png`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/drift_burst_high_conf_ADE_vs_gamma.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/drift_burst_high_conf_ADE_vs_gamma.png`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/drift_burst_low_conf_ADE_vs_gamma.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/drift_burst_low_conf_ADE_vs_gamma.png`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/noisy_reversion_gap_vs_gamma.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/noisy_reversion_gap_vs_gamma.png`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/overall_ADE_vs_gamma.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/overall_ADE_vs_gamma.png`
+- `outputs/stage4/e1_supplementary_gamma_delta_ablation/figures/residual_usage_ratio_vs_gamma.png` -> `outputs/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation/figures/residual_usage_ratio_vs_gamma.png`
+- `outputs/stage4/reconstructed_stage3_cond_outputs/combined_cond_residual_t20_refined_reconstructed.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/reconstructed_stage3_cond_outputs/reconstructed_stage3_cond_outputs/combined_cond_residual_t20_refined_reconstructed.npy`
+- `outputs/stage4/reconstructed_stage3_cond_outputs/jump_cond_residual_t20_refined_reconstructed.npy` -> `outputs/curated/stage3_sde/legacy_or_deprecated/reconstructed_stage3_cond_outputs/reconstructed_stage3_cond_outputs/jump_cond_residual_t20_refined_reconstructed.npy`
+- `outputs/stage4/reconstructed_stage3_cond_outputs/reconstruction_manifest.json` -> `outputs/curated/stage3_sde/legacy_or_deprecated/reconstructed_stage3_cond_outputs/reconstructed_stage3_cond_outputs/reconstruction_manifest.json`
+- `outputs/stage4/reconstructed_stage3_cond_outputs/reconstruction_summary.md` -> `outputs/curated/stage3_sde/legacy_or_deprecated/reconstructed_stage3_cond_outputs/reconstructed_stage3_cond_outputs/reconstruction_summary.md`
+- `outputs/stage4/reconstructed_stage3_cond_outputs/reconstruction_verification.csv` -> `outputs/curated/stage3_sde/legacy_or_deprecated/reconstructed_stage3_cond_outputs/reconstructed_stage3_cond_outputs/reconstruction_verification.csv`
+- `tools/stage3/eval/plot_phase1_figures.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/plot_phase1_figures.py`
+- `tools/stage3/eval/plot_phase1_random_span_statistics.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/plot_phase1_random_span_statistics.py`
+- `tools/stage3/eval/run_phase1_random_span_statistics.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/run_phase1_random_span_statistics.py`
+- `tools/stage4/e1_failure_diagnosis.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/e1_failure_diagnosis.py`
+- `tools/stage4/e1_oracle_residual_gating_6conditions.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_6conditions.py`
+- `tools/stage4/e1_oracle_residual_gating_full.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_full.py`
+- `tools/stage4/e1_oracle_residual_gating_smoke.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/e1_oracle_residual_gating_smoke.py`
+- `tools/stage4/e1_supplementary_gamma_delta_ablation.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/e1_supplementary_gamma_delta_ablation.py`
+- `tools/stage4/rebuild_e1_confidence_cache.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/rebuild_e1_confidence_cache.py`
+- `tools/stage4/reconstruct_missing_stage3_cond_outputs.py` -> `tools/curated/stage3_sde/legacy_or_deprecated/reconstruct_missing_stage3_cond_outputs.py`
+
+## UNKNOWN_NEEDS_MANUAL_REVIEW Paths
+
+- `outputs/stage3/README.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/README.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/baselines/kalman_results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/baselines/linear_interp_results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/baselines/savgol_results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/data/clean_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/data/clean_windows_meta.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/data/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/data/occupancy_map.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/data/occupancy_map_room3.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/archive/legacy_flat_outputs/data/toy_long.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/audit/AUDIT_REPORT.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/CHANGELOG.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/README.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/audit/ddpm_case_traceability.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/audit/fde_zero_audit.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/audit/figure3_spread_definition.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/audit/figure5_spread_definition.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/audit/geometry_usage_statement.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/config/stage3_canonical_v1_config.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/figures/ddpm_case_best_improvement_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/figures/ddpm_case_median_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/figures/ddpm_case_worst_degradation_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/figures/figure3_replacement_raw_spread.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/figures/figure5_replacement_alpha_variance.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/logs/run_log.txt` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/raw/per_case_results_seed_level.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/raw/per_case_results_trajectory_level.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/raw/selected_ddpm_cases.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/tables/full_matrix_seed_level.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/tables/full_matrix_seed_level.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/tables/full_matrix_trajectory_level.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/tables/full_matrix_trajectory_level.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/tables/missing_cell_audit.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/canonical_v1/tables/table2_complete_replacement.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/clean.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/degraded_missing_drift_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/degraded_missing_noise_drift_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/degraded_missing_noise_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/degraded_missing_only_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/mask_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/degradation/metadata_span20_fixed_seed42.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/kalman_geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/kalman_reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/kalman_room3_geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/linear_interp_geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/linear_interp_reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/linear_interp_room3_geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/savgol_geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/savgol_reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/legacy_flat_metrics/savgol_room3_geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/metrics_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/eval/metrics_summary.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/bar_ADE_by_degradation.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/bar_RMSE_by_degradation.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/bar_masked_ADE_by_degradation.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/trajectory_example_missing_drift_sample0.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/trajectory_example_missing_noise_drift_sample0.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/trajectory_example_missing_noise_sample0.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/figures/trajectory_example_missing_only_sample0.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_drift_input_degraded_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_drift_linear_interp_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_drift_savgol_w5_p2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_drift_input_degraded_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_drift_linear_interp_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_drift_savgol_w5_p2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_input_degraded_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_linear_interp_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_noise_savgol_w5_p2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_only_input_degraded_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_only_linear_interp_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/controlled_benchmark/reconstruction/recon_missing_only_savgol_w5_p2_span20_fixed_seed42.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/CHANGELOG.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/README.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/config/exp01_config.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/figures/best_ddpm_improvement_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/figures/median_case_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/figures/worst_ddpm_degradation_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/logs/run_log.txt` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/raw/per_case_results.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/raw/selected_cases.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/tables/full_stats_matrix.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/tables/full_stats_matrix.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/correction_exp01_ethucy_indomain_quick/tables/summary_key_metrics.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/diagnosis/DIAGNOSIS.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/diagnosis/scale_comparison.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/diagnosis/v3_diagnosis_table.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/CHANGELOG.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/README.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/config/exp01_config.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/figures/best_ddpm_improvement_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/figures/median_case_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/figures/worst_ddpm_degradation_five_column.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/logs/run_log.txt` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/raw/per_case_results.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/raw/selected_cases.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/tables/full_stats_matrix.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/tables/full_stats_matrix.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/exp01_ethucy_indomain_quick/tables/summary_key_metrics.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/geometry_profiles_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/geometry_profiles_summary.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/feasible_indices.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/figures/geometry_violation_summary.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/figures/obstacle_v1_layout.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/geometry_extension_report.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/geometry_filter_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/geometry_metrics.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/obstacle_v1/geometry_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/feasible_indices.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/figures/geometry_violation_summary.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/figures/two_room_v1_layout.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/geometry_extension_report.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/geometry_filter_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/geometry_metrics.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/geometry_extension/two_room_v1/geometry_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/REPORT.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/full_results.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/trajectory_plots/case_p10_sample930.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/trajectory_plots/case_p25_sample63.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/trajectory_plots/case_p50_sample334.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/trajectory_plots/case_p75_sample62.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/trajectory_plots/case_p90_sample968.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/inpainting_experiment/variance_decomposition.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span10_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span10_fixed_seed42/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span10_fixed_seed42/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_fixed_seed42/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed0/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed0/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed0/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed1/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed1/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed1/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed10/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed10/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed10/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed11/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed11/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed11/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed12/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed12/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed12/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed13/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed13/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed13/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed14/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed14/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed14/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed15/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed15/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed15/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed16/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed16/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed16/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed17/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed17/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed17/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed18/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed18/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed18/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed19/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed19/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed19/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed2/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed2/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed2/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed3/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed3/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed3/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed4/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed4/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed4/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed42/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed42/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed43/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed43/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed43/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed44/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed44/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed44/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed5/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed5/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed5/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed6/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed6/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed6/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed7/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed7/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed7/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed8/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed8/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed8/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed9/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed9/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span20_random_seed9/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span30_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span30_fixed_seed42/linear_interp/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/baselines/span30_fixed_seed42/savgol_w5_p2/results.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/clean_windows_room3.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/clean_windows_room3_meta.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span10_fixed_seed42/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_fixed_seed42/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed0/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed1/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed10/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed11/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed12/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed13/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed14/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed15/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed16/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed17/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed18/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed19/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed2/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed3/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed4/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed42/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed43/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed44/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed5/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed6/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed7/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed8/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span20_random_seed9/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/experiments/span30_fixed_seed42/missing_span_windows.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/data/occupancy_map_room3_empty.npz` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span10_fixed_seed42/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_fixed_seed42/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed0/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed0/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed0/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed0/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed0/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed0/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed1/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed1/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed1/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed1/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed1/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed1/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed10/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed10/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed10/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed10/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed10/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed10/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed11/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed11/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed11/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed11/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed11/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed11/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed12/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed12/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed12/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed12/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed12/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed12/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed13/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed13/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed13/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed13/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed13/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed13/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed14/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed14/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed14/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed14/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed14/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed14/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed15/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed15/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed15/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed15/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed15/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed15/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed16/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed16/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed16/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed16/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed16/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed16/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed17/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed17/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed17/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed17/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed17/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed17/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed18/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed18/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed18/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed18/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed18/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed18/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed19/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed19/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed19/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed19/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed19/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed19/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed2/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed2/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed2/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed2/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed2/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed2/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed3/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed3/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed3/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed3/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed3/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed3/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed4/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed4/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed4/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed4/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed4/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed4/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed42/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed43/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed44/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed5/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed5/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed5/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed5/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed5/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed5/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed6/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed6/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed6/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed6/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed6/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed6/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed7/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed7/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed7/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed7/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed7/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed7/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed8/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed8/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed8/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed8/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed8/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed8/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed9/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed9/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed9/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed9/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed9/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span20_random_seed9/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/kalman_cv_dt1.0_q1e-3_r1e-2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/linear_interp/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/linear_interp/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/savgol_w5_p2/geometry_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/span30_fixed_seed42/savgol_w5_p2/reconstruction_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/summary_metrics.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/eval/summary_report.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/figures/exp0_baseline_ade_maskedade_bar.pdf` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/figures/exp0_baseline_ade_maskedade_bar.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/figures/exp0_representative_reconstruction.pdf` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/figures/exp0_representative_reconstruction.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/figures/exp1_span_sweep_maskedade_line.pdf` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/figures/exp1_span_sweep_maskedade_line.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/full_vs_masked_comparison.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/random_span_ADE_mean_std.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/random_span_RMSE_mean_std.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/figures/random_span_masked_ADE_mean_std.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_by_seed.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_by_seed.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/phase1/canonical_room3/random_span_statistics/random_span_statistics_report.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/alpha_sweep_metrics.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/alpha_sweep_metrics.json` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/alpha_sweep_report.md` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/alpha_sweep_summary.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/figures/alpha_sweep_ADE.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/figures/alpha_sweep_improvement_masked_ADE.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/figures/alpha_sweep_masked_ADE.png` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_linear_interp_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_drift_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_linear_interp_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_noise_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_kalman_cv_dt1.0_q1e-3_r1e-2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_linear_interp_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.05.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.10.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.25.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.50.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha0.75.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/alpha_sweep/refined/refined_missing_only_savgol_w5_p2_ddpm_prior_masked_blend_v2_alpha1.00.npy` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/eval/refinement_metrics.csv` (no high-confidence cleanup rule matched)
+- `outputs/stage3/refinement/eval/refinement_metrics.json` (no high-confidence cleanup rule matched)
+
+## Reference Update Warnings
+
+- Rows with `requires_reference_update=yes` will be string-replaced in newly created `docs/stage3_sde/*.md` by the apply script.
+- Existing scientific scripts are not automatically rewritten unless the path update is obviously safe.

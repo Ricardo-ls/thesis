@@ -1,0 +1,11 @@
+layer,criterion,description,pass,value
+Layer 1,G1,ADE improves over Formal E1 in at least 4/6 degradation conditions,True,4/6
+Layer 1,G2,No severe regression: ADE_E2 / ADE_E1 < 1.10 for all six,True,max ratio 1.025085
+Layer 1,G3,Six-condition mean ADE improves over Formal E1,True,0.124478 vs 0.128928
+Layer 2,H1,drift_medium high-confidence no-harm passes,False,V2 high 0.006796; noisy high 0.002408
+Layer 2,H2,burst_medium high-confidence no-harm passes,False,V2 high 0.010821; noisy high 0.003384
+Layer 2,H3,drift_medium overall ADE improves over Formal E1,True,0.021083 vs 0.023272
+Layer 2,H4,burst_medium overall ADE improves over Formal E1,True,0.054175 vs 0.073922
+Layer 2,H5,"bias_medium ADE improves by at least 5%, or bias offset error decreases clearly",False,ADE 0.189430 vs 0.187644; offset 0.188996 vs 0.187441
+Layer 2,H6,Low-confidence correction preservation passes,True,all six
+Overall,Decision,PASS if Layer 1 and Layer 2 all pass; Partial-PASS if Layer 1 all pass and at least 4/6 Layer 2 pass,False,NO-PASS; Layer1 all=True; Layer2 3/6

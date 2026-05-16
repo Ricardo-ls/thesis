@@ -1,0 +1,19 @@
+condition,t,classification,largest_stable_eps,largest_stable_update_to_x_ratio,best_eps_by_likelihood_drop,eps_at_overshoot_if_any,sign_correct,interface_suspect,notes
+bias_medium,1,SIGN_CORRECT_STABLE,0.001,0.004030297722713127,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+bias_medium,3,SIGN_CORRECT_STABLE,0.001,0.0038964570208897703,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+bias_medium,5,SIGN_CORRECT_STABLE,0.001,0.003830962208423999,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+burst_medium,1,SIGN_CORRECT_STABLE,0.001,0.0037836507275468183,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+burst_medium,3,SIGN_CORRECT_STABLE,0.001,0.00366498012680583,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+burst_medium,5,SIGN_CORRECT_STABLE,0.001,0.0035504325854228626,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+combined_medium,1,SIGN_CORRECT_STABLE,0.001,0.003576831954239596,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+combined_medium,3,SIGN_CORRECT_STABLE,0.001,0.0034750782258821055,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+combined_medium,5,SIGN_CORRECT_STABLE,0.001,0.0033907512691684232,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+drift_medium,1,SIGN_CORRECT_STABLE,0.001,0.003749676842166734,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+drift_medium,3,SIGN_CORRECT_STABLE,0.001,0.003657830153769613,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+drift_medium,5,SIGN_CORRECT_STABLE,0.001,0.0035908669053470966,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+gaussian_medium,1,SIGN_CORRECT_STABLE,0.001,0.0037121250770702856,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+gaussian_medium,3,SIGN_CORRECT_STABLE,0.001,0.0036313205127470726,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+gaussian_medium,5,SIGN_CORRECT_STABLE,0.001,0.0035489212548543616,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+jump_medium,1,SIGN_CORRECT_STABLE,0.001,0.003322600424570535,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+jump_medium,3,SIGN_CORRECT_STABLE,0.001,0.00323944447800464,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01
+jump_medium,5,SIGN_CORRECT_STABLE,0.001,0.003071365682393942,0.001,0.01,True,False,minus lowers L and plus raises L for at least one small eps; overshoot begins by eps=0.01

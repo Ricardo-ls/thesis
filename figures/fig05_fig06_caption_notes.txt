@@ -1,0 +1,11 @@
+trajectory index used: 18
+degradation: gaussian_medium
+statement: Fig. 5 and Fig. 6 use the same trajectory and identical first four columns
+ADE values for each column:
+  clean reference: 0.000000
+  degraded input: 0.063728
+  Kalman CV: 0.086371 (visualization-only reconstruction if no saved Kalman output exists)
+  Uncond. SDEdit: 0.058132
+  Cond. residual: 0.028751
+note: ADE values are per-trajectory, not dataset-level
+note: dataset-level statistics are reported in Table 7

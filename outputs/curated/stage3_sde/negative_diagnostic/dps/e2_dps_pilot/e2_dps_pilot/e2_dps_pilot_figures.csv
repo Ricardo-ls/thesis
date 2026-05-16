@@ -1,0 +1,5 @@
+figure,degradation,trajectory_id,path
+drift,drift_medium,9,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_pilot/figures/drift_drift_medium_traj9.png
+burst,burst_medium,9,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_pilot/figures/burst_burst_medium_traj9.png
+bias_negative_control,bias_medium,11,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_pilot/figures/bias_negative_control_bias_medium_traj11.png
+jump_diagnostic,jump_medium,14,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_pilot/figures/jump_diagnostic_jump_medium_traj14.png

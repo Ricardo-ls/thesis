@@ -1,0 +1,5 @@
+condition,trajectory_id,zeta,path
+drift_medium,0,0.3,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_nan_diagnosis/figures/drift_medium_traj0_zeta0p3_trace.png
+burst_medium,0,0.3,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_nan_diagnosis/figures/burst_medium_traj0_zeta0p3_trace.png
+gaussian_medium,0,0.3,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_nan_diagnosis/figures/gaussian_medium_traj0_zeta0p3_trace.png
+bias_medium,0,0.3,/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage4/e2_dps_nan_diagnosis/figures/bias_medium_traj0_zeta0p3_trace.png

@@ -1,0 +1,58 @@
+{
+  "input_clean_path": "data/stage4/e3_dps_calibration_500/clean_trajs.npy",
+  "no_old_files_overwritten": true,
+  "seed_rule_default": "42 + i",
+  "combined_seed_rules": {
+    "gaussian": "42 + i",
+    "bias": "42000 + i",
+    "drift": "84000 + i"
+  },
+  "gaussian_medium": {
+    "path": "data/stage4/e3_dps_calibration_500/degraded_gaussian_medium.npy",
+    "shape": [
+      500,
+      20,
+      2
+    ]
+  },
+  "drift_medium": {
+    "path": "data/stage4/e3_dps_calibration_500/degraded_drift_medium.npy",
+    "shape": [
+      500,
+      20,
+      2
+    ]
+  },
+  "burst_medium": {
+    "path": "data/stage4/e3_dps_calibration_500/degraded_burst_medium.npy",
+    "shape": [
+      500,
+      20,
+      2
+    ]
+  },
+  "bias_medium": {
+    "path": "data/stage4/e3_dps_calibration_500/degraded_bias_medium.npy",
+    "shape": [
+      500,
+      20,
+      2
+    ]
+  },
+  "jump_medium": {
+    "path": "data/stage4/e3_dps_calibration_500/degraded_jump_medium.npy",
+    "shape": [
+      500,
+      20,
+      2
+    ]
+  },
+  "combined_medium": {
+    "path": "data/stage4/e3_dps_calibration_500/degraded_combined_medium.npy",
+    "shape": [
+      500,
+      20,
+      2
+    ]
+  }
+}

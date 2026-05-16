@@ -1,0 +1,12 @@
+term,definition
+ADE,Average Displacement Error. Mean Euclidean distance between predicted and clean positions over all frames of a trajectory.
+RMSE,Root Mean Squared Error. Square root of the mean squared Euclidean position error over all frames.
+FDE,Final Displacement Error. Euclidean distance between predicted and clean positions at the final frame.
+smooth (my own),"Mean magnitude of the second-order finite difference of the trajectory. Lower values indicate smoother local motion, but lower is not always better if the method over-smooths real movement."
+improved_fraction (my own),Fraction of trajectories for which a method has lower ADE than noisy_input.
+spread,Standard deviation across the 200 evaluated trajectories. DDPM inference seeds are averaged before metric computation.
+residual (in relative normalized space),The correction term added to degraded relative displacement after normalization. The conditional DDPM predicts this residual rather than the full clean trajectory.
+t_start (SDEdit),The diffusion timestep at which noise is injected before reverse denoising starts. Larger t_start means stronger prior intervention.
+oracle t_start (my own),A diagnostic upper-bound setting where the best t_start is selected after observing evaluation performance. It is not a deployable inference rule unless selected on validation data.
+Conditional residual DDPM,A DDPM refinement model that receives degraded relative displacement as a condition and predicts a residual correction through the reverse diffusion process.
+EMA decay,Exponential moving average decay used to maintain a smoothed copy of model weights for evaluation.

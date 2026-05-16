@@ -1,0 +1,9 @@
+# Dedicated environment for nature-academic-search MCP server.
+# The project .venv uses Python 3.9, while mcp requires a newer Python.
+# Installed locally in:
+#   SingularTrajectory/skills/.venv-nature-skills
+mcp
+requests
+toml
+lxml
+

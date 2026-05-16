@@ -1,0 +1,13 @@
+# Common Python dependencies used by the vendored nature-skills bundle.
+# Install into the project environment:
+#   ../../.venv/bin/python -m pip install -r requirements-nature-skills.txt
+requests
+toml
+lxml
+seaborn
+statsmodels
+scikit-image
+tifffile
+python-pptx
+pymupdf
+

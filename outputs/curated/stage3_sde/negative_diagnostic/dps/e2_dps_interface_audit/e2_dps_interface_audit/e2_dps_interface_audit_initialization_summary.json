@@ -1,0 +1,16 @@
+{
+  "initial_state_distribution": "pure Gaussian noise in normalized residual latent space",
+  "initial_state_shape": [
+    1,
+    2,
+    19
+  ],
+  "uses_degraded_y_noised_initialization": false,
+  "uses_stage3_conditional_output_initialization": false,
+  "uses_e2_min_output_initialization": false,
+  "conditioning_signal": "degraded trajectory relative displacement, normalized, passed as x_cond to ConditionalTemporalDenoiser1D",
+  "zeta0_no_guidance_equivalent_to_unconditional_prior_generation": false,
+  "zeta0_no_guidance_description": "conditional residual DDPM sampling from pure Gaussian residual latent, conditioned on degraded y, without DPS observation guidance",
+  "is_true_refinement_from_observation_initial_state": false,
+  "refinement_note": "observation y enters as conditioning and likelihood guidance, but the reverse state is initialized from noise rather than from y, Stage 3 output, or E2-Min output"
+}

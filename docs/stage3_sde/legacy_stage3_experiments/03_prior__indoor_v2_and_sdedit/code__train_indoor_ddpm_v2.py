@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/train_indoor_ddpm_v2.py

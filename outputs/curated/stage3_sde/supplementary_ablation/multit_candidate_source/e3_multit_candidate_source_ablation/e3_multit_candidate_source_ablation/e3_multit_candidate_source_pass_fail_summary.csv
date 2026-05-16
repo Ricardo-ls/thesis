@@ -1,0 +1,4 @@
+case,variant,six_condition_mean_ADE,six_condition_mean_ADE_t1,mean_ADE_lower_than_t1,conditions_lower_than_t1,high_conf_no_harm_pass_count,high_conf_interpretable_count,low_conf_pass_count,mean_motion_usage_ratio,motion_usage_in_range_0p2_0p7,passed,mean_ADE_lower_than_all_single_t
+Case A,V2_single_t2,0.13594743609428406,0.1364939995110035,True,5,5,5,6,0.4354878178965212,True,True,
+Case A,V3_single_t3,0.13546210651596388,0.1364939995110035,True,5,5,5,6,0.4358038655672236,True,True,
+Case B,V4_multit_confidence_bin,0.13552887365221977,0.1364939995110035,,6,5,5,6,0.5260726687755702,True,False,False

@@ -1,0 +1,14 @@
+Current 2-block params: 212354
+Expanded 4-block params: 409474
+Parameter ratio (expanded/current): 1.9283x
+Current 2-block block-only RF: 9
+Current 2-block including-proj RF: 13
+Expanded 4-block block-only RF: 17
+Expanded 4-block including-proj RF: 21
+Sequence length T: 20
+Current including-proj coverage: 65.0%
+Expanded including-proj coverage: 105.0%
+Model config used: max_timesteps=100, in_channels=4, hidden_dim=128
+Current block convs: k=3, d=1, k=3, d=1, k=3, d=1, k=3, d=1
+Expanded block convs: k=3, d=1, k=3, d=1, k=3, d=1, k=3, d=1, k=3, d=1, k=3, d=1, k=3, d=1, k=3, d=1
+Projection convs: k=3, d=1, k=3, d=1

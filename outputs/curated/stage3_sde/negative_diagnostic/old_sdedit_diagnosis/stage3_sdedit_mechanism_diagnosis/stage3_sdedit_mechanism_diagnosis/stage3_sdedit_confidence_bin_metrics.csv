@@ -1,0 +1,4 @@
+condition,t_start,bin,N_frames,noisy_ADE,sdedit_ADE,ADE_delta,note
+gaussian_medium,2,high,334,0.014083261601626873,0.020198287442326546,0.006115025840699673,partial per-frame diagnosis using validated reconstructed Formal E1 confidence cache
+gaussian_medium,2,mid,2177,0.046816304326057434,0.045498352497816086,-0.0013179518282413483,partial per-frame diagnosis using validated reconstructed Formal E1 confidence cache
+gaussian_medium,2,low,1489,0.0964696928858757,0.09231103956699371,-0.0041586533188819885,partial per-frame diagnosis using validated reconstructed Formal E1 confidence cache

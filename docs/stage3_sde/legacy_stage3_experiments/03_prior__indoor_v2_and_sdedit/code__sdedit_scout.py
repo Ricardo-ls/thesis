@@ -1,0 +1,1 @@
+../../tools/stage3_indoor/sdedit_scout.py
