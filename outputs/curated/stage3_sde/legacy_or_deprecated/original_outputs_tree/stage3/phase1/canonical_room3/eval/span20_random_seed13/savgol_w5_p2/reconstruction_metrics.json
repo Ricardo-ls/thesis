@@ -1,0 +1,11 @@
+{
+  "ADE": 0.0025115525349974632,
+  "FDE": 0.0007017044699750841,
+  "RMSE": 0.004158530849963427,
+  "experiment_id": "span20_random_seed13",
+  "masked_ADE": 0.00832214392721653,
+  "masked_RMSE": 0.008934753946959972,
+  "method_name": "savgol_w5_p2",
+  "num_samples": 36073,
+  "sequence_length": 20
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "ADE": 0.0017366748070344329,
+    "FDE": 0.0,
+    "RMSE": 0.004114554729312658,
+    "masked_ADE": 0.008683373220264912,
+    "masked_RMSE": 0.009200424887239933,
+    "method": "linear_interp",
+    "off_map_ratio": 0.0,
+    "seed": 0,
+    "span_mode": "random",
+    "span_ratio": 0.2,
+    "wall_crossing_count": 0
+  },
+  {
+    "ADE": 0.002519299043342471,
+    "FDE": 0.0006980180623941123,
+    "RMSE": 0.00416909484192729,
+    "masked_ADE": 0.008381183259189129,
+    "masked_RMSE": 0.00896652601659298,
+    "method": "savgol_w5_p2",
+    "off_map_ratio": 2.772156460510631e-06,
+    "seed": 0,
+    "span_mode": "random",
+    "span_ratio": 0.2,
+    "wall_crossing_count": 0
+  },
+  {
+    "ADE": 0.009317202493548393,
+    "FDE": 0.006371811032295227,
+    "RMSE": 0.014760549180209637,
+    "masked_ADE": 0.02784496173262596,
+    "masked_RMSE": 0.031237870454788208,
+    "method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+    "off_map_ratio": 4.989881628919136e-05,
+    "seed": 0,
+    "span_mode": "random",
+    "span_ratio": 0.2,
+    "wall_crossing_count": 0
+  },
+  {
+    "ADE": 0.001711961580440402,
+    "FDE": 0.0,
+    "RMSE": 0.004084345418959856,
+    "masked_ADE": 0.008559809997677803,
+    "masked_RMSE": 0.009132873266935349,
+    "method": "linear_interp",
+    "off_map_ratio": 0.0,
+    "seed": 1,
+    "span_mode": "random",
+    "span_ratio": 0.2,
+    "wall_crossing_count": 0
+  },
+  {
+    "ADE": 0.002497964771464467,
+    "FDE": 0.0006987095111981034,
+    "RMSE": 0.004140626173466444,
+    "masked_ADE": 0.008259910158813,
+    "masked_RMSE": 0.008896267041563988,
+    "method": "savgol_w5_p2",
+    "off_map_ratio": 2.772156460510631e-06,
+    "seed": 1,
+    "span_mode": "random",
+    "span_ratio": 0.2,
+    "wall_crossing_count": 0
+  },
+  {
+    "ADE": 0.00927954912185669,
+    "FDE": 0.006385208107531071,
+    "RMSE": 0.01465800404548645,
+    "masked_ADE": 0.027600625529885292,
+    "masked_RMSE": 0.030987052246928215,
+    "method": "kalman_cv_dt1.0_q1e-3_r1e-2",
+    "off_map_ratio": 4.43545033681701e-05,
+    "seed": 1,
+    "span_mode": "random",
+    "span_ratio": 0.2,
+    "wall_crossing_count": 0
+  }
+]
