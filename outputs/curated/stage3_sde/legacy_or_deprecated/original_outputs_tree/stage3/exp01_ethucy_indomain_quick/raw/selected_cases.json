@@ -1,0 +1,69 @@
+{
+  "experiment_name": "exp01_ethucy_indomain_quick",
+  "coarse_reference_method": "linear_interp",
+  "selection_metric": "masked_ADE improvement of ddpm_v3_inpainting_anchored relative to linear_interp",
+  "selection_population": "trajectory_seed cases",
+  "missing_intermediate_note": "The current v3 interface reconstructs directly from degraded observed input. The five-column figure therefore uses linear interpolation as a reference coarse column, not as an internal upstream dependency of ddpm_v3_inpainting.",
+  "cases": {
+    "median_case": {
+      "trajectory_idx": 76,
+      "seed_idx": 4,
+      "case_id": "traj76_seed4",
+      "span_start": 8,
+      "span_end": 11,
+      "coarse_reference_method": "linear_interp",
+      "coarse_masked_ADE": 0.25499996542930603,
+      "final_masked_ADE": 0.2624223530292511,
+      "ddpm_improvement_vs_coarse": -0.007422387599945068,
+      "missing_intermediate_note": "The current v3 interface reconstructs directly from degraded observed input. The five-column figure therefore uses linear interpolation as a reference coarse column, not as an internal upstream dependency of ddpm_v3_inpainting.",
+      "available_columns": [
+        "clean target",
+        "degraded input",
+        "coarse reconstruction",
+        "DDPM candidate",
+        "final refined output"
+      ],
+      "figure_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/exp01_ethucy_indomain_quick/figures/median_case_five_column.png"
+    },
+    "best_ddpm_improvement_case": {
+      "trajectory_idx": 216,
+      "seed_idx": 3,
+      "case_id": "traj216_seed3",
+      "span_start": 8,
+      "span_end": 11,
+      "coarse_reference_method": "linear_interp",
+      "coarse_masked_ADE": 0.7023366689682007,
+      "final_masked_ADE": 0.19981342554092407,
+      "ddpm_improvement_vs_coarse": 0.5025232434272766,
+      "missing_intermediate_note": "The current v3 interface reconstructs directly from degraded observed input. The five-column figure therefore uses linear interpolation as a reference coarse column, not as an internal upstream dependency of ddpm_v3_inpainting.",
+      "available_columns": [
+        "clean target",
+        "degraded input",
+        "coarse reconstruction",
+        "DDPM candidate",
+        "final refined output"
+      ],
+      "figure_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/exp01_ethucy_indomain_quick/figures/best_ddpm_improvement_five_column.png"
+    },
+    "worst_ddpm_degradation_case": {
+      "trajectory_idx": 212,
+      "seed_idx": 4,
+      "case_id": "traj212_seed4",
+      "span_start": 8,
+      "span_end": 11,
+      "coarse_reference_method": "linear_interp",
+      "coarse_masked_ADE": 0.08044587075710297,
+      "final_masked_ADE": 0.4193129539489746,
+      "ddpm_improvement_vs_coarse": -0.33886708319187164,
+      "missing_intermediate_note": "The current v3 interface reconstructs directly from degraded observed input. The five-column figure therefore uses linear interpolation as a reference coarse column, not as an internal upstream dependency of ddpm_v3_inpainting.",
+      "available_columns": [
+        "clean target",
+        "degraded input",
+        "coarse reconstruction",
+        "DDPM candidate",
+        "final refined output"
+      ],
+      "figure_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/exp01_ethucy_indomain_quick/figures/worst_ddpm_degradation_five_column.png"
+    }
+  }
+}

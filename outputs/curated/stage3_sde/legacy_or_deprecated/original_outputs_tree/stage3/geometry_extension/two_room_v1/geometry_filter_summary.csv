@@ -1,0 +1,2 @@
+profile_name,total_windows,feasible_windows,discarded_windows,retention_rate,same_room_windows,room_transition_windows,valid_crossing_windows
+two_room_v1,36073,27544,8529,0.7635627754830483,25053,2491,2491

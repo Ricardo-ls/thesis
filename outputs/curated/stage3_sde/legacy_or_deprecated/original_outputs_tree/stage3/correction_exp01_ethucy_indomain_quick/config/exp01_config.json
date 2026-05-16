@@ -1,0 +1,65 @@
+{
+  "experiment_name": "exp01_ethucy_indomain_quick",
+  "purpose": "Quick in-domain sanity check of Stage 3 missing reconstruction on ETH+UCY public trajectories.",
+  "missing_condition": "missing_only",
+  "dataset": {
+    "absolute_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20.npy",
+    "relative_reference_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel.npy",
+    "max_trajectories": 128,
+    "num_trajectories_used": 128,
+    "sequence_length": 20,
+    "natural_scale": true,
+    "room3_used": false,
+    "global_scaling_applied": false
+  },
+  "prior": {
+    "objective": "optimization_best",
+    "variant": "none",
+    "recommended_paths": {
+      "variant": "none",
+      "abs_path": "datasets/processed/data_eth_ucy_20.npy",
+      "rel_path": "datasets/processed/data_eth_ucy_20_rel.npy",
+      "train_tag": "ddpm_eth_ucy_none_h128",
+      "sample_tag": "ddpm_eth_ucy_none_h128",
+      "eval_tag": "ddpm_eth_ucy_none_h128",
+      "train_dir": "outputs/prior/train/ddpm_eth_ucy_none_h128/seed42",
+      "sample_dir": "outputs/prior/sample/ddpm_eth_ucy_none_h128/seed42",
+      "eval_dir": "outputs/prior/eval/ddpm_eth_ucy_none_h128/seed42",
+      "ckpt_path": "outputs/prior/train/ddpm_eth_ucy_none_h128/seed42/best_model.pt"
+    },
+    "run_metadata": {
+      "variant": "none",
+      "train_seed": 42,
+      "train_epochs": 100,
+      "run_tag": "seed42-100epoch",
+      "train_tag": "ddpm_eth_ucy_none_h128",
+      "run_dir": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch",
+      "ckpt_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/best_model.pt",
+      "current_run_best_epoch": 68,
+      "current_run_best_val_loss": 0.08729857769655999,
+      "run_note_path": null,
+      "loss_history_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/train/ddpm_eth_ucy_none_h128/seed42-100epoch/loss_history.csv"
+    }
+  },
+  "ddpm": {
+    "num_seeds_per_trajectory": 5,
+    "device": "auto"
+  },
+  "methods_requested": [
+    "linear_interp",
+    "savgol_w5_p2",
+    "kalman_cv_dt1.0_q1e-3_r1e-2",
+    "ddpm_v3_inpainting",
+    "ddpm_v3_inpainting_anchored"
+  ],
+  "methods_included": [
+    "linear_interp",
+    "savgol_w5_p2",
+    "kalman_cv_dt1.0_q1e-3_r1e-2",
+    "ddpm_v3_inpainting",
+    "ddpm_v3_inpainting_anchored"
+  ],
+  "methods_skipped": [],
+  "coarse_reference_method_for_figures": "linear_interp",
+  "warnings": []
+}

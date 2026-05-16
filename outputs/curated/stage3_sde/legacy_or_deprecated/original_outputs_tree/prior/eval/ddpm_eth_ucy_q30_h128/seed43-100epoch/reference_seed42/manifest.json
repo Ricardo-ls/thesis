@@ -1,0 +1,10 @@
+{
+  "input_name": "q30",
+  "resolved_variant": "q30",
+  "generated_rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q30_h128/seed43-100epoch/reference_seed42/generated_rel_samples.npy",
+  "rel_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel_q30.npy",
+  "train_seed": 43,
+  "train_epochs": 100,
+  "run_tag": "seed43-100epoch",
+  "reference_tag": "reference_seed42"
+}

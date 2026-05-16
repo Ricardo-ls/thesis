@@ -1,0 +1,8 @@
+INPUT_NAME=q30
+RESOLVED_VARIANT=q30
+REAL_PATH=/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/datasets/processed/data_eth_ucy_20_rel_q30.npy
+GEN_PATH=/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/prior/sample/ddpm_eth_ucy_q30_h128/seed44-100epoch/reference_seed42/generated_rel_samples.npy
+MOVING_THRESHOLD_MODE=positive_only_quantile
+MOVING_THRESHOLD_QUANTILE=0.1
+MOVING_POSITIVE_EPS=1e-08
+GLOBAL_MOVING_THRESHOLD=0.123029

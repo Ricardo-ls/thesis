@@ -1,0 +1,8 @@
+{
+  "ADE": 0.03641360253095627,
+  "FDE": 0.011825395748019218,
+  "RMSE": 0.07478442788124084,
+  "method_name": "kalman",
+  "num_samples": 36073,
+  "sequence_length": 20
+}

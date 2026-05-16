@@ -1,0 +1,226 @@
+[
+  {
+    "slide": 1,
+    "texts": [
+      "STAGE 3",
+      "DDPM-based Indoor\nTrajectory Refinement",
+      "Keywords: DDPM · SDEdit · conditional residual model · paired trajectory recovery",
+      "Shang Shanchong \nPolitecnico di Torino",
+      "01",
+      "Problem reset",
+      "biased gap filling -> full-trajectory refinement",
+      "02",
+      "Core finding",
+      "conditioning beats prior-only editing",
+      "03",
+      "Claim boundary",
+      "works only under error-structure alignment"
+    ],
+    "notes": "Good morning. This presentation reports Stage 3 of my thesis on indoor trajectory refinement with diffusion models.\nThe story has three parts. First, I explain why my original Stage 3 task formulation had to be corrected. Second, I show what changes once the problem is reframed as full-trajectory refinement. Third, I define the claim boundary: where the current method works, where it fails, and what Stage 4 should focus on.\nThe key message I want to build toward is simple: for this task, observation conditioning matters more than making the unconditional prior stronger.",
+    "picture_count": 1,
+    "shape_count": 19
+  },
+  {
+    "slide": 2,
+    "texts": [
+      "Task correction: what the old experiment really tested",
+      "2 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Old local-gap task",
+      "Frames 8–11 were removed, but prefix, suffix, and both boundary points stayed visible.\nLinear interpolation therefore solved a boundary-anchored bridge problem.\nThe unconditional DDPM had no mask, no endpoint constraint, and no observation channel.",
+      "Corrected task",
+      "Complete degraded trajectory → refined full trajectory; evaluated against the paired clean reference.",
+      "Diagnostic result from the old task",
+      "Working hypothesis",
+      "When the whole trajectory is corrupted, does observation-conditioned DDPM provide a better refinement interface than prior-only DDPM editing?"
+    ],
+    "notes": "I start with the task correction because it changes how the old result should be read.\n\nIn the old experiment, only the middle segment was missing. Both boundary points around that segment were still visible, so linear interpolation was structurally favoured. It was not a weak baseline; it was almost exactly matched to the task.\n\nThe unconditional DDPM had the opposite interface: it could generate a plausible segment, but it had no mask, no endpoint constraint, and no explicit observed-context channel. The old gap therefore diagnoses a task-interface mismatch, not the uselessness of trajectory priors.\n\nThe corrected Stage 3 task is full-trajectory refinement: every frame may contain error, and the model has to refine the whole sequence. That gives the working hypothesis shown here.",
+    "picture_count": 1,
+    "shape_count": 15
+  },
+  {
+    "slide": 3,
+    "texts": [
+      "Evaluation framework: paired full-trajectory recovery",
+      "2 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Evaluation object",
+      "One paired instance = degraded full trajectory → refined output → clean reference. Comparisons are within the same input–reference pair.",
+      "Protocol",
+      "Fixed evaluation set: N = 200 trajectories.\nDDPM methods: five inference seeds {42, 43, 44, 45, 46}.\nSeed averaging is applied first; metrics are then computed.\nAll ± std values reflect trajectory-level variation, not seed spread.",
+      "Smoothness warning",
+      "A smoother path can be worse if it moves away from the clean reference. Kalman CV later shows exactly this.",
+      "Metrics follow the report evaluation section; ADE remains the headline metric because the task is full-trajectory recovery."
+    ],
+    "notes": "This slide fixes the statistical reading. Each method receives the same degraded input and is scored against the same clean reference, so the comparison is paired.\n\nADE is the main metric because the target is average full-trajectory recovery. RMSE, FDE, smoothness, improved fraction, delta, and paired tests are complementary diagnostics.\n\nA key warning is smoothness. A smoother trajectory is not automatically a better one. If the spatial error increases, smoothness is just over-smoothing. That is why I do not use smoothness as the main success criterion.",
+    "picture_count": 0,
+    "shape_count": 14
+  },
+  {
+    "slide": 4,
+    "texts": [
+      "Synthetic indoor data: paired recovery instead of outdoor tracking reuse",
+      "3 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Why not ETH/UCY for Stage 3?",
+      "ETH/UCY was useful for Stage 2 prior learning, but it mostly describes outdoor pedestrian motion. Stage 3 needs controlled indoor error injection and clean–degraded pairs.",
+      "Paired design",
+      "Every degraded input has a known clean reference; method comparisons are paired by construction.",
+      "Fig. 2 from the report; circle = start, square = end, colour = frame index."
+    ],
+    "notes": "For the corrected task, I move from ETH/UCY to synthetic indoor trajectories. This is not because ETH/UCY is bad; it answered the Stage 2 prior-learning question. Here the question is different.\n\nI need paired clean and degraded trajectories inside a controlled room. The synthetic generator gives a 3 by 3 metre environment, 20 frames at 3 Hz, and five simple indoor motion patterns, including pacing, near-stationary behaviour, and boundary walking.\n\nThe key design feature is the pairing: each clean trajectory can be degraded in a controlled way, and all methods are evaluated against the same clean reference.",
+    "picture_count": 1,
+    "shape_count": 12
+  },
+  {
+    "slide": 5,
+    "texts": [
+      "Indoor DDPM prior validation before refinement",
+      "5/ 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Purpose",
+      "This check verifies whether the indoor trajectory-only DDPM can be trained stably and sampled without obvious artefacts before it is used in refinement experiments.",
+      "Claim boundary",
+      "These checks show technical usability, not recovery ability.",
+      "Recovery is tested only in the paired refinement experiments: SDEdit first, then conditional residual DDPM.",
+      "† Custom internal diagnostics for this experiment; not standardized community metrics."
+    ],
+    "notes": "The indoor DDPM prior is not presented as a final generative model. This page only checks whether the prior is stable enough to use in downstream refinement diagnostics.\n\nThe best EMA checkpoint is selected at epoch 60. The validation loss shows a clear decreasing trend, the large-step ratio is zero, and the directional bias is below the threshold.\n\nThe boundary is important: passing the sanity check does not prove trajectory recovery. It only allows me to run the refinement experiments that actually test recovery.",
+    "picture_count": 0,
+    "shape_count": 12
+  },
+  {
+    "slide": 6,
+    "texts": [
+      "Controlled degradation: six error structures, one paired protocol",
+      "6/ 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Figs. 3–4 from the report. The same clean trajectory is degraded under all six example panels."
+    ],
+    "notes": "The paired protocol is simple: clean trajectory, controlled degradation, refinement method, and then comparison to the clean reference.\n\nThe six degradation types are not cosmetic variations. They probe different failure modes: gaussian frame noise, slow drift, sparse jumps, local bursts, constant bias, and mixed corruption.\n\nThis matters because a model can look good under gaussian noise while failing under structured sensor-like errors. The figure gives a visual example, but the numbers printed inside the panels are only for that single example. The dataset-level comparison comes later.\n这里 drift 的 ADE 比 gaussian 低，是因为这个表统计的是 refinement 之前的 degraded input error。当前 drift_medium 的参数设置比较轻，它是一个随时间平滑累积的小偏移；而 gaussian_medium 是每一帧都有随机扰动，所以平均帧误差更大。这个结果不代表 drift 更容易修，反而说明 drift 的初始误差已经很小，因此后面的模型如果按照 gaussian 噪声学到的修正幅度去修，很容易 over-correct，把本来接近 clean 的轨迹推远。",
+    "picture_count": 1,
+    "shape_count": 7
+  },
+  {
+    "slide": 7,
+    "texts": [
+      "Unconditional SDEdit: method, reference, and sweep",
+      "7 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "SDEdit mechanism",
+      "Forward: inject gaussian noise into the degraded trajectory up to t_start.\nReverse: denoise with the pretrained DDPM prior back to t = 0.\nt_start controls the identity-to-prior-drift trade-off.",
+      "Why gaussian_medium first?",
+      "It is the most favourable condition for SDEdit because DDPM forward perturbation is gaussian. If prior-only editing can help, it should help here first.",
+      "SDEdit reference: Meng et al., “SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations,” ICLR 2022. DDPM reference: Ho et al., NeurIPS 2020."
+    ],
+    "notes": "This slide introduces unconditional SDEdit and gives the literature context. In this report SDEdit is not a new supervised model. It is an editing procedure that reuses the pretrained DDPM prior.\n\nThe procedure is two-step: inject gaussian noise into the degraded input up to t_start, then denoise with the learned reverse process. Small t_start keeps the result close to the input. Large t_start gives the prior more freedom but increases drift risk.\n\nI start with gaussian_medium because it is the easiest condition for this method. The best point is t_start equals two, with a small ADE reduction from 0.0626 to 0.0608 metres.",
+    "picture_count": 2,
+    "shape_count": 12
+  },
+  {
+    "slide": 8,
+    "texts": [
+      "Prior-only ceiling under gaussian degradation",
+      "8 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "How to read this result",
+      "SDEdit improves systematically, but the effect size is small.\nKalman CV is a warning: it becomes smoother but ADE worsens by 35.9%.\nThis is the ceiling of prior-only refinement before adding observation conditioning.",
+      "Interpretation",
+      "The prior can nudge a trajectory toward plausibility, but it is still weakly tied to this observation.",
+      "Report Table 5; N = 200; spread is across trajectories after seed averaging."
+    ],
+    "notes": "Here I compare no refinement, Kalman constant-velocity, and unconditional SDEdit on the same gaussian_medium evaluation set.\n\nThe prior-only SDEdit effect is systematic but small. ADE drops by 2.8%, and the improved fraction is 0.765.\n\nKalman CV is important because it shows why smoothness alone is not a success metric. It produces a smoother path, but ADE becomes much worse. So the right interpretation is spatial recovery first, smoothness as a diagnostic second.\n\nThis slide sets the prior-only ceiling. The next question is whether conditioning the prior on the degraded observation can do better.",
+    "picture_count": 1,
+    "shape_count": 12
+  },
+  {
+    "slide": 9,
+    "texts": [
+      "Conditional residual DDPM: the interface is changed, not just the model",
+      "9 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Interface change",
+      "Residual target",
+      "Why residual?",
+      "Predict the correction, not the whole clean trajectory from scratch. The condition is the degraded observation, not ground-truth leakage.",
+      "Literature link",
+      "DDPM formulation: Ho et al. 2020.\nSDEdit diagnostic: Meng et al. 2022.\nConditional time-series diffusion direction: SSSD-style imputation ideas.",
+      "Here, conditioning is the tested variable: the data, metric, and gaussian evaluation set stay matched.",
+      "Ho et al., DDPM, NeurIPS 2020; Meng et al., SDEdit, ICLR 2022; Alcaraz & Strodthoff, SSSD, TMLR 2023."
+    ],
+    "notes": "This is the conceptual turning point. I am not simply trying a bigger network. I am changing the refinement interface.\n\nSDEdit edits through the prior, but it is not told what correction this particular observation needs. The conditional residual model receives the degraded trajectory and learns the residual between degraded and clean trajectories.\n\nThe residual target is defined in normalized relative-displacement space. This keeps continuity with the Stage 2 trajectory-prior representation, while tying the correction to the actual degraded observation.\n\nThe key experimental variable is conditioning. The evaluation set is the same gaussian_medium set used for the unconditional result.",
+    "picture_count": 1,
+    "shape_count": 15
+  },
+  {
+    "slide": 10,
+    "texts": [
+      "Matched gaussian evidence: conditioning gives the larger gain",
+      "10 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "−10.98%",
+      "ADE vs no refinement",
+      "+8.41%",
+      "relative to SDEdit",
+      "Claim supported here",
+      "Under matched gaussian degradation, observation conditioning gives a clearly larger ADE reduction than prior-only editing. The result supports the interface-level part of the hypothesis.",
+      "Claim not supported yet",
+      "This does not prove broad sensor-error robustness. That needs cross-degradation testing.",
+      "Report Table 6 and Fig. 7; same N = 200 gaussian_medium degraded trajectories."
+    ],
+    "notes": "This slide gives the strongest positive result of Stage 3.\n\nOn the matched gaussian_medium set, no refinement has ADE 0.0626, SDEdit has 0.0608, and conditional residual DDPM has 0.0557.\n\nThat is a 10.98% reduction relative to the noisy input and an 8.41% improvement relative to unconditional SDEdit. The displayed trajectory shows the same comparison visually, using the same case as the prior-only diagnostic with the conditional output added as the fifth panel.\n\nThe careful wording is important: this supports the interface-level hypothesis under matched gaussian corruption. It does not yet prove generalization to every sensor-like degradation.",
+    "picture_count": 1,
+    "shape_count": 17
+  },
+  {
+    "slide": 11,
+    "texts": [
+      "Cross-degradation test: the failures are structured",
+      "11 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "One gaussian-trained conditional model, six test conditions",
+      "Interpretation",
+      "Conditioning helps only when the corruption model, representation, and test error structure are aligned.",
+      "Report Table 7 and Fig. 8; non-gaussian rows are diagnostic generalization tests, not matched-training results."
+    ],
+    "notes": "The conditional model was trained on gaussian_medium only. The other five degradation types test generalization, not matched training.\n\nThe important point is that the failures are different. Gaussian improves because it matches the training corruption. Jump improves because sparse large offsets partially look like extreme residual noise. Drift worsens because the model applies a correction larger than needed. Burst worsens because the noise is local, but the model has no reliability mask. Bias is almost unchanged because a constant global offset cancels in relative-displacement space.\n\nSo the conclusion is not simply that generalization is bad. The conclusion is that each failure identifies a design boundary: correction scale, frame reliability, and representation.",
+    "picture_count": 1,
+    "shape_count": 11
+  },
+  {
+    "slide": 12,
+    "texts": [
+      "Backbone ablation: capacity is not the main bottleneck",
+      "12 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "Why test the backbone?",
+      "The model-family concern is valid: SSSD-S4 and Diffusion-TS are relevant time-series diffusion families. For T = 20, I test the most immediate capacity question first: temporal receptive-field coverage.",
+      "Conclusion",
+      "The expanded model shifts ADE slightly, but it does not change the failure regime.",
+      "Design implication",
+      "The next bottleneck is observation anchoring and confidence control, not simply a wider temporal receptive field.",
+      "SSSD: Alcaraz & Strodthoff, TMLR 2023. Diffusion-TS: Yuan & Qiao, ICLR 2024. Ablation values from report Tables 9–11."
+    ],
+    "notes": "This slide addresses the backbone concern. SSSD-S4 and Diffusion-TS are valid time-series diffusion families. SSSD-S4 is especially relevant to conditional imputation, while Diffusion-TS is a general time-series diffusion model.\n\nHowever, the current task uses short T equals 20 indoor windows. The most immediate question is not long-range modelling, but whether the current Conv1D receptive field is too small. So I tested a 2-block versus 4-block Conv1D backbone inside the verified pipeline.\n\nThe expanded model nearly doubles parameters and covers the full window, but the median relative ADE gain is only 0.73%. More importantly, it still beats the noisy input in only one of six degradation types. This means the bottleneck is not primarily temporal capacity; it is observation anchoring and confidence-aware correction.",
+    "picture_count": 0,
+    "shape_count": 15
+  },
+  {
+    "slide": 13,
+    "texts": [
+      "Stage 3 claim boundary and next-step implication",
+      "13 / 13",
+      "Stage 3 — DDPM-based Indoor Trajectory Refinement",
+      "What Stage 3 establishes",
+      "Main conclusion",
+      "Conditioning is the operative variable, but only when corruption, representation and test error structure are aligned.",
+      "Next-step implication",
+      "Move toward sensor-anchored, confidence-aware posterior refinement.",
+      "References and role",
+      "Final claim deliberately remains bounded: Stage 3 maps the interface lever and failure boundaries; it does not claim universal sensor-error recovery."
+    ],
+    "notes": "I close with a bounded conclusion rather than an over-claim.\n\nStage 3 establishes five things: the old task was biased, prior-only SDEdit has a small but real ceiling, observation conditioning gives the larger matched-gaussian gain, cross-degradation failures are structured, and backbone expansion does not solve the failure regime.\n\nThe main conclusion is therefore precise: conditioning is the operative variable, but it only helps when the corruption model, representation, and test error structure are aligned.\n\nThe next-step implication is not to add more unconditional prior machinery. The next design should anchor refinement to sensor evidence and explicitly model confidence or reliability, so the correction scale depends on how trustworthy each observation is.",
+    "picture_count": 0,
+    "shape_count": 15
+  }
+]

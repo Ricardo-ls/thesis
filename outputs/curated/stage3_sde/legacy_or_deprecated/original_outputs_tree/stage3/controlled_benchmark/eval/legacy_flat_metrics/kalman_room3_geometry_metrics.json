@@ -1,0 +1,9 @@
+{
+  "method_name": "kalman_room3",
+  "num_samples": 36073,
+  "off_map_ratio": 6.375959859174451e-05,
+  "sequence_length": 20,
+  "total_points": 721460,
+  "total_segments": 685387,
+  "wall_crossing_count": 0
+}

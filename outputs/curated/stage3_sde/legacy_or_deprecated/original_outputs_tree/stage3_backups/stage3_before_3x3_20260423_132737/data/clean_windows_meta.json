@@ -1,0 +1,9 @@
+{
+  "input_key": "traj_abs",
+  "input_path": "datasets/processed/data_eth_ucy_20.npy",
+  "mode": "windows",
+  "num_samples": 36073,
+  "sequence_length": 20,
+  "stride": 1,
+  "window_size": 20
+}

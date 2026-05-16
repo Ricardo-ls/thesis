@@ -1,0 +1,4 @@
+plot_group,metric,raw_N,plotted_mean,plotted_spread,raw_std_if_available,seed_aggregated_std_if_available,condition_aggregated_std_if_available,spread_definition,source_file
+linear_interp,masked_ADE,2,0.0086215916089713,6.17816112935543e-05,6.178161129354997e-05,6.17816112935543e-05,,std across already-averaged per-seed experiment summaries,outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv
+savgol_w5_p2,masked_ADE,2,0.008320546709001,6.0636550188064575e-05,6.063655018804983e-05,6.0636550188064575e-05,,std across already-averaged per-seed experiment summaries,outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv
+kalman_cv_dt1.0_q1e-3_r1e-2,masked_ADE,2,0.0277227936312556,0.0001221681013703,0.00012216810137035024,0.0001221681013703,,std across already-averaged per-seed experiment summaries,outputs/stage3/phase1/canonical_room3/random_span_statistics/metrics_summary_mean_std.csv

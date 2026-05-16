@@ -1,0 +1,8 @@
+{
+  "ADE": 0.010771816596388817,
+  "FDE": 0.0,
+  "RMSE": 0.02558146044611931,
+  "method_name": "linear_interp",
+  "num_samples": 36073,
+  "sequence_length": 20
+}
