@@ -1,0 +1,10 @@
+{
+  "degradation": "missing_drift",
+  "coarse_method": "linear_interp",
+  "refiner": "light_savgol_refiner",
+  "input_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/controlled_benchmark/reconstruction/recon_missing_drift_linear_interp_span20_fixed_seed42.npy",
+  "output_path": "/Users/shangshanchong/Desktop/pytorch_env_check/trajectory_ddpm_mvp/SingularTrajectory/outputs/stage3/refinement/refined/refined_missing_drift_linear_interp_light_savgol_refiner.npy",
+  "refiner_name": "light_savgol_refiner",
+  "window_length": 5,
+  "polyorder": 2
+}
